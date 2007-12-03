@@ -233,7 +233,7 @@ dict_val   = *1char_line 1*para
 2.6. 列表(list)
 ^^^^^^^^^^^^^^^
 list = head_blank (list_item / list_step) 1*char_blank 1*(para / list)
-list_item = ("*" / "+" / "-")
+list_item = ("*" / "+" / "-") *1")"
 list_step = ("#" / /[0-9]+/ / /[a-z]+/ / /[A-Z]+/) ("." / ")")
 
 "列表",由行首"空白",列表类型,")"和至少一个"段落(para)"组成,可以包含其他"列表".
