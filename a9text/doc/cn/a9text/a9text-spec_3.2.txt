@@ -232,13 +232,13 @@ dict_val   = *1char_line 1*para
 
 2.6. 列表(list)
 ^^^^^^^^^^^^^^^
-list = head_blank (list_item / list_step) *char_blank ")" 1*para  *list
-list_item = "*" / "+"
-list_step = "#" / /[0-9]+/ / /[a-z]+/ / /[A-Z]+/
+list = head_blank (list_item / list_step) 1*char_blank 1*(para / list)
+list_item = ("*" / "+" / "-")
+list_step = ("#" / /[0-9]+/ / /[a-z]+/ / /[A-Z]+/) ("." / ")")
 
 "列表",由行首"空白",列表类型,")"和至少一个"段落(para)"组成,可以包含其他"列表".
-包括类型共有2大类(有序/无序),3种类型.
-无序的"列表:条目(list_item)"包括以下2类: "*","-"
+包括类型共有2大类(有序/无序),6种类型.
+无序的"列表:条目(list_item)"包括以下3类: "*"(disc),"+"(square),"-"(circle)
 有序的"列表:步骤(list_step)"包括以下3类: "#",/0-9/,/a-z/,/A-Z/
 其中 "#"列表和/0-9/类型相同,但是自动编号形式.
 
