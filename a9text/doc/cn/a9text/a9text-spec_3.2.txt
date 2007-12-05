@@ -259,6 +259,9 @@ sect_text  = 1*(area / list / dict / para)
 "章节",内可包含之前所以"约定".但,"章节"内不可包含"章节".
 "章节"的"转义位置" 是 行首.
 
+"章节" 从"1."开始会自动编号.
+"0."为特殊形式,只显示"sect_title",同时不会被$INDEX索引.
+
 2.8. 根(root)
 ^^^^^^^^^^^^^
 root = *1(title info) 1*(area / list / dict / para / sect)
