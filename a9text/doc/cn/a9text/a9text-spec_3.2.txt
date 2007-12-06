@@ -156,8 +156,8 @@ mode_$htm = "[*htm[" 1*char "]]"
 2.3. 区域(area)
 ^^^^^^^^^^^^^^^
 area = area_head *1area_args area_body area_foot
-area_head = head_blank 9*"=" area_type *" " *1(":" *" " area_info)
-            9*"=" char_line
+area_head = head_blank 9*"=" *char_blank area_type *char_blank 
+            *1(1*char_blank area_info)  9*"=" char_line
 area_type = /\*?\w+/
 area_info = /[^\r\n]+/
 area_args = head_blank /args:/ /[^\r\n]+/ char_line
@@ -242,7 +242,7 @@ list_step = ("#" / /[0-9]+/ / /[a-z]+/ / /[A-Z]+/) ("." / ")")
 有序的"列表:步骤(list_step)"包括以下3类: "#",/0-9/,/a-z/,/A-Z/
 其中 "#"列表和/0-9/类型相同,但是自动编号形式.
 
-一组连续的列表,"缩进量(indent)"相同的且类型相同的列表被视为同一组.
+一组连续的列表,"缩进量(indent)"相同的列表被视为同一组(可以不同类型).
 "缩进量(indent)"的多少,体现列表间的包含关系(少的包含多的).
 "缩进量(indent)"小于列表的"段落"或"列表",即为被包含.
 
