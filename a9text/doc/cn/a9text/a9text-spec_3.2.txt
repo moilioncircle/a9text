@@ -157,9 +157,9 @@ mode_$htm = "[*htm[" 1*char "]]"
 ^^^^^^^^^^^^^^^
 area = area_head *1area_args area_body area_foot
 area_head = head_blank 9*"=" *char_blank area_type *char_blank 
-            *1(1*char_blank area_info)  9*"=" char_line
+            *1( *1":" *char_blank area_info) *char_blank 9*"=" char_line
 area_type = /\*?\w+/
-area_info = /[^\r\n]+/
+area_info = /.+/
 area_args = head_blank /args:/ /[^\r\n]+/ char_line
 area_body = 1*char
 area_foot = head_blank 9*"=" char_line
