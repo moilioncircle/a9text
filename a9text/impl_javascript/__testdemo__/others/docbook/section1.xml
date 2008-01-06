@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section id="s1">
+  <title>Section 1</title>
+
+  <para>Paragraph in section 1 about <xi:include href="glossary.xml"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xpointer="element(XXE)" />.</para>
+</section>

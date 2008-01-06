@@ -1,0 +1,33 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9text.a9util');
+document.writeln("<pre>");
+var str = "\\";
+document.writeln(str+"|"+A9Util.trimEscape(str,str.lastIndexOf('\\'))+"|");
+var str = "\\aa";
+document.writeln(str+"|"+A9Util.trimEscape(str,str.lastIndexOf('\\'))+"|aa");
+var str = "\\\\\\\\aa";
+document.writeln(str+"|"+A9Util.trimEscape(str,str.lastIndexOf('\\'))+"|2aa");
+var str = "\\\\\\\\\\aa";
+document.writeln(str+"|"+A9Util.trimEscape(str,str.lastIndexOf('\\'))+"|2aa");
+var str = "b\\";
+document.writeln(str+"|"+A9Util.trimEscape(str,str.lastIndexOf('\\'))+"|b");
+var str = "b\\aa";
+document.writeln(str+"|"+A9Util.trimEscape(str,str.lastIndexOf('\\'))+"|baa");
+var str = "b\\\\\\\\aa";
+document.writeln(str+"|"+A9Util.trimEscape(str,str.lastIndexOf('\\'))+"|b2a");
+var str = "b\\\\\\\\\\aa";
+document.writeln(str+"|"+A9Util.trimEscape(str,str.lastIndexOf('\\'))+"|b2a");
+//
+var str ="file://D:/workspace/a9text/";
+document.writeln(str+"|"+A9Util.getDir(str));
+var str ="file://D:/workspace/a9text/test.htm";
+document.writeln(str+"|"+A9Util.getDir(str));
+var str ="test.htm";
+document.writeln(str+"|"+A9Util.getDir(str));
+var str ="/test.htm";
+document.writeln(str+"|"+A9Util.getDir(str));
+
+document.writeln("</pre>");
+</script>

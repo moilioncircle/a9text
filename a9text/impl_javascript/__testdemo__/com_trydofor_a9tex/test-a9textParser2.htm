@@ -1,0 +1,27 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9text.parser.a9text');
+require('com.trydofor.a9text.render.dom.a9text');
+var text = loadText("com/trydofor/a9text/a9text_v3.1.txt",CORE_PATH);
+
+var a9d = new A9Dom(null,"root");
+a9d.setText(text);
+
+var a9p = new A9TextParser();
+var a9r = new A9TextRender();
+
+var b1 = new Date().getTime();
+a9p.parse(a9d);
+var b2 = new Date().getTime();
+var view = a9r.render(a9d);
+var b3 = new Date().getTime();
+document.writeln(view);
+var b4 = new Date().getTime();
+document.writeln("<pre>");
+document.writeln("parse :"+(b2-b1));
+document.writeln("render:"+(b3-b2));
+document.writeln("draw  :"+(b4-b3));
+document.writeln("whole :"+(b4-b1));
+document.writeln("</pre>");
+</script>

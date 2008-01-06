@@ -1,0 +1,20 @@
+﻿<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9js.util.xml');
+var dr = new XmlReaderClass();
+dr.loadFormFile("./test.xml");
+document.writeln("<pre>");
+var nodes = dr.selectNodes("/root/parser/area");
+for (var i=0;i<nodes.length;i++)
+{
+    document.writeln("multi-"+i+" name = "+ dr.getNodeAttribute(nodes[i],'name'));
+}
+
+document.writeln("single name = "+ dr.getNodeAttribute(dr.selectSingleNode("/root/parser/area"),'name'));
+document.writeln("attri /root/parser/area/@name = "+ dr.getNodeTextOrAttr("/root/parser/area/@name"));
+document.writeln("attri /root/parser/area/clzz/@path = "+ dr.getNodeTextOrAttr("/root/parser/area/clzz/@path"));
+document.writeln("text /root/lang = "+ dr.getNodeTextOrAttr("/root/lang"));
+
+
+document.writeln("</pre>");
+</script>

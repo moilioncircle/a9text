@@ -1,0 +1,11 @@
+﻿<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9js.util.cnf');
+var dr = new CnfReaderClass();
+dr.loadFormFile("./test.cnf");
+document.writeln("<pre>");
+document.writeln("key1.key2 = "+ dr.getValue("key1.key2"));
+document.writeln("key1 = "+ dr.getValue("key1"));
+
+document.writeln("</pre>");
+</script>

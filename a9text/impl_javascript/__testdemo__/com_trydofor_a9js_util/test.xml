@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <lang>en</lang>
+    <parser>
+        <area name = "table">
+            <clzz path="com.trydofor.a9text.table"/>
+        </area>
+        <area name = "tty">
+            <clzz path="com.trydofor.a9text.tty"/>
+        </area>
+        <area name = "text">
+            <clzz path="com.trydofor.a9text.text"/>
+        </area>
+    </parser>
+</root>

@@ -1,0 +1,93 @@
+﻿/*UTF8(BOM)  GPL  trydofor.com  May.2007 (UTC+8)*/
+
+2007-12-23
+废弃 change-log 使用todos.txt
+
+2007-12-07
+实现 v3.2
+
+2007-12-05
+修改表格格式,增加简化形式.
+区域info为非必填项.
+
+2007-12-02
+扩展列表
+增加文本区域的简化形式.
+
+2007-12-01
+重新定义a9text格式,升级到3.2
+整理doc文档
+简单实现 a9text-3.2
+增加line属性.
+
+2007-09-25
+a9engine 在sf上改名为a9text了,并重建一个cvs 模块
+
+2007-09-24
+a9engine改名为a9text,48小时后生效:)
+总感觉a9engine是a9text的副产物.
+
+2007-09-06 ~ 2007-09-17
+完成dom,htm render基本功能,可能要放下一段日子了:)
+
+2007-08-30 ~ 2007-09-05
+完成dom render基本功能和a9text parser大部分功能.
+
+2007-08-22
+用JSEclipse取代Emeditor继续开发:)
+进一步写了几行a9text parser代码
+
+2007-08-15
+修改 a9text中area定义
+
+2007-08-08
+好日子,重构了a9dom.
+(这段时间用java写了个dot的外挂,就把a9text放假了)
+
+2007-07-11
+a9text version 3.1 定稿
+
+2007-07-08
+详细定义a9text version 3.1
+
+2007-07-02
+2007-07-01
+*) 重构a9text parser a9tm
+
+2007-06-29
+*) 整理a9text parser
+
+2007-06-28
+*) 添加docbook例子
+*) a9text v3 修改
+*) a9text parser 类型定义完毕
+
+2007-06-26
+*) a9engine中document.write("<script直观写法
+*) a9dom 完善
+*) a9text parser 完善
+
+2007-06-24
+*) 增加a9dom对象的方法.
+
+2007-06-22
+*) 增加a9dom对象和测试类.
+
+2007-06-20
+*) a9engine#require方法支持'~','/','../'等语法.
+*) 增加对a9engine#require的测试页面.
+*) 增加a9text解析类.
+
+2007-06-17
+*) 添加a9js/format/date,提供类似java的DateFormat功能.
+
+2007-06-15
+*) des.js/encoder.js/md5.js 从util移动到code包
+*) 添加变更履历
+*) 增加util/task,实现简单的任务/任务组管理.
+*) 增加更详细的toString信息
+
+2007-06-14
+*) require和__info__支持脚本合并依赖关系(内部引用)
+*) 完善 a9engine 内置log功能
+*) 修正 a9engine require的部分bug

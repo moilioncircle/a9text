@@ -1,0 +1,4 @@
+﻿join test
+空链入:[[<=./0line.txt]]
+单链入:[[<=./1line.txt]]
+多链入:[[<=./nline.txt]]

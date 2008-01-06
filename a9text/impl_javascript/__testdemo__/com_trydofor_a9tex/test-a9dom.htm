@@ -1,0 +1,44 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9text.a9dom');
+var root = new A9Dom(null,"root");
+root.setText("root");
+var child2 = root.newChild("a9text");
+child2.setText("child2");
+var child3 = root.newChild("a9text");
+child3.setText("child3");
+var child4 = root.newChild("a9text");
+child4.setText("child4");
+var child5 = child4.newChild("a9text");
+child5.setText("child5");
+var child6 = child4.newChild("a9text");
+child6.setText("child6");
+
+root.setArgs("key1","value1");
+root.setArgs("key2","value2");
+
+document.writeln("<pre>");
+document.writeln("<b>original root:</b>");
+document.writeln("root:"+root);
+document.writeln("<b>root's children:</b>");
+while(root.hasNext())
+    document.writeln(root.nextChild().getId());
+document.writeln("<b>child pos:</b>");
+document.writeln("root:"+root);
+
+root.nowChild(0);
+document.writeln("<b>parents:</b>");
+document.writeln("child5's parent:"+child5.getParent());
+document.writeln("child4's parent:"+child4.getParent());
+document.writeln("root's parent:"+root.getParent());
+
+document.writeln("<b>root swap children:</b>");
+root.swapChild(child3.getId(),child2.getId());
+document.writeln("root:"+root);
+
+document.writeln("<b>root drop child:</b>");
+root.dropChild(child3.getId());
+document.writeln("root:"+root);
+
+</script>

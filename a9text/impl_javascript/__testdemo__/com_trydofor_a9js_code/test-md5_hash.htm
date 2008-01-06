@@ -1,0 +1,17 @@
+<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9js.code.md5');
+str = "com.trydofor.a9engine";
+md5 = "7e8958e4df35f781e1d74895e98aab5e";
+document.writeln("<pre>")
+document.writeln("string:" + str);
+document.writeln("md5sum:" + md5);
+document.writeln("---------");
+myMd5 = new MD5Class();
+md5sum = myMd5.hash(str);
+document.writeln(str);
+document.writeln(md5sum);
+document.writeln("true:"+(md5 == md5sum));
+
+document.writeln("</pre>")
+</script>

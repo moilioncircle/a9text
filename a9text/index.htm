@@ -9,53 +9,70 @@
 </script>
 ==============================================================================
 
-<b>1. main links</b>
+<b>a9text</b> is an ascii-doc specification and some useful implementations.
+it is easy and friendly to read, write and translate(to docbook/html/pdf).
+
+<b>
+1. main links
+^^^^^^^^^^^^^</b>
 *) <a href = 'http://www.trydofor.com' target='_blank'>my home (www.trydofor.com)</a>
 *) <a href = 'http://sourceforge.net/projects/a9text'>project home</a>
 *) <a href = 'http://a9text.cvs.sourceforge.net/a9text/'>project cvs</a>
-*) <a href = '__testdemo__/com_trydofor_a9tex/test-a9textAll.htm' target='_blank'>A9text Demo (local,lastest)</a>
-*) <a href = 'http://www.trydofor.com/a9engine/__testdemo__/com_trydofor_a9tex/test-a9textAll.htm' target='_blank'>A9text Demo (remote)</a>
+
 *) <a href = 'a9text.zip'>download zip file (local,lastest)</a>
-*) <a href = 'http://sourceforge.net/project/showfiles.php?group_id=197873'>download released files</a>
+*) <a href = 'http://sourceforge.net/project/showfiles.php?group_id=197873'>download released files (sf.net)</a>
 
-==============================================================================
+*) <a href = 'mailto:a9text@googlegroups.com'>mail list</a>
+*) <a href = 'http://groups.google.com/group/a9text'>a9text group at google</a>
 
-<b>2. cvs access</b>
+<b>
+2. cvs access
+^^^^^^^^^^^^^</b>
 cvs co -P a9text
+
 *) developer: 
    CVSROOT=:ext:trydofor@a9text.cvs.sourceforge.net:/cvsroot/a9text
 *) anonymous: 
    CVSROOT=:pserver:anonymous@a9text.cvs.sourceforge.net:/cvsroot/a9text
-==============================================================================
 
-<b>3. structure</b>
-a9text
-|  readme.txt           reading now
-|  config.js            configuration
-|  a9engine.js          core script
-|  change-log.txt       
-|
-+- __testdemo__         test and demo
-+- doc                  document
-+- com/trydofor/a9text  <b>***(interesting things)</b>
-+- com/trydofor/a9js
-|   +- http
-|   |      __info__.js  package description
-|   |      xhr.js       XmlHttpRequest class
-|   +- code
-|   |      __info__.js  package description
-|   |      des.js       Des class
-|   |      md5.js       Md5 class
-|   |      encoder.js   en/decode class
-|   +- format
-|   |      __info__.js  package description
-|   |      date.js      like java's DateFormat
-|   +- util
-|   |      __info__.js  package description
-|   |      task.js      task manager
-==============================================================================
+<b>
+3. impl_javascript
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^</b>
+a pure javascript implementation,
+works well on IE6.0/Opera8.5/Firefox1.5.
+there are some useful tools, like right-click-menu.
 
-<b>4. a9engine example</b>
+<b>
+3.1. impl_javascript structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^</b>
+impl_javascript
+  |  readme.txt           reading now
+  |  config.js            configuration
+  |  a9engine.js          core script
+  |  change-log.txt       
+  |
+  +- __testdemo__         test and demo
+  +- doc                  document
+  +- com/trydofor/a9text  <b>***(interesting things)</b>
+  +- com/trydofor/a9js
+  |   +- http
+  |   |      __info__.js  package description
+  |   |      xhr.js       XmlHttpRequest class
+  |   +- code
+  |   |      __info__.js  package description
+  |   |      des.js       Des class
+  |   |      md5.js       Md5 class
+  |   |      encoder.js   en/decode class
+  |   +- format
+  |   |      __info__.js  package description
+  |   |      date.js      like java's DateFormat
+  |   +- util
+  |   |      __info__.js  package description
+  |   |      task.js      task manager
+
+<b>
+3.2. impl_javascript a9engine example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</b>
 In fact, the a9engine is a class loader of a9text,it make js works like java.
 it is an important part of a9text runtime,it can works standalong.
 
@@ -67,15 +84,24 @@ var __Renders__ = {};
 __Renders__.dom = new com.trydofor.a9text.render.dom.a9text.A9TextRender();
 __Renders__.htm = new com.trydofor.a9text.render.html.a9text.A9TextRender();
 
-==============================================================================
+<b>
+3.3. impl_javascript manuals
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^</b>
+*) <a href = 'impl_javascript/__testdemo__/com_trydofor_a9tex/test-a9textAll.htm' target='_blank'>A9text Demo</a>
+*) <a href = 'impl_javascript/doc/cn/a9text/a9text-manual_3.2.txt' target='_blank'>A9text Manual</a>
 
-<b>5. a9text example</b>
- <a href = '__testdemo__/com_trydofor_a9tex/test-a9textAll.htm' target='_blank'>A9text Demo (local,lastest)</a>
-==============================================================================
+<b>
+4. impl_java
+^^^^^^^^^^^^</b>
+java and eclipse plugin implementation,
+more powerful to write and translate(docbook,pdf,word)
 
-<b>6. other links:</b>
+<b>
+5. other links
+^^^^^^^^^^^^^^</b>
 *) <a href = 'http://jsintegration.sourceforge.net/' target='_blank'>JSI</a>
 *) <a href = 'http://www.ecma-international.org/publications/standards/Ecma-262.htm' target='_blank'>Ecma-262</a>
+*) <a href = 'http://www.methods.co.nz/asciidoc/' target='_blank'>AsciiDoc</a>
 
 ==============================================================================
 

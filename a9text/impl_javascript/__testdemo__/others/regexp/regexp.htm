@@ -1,0 +1,126 @@
+﻿<script type="text/javascript">
+var __token__ = 
+{
+    sect  : /^ *(([0-9]\.)+) +/,
+    list_item : /^ *([0-9a-zA-Z]+(-[0-9a-zA-Z]+)*) *\)/,
+    list_step : /^ *\* *\)/,
+    dict  : /^ *([^\\]+?)::/,
+    mode  : /\[(!|\/|_|\-|'|,|(#[0-9a-fA-F]{6})|(&[0-9a-fA-F]{6})|(%[0-9]+))*\[/,
+    area  : /^ *={9,}([^=:]+(:.+)?)={9,}$/
+};
+//
+document.writeln("<pre>");
+str="1. sect";
+a = __token__.sect.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="1.1. sect ";
+a = __token__.sect.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="1.1 sect ";
+a = __token__.sect.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="1)";
+a = __token__.list_item.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="1 )";
+a = __token__.list_item.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="1-1 )";
+a = __token__.list_item.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="1-1- )";
+a = __token__.list_item.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="*)";
+a = __token__.list_step.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="* )";
+a = __token__.list_step.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="** )";
+a = __token__.list_step.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="key ::";
+a = __token__.dict.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="key \::";
+a = __token__.dict.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="key :: val ::";
+a = __token__.dict.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[![";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/'[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/',[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/'#6Eddd0,[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/'#6Eddd0%50,[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/'#6Eddd0%50&00EFEF,[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/'#6Eddd0%50&00EFEF,-[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!!__/'#6Eddd0%50&00EFEF,-[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/'#6Eddd0%50&00EFEF,-|[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[!_/'#6Eddd0%50&00EFEF,-\\[";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="[ ! _ / ' # 6Eddd0 %50 &00EFEF , - | [";
+a = __token__.mode.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+str="========= type: info args =============";
+a = __token__.area.test(str);
+document.writeln(a+":" + str+":"+RegExp.$1)
+
+document.writeln("</pre>");
+</script>

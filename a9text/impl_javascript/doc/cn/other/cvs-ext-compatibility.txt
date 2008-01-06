@@ -1,0 +1,26 @@
+﻿cvs-ext-compatibility
+^^^^^^^^^^^^^^^^^^^^^
+
+Using TortoiseCVS together with Eclipse
+
+The Eclipse IDE has a built-in SSH client, activated in its CVS browser 
+by using the "extssh" protocol string. It's functionally equivalent to 
+using the "ext" protocol string, but eliminates the need for an external 
+SSH client. This is fine when only Eclipse is used, but as Tortoise 
+doesn't support the protocol, only its offline features will be available. 
+
+The official Eclipse documentation notes that "extssh" is incompatible 
+with all other clients than Eclipse. The suggested solution is to 
+configure "ext" to work in the same manner as "extssh" inside Eclipse, 
+and then use "ext". See the link for details.
+
+clipse has an extssh connection method which uses an internal SSH client. 
+This method is incompatible with other CVS clients. To avoid this, 
+users can configure the ext connection method in Eclipse to use the extssh 
+connection method by choosing this option on the 
+Team>CVS>EXT Connection Method preference page. Once set, 
+the user can create repository locations using the ext connection method. 
+These repositories will use extssh inside Eclipse and whatever SSH tool is 
+configured for the command line client.
+
+

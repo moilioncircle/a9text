@@ -1,0 +1,22 @@
+﻿<font color=red>WARN: innerHTML,NOT document.write</font><br>
+in firefox and opera ,where the html document is loaded<br>
+document.write will flush current page !!!
+<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9js.http.xhr');
+var xhr = new XmlHttpRequestClass();
+txt = xhr.doSyncGet('../data/include.htm');
+
+document.writeln("<pre>");
+document.writeln("======= sync request =======");
+document.writeln("sync-txt:"+txt);
+document.writeln("======= async request =======");
+function callback(url,text)
+{
+    document.getElementById('asyncText').innerHTML+="<br>url:"+url+"<br>txt:"+text;
+}
+xhr.doAsyncGet('../data/include.htm',callback);
+document.writeln("<div id='asyncText'>async test:<br></div>");
+document.writeln("</pre>")
+alert('script end');
+</script>

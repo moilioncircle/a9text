@@ -1,0 +1,14 @@
+﻿其中 E:/workspace/a9text/__testdemo__/com_trydofor_a9tex/test-a9textAll.htm 替换为你a9text的真实位置
+   
+*) Windows 右键菜单(a9text.reg)
+   Windows Registry Editor Version 5.00
+   [HKEY_CLASSES_ROOT\*\shell\a9text\command]
+   @="iexplore.exe file:///E:/workspace/a9text/__testdemo__/com_trydofor_a9tex/test-a9textAll.htm#view=htm&file=file://%1"
+
+*) Emeditor外部工具设置
+   工具->外部工具->自定义工具->新建:
+   标题:a9text
+   命令:iexplore.exe
+   参数:file:///E:/workspace/a9text/__testdemo__/com_trydofor_a9tex/test-a9textAll.htm#view=htm&file=file://$(Path)
+  
+    

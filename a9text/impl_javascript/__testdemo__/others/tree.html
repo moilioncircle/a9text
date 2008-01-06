@@ -1,0 +1,119 @@
+<style>
+td,th{
+	font-size:12px;
+	text-align:left;
+}
+pre{
+	position:relative;
+	left:0px;
+	top: 0px;
+	width:100%;
+	line-height:15px;
+	font-size:12px;
+	overflow:auto;
+}
+a{
+	color: #FF0000;
+	text-decoration: none;
+}
+</style>
+<script type='text/javascript'>
+$ID = "$ID";
+var __children__ = [];
+__children__[1]=[2,3];
+
+function onClickNode(id,toopen)
+{
+	var token = document.getElementById('TOKEN_'+id);
+
+	if( toopen != null )
+	{
+		document.getElementById('NODE_'+id).style.display=toopen?'':'none';
+//		document.getElementById('TEXT_'+id).style.display=toopen?'':'none';
+	}
+	else
+	{
+		toopen = (token.innerHTML == '+');
+    	token.innerHTML =toopen?'-':'+';
+	}
+	//
+	
+	var cs = __children__[id];
+	if(cs != null)
+		for( var i=0; i<cs.length;i++)
+			onClickNode(cs[i],toopen);
+}
+
+function onClickInfo(id)
+{
+	var text = document.getElementById('TEXT_'+id);
+	text.style.display = text.style.display == 'none'?'':'none';
+}
+</script>
+
+<table id='NODE_$ID' width='100%' border='0' cellspacing='0' cellpadding='0'>
+<tr bgcolor='#efefef'>
+<th width="20"></th>
+<th width="15" height="15"><a href='javascript:onClickNode($ID)' id='TOKEN_$ID'>$token</a></th>
+<th onClick='onClickInfo($ID)' id='INFO_$ID'  style="cursor:pointer"><font color='#FF0000'>$info</font></th>
+</tr>
+</table>
+<table id='TEXT_$ID' width='100%' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td width="20">&nbsp;</td>
+<td width="15" height="15">&nbsp;</td>
+<td><pre>$text</pre></td>
+</tr>
+</table>
+
+<div id='NODE_1'>
+<table width='100%' border='0' cellspacing='0' cellpadding='0'>
+<tr bgcolor='#efefef'>
+<th width="15"></th>
+<th width="15" height="15"><a href='javascript:onClickNode(1)' id='TOKEN_1'>-</a></th>
+<th onClick='onClickInfo(1)' id='INFO_1' style="cursor:pointer">$info1</th>
+</tr>
+</table>
+<table id='TEXT_1' width='100%' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td width="15"></td>
+<td width="15" height="15"></td>
+<td><pre>$text1</pre></td>
+</tr>
+</table>
+</div>
+
+<div id='NODE_3'>
+<table width='100%' border='0' cellspacing='0' cellpadding='0'>
+<tr bgcolor='#efefef'>
+<th width="30"></th>
+<th width="15" height="15"><a href='javascript:onClickNode(3)' id='TOKEN_3'>-</a></th>
+<th onClick='onClickInfo(3)' id='INFO_3' style="cursor:pointer">$info3</th>
+</tr>
+</table>
+<table id='TEXT_3' width='100%' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td width="30"></td>
+<td width="15" height="15"></td>
+<td><pre>$text3</pre></td>
+</tr>
+</table>
+</div>
+
+<div id='NODE_2'>
+<table  width='100%' border='0' cellspacing='0' cellpadding='0'>
+<tr bgcolor='#efefef'>
+<th width="30"></th>
+<th width="15" height="15"><a href='javascript:onClickNode(2)' id='TOKEN_2'>-</a></th>
+<th onClick='onClickInfo(2)' id='INFO_2' style="cursor:pointer">$info2</th>
+</tr>
+</table>
+<table id='TEXT_2' width='100%' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td width="30"></td>
+<td width="15" height="15"></td>
+<td><pre>$text2</pre></td>
+</tr>
+</table>
+</div>
+

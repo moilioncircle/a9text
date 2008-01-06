@@ -1,0 +1,60 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9text.parser.a9text');
+require('com.trydofor.a9text.render.dom.a9text');
+var text = "物理行1\n"+
+"  空格表示的逻辑行(带一个尾空格)  \n"+
+"  反斜线表示的逻辑行 \\\n"+
+"逻辑行结束\n"+
+"\n"+
+"普通文本[!',-_/#FF0000&FFFF00%150[修饰 \n"+
+"   模式]]\n"+
+"-------------------------\n"+
+"[[<=连入\n"+
+"  模式1 ]]\n"+
+"-------------------------\n"+
+"[[ 连出名1 =>\n"+
+"   连出地址1]]\n"+
+"\n"+
+"   物理行2\n"+
+"\n"+
+"=========================\n"+
+"[[ 连出名2 =>\n"+
+"   连出地址2]] 逻辑行1\\\n"+
+" [[<=连入\n"+
+"  模式2 ]] \n"+
+"\n"+
+// escape inside
+"[[ 连出名3 =>\n"+
+"   [[=>无效连出名\\]]连出地址3]] 逻辑行2\\\n"+
+" [[=>连出2\n"+
+"  地址 ]]\n"+
+// escape outside
+"\\[[ 转义连出 =>\n"+
+"   [[=>连出地址4-1\\]]连出地址4-2]] 逻辑行3\\\n"+
+" [[=>连出\n"+
+"  地址 ]]\n"+
+
+"\n";
+
+
+var a9d = new A9Dom(null,"root");
+a9d.setText(text);
+
+var a9p = new A9TextParser();
+var a9r = new A9TextRender();
+var b1 = new Date().getTime();
+a9p.parse(a9d);
+var b2 = new Date().getTime();
+var view = a9r.render(a9d);
+var b3 = new Date().getTime();
+document.writeln(view);
+var b4 = new Date().getTime();
+document.writeln("<pre>");
+document.writeln("parse :"+(b2-b1));
+document.writeln("render:"+(b3-b2));
+document.writeln("draw  :"+(b4-b3));
+document.writeln("whole :"+(b4-b1));
+document.writeln("</pre>");
+</script>

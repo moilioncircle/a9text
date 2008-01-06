@@ -1,0 +1,73 @@
+﻿<!-- // --> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- // --> <script type="text/javascript" src="./a9engine.js"></script>
+<!-- // --> <script type="text/javascript">
+require('com.trydofor.a9text.parser.a9text');
+require('com.trydofor.a9text.render.html.a9text');
+
+var domParser = new A9TextParser(); //com.trydofor.a9text.parser.a9text.A9TextParser
+var htmRender = new A9TextRender(); //com.trydofor.a9text.render.html.a9text.A9TextRender
+<!-- // --> </script>
+
+<!-- // Run As HTM
+/* --> <script type="text/javascript">
+var text = "";
+try{
+    var file = PAGE_INFO || "doc/cn/a9text/a9text-demo_3.2.txt";
+    text = loadText(file);
+    
+    if(text != "")
+    {
+        var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
+        a9dom.setText(text);
+        a9dom.putInfo(A9Dom.type.root$path,A9Util.getDir(file));
+        domParser.parse(a9dom);
+        var a9htm = htmRender.render(a9dom);
+        document.write(a9htm);
+        document.close();
+    }
+}catch(e){
+    document.write("<PRE>"+text+"</PRE>");
+}
+<!-- */// --> </script>
+
+<!-- // Run As JS
+try{
+    var bodyHtml = document.body?document.body.innerHTML:"";
+    var hasA9text = false;
+    
+    var preTags = document.getElementsByTagName("PRE");
+    for(var i=0; i<preTags.length;i++)
+    {
+        if(/a9text/i.test(preTags[i].getAttribute("title")))
+        {
+            var preText = preTags[i].innerText || preTags[i].textContent;
+            if (preText == "") continue;
+            
+            var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
+            a9dom.setText(preText);
+            a9dom.putInfo(A9Dom.type.root$path,PAGE_PATH);
+            domParser.parse(a9dom);
+            var a9htm = htmRender.render(a9dom);
+            
+            // merger
+            var preHtml = preTags[i].innerHTML;
+            var prePos  = bodyHtml.indexOf(preHtml);
+            var headPos = bodyHtml.lastIndexOf('<',prePos);
+            var footPos = bodyHtml.indexOf('>',prePos+preHtml.length)+1;
+            
+            bodyHtml = bodyHtml.substring(0,headPos) + a9htm + bodyHtml.substr(footPos);
+            
+            hasA9text = true;
+        }
+    }
+    
+    if(hasA9text)
+    {
+        if(document.body) document.body.innerHTML="";
+        document.write(bodyHtml);
+        document.close();
+    }
+}catch(e){
+    alert("failed to do a9text: "+e);
+}
+// -->

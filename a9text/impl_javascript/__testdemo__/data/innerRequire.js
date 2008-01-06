@@ -1,0 +1,5 @@
+function innerReqFunc()
+{
+    return innerFunc();
+}
+

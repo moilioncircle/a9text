@@ -1,0 +1,80 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9js.format.date');
+
+var df = new DateFormatClass();
+var date = new Date();
+var str = "";
+document.writeln("<pre>");
+str = "yyyy.MM.dd 'at' HH:mm:ss";
+document.writeln(str+"      2001.07.04 at 12:08:56");
+document.writeln(df.format(str,date));
+
+str = "EEE, MMM d, ''yy";
+document.writeln(str+"              Wed, Jul 4, '01");
+document.writeln(df.format(str,date));
+
+str = "h:mm aa";
+document.writeln(str+"                        12:08 pm");
+document.writeln(df.format(str,date));
+
+str = "hh 'o''clock' a";
+document.writeln(str+"               12 o'clock p");
+document.writeln(df.format(str,date));
+
+str = "yyyyy.MMMMM.dd hh:mm aaa";
+document.writeln(str+"      2001.July.04 12:08 PM");
+document.writeln(df.format(str,date));
+
+str = "EEE, d MMM yyyy HH:mm:ss";
+document.writeln(str+"      Wed, 4 Jul 2001 12:08:56");
+document.writeln(df.format(str,date));
+
+str = "yyMMddHHmmss";
+document.writeln(str+"                  010704120856");
+document.writeln(df.format(str,date));
+
+str = "'''ad'''yyyy'year'MM'month'dd''";
+document.writeln(str+"                  'ad'2007year06month16'");
+document.writeln(df.format(str,date));
+
+str = "MM'yyyy''yyyy'yyyy";
+document.writeln(str+"                  06yyyy'yyyy2007");
+document.writeln(df.format(str,date));
+
+////
+str = "EEEE, d MMMM yyyy HH:mm:ss";
+var userDic = {
+E:[
+    ['日','星期日'],
+    ['一','星期一'],
+    ['二','星期二'],
+    ['三','星期三'],
+    ['四','星期四'],
+    ['五','星期五'],
+    ['六','星期六']
+   ],
+M:[
+    ['一','一月'],
+    ['二','二月'],
+    ['三','三月'],
+    ['四','四月'],
+    ['五','五月'],
+    ['六','六月'],
+    ['七','七月'],
+    ['八','八月'],
+    ['九','九月'],
+    ['十','十月'],
+    ['十一','十一月'],
+    ['十二','十二月']
+   ]
+
+};
+document.writeln(str+"      Wed, 4 Jul 2001 12:08:56");
+document.writeln(df.format(str,date,userDic));
+
+
+document.writeln("</pre>");
+
+</script>

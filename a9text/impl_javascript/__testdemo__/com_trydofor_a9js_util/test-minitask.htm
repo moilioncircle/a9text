@@ -1,0 +1,71 @@
+﻿<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9js.util.task');
+var miniTask = new MiniTaskClass(3000);
+
+var testContext = {};
+testContext.i=0;
+
+function boolTask(context)
+{
+    context.i ++;
+    if(context.i>5)
+        message("boolTask,done:"+context.i);
+    else
+        message("boolTask,i:"+context.i);
+    return context.i>5
+}
+
+function flowTask0(context)
+{
+    context.i ++;
+    message("flowTask0,i:"+context.i);
+    return context.i>4
+}
+function flowTask1(context)
+{
+    context.i ++;
+    message("flowTask1,i:"+context.i);
+    return context.i>6
+}
+function flowTask2(context)
+{
+    context.i ++;
+    if(context.i>8)
+        message("flowTask2,done:"+context.i);
+    else
+        message("flowTask2,i:"+context.i);
+    return context.i>8
+}
+
+function tmfunc()
+{
+    return confirm("timeout,continue or cancel?");
+}
+
+function message(str)
+{
+    document.getElementById('TASK_MES').innerHTML += str+"<br>";
+}
+
+function testBoolTask()
+{
+    miniTask.putBoolTask(boolTask,testContext,tmfunc,4000);
+}
+
+function testFlowTask()
+{
+    var flowTask = [flowTask0,flowTask1,flowTask2];
+    miniTask.putFlowTask(flowTask,testContext,tmfunc);
+}
+
+function detail()
+{
+    message(miniTask+"");
+}
+</script>
+<input type="button" value="testBoolTask" onclick="testBoolTask()">
+<input type="button" value="testFlowTask" onclick="testFlowTask()">
+<input type="button" value="resetCounter" onclick="testContext.i=0">
+<input type="button" value="detail" onclick="detail()">
+<pre id='TASK_MES'></pre>

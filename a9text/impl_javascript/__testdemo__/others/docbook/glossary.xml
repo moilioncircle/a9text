@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE glossary PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossary>
+  <glossentry>
+    <glossterm>copyright</glossterm>
+
+    <glossdef>
+      <para><phrase id="copyright">Copyright © 2000-2007 Pixware
+      SARL.</phrase></para>
+    </glossdef>
+  </glossentry>
+
+  <glossentry>
+    <glossterm>XXE</glossterm>
+
+    <glossdef>
+      <para><phrase id="XXE">XMLmind XML Editor</phrase></para>
+    </glossdef>
+  </glossentry>
+
+  <glossentry>
+    <glossterm>XFC</glossterm>
+
+    <glossdef>
+      <para><phrase id="XFC">XMLmind FO Converter</phrase></para>
+    </glossdef>
+  </glossentry>
+
+  <glossentry>
+    <glossterm>XSC</glossterm>
+
+    <glossdef>
+      <para><phrase id="XSC">XMLmind Spell Checker</phrase></para>
+    </glossdef>
+  </glossentry>
+</glossary>
