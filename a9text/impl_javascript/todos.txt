@@ -4,7 +4,7 @@
 id        done      content
 08010601  08-01-06  按照impl(java/js)重构
 08010402  08-01-05  配置文件支持xml和property格式
-08010401  ??        join,link等的路径重整
+08010401  08-01-06  join,link等的路径重整
 08010302  ??        制作area的parser和render
 08010301  ??        完善join和link的render功能
 07122901  ??        制作eclipse 插件，具备文本编辑和预览功能

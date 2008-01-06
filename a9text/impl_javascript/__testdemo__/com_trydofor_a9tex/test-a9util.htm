@@ -28,6 +28,12 @@ var str ="test.htm";
 document.writeln(str+"|"+A9Util.getDir(str));
 var str ="/test.htm";
 document.writeln(str+"|"+A9Util.getDir(str));
+var str ="$var here";
+document.writeln(str+"|"+A9Util.hasVariable(str));
+var str ="\\\\$var here";
+document.writeln(str+"|"+A9Util.hasVariable(str));
+var str ="\\$var here";
+document.writeln(str+"|"+A9Util.hasVariable(str));
 
 document.writeln("</pre>");
 </script>

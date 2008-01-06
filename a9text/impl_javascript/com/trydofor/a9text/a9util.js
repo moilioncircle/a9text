@@ -1,38 +1,34 @@
 ﻿/**
 UTF8(BOM)  GPL  trydofor.com  Jun.2007
 ===========================================================
-A9Util.trimBoth(line)
+String A9Util.getFile(file,dir)
+    获得相对路径到绝对路径的转换.
+String A9Util.getDir(file)
+    获得文件所在的目录,如果是目录,返回本身.
+String A9Util.htm2txt(str,mode)
+    html转义特殊字符(&gt;&lt;&quot;&nbsp;&amp;)转换.
+String A9Util.txt2htm(str,mode)
+    转换到html转义特殊字符(&gt;&lt;&quot;&nbsp;&amp;).
+String A9Util.trimBoth(line)
     去掉左右两边的空白.
-A9Util.trimLeft(line)
+String A9Util.trimLeft(line)
     去掉左边的空白.
-A9Util.trimRigth(line)
+String A9Util.trimRigth(line)
     去掉右边的空白.
-A9Util.calTier(text)
+mumber A9Util.calTier(text)
     计算缩进层次.
-A9Util.isEscapeLine(para)
+boolean A9Util.isEscapeLine(para)
     是否为软换行.
-A9Util.isEscape(text,pos)
+String A9Util.trimEscape(text,pos)
+    进行转义处理
+boolean A9Util.isEscape(text,pos)
     是否为转义.
+boolean A9Util.hasVariable(str)
+    是否含有变量($).
+void A9Util.progressInfo(info)
+    显示进度信息.
 */
 var A9Util = {};
-
-A9Util.htm2txt = function(str,mode)
-{
-    if(str == null || str == "" ) return str;
-    
-    if(mode == null || mode.indexOf('&gt;')>=0)
-        str = str.replace(/&gt;/g,">");
-    if(mode == null || mode.indexOf('&lt;')>=0)
-        str = str.replace(/&lt;/g,"<");
-    if(mode == null || mode.indexOf('&quot;')>=0)
-        str = str.replace(/&quot;/g,'"');
-    if(mode == null || mode.indexOf('&nbsp;')>=0)
-        str = str.replace(/&nbsp;/g,' ');
-    if(mode == null || mode.indexOf('&amp;')>=0)
-        str = str.replace(/&amp;/g,"&");
-    
-    return str;
-}
 
 A9Util.getFile = function(file,dir)
 {
@@ -65,6 +61,24 @@ A9Util.getDir = function(file)
     
     return p<0?"":file.substring(0,p+1);
     
+}
+
+A9Util.htm2txt = function(str,mode)
+{
+    if(str == null || str == "" ) return str;
+    
+    if(mode == null || mode.indexOf('&gt;')>=0)
+        str = str.replace(/&gt;/g,">");
+    if(mode == null || mode.indexOf('&lt;')>=0)
+        str = str.replace(/&lt;/g,"<");
+    if(mode == null || mode.indexOf('&quot;')>=0)
+        str = str.replace(/&quot;/g,'"');
+    if(mode == null || mode.indexOf('&nbsp;')>=0)
+        str = str.replace(/&nbsp;/g,' ');
+    if(mode == null || mode.indexOf('&amp;')>=0)
+        str = str.replace(/&amp;/g,"&");
+    
+    return str;
 }
 
 A9Util.txt2htm = function(str,mode)
@@ -176,6 +190,26 @@ A9Util.isEscape = function (text,pos)
         if(text.charAt(i) != '\\' && (pos - i) % 2 == 1)
               return true;
     
+    return false;
+}
+
+A9Util.hasVariable = function (str)
+{
+    if(str == null || str == "") return false;
+    var rgxp = /\$\{?\w+\}?\W+/;
+    var pos = str.search(rgxp);
+    while(pos >=0)
+    {
+        if(A9Util.isEscape(str,pos-1))
+        {
+            str = str.substr(pos+1);
+            pos = str.search(rgxp);
+        }
+        else
+        {
+            return true;
+        }
+    }
     return false;
 }
 

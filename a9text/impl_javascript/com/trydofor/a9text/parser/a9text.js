@@ -622,46 +622,55 @@ var A9TextParser = function()
                 else if(modeType == 3) //join
                 {
                     var jotxt = modeTxt.substr(2);
-                    var extnm = jotxt.substr(jotxt.lastIndexOf("."));
-                    if(__join_ext__.indexOf(extnm) >=0 ) // join a9text to parse
-                    {
-                        A9Util.progressInfo("load join text:"+jotxt+" basic-dir:"+__super__.getInfo(A9Dom.type.root$path));
-                        var lt = loadText(A9Util.getFile(jotxt,__super__.getInfo(A9Dom.type.root$path)));
-                        if(lt != null && lt != "") // merge into basic a9text
-                        {
-                            var crlf = __getCRLF__(lt);
-                            var lines = lt.split(crlf);
-                            if(lines.length == 1)
-                            {
-                                if(todoStr == null || todoStr == "")
-                                    todoStr = lines[0];
-                                else
-                                    todoStr = lines[0]+todoStr;
-                            }
-                            else
-                            {
-                                var nlinex = [];
-                                for(var i=0;i<__index__;i++)    // step 1
-                                    nlinex.push(__lines__[i]);
-                                
-                                nlinex.push(doneStr);           // step 2
-                                
-                                for(var i=0;i<lines.length;i++) // step 3
-                                    nlinex.push(lines[i]);
-                                    
-                                if(todoStr != null && todoStr != "") // step 4
-                                    nlinex.push(todoStr);
-                                
-                                for(var i=__index__+1;i<__lines__.length;i++) // step 5
-                                    nlinex.push(__lines__[i]);
-                                
-                                __lines__ = nlinex; // step 6
-                                todoStr = null;
-                            }
-                        }
-                        continue; // continue to parse
-                    }
                     
+                    if(A9Util.hasVariable(jotxt)) // join a variable
+                    {
+                        // no need to render path;
+                    }
+                    else // join file
+                    {
+                        jotxt = A9Util.getFile(jotxt,__super__.getInfo(A9Dom.type.root$path));
+                        var extnm = jotxt.substr(jotxt.lastIndexOf("."));
+                        
+                        if(__join_ext__.indexOf(extnm) >= 0) // join a9text to parse
+                        {
+                            A9Util.progressInfo("load join text:"+jotxt);
+                            var lt = loadText(jotxt);
+                            if(lt != null && lt != "") // merge into basic a9text
+                            {
+                                var crlf = __getCRLF__(lt);
+                                var lines = lt.split(crlf);
+                                if(lines.length == 1)
+                                {
+                                    if(todoStr == null || todoStr == "")
+                                        todoStr = lines[0];
+                                    else
+                                        todoStr = lines[0]+todoStr;
+                                }
+                                else
+                                {
+                                    var nlinex = [];
+                                    for(var i=0;i<__index__;i++)    // step 1
+                                        nlinex.push(__lines__[i]);
+                                    
+                                    nlinex.push(doneStr);           // step 2
+                                    
+                                    for(var i=0;i<lines.length;i++) // step 3
+                                        nlinex.push(lines[i]);
+                                        
+                                    if(todoStr != null && todoStr != "") // step 4
+                                        nlinex.push(todoStr);
+                                    
+                                    for(var i=__index__+1;i<__lines__.length;i++) // step 5
+                                        nlinex.push(__lines__[i]);
+                                    
+                                    __lines__ = nlinex; // step 6
+                                    todoStr = null;
+                                }
+                            }
+                            continue; // merged and continue to parse
+                        }
+                    }
                     //
                     var modeDom = dom.newChild(A9Dom.type.mode_join);
                     modeDom.setText(jotxt);
@@ -674,7 +683,7 @@ var A9TextParser = function()
                     modeDom.setText(modeTxt);
                     modeDom.putInfo(A9Dom.type.mode_link$join,jo);
                     modeDom.putInfo(A9Dom.type.mode_link$name,modeTxt.substring(jo?2:0,lp));
-                    modeDom.putInfo(A9Dom.type.mode_link$addr,modeTxt.substr(lp+2));
+                    modeDom.putInfo(A9Dom.type.mode_link$addr,A9Util.getFile(modeTxt.substr(lp+2),__super__.getInfo(A9Dom.type.root$path)));
                 }
             }
         }
