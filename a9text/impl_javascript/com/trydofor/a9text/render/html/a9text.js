@@ -523,6 +523,26 @@ var A9TextRender = function()
             return;
         }
         
+        // ext parser
+        var extBall = A9Conf.getConf("/root/render/html/area/"+type+"/@ball");
+        if(extBall != null && extBall != "")
+        {
+            try
+            {
+                var extClzz = A9Conf.getConf("/root/render/html/area/"+type+"/@clzz");
+                A9Util.progressInfo("loading area render:"+type);
+                require(extBall);
+                eval("var extRender = new "+extClzz+"()");
+                
+                __render_htm__.push(extRender.render(dom));
+                return;
+            }
+            catch(e)
+            {
+                A9Util.progressInfo("failed to load area render:"+type);
+            };
+        }
+        
         var infoStr = "";
         var info = dom.getInfo(A9Dom.type.area$info);
         if(info!=null && info == "")

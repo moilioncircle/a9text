@@ -25,6 +25,8 @@ boolean A9Util.isEscape(text,pos)
     是否为转义.
 boolean A9Util.hasVariable(str)
     是否含有变量($).
+String A9Util.getCRLF(text)
+    获得文本换行符.
 void A9Util.progressInfo(info)
     显示进度信息.
 */
@@ -211,6 +213,19 @@ A9Util.hasVariable = function (str)
         }
     }
     return false;
+}
+
+A9Util.getCRLF = function(text)
+{
+    var crlf = "\r\n";
+    if(text != null && text.indexOf("\r\n") < 0)
+    {
+        var r = text.indexOf("\r");
+        var n = text.indexOf("\n");
+        crlf = r>n ?"\r":"\n";
+    }
+    return crlf;
+    
 }
 
 A9Util.progressInfo = function(info)

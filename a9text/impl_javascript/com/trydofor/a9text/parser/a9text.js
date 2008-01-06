@@ -53,7 +53,7 @@ var A9TextParser = function()
         __super__ = a9dom;
         __basic__ = a9dom;
         //
-        __crlf__ = __getCRLF__(text);
+        __crlf__ = A9Util.getCRLF(text);
         
         //
         __lines__ = text.split(__crlf__);
@@ -634,11 +634,11 @@ var A9TextParser = function()
                         
                         if(__join_ext__.indexOf(extnm) >= 0) // join a9text to parse
                         {
-                            A9Util.progressInfo("load join text:"+jotxt);
+                            A9Util.progressInfo("loading joined text:"+jotxt);
                             var lt = loadText(jotxt);
                             if(lt != null && lt != "") // merge into basic a9text
                             {
-                                var crlf = __getCRLF__(lt);
+                                var crlf = A9Util.getCRLF(lt);
                                 var lines = lt.split(crlf);
                                 if(lines.length == 1)
                                 {
@@ -691,7 +691,6 @@ var A9TextParser = function()
         
     function __parseArea__() //escape case
     {
-        
         var eqpos = __lines__[__index__].indexOf('=');
         if(__lines__[__index__].charAt(eqpos-1) =='\\') // escape
         {
@@ -775,6 +774,25 @@ var A9TextParser = function()
                 buffer[buffer.length] = __lines__[__index__];
             }
         }
+        
+        // ext parser
+        var extBall = A9Conf.getConf("/root/parser/area/"+type+"/@ball");
+        if(extBall != null && extBall != "")
+        {
+            try
+            {
+                var extClzz = A9Conf.getConf("/root/parser/area/"+type+"/@clzz");
+                A9Util.progressInfo("loading area parser:"+type);
+                require(extBall);
+                eval("var extParser = new "+extClzz+"()");
+                
+                extParser.parse(dom);
+            }
+            catch(e)
+            {
+                A9Util.progressInfo("failed to load area parser:"+type);
+            };
+        }
     }
     
     function __parseArea$etxt__() //escape case
@@ -816,18 +834,6 @@ var A9TextParser = function()
     }
     
     /* helper */
-    function __getCRLF__(text)
-    {
-        var crlf = "\r\n";
-        if(text.indexOf("\r\n") < 0)
-        {
-            var r = text.indexOf("\r");
-            var n = text.indexOf("\n");
-            crlf = r>n ?"\r":"\n";
-        }
-        return crlf;
-    }
-    
     function __hasLine__()
     {
         return __index__ < __lines__.length;
