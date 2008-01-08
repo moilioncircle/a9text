@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DialogManager" parent="Ext" extends="Object">
+  <item repl="zseed" display="zseed : Number"/>
+  <item repl="bringToFront" display="bringToFront(String/Object dlg) : Ext.BasicDialog"/>
+  <item repl="get" display="get(String/Object id) : Ext.BasicDialog"/>
+  <item repl="hideAll" display="hideAll() : void"/>
+  <item repl="sendToBack" display="sendToBack(String/Object dlg) : Ext.BasicDialog"/>
+</completion>

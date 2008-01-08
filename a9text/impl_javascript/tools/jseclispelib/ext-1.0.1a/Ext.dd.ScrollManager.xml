@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="ScrollManager" parent="Ext.dd" extends="Object">
+  <item repl="animDuration" display="animDuration : Number"/>
+  <item repl="animate" display="animate : Boolean"/>
+  <item repl="frequency" display="frequency : Number"/>
+  <item repl="increment" display="increment : Number"/>
+  <item repl="thresh" display="thresh : Number"/>
+  <item repl="refreshCache" display="refreshCache() : void"/>
+  <item repl="register" display="register(String/HTMLElement/Element/Array el) : void"/>
+  <item repl="unregister" display="unregister(String/HTMLElement/Element/Array el) : void"/>
+</completion>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="ComponentMgr" parent="Ext" extends="Object">
+  <item repl="get" display="get(String id) : void"/>
+  <item repl="onAvailable" display="onAvailable(String id, Funtction fn, Object scope) : void"/>
+</completion>

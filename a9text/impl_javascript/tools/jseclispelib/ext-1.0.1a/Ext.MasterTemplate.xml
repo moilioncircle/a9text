@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="MasterTemplate" parent="Ext" extends="Template">
+  <item repl="disableFormats" display="disableFormats : Boolean"/>
+  <item repl="re" display="re : RegExp"/>
+  <item repl="subTemplateRe" display="subTemplateRe : RegExp"/>
+  <item repl="MasterTemplate.from" display="MasterTemplate.from(String/HTMLElement el) : void"/>
+  <item repl="add" display="add([String/Number name], Array/Object values) : MasterTemplate"/>
+  <item repl="addAll" display="addAll() : void"/>
+  <item repl="append" display="append(String/HTMLElement/Element el, Object values, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="apply" display="apply() : void"/>
+  <item repl="applyTemplate" display="applyTemplate(Object values) : String"/>
+  <item repl="compile" display="compile() : void"/>
+  <item repl="fill" display="fill([String/Number name], Array values, [Boolean reset]) : MasterTemplate"/>
+  <item repl="insertAfter" display="insertAfter(String/HTMLElement/Element el, Object values, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="insertBefore" display="insertBefore(String/HTMLElement/Element el, Object values, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="insertFirst" display="insertFirst(String/HTMLElement/Element el, Object values, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="overwrite" display="overwrite(String/HTMLElement/Element el, Object values, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="reset" display="reset() : MasterTemplate"/>
+  <item repl="set" display="set(String html, [Boolean compile]) : Template"/>
+</completion>

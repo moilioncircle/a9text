@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="BasicForm" parent="Ext.form" extends="Observable">
+  <item repl="waitMsgTarget" display="waitMsgTarget : Mixed"/>
+  <item repl="BasicForm" display="BasicForm(String/HTMLElement/Ext.Element el, Object config)"/>
+  <item repl="add" display="add(Field field1, [Field field2], [Field etc]) : void"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="applyIfToFields" display="applyIfToFields(Object values) : void"/>
+  <item repl="applyToFields" display="applyToFields(Object values) : void"/>
+  <item repl="clearInvalid" display="clearInvalid() : void"/>
+  <item repl="doAction" display="doAction(String actionName, Object options) : void"/>
+  <item repl="findField" display="findField(String id) : Field"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getValues" display="getValues(Boolean asString) : Object"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="isValid" display="isValid() : Boolean"/>
+  <item repl="load" display="load(Object options) : void"/>
+  <item repl="markInvalid" display="markInvalid(Array/Object errors) : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="remove" display="remove(Field field) : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="render" display="render() : void"/>
+  <item repl="reset" display="reset() : void"/>
+  <item repl="setValues" display="setValues(Array/Object values) : void"/>
+  <item repl="submit" display="submit(Object options) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="updateRecord" display="updateRecord(Record record) : void"/>
+  <item repl="actioncomplete " display="actioncomplete  : (Form this, Action action)"/>
+  <item repl="actionfailed" display="actionfailed : (Form this, Action action)"/>
+  <item repl="beforeaction" display="beforeaction : (Form this, Action action)"/>
+</completion>

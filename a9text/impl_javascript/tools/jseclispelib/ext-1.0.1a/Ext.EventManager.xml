@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="EventManager" parent="Ext" extends="Object">
+  <item repl="ieDeferSrc" display="ieDeferSrc : Object"/>
+  <item repl="addListener" display="addListener(String/HTMLElement element, String eventName, Function fn, Object options) : void"/>
+  <item repl="onDocumentReady" display="onDocumentReady(Function fn, Object scope, boolean options) : void"/>
+  <item repl="onTextResize" display="onTextResize(Function fn, Object scope, boolean options) : void"/>
+  <item repl="onWindowResize" display="onWindowResize(Function fn, Object scope, boolean options) : void"/>
+  <item repl="removeListener" display="removeListener(String/HTMLElement element, String eventName, Function fn) : Boolean"/>
+  <item repl="removeResizeListener" display="removeResizeListener(Function fn, Object scope) : void"/>
+  <item repl="wrap" display="wrap(Function fn, Object scope, boolean override) : Function"/>
+</completion>

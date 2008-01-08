@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="UpdateManager.defaults" parent="Ext" extends="Object">
+  <item repl="disableCaching" display="disableCaching : Boolean"/>
+  <item repl="indicatorText" display="indicatorText : String"/>
+  <item repl="loadScripts" display="loadScripts : Boolean"/>
+  <item repl="showLoadIndicator" display="showLoadIndicator : Boolean"/>
+  <item repl="sslBlankUrl" display="sslBlankUrl : String"/>
+  <item repl="timeout" display="timeout : Number"/>
+</completion>

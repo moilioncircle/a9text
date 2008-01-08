@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="SortTypes" parent="Ext.data" extends="Object">
+  <item repl="stripTagsRE" display="stripTagsRE : RegExp"/>
+  <item repl="asDate" display="asDate(Mixed s) : Number"/>
+  <item repl="asFloat" display="asFloat(Mixed s) : Float"/>
+  <item repl="asInt" display="asInt(Mixed s) : Number"/>
+  <item repl="asText" display="asText(Mixed s) : String"/>
+  <item repl="asUCString" display="asUCString(Mixed s) : String"/>
+  <item repl="asUCText" display="asUCText(Mixed s) : String"/>
+  <item repl="none" display="none(Mixed s) : Mixed"/>
+</completion>

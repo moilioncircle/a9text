@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Toolbar.Spacer" parent="Ext" extends="Toolbar.Item">
+  <item repl="Toolbar.Spacer" display="Toolbar.Spacer()"/>
+  <item repl="destroy" display="destroy() : void"/>
+  <item repl="disable" display="disable() : void"/>
+  <item repl="enable" display="enable() : void"/>
+  <item repl="focus" display="focus() : void"/>
+  <item repl="getEl" display="getEl() : HTMLElement"/>
+  <item repl="hide" display="hide() : void"/>
+  <item repl="setVisible" display="setVisible(Boolean visible) : void"/>
+  <item repl="show" display="show() : void"/>
+</completion>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DragDrop" parent="Ext.dd" extends="Object">
+  <item repl="available" display="available : boolean"/>
+  <item repl="config" display="config : object"/>
+  <item repl="groups" display="groups : string:"/>
+  <item repl="hasOuterHandles" display="hasOuterHandles : boolean"/>
+  <item repl="id" display="id : String"/>
+  <item repl="invalidHandleClasses" display="invalidHandleClasses : string[]"/>
+  <item repl="invalidHandleIds" display="invalidHandleIds : string:"/>
+  <item repl="invalidHandleTypes" display="invalidHandleTypes : string:"/>
+  <item repl="maintainOffset" display="maintainOffset : boolean"/>
+  <item repl="primaryButtonOnly" display="primaryButtonOnly : boolean"/>
+  <item repl="xTicks" display="xTicks : int[]"/>
+  <item repl="yTicks" display="yTicks : int[]"/>
+  <item repl="DragDrop" display="DragDrop(String id, String sGroup, object config)"/>
+  <item repl="addInvalidHandleClass" display="addInvalidHandleClass(string cssClass) : void"/>
+  <item repl="addInvalidHandleId" display="addInvalidHandleId(string id) : void"/>
+  <item repl="addInvalidHandleType" display="addInvalidHandleType(string tagName) : void"/>
+  <item repl="addToGroup" display="addToGroup(sGroup {string}) : void"/>
+  <item repl="applyConfig" display="applyConfig() : void"/>
+  <item repl="clearConstraints" display="clearConstraints() : void"/>
+  <item repl="clearTicks" display="clearTicks() : void"/>
+  <item repl="endDrag" display="endDrag(Event e) : void"/>
+  <item repl="getDragEl" display="getDragEl() : HTMLElement"/>
+  <item repl="getEl" display="getEl() : HTMLElement"/>
+  <item repl="init" display="init(id the, String sGroup, object config) : void"/>
+  <item repl="initTarget" display="initTarget(id the, String sGroup, object config) : void"/>
+  <item repl="isLocked" display="isLocked() : boolean"/>
+  <item repl="isTarget" display="isTarget() : void"/>
+  <item repl="isValidHandleChild" display="isValidHandleChild(HTMLElement node) : boolean"/>
+  <item repl="lock" display="lock() : void"/>
+  <item repl="onAvailable" display="onAvailable() : void"/>
+  <item repl="onDrag" display="onDrag(Event e) : void"/>
+  <item repl="onDragDrop" display="onDragDrop(Event e, String|DragDrop[] id) : void"/>
+  <item repl="onDragEnter" display="onDragEnter(Event e, String|DragDrop[] id) : void"/>
+  <item repl="onDragOut" display="onDragOut(Event e, String|DragDrop[] id) : void"/>
+  <item repl="onDragOver" display="onDragOver(Event e, String|DragDrop[] id) : void"/>
+  <item repl="onInvalidDrop" display="onInvalidDrop(Event e) : void"/>
+  <item repl="onMouseDown" display="onMouseDown(Event e) : void"/>
+  <item repl="onMouseUp" display="onMouseUp(Event e) : void"/>
+  <item repl="padding" display="padding() : void"/>
+  <item repl="removeFromGroup" display="removeFromGroup(string sGroup) : void"/>
+  <item repl="removeInvalidHandleClass" display="removeInvalidHandleClass(string cssClass) : void"/>
+  <item repl="removeInvalidHandleId" display="removeInvalidHandleId(string id) : void"/>
+  <item repl="removeInvalidHandleType" display="removeInvalidHandleType(string tagName) : void"/>
+  <item repl="resetConstraints" display="resetConstraints(boolean maintainOffset) : void"/>
+  <item repl="setDragElId" display="setDragElId(id {string}) : void"/>
+  <item repl="setHandleElId" display="setHandleElId(id {string}) : void"/>
+  <item repl="setInitialPosition" display="setInitialPosition(int diffX, int diffY) : void"/>
+  <item repl="setOuterHandleElId" display="setOuterHandleElId(id the) : void"/>
+  <item repl="setPadding" display="setPadding(int iTop, int iRight, int iBot, int iLeft) : void"/>
+  <item repl="setXConstraint" display="setXConstraint(int iLeft, int iRight, int iTickSize) : void"/>
+  <item repl="setYConstraint" display="setYConstraint(int iUp, int iDown, int iTickSize) : void"/>
+  <item repl="startDrag" display="startDrag(int X, int Y) : void"/>
+  <item repl="toString" display="toString() : string"/>
+  <item repl="unlock" display="unlock() : void"/>
+  <item repl="unreg" display="unreg() : void"/>
+</completion>

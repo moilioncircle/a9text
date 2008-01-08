@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="EditorGrid" parent="Ext.grid" extends="Grid">
+  <item repl="ddText" display="ddText : String"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="autoSize" display="autoSize() : void"/>
+  <item repl="destroy" display="destroy(Boolean removeEl) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getColumnModel" display="getColumnModel() : ColumnModel"/>
+  <item repl="getDataSource" display="getDataSource() : DataSource"/>
+  <item repl="getDragDropText" display="getDragDropText() : String"/>
+  <item repl="getSelectionModel" display="getSelectionModel() : SelectionModel"/>
+  <item repl="getView" display="getView() : GridView"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="render" display="render() : Ext.grid.Grid"/>
+  <item repl="startEditing" display="startEditing(Number rowIndex, Number colIndex) : void"/>
+  <item repl="stopEditing" display="stopEditing() : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="afteredit" display="afteredit : (Object e)"/>
+  <item repl="beforeedit" display="beforeedit : (Object e)"/>
+  <item repl="bodyscroll" display="bodyscroll : (Number scrollLeft, Number scrollTop)"/>
+  <item repl="cellclick" display="cellclick : (Grid this, Number rowIndex, Number columnIndex, Ext.EventObject e)"/>
+  <item repl="cellcontextmenu" display="cellcontextmenu : (Grid this, Number rowIndex, Number cellIndex, Ext.EventObject e)"/>
+  <item repl="celldblclick" display="celldblclick : (Grid this, Number rowIndex, Number columnIndex, Ext.EventObject e)"/>
+  <item repl="click" display="click : (Ext.EventObject e)"/>
+  <item repl="columnmove" display="columnmove : (Number oldIndex, Number newIndex)"/>
+  <item repl="columnresize" display="columnresize : (Number columnIndex, Number newSize)"/>
+  <item repl="contextmenu" display="contextmenu : (Ext.EventObject e)"/>
+  <item repl="dblclick" display="dblclick : (Ext.EventObject e)"/>
+  <item repl="dragdrop" display="dragdrop : (Grid this, Ext.GridDD dd, String targetId, event e)"/>
+  <item repl="dragenter" display="dragenter : (Grid this, Ext.GridDD dd, String targetId, event e)"/>
+  <item repl="dragout" display="dragout : (Grid this, Ext.GridDD dd, String targetId, event e)"/>
+  <item repl="dragover" display="dragover : (Grid this, Ext.GridDD dd, String targetId, event e)"/>
+  <item repl="enddrag" display="enddrag : (Grid this, Ext.GridDD dd, event e)"/>
+  <item repl="headerclick" display="headerclick : (Grid this, Number columnIndex, Ext.EventObject e)"/>
+  <item repl="headercontextmenu" display="headercontextmenu : (Grid this, Number columnIndex, Ext.EventObject e)"/>
+  <item repl="headerdblclick" display="headerdblclick : (Grid this, Number rowIndex, Number columnIndex, Ext.EventObject e)"/>
+  <item repl="keydown" display="keydown : (Ext.EventObject e)"/>
+  <item repl="keypress" display="keypress : (Ext.EventObject e)"/>
+  <item repl="mousedown" display="mousedown : (Ext.EventObject e)"/>
+  <item repl="mouseout" display="mouseout : (Ext.EventObject e)"/>
+  <item repl="mouseover" display="mouseover : (Ext.EventObject e)"/>
+  <item repl="mouseup" display="mouseup : (Ext.EventObject e)"/>
+  <item repl="rowclick" display="rowclick : (Grid this, Number rowIndex, Ext.EventObject e)"/>
+  <item repl="rowcontextmenu" display="rowcontextmenu : (Grid this, Number rowIndex, Ext.EventObject e)"/>
+  <item repl="rowdblclick" display="rowdblclick : (Grid this, Number rowIndex, Ext.EventObject e)"/>
+  <item repl="startdrag" display="startdrag : (Grid this, Ext.GridDD dd, event e)"/>
+  <item repl="validateedit" display="validateedit : (Object e)"/>
+</completion>

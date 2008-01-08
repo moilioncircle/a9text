@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Manager" parent="Ext.state" extends="Object">
+  <item repl="clear" display="clear(String name) : void"/>
+  <item repl="get" display="get(String name, Mixed defaultValue) : Mixed"/>
+  <item repl="getProvider" display="getProvider() : Provider"/>
+  <item repl="set" display="set(String name, Mixed value) : void"/>
+  <item repl="setProvider" display="setProvider(Provider stateProvider) : void"/>
+</completion>

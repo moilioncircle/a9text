@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DomHelper" parent="Ext" extends="Object">
+  <item repl="useDom" display="useDom : Boolean"/>
+  <item repl="append" display="append(String/HTMLElement/Element el, Object o, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="applyStyles" display="applyStyles(String/HTMLElement el, String/Object/Function styles) : void"/>
+  <item repl="createTemplate" display="createTemplate(Object o) : Ext.DomHelper.Template"/>
+  <item repl="insertAfter" display="insertAfter(String/HTMLElement/Element el, Object o, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="insertBefore" display="insertBefore(String/HTMLElement/Element el, Object o, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="insertFirst" display="insertFirst(String/HTMLElement/Element el, Object o, [Boolean returnElement]) : HTMLElement"/>
+  <item repl="insertHtml" display="insertHtml(String where, HTMLElement el, String html) : HTMLElement"/>
+  <item repl="markup" display="markup(Object o) : String"/>
+  <item repl="overwrite" display="overwrite(String/HTMLElement/Element el, Object o, [Boolean returnElement]) : HTMLElement"/>
+</completion>

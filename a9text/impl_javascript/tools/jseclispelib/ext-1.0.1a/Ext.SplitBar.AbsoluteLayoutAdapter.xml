@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="SplitBar.AbsoluteLayoutAdapter" parent="Ext" extends="SplitBar.BasicLayoutAdapter">
+  <item repl="SplitBar.AbsoluteLayoutAdapter.BOTTOM" display="SplitBar.AbsoluteLayoutAdapter.BOTTOM : Number"/>
+  <item repl="SplitBar.AbsoluteLayoutAdapter.HORIZONTAL" display="SplitBar.AbsoluteLayoutAdapter.HORIZONTAL : Number"/>
+  <item repl="SplitBar.AbsoluteLayoutAdapter.LEFT" display="SplitBar.AbsoluteLayoutAdapter.LEFT : Number"/>
+  <item repl="SplitBar.AbsoluteLayoutAdapter.RIGHT" display="SplitBar.AbsoluteLayoutAdapter.RIGHT : Number"/>
+  <item repl="SplitBar.AbsoluteLayoutAdapter.TOP" display="SplitBar.AbsoluteLayoutAdapter.TOP : Number"/>
+  <item repl="SplitBar.AbsoluteLayoutAdapter.VERTICAL" display="SplitBar.AbsoluteLayoutAdapter.VERTICAL : Number"/>
+  <item repl="getElementSize" display="getElementSize(Ext.SplitBar s) : void"/>
+  <item repl="setElementSize" display="setElementSize(Ext.SplitBar s, Number newSize, Function onComplete) : void"/>
+</completion>

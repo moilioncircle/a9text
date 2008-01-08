@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="TabPanel" parent="Ext" extends="Observable">
+  <item repl="bodyEl" display="bodyEl : Ext.Element"/>
+  <item repl="el" display="el : Ext.Element"/>
+  <item repl="maxTabWidth" display="maxTabWidth : Number"/>
+  <item repl="minTabWidth" display="minTabWidth : Number"/>
+  <item repl="monitorResize" display="monitorResize : Boolean"/>
+  <item repl="preferredTabWidth" display="preferredTabWidth : Number"/>
+  <item repl="resizeTabs" display="resizeTabs : Boolean"/>
+  <item repl="tabPosition" display="tabPosition : String"/>
+  <item repl="TabPanel" display="TabPanel(String/HTMLElement/Element container, Boolean config)"/>
+  <item repl="activate" display="activate(String/Number id) : void"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="addTab" display="addTab(String id, String text, [String content], [Boolean closable]) : Ext.TabPanelItem"/>
+  <item repl="addTabItem" display="addTabItem(Ext.TabPanelItem item) : void"/>
+  <item repl="autoSizeTabs" display="autoSizeTabs() : void"/>
+  <item repl="beginUpdate" display="beginUpdate() : void"/>
+  <item repl="destroy" display="destroy([Boolean removeEl]) : void"/>
+  <item repl="disableTab" display="disableTab(String/Number id) : void"/>
+  <item repl="enableTab" display="enableTab(String/Number id) : void"/>
+  <item repl="endUpdate" display="endUpdate() : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getActiveTab" display="getActiveTab() : Ext.TabPanelItem"/>
+  <item repl="getCount" display="getCount() : Number"/>
+  <item repl="getTab" display="getTab(String/Number id) : Ext.TabPanelItem"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="hideTab" display="hideTab(String/Number id) : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="removeTab" display="removeTab(String/Number id) : void"/>
+  <item repl="setTabWidth" display="setTabWidth(Number The) : void"/>
+  <item repl="syncHeight" display="syncHeight([Number targetHeight]) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="unhideTab" display="unhideTab(String/Number id) : void"/>
+  <item repl="beforetabchange" display="beforetabchange : (Ext.TabPanel this, Object e, Ext.TabPanelItem tab)"/>
+  <item repl="tabchange" display="tabchange : (Ext.TabPanel this, Ext.TabPanelItem activePanel)"/>
+</completion>

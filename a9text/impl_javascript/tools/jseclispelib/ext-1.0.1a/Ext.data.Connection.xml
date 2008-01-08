@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Connection" parent="Ext.data" extends="Object">
+  <item repl="Connection" display="Connection(config {Object})"/>
+  <item repl="abort" display="abort() : void"/>
+  <item repl="isLoading" display="isLoading() : Boolean"/>
+  <item repl="request" display="request([Object options.]) : void"/>
+</completion>

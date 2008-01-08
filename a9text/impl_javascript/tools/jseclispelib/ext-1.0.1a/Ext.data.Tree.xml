@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Tree" parent="Ext.data" extends="Observable">
+  <item repl="root" display="root : Node"/>
+  <item repl="Tree" display="Tree([Node root])"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getNodeById" display="getNodeById(String id) : Node"/>
+  <item repl="getRootNode" display="getRootNode() : Node"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="setRootNode" display="setRootNode(Node node) : Node"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="append" display="append : (Tree tree, Node parent, Node node, Number index)"/>
+  <item repl="beforeappend" display="beforeappend : (Tree tree, Node parent, Node node)"/>
+  <item repl="beforeinsert" display="beforeinsert : (Tree tree, Node parent, Node node, Node refNode)"/>
+  <item repl="beforemove" display="beforemove : (Tree tree, Node node, Node oldParent, Node newParent, Number index)"/>
+  <item repl="beforeremove" display="beforeremove : (Tree tree, Node parent, Node node)"/>
+  <item repl="insert" display="insert : (Tree tree, Node parent, Node node, Node refNode)"/>
+  <item repl="move" display="move : (Tree tree, Node node, Node oldParent, Node newParent, Number index)"/>
+  <item repl="remove" display="remove : (Tree tree, Node parent, Node node)"/>
+</completion>

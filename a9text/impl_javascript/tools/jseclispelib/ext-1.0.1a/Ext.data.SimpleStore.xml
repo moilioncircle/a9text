@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="SimpleStore" parent="Ext.data" extends="Store">
+  <item repl="SimpleStore" display="SimpleStore(Object config)"/>
+  <item repl="add" display="add(Ext.data.Record[] records) : void"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="clearFilter" display="clearFilter(Boolean suppressEvent) : void"/>
+  <item repl="commitChanges" display="commitChanges() : void"/>
+  <item repl="each" display="each(Function fn, [Object scope]) : void"/>
+  <item repl="filter" display="filter(String field, String/RegExp value) : Boolean"/>
+  <item repl="filterBy" display="filterBy(Function fn, [Object scope]) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getAt" display="getAt(String index) : Ext.data.Record"/>
+  <item repl="getById" display="getById(String id) : Ext.data.Record"/>
+  <item repl="getCount" display="getCount() : void"/>
+  <item repl="getModifiedRecords" display="getModifiedRecords() : Ext.data.Record[]"/>
+  <item repl="getRange" display="getRange([Number startIndex], [Number endIndex]) : Ext.data.Record[]"/>
+  <item repl="getSortState" display="getSortState() : void"/>
+  <item repl="getTotalCount" display="getTotalCount() : void"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="indexOf" display="indexOf(Ext.data.Record[] records) : Number"/>
+  <item repl="indexOfId" display="indexOfId(String id) : Number"/>
+  <item repl="insert" display="insert(Number index, Ext.data.Record[] records) : void"/>
+  <item repl="load" display="load(Object options) : void"/>
+  <item repl="loadData" display="loadData(Object data, [Boolean append]) : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="rejectChanges" display="rejectChanges() : void"/>
+  <item repl="reload" display="reload([Object options]) : void"/>
+  <item repl="remove" display="remove(Ext.data.Record record) : void"/>
+  <item repl="removeAll" display="removeAll() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="setDefaultSort" display="setDefaultSort(String fieldName, [String dir]) : void"/>
+  <item repl="sort" display="sort(String fieldName, [String dir]) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="add" display="add : (Store this, Ext.data.Record[] records, Number index)"/>
+  <item repl="beforeload" display="beforeload : (Store this, Object options)"/>
+  <item repl="clear" display="clear : (Store this)"/>
+  <item repl="datachanged" display="datachanged : (Store this)"/>
+  <item repl="load" display="load : (Store this, Ext.data.Record[] records, Object options)"/>
+  <item repl="loadexception" display="loadexception : ()"/>
+  <item repl="remove" display="remove : (Store this, Ext.data.Record record, Number index)"/>
+  <item repl="update" display="update : (Store this, Ext.data.Record record, String operation)"/>
+</completion>

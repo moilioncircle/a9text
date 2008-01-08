@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DomQuery" parent="Ext" extends="Object">
+  <item repl="matchers" display="matchers : Object"/>
+  <item repl="operators" display="operators : Object"/>
+  <item repl="pseudos" display="pseudos : Object"/>
+  <item repl="compile" display="compile(String selector, [String type]) : Function"/>
+  <item repl="filter" display="filter(Array el, String selector, Boolean nonMatches) : Array"/>
+  <item repl="is" display="is(String/HTMLElement/Array el, String selector) : Boolean"/>
+  <item repl="select" display="select(String selector, [Node root]) : Array"/>
+  <item repl="selectNode" display="selectNode(String selector, [Node root]) : Element"/>
+  <item repl="selectNumber" display="selectNumber(String selector, [Node root], Number defaultValue) : Number"/>
+  <item repl="selectValue" display="selectValue(String selector, [Node root], String defaultValue) : void"/>
+</completion>

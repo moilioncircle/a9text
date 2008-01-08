@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DateMenu" parent="Ext.menu" extends="Menu">
+  <item repl="picker" display="picker : DatePicker"/>
+  <item repl="DateMenu" display="DateMenu(Object config)"/>
+  <item repl="add" display="add(Mixed args) : Ext.menu.Item"/>
+  <item repl="addElement" display="addElement(String/HTMLElement/Ext.Element el) : Ext.menu.Item"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addItem" display="addItem(Ext.menu.Item item) : Ext.menu.Item"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="addMenuItem" display="addMenuItem(Object config) : Ext.menu.Item"/>
+  <item repl="addSeparator" display="addSeparator() : Ext.menu.Item"/>
+  <item repl="addText" display="addText(String text) : Ext.menu.Item"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="hide" display="hide([Boolean deep]) : void"/>
+  <item repl="insert" display="insert(Number index, Ext.menu.Item item) : Ext.menu.Item"/>
+  <item repl="isVisible" display="isVisible() : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="remove" display="remove(Ext.menu.Item item) : void"/>
+  <item repl="removeAll" display="removeAll() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="show" display="show(String/HTMLElement/Ext.Element element, [String position], [Ext.menu.Menu parentMenu]) : void"/>
+  <item repl="showAt" display="showAt(Array xyPosition, [Ext.menu.Menu parentMenu]) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="beforehide" display="beforehide : (Ext.menu.Menu this)"/>
+  <item repl="beforeshow" display="beforeshow : (Ext.menu.Menu this)"/>
+  <item repl="click" display="click : (Ext.menu.Menu this, String menuItemId, Ext.EventObject e)"/>
+  <item repl="hide" display="hide : (Ext.menu.Menu this)"/>
+  <item repl="itemclick" display="itemclick : (Ext.menu.BaseItem baseItem, Ext.EventObject e)"/>
+  <item repl="mouseout" display="mouseout : (Ext.menu.Menu this, Ext.EventObject e, String menuItemId)"/>
+  <item repl="mouseover" display="mouseover : (Ext.menu.Menu this, Ext.EventObject e, String menuItemId)"/>
+  <item repl="select" display="select : (DatePicker picker, Date date)"/>
+  <item repl="show" display="show : (Ext.menu.Menu this)"/>
+</completion>

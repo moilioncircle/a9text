@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Ext" parent="" extends="Object">
+  <item repl="BLANK_IMAGE_URL" display="BLANK_IMAGE_URL : String"/>
+  <item repl="SSL_SECURE_URL" display="SSL_SECURE_URL : String"/>
+  <item repl="isReady" display="isReady : Boolean"/>
+  <item repl="isSecure" display="isSecure : Boolean"/>
+  <item repl="isStrict" display="isStrict : Boolean"/>
+  <item repl="useShims" display="useShims : Boolean"/>
+  <item repl="addBehaviors" display="addBehaviors(Object obj) : void"/>
+  <item repl="apply" display="apply(Object obj, Object config, Object defaults) : Object"/>
+  <item repl="applyIf" display="applyIf(Object obj, Object config) : Object"/>
+  <item repl="decode" display="decode() : void"/>
+  <item repl="each" display="each(Array/NodeList/Mixed array, Function fn, Object scope) : void"/>
+  <item repl="encode" display="encode() : void"/>
+  <item repl="escapeRe" display="escapeRe(String str) : String"/>
+  <item repl="extend" display="extend(Object subclass, Object superclass, [Object overrides]) : void"/>
+  <item repl="fly" display="fly(String/HTMLElement el, [String named]) : Element"/>
+  <item repl="get" display="get(String/HTMLElement/Element el) : Element"/>
+  <item repl="getCmp" display="getCmp(String id) : Ext.Component"/>
+  <item repl="getDom" display="getDom(String/HTMLElement/Element) el) : HTMLElement"/>
+  <item repl="id" display="id([String/HTMLElement/Element el], [String prefix]) : void"/>
+  <item repl="namespace" display="namespace(String namespace1, String namespace2, String etc) : void"/>
+  <item repl="onReady" display="onReady(Function fn, Object scope, boolean override) : void"/>
+  <item repl="query" display="query(String path, [Node root]) : Array"/>
+  <item repl="select" display="select(String/Array selector, [Boolean unique]) : CompositeElementLite/CompositeElement"/>
+  <item repl="urlDecode" display="urlDecode(String string, [Boolean overwrite]) : Object"/>
+  <item repl="urlEncode" display="urlEncode(Object o) : String"/>
+</completion>

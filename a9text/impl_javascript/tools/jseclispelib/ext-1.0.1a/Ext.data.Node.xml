@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Node" parent="Ext.data" extends="Observable">
+  <item repl="attributes" display="attributes : Object"/>
+  <item repl="childNodes" display="childNodes : Array"/>
+  <item repl="firstChild" display="firstChild : Node"/>
+  <item repl="id" display="id : String"/>
+  <item repl="lastChild" display="lastChild : Node"/>
+  <item repl="nextSibling" display="nextSibling : Node"/>
+  <item repl="parentNode" display="parentNode : Node"/>
+  <item repl="previousSibling" display="previousSibling : Node"/>
+  <item repl="Node" display="Node(Object attributes)"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="appendChild" display="appendChild(Node/Array node) : Node"/>
+  <item repl="bubble" display="bubble(Function fn, [Object scope], [Array args]) : void"/>
+  <item repl="cascade" display="cascade(Function fn, [Object scope], [Array args]) : void"/>
+  <item repl="contains" display="contains(Node node) : Boolean"/>
+  <item repl="eachChild" display="eachChild(Function fn, [Object scope], [Array args]) : void"/>
+  <item repl="findChild" display="findChild(String attribute, Mixed value) : Node"/>
+  <item repl="findChildBy" display="findChildBy(Function fn, [Object scope]) : Node"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getDepth" display="getDepth() : Number"/>
+  <item repl="getOwnerTree" display="getOwnerTree() : Tree"/>
+  <item repl="getPath" display="getPath([String attr]) : String"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="indexOf" display="indexOf(Node node) : Number"/>
+  <item repl="insertBefore" display="insertBefore(Node node, Node refNode) : Node"/>
+  <item repl="isAncestor" display="isAncestor(Node node) : Boolean"/>
+  <item repl="isFirst" display="isFirst() : Boolean"/>
+  <item repl="isLast" display="isLast() : Boolean"/>
+  <item repl="isLeaf" display="isLeaf() : Boolean"/>
+  <item repl="item" display="item(Number index) : Node"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeChild" display="removeChild(Node node) : Node"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="replaceChild" display="replaceChild(Node newChild, Node oldChild) : Node"/>
+  <item repl="sort" display="sort(Function fn, [Object scope]) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="append" display="append : (Tree tree, Node this, Node node, Number index)"/>
+  <item repl="beforeappend" display="beforeappend : (Tree tree, Node this, Node node)"/>
+  <item repl="beforeinsert" display="beforeinsert : (Tree tree, Node this, Node node, Node refNode)"/>
+  <item repl="beforemove" display="beforemove : (Tree tree, Node this, Node oldParent, Node newParent, Number index)"/>
+  <item repl="beforeremove" display="beforeremove : (Tree tree, Node this, Node node)"/>
+  <item repl="insert" display="insert : (Tree tree, Node this, Node node, Node refNode)"/>
+  <item repl="move" display="move : (Tree tree, Node this, Node oldParent, Node newParent, Number index)"/>
+  <item repl="remove" display="remove : (Tree tree, Node this, Node node)"/>
+</completion>

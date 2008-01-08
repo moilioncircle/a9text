@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="BasicDialog" parent="Ext" extends="Observable">
+  <item repl="body" display="body : Ext.Element"/>
+  <item repl="buttons" display="buttons : Array"/>
+  <item repl="footer" display="footer : Ext.Element"/>
+  <item repl="header" display="header : Ext.Element"/>
+  <item repl="BasicDialog" display="BasicDialog(String/HTMLElement/Ext.Element el, Object config)"/>
+  <item repl="addButton" display="addButton(String/Object config, Function handler, [Object scope]) : Ext.Button"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addKeyListener" display="addKeyListener(Number/Array/Object key, Function fn, [Object scope]) : Ext.BasicDialog"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="alignTo" display="alignTo(String/HTMLElement/Ext.Element element, String position, [Array offsets]) : Ext.BasicDialog"/>
+  <item repl="anchorTo" display="anchorTo(String/HTMLElement/Ext.Element element, String position, [Array offsets], [Boolean/Number monitorScroll]) : Ext.BasicDialog"/>
+  <item repl="center" display="center() : Ext.BasicDialog"/>
+  <item repl="collapse" display="collapse() : void"/>
+  <item repl="destroy" display="destroy([Boolean removeEl]) : void"/>
+  <item repl="expand" display="expand() : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="focus" display="focus() : void"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="getTabs" display="getTabs() : Ext.TabPanel"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="hide" display="hide([Function callback]) : Ext.BasicDialog"/>
+  <item repl="initTabs" display="initTabs() : Ext.TabPanel"/>
+  <item repl="isVisible" display="isVisible() : Boolean"/>
+  <item repl="moveTo" display="moveTo(Number x, Number y) : Ext.BasicDialog"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="resizeTo" display="resizeTo(Number width, Number height) : Ext.BasicDialog"/>
+  <item repl="restoreState" display="restoreState() : Ext.BasicDialog"/>
+  <item repl="setContentSize" display="setContentSize(Number width, Number height) : Ext.BasicDialog"/>
+  <item repl="setDefaultButton" display="setDefaultButton(Ext.BasicDialog.Button btn) : Ext.BasicDialog"/>
+  <item repl="setTitle" display="setTitle(String text) : Ext.BasicDialog"/>
+  <item repl="show" display="show([String/HTMLElement/Ext.Element animateTarget]) : Ext.BasicDialog"/>
+  <item repl="toBack" display="toBack() : Ext.BasicDialog"/>
+  <item repl="toFront" display="toFront() : Ext.BasicDialog"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="beforehide" display="beforehide : (Ext.BasicDialog this)"/>
+  <item repl="beforeshow" display="beforeshow : (Ext.BasicDialog this)"/>
+  <item repl="hide" display="hide : (Ext.BasicDialog this)"/>
+  <item repl="keydown" display="keydown : (Ext.BasicDialog this, Ext.EventObject e)"/>
+  <item repl="move" display="move : (Ext.BasicDialog this, Number x, Number y)"/>
+  <item repl="resize" display="resize : (Ext.BasicDialog this, Number width, Number height)"/>
+  <item repl="show" display="show : (Ext.BasicDialog this)"/>
+</completion>

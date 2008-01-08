@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="TextField" parent="Ext.form" extends="Field">
+  <item repl="disabled" display="disabled : Object"/>
+  <item repl="disabledClass" display="disabledClass : Object"/>
+  <item repl="hidden" display="hidden : Object"/>
+  <item repl="rendered" display="rendered : Object"/>
+  <item repl="TextField" display="TextField(Object config)"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="applyTo" display="applyTo(String/HTMLElement/Element el) : Ext.form.Field"/>
+  <item repl="autoSize" display="autoSize() : void"/>
+  <item repl="clearInvalid" display="clearInvalid() : void"/>
+  <item repl="disable" display="disable() : void"/>
+  <item repl="enable" display="enable() : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="focus" display="focus(Boolean selectText) : void"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="getId" display="getId() : String"/>
+  <item repl="getName" display="getName() : String"/>
+  <item repl="getRawValue" display="getRawValue() : Mixed"/>
+  <item repl="getValue" display="getValue() : Mixed"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="hide" display="hide() : void"/>
+  <item repl="isValid" display="isValid(Boolean preventMark) : Boolean"/>
+  <item repl="isVisible" display="isVisible() : void"/>
+  <item repl="markInvalid" display="markInvalid(String msg) : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="render" display="render([String/HTMLElement/Element container]) : void"/>
+  <item repl="reset" display="reset() : void"/>
+  <item repl="selectText" display="selectText([Number start], [Number end]) : void"/>
+  <item repl="setDisabled" display="setDisabled(Boolean disabled) : void"/>
+  <item repl="setRawValue" display="setRawValue(Mixed value) : void"/>
+  <item repl="setSize" display="setSize(Number width, Number height) : void"/>
+  <item repl="setValue" display="setValue(Mixed value) : void"/>
+  <item repl="setVisible" display="setVisible(Boolean visible) : void"/>
+  <item repl="show" display="show() : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="validate" display="validate() : Boolean"/>
+  <item repl="validateValue" display="validateValue(Mixed value) : Boolean"/>
+  <item repl="autosize" display="autosize : (Ext.form.Field this, Number width)"/>
+  <item repl="beforedestroy" display="beforedestroy : (Ext.Component this)"/>
+  <item repl="beforehide" display="beforehide : (Ext.Component this)"/>
+  <item repl="beforerender" display="beforerender : (Ext.Component this)"/>
+  <item repl="beforeshow" display="beforeshow : (Ext.Component this)"/>
+  <item repl="blur" display="blur : (Ext.form.Field this)"/>
+  <item repl="change" display="change : (Ext.form.Field this, Mixed value, Mixed value)"/>
+  <item repl="destroy" display="destroy : (Ext.Component this)"/>
+  <item repl="disable" display="disable : (Ext.Component this)"/>
+  <item repl="enable" display="enable : (Ext.Component this)"/>
+  <item repl="focus" display="focus : (Ext.form.Field this)"/>
+  <item repl="hide" display="hide : (Ext.Component this)"/>
+  <item repl="invalid" display="invalid : (Ext.form.Field this, String msg)"/>
+  <item repl="render" display="render : (Ext.Component this)"/>
+  <item repl="show" display="show : (Ext.Component this)"/>
+  <item repl="specialkey" display="specialkey : (Ext.form.Field this, Ext.EventObject e)"/>
+  <item repl="valid" display="valid : (Ext.form.Field this)"/>
+</completion>

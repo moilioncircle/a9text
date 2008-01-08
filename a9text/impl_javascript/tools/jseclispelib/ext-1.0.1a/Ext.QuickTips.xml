@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="QuickTips" parent="Ext" extends="Object">
+  <item repl="disable" display="disable() : void"/>
+  <item repl="enable" display="enable() : void"/>
+  <item repl="isEnabled" display="isEnabled() : void"/>
+  <item repl="register" display="register(Object config) : void"/>
+  <item repl="unregister" display="unregister() : void"/>
+</completion>

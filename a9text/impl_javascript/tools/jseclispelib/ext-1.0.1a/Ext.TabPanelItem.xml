@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="TabPanelItem" parent="Ext" extends="Observable">
+  <item repl="bodyEl" display="bodyEl : Ext.Element"/>
+  <item repl="closeText" display="closeText : String"/>
+  <item repl="id" display="id : String"/>
+  <item repl="tabPanel" display="tabPanel : Ext.TabPanel"/>
+  <item repl="activate" display="activate() : void"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="disable" display="disable() : void"/>
+  <item repl="enable" display="enable() : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getText" display="getText() : String"/>
+  <item repl="getUpdateManager" display="getUpdateManager() : Ext.UpdateManager"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="hide" display="hide() : void"/>
+  <item repl="isActive" display="isActive() : Boolean"/>
+  <item repl="isHidden" display="isHidden() : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="refresh" display="refresh() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="setContent" display="setContent(String content, Boolean loadScripts) : void"/>
+  <item repl="setText" display="setText(String text) : void"/>
+  <item repl="setTooltip" display="setTooltip(String tooltip) : void"/>
+  <item repl="setUrl" display="setUrl(String/Function url, [String/Object params], [Boolean loadOnce]) : Ext.UpdateManager"/>
+  <item repl="show" display="show() : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="activate" display="activate : (Ext.TabPanel tabPanel, Ext.TabPanelItem this)"/>
+  <item repl="beforeclose" display="beforeclose : (Ext.TabPanelItem this, Object e)"/>
+  <item repl="close" display="close : (Ext.TabPanelItem this)"/>
+  <item repl="deactivate" display="deactivate : (Ext.TabPanel tabPanel, Ext.TabPanelItem this)"/>
+</completion>

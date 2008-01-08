@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="EventObject" parent="Ext" extends="Object">
+  <item repl="BACKSPACE" display="BACKSPACE : Number"/>
+  <item repl="CONTROL" display="CONTROL : Number"/>
+  <item repl="DELETE" display="DELETE : Number"/>
+  <item repl="DOWN" display="DOWN : Number"/>
+  <item repl="END" display="END : Number"/>
+  <item repl="ENTER" display="ENTER : Number"/>
+  <item repl="ESC" display="ESC : Number"/>
+  <item repl="F5" display="F5 : Number"/>
+  <item repl="HOME" display="HOME : Number"/>
+  <item repl="LEFT" display="LEFT : Number"/>
+  <item repl="PAGEDOWN" display="PAGEDOWN : Number"/>
+  <item repl="PAGEUP" display="PAGEUP : Number"/>
+  <item repl="RETURN" display="RETURN : Number"/>
+  <item repl="RIGHT" display="RIGHT : Number"/>
+  <item repl="SHIFT" display="SHIFT : Number"/>
+  <item repl="SPACE" display="SPACE : Number"/>
+  <item repl="TAB" display="TAB : Number"/>
+  <item repl="UP" display="UP : Number"/>
+  <item repl="altKey" display="altKey : Object"/>
+  <item repl="browserEvent" display="browserEvent : Object"/>
+  <item repl="button" display="button : Object"/>
+  <item repl="ctrlKey" display="ctrlKey : Object"/>
+  <item repl="shiftKey" display="shiftKey : Object"/>
+  <item repl="getCharCode" display="getCharCode() : Number"/>
+  <item repl="getKey" display="getKey() : Number"/>
+  <item repl="getPageX" display="getPageX() : Number"/>
+  <item repl="getPageY" display="getPageY() : Number"/>
+  <item repl="getRelatedTarget" display="getRelatedTarget() : HTMLElement"/>
+  <item repl="getTarget" display="getTarget([String selector], [Number/String/HTMLElement/Element maxDepth], [Boolean returnEl]) : HTMLelement"/>
+  <item repl="getTime" display="getTime() : Number"/>
+  <item repl="getWheelDelta" display="getWheelDelta() : Number"/>
+  <item repl="getXY" display="getXY() : Array"/>
+  <item repl="hasModifier" display="hasModifier() : Boolean"/>
+  <item repl="preventDefault" display="preventDefault() : void"/>
+  <item repl="stopEvent" display="stopEvent() : void"/>
+  <item repl="stopPropagation" display="stopPropagation() : void"/>
+  <item repl="within" display="within(String/HTMLElement/Element el, [Boolean related]) : Boolean"/>
+</completion>

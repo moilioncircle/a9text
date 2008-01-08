@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="MessageBox" parent="Ext" extends="Object">
+  <item repl="OK" display="OK : Object"/>
+  <item repl="OKCANCEL" display="OKCANCEL : Object"/>
+  <item repl="YESNO" display="YESNO : Object"/>
+  <item repl="YESNOCANCEL" display="YESNOCANCEL : Object"/>
+  <item repl="buttonText" display="buttonText : Object"/>
+  <item repl="defaultTextHeight" display="defaultTextHeight : Number"/>
+  <item repl="maxWidth" display="maxWidth : Number"/>
+  <item repl="minProgressWidth" display="minProgressWidth : Number"/>
+  <item repl="minWidth" display="minWidth : Number"/>
+  <item repl="alert" display="alert(String title, String msg, [Function fn], [Object scope]) : Ext.MessageBox"/>
+  <item repl="confirm" display="confirm(String title, String msg, [Function fn], [Object scope]) : Ext.MessageBox"/>
+  <item repl="getDialog" display="getDialog() : Ext.BasicDialog"/>
+  <item repl="hide" display="hide() : void"/>
+  <item repl="isVisible" display="isVisible() : Boolean"/>
+  <item repl="progress" display="progress(String title, String msg) : Ext.MessageBox"/>
+  <item repl="prompt" display="prompt(String title, String msg, [Function fn], [Object scope], [Boolean/Number multiline]) : Ext.MessageBox"/>
+  <item repl="show" display="show(Object config) : Ext.MessageBox"/>
+  <item repl="updateProgress" display="updateProgress(Number value, String text) : Ext.MessageBox"/>
+  <item repl="updateText" display="updateText(String text) : Ext.MessageBox"/>
+  <item repl="wait" display="wait(String msg, [String title]) : Ext.MessageBox"/>
+</completion>

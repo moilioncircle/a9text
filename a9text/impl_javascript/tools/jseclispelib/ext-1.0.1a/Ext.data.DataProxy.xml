@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DataProxy" parent="Ext.data" extends="Object">
+  <item repl="beforeload" display="beforeload : (Object params)"/>
+  <item repl="load" display="load : (Object o, Object arg)"/>
+  <item repl="loadexception" display="loadexception : (Object o, Object arg, Object e)"/>
+</completion>

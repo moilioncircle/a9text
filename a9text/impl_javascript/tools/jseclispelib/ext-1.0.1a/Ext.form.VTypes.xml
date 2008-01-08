@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="VTypes" parent="Ext.form" extends="Object">
+  <item repl="alphaMask" display="alphaMask : RegExp"/>
+  <item repl="alphaText" display="alphaText : String"/>
+  <item repl="alphanumMask" display="alphanumMask : RegExp"/>
+  <item repl="alphanumText" display="alphanumText : String"/>
+  <item repl="emailMask" display="emailMask : RegExp"/>
+  <item repl="emailText" display="emailText : String"/>
+  <item repl="urlText" display="urlText : String"/>
+  <item repl="alpha" display="alpha(String value) : void"/>
+  <item repl="alphanum" display="alphanum(String value) : void"/>
+  <item repl="email" display="email(String value) : void"/>
+  <item repl="url" display="url(String value) : void"/>
+</completion>

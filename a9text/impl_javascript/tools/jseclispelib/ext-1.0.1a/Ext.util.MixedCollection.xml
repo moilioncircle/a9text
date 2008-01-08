@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="MixedCollection" parent="Ext.util" extends="Observable">
+  <item repl="MixedCollection" display="MixedCollection(Boolean allowFunctions, Function keyFn)"/>
+  <item repl="add" display="add(String key, Object o) : Object"/>
+  <item repl="addAll" display="addAll(Object/Array objs) : void"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="clear" display="clear() : void"/>
+  <item repl="clone" display="clone() : MixedCollection"/>
+  <item repl="contains" display="contains(Object o) : Boolean"/>
+  <item repl="containsKey" display="containsKey(String key) : Boolean"/>
+  <item repl="each" display="each(Function fn, [Object scope]) : void"/>
+  <item repl="eachKey" display="eachKey(Function fn, [Object scope]) : void"/>
+  <item repl="filter" display="filter(String property, String/RegExp value) : MixedCollection"/>
+  <item repl="filterBy" display="filterBy(Function fn, [Object scope]) : MixedCollection"/>
+  <item repl="find" display="find(Function fn, [Object scope]) : Object"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="first" display="first() : Object"/>
+  <item repl="get" display="get(String/Number key) : Object"/>
+  <item repl="getCount" display="getCount() : Number"/>
+  <item repl="getKey" display="getKey(o {Object}) : Object"/>
+  <item repl="getRange" display="getRange([Number startIndex], [Number endIndex]) : Array"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="indexOf" display="indexOf(Object o) : Number"/>
+  <item repl="indexOfKey" display="indexOfKey(String key) : Number"/>
+  <item repl="insert" display="insert(Number index, String key, [Object o]) : Object"/>
+  <item repl="item" display="item(String/Number key) : Object"/>
+  <item repl="itemAt" display="itemAt(Number index) : Object"/>
+  <item repl="key" display="key(String/Number key) : Object"/>
+  <item repl="keySort" display="keySort([String direction], [Function fn]) : void"/>
+  <item repl="last" display="last() : Object"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="remove" display="remove(Object o) : Object"/>
+  <item repl="removeAt" display="removeAt(Number index) : void"/>
+  <item repl="removeKey" display="removeKey(String key) : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="replace" display="replace(String key, [o {Object}]) : Object"/>
+  <item repl="sort" display="sort([String direction], [Function fn]) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="add" display="add : (Number index, Object o, String key)"/>
+  <item repl="clear" display="clear : ()"/>
+  <item repl="remove" display="remove : (Object o, [String key])"/>
+  <item repl="replace" display="replace : (String key, Object old, Object new)"/>
+</completion>

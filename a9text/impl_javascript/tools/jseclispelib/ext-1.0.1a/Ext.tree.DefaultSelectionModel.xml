@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DefaultSelectionModel" parent="Ext.tree" extends="Observable">
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="clearSelections" display="clearSelections() : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getSelectedNode" display="getSelectedNode() : TreeNode"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="isSelected" display="isSelected(TreeNode node) : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="select" display="select(TreeNode node) : TreeNode"/>
+  <item repl="selectNext" display="selectNext() : TreeNode"/>
+  <item repl="selectPrevious" display="selectPrevious() : TreeNode"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="unselect" display="unselect(TreeNode node) : void"/>
+  <item repl="beforeselect" display="beforeselect : (DefaultSelectionModel this, TreeNode node, TreeNode node)"/>
+  <item repl="selectionchange" display="selectionchange : (DefaultSelectionModel this, TreeNode node)"/>
+</completion>

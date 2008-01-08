@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="JsonReader" parent="Ext.data" extends="Ext.data.DataReader">
+  <item repl="jsonData" display="jsonData : Object"/>
+  <item repl="JsonReader" display="JsonReader(Object meta, Object[]/Ext.data.Record constructor})"/>
+  <item repl="read" display="read(Object response) : Object"/>
+  <item repl="readRecords" display="readRecords(Object o) : Object"/>
+</completion>

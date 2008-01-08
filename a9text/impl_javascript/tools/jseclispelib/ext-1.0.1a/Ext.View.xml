@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="View" parent="Ext" extends="Observable">
+  <item repl="selectedClass" display="selectedClass : Ext.DomHelper.Template"/>
+  <item repl="tpl" display="tpl : Ext.DomHelper.Template"/>
+  <item repl="View" display="View(String/HTMLElement/Element container, String/DomHelper.Template tpl, Object config)"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="clearSelections" display="clearSelections([Boolean suppressEvent]) : void"/>
+  <item repl="findItemFromChild" display="findItemFromChild(HTMLElement node) : HTMLElement"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="getNode" display="getNode(HTMLElement/String/Number nodeInfo) : HTMLElement"/>
+  <item repl="getNodes" display="getNodes(Number startIndex, Number endIndex) : Array"/>
+  <item repl="getSelectedIndexes" display="getSelectedIndexes() : Array"/>
+  <item repl="getSelectedNodes" display="getSelectedNodes() : Array"/>
+  <item repl="getSelectionCount" display="getSelectionCount() : Number"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="indexOf" display="indexOf(HTMLElement/String/Number nodeInfo) : Number"/>
+  <item repl="isSelected" display="isSelected(HTMLElement/Number node) : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="prepareData" display="prepareData(Array/Object data) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="refresh" display="refresh() : void"/>
+  <item repl="refreshNode" display="refreshNode(Number index) : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="select" display="select(Array/HTMLElement/String/Number nodeInfo, [Boolean keepExisting], [Boolean suppressEvent]) : void"/>
+  <item repl="setStore" display="setStore(Store store) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="beforeclick" display="beforeclick : (Ext.View this, Number index, HTMLElement node, Ext.EventObject e)"/>
+  <item repl="beforeselect" display="beforeselect : (Ext.View this, HTMLElement node, Array selections)"/>
+  <item repl="click" display="click : (Ext.View this, Number index, HTMLElement node, Ext.EventObject e)"/>
+  <item repl="contextmenu" display="contextmenu : (Ext.View this, Number index, HTMLElement node, Ext.EventObject e)"/>
+  <item repl="dblclick" display="dblclick : (Ext.View this, Number index, HTMLElement node, Ext.EventObject e)"/>
+  <item repl="selectionchange" display="selectionchange : (Ext.View this, Array selections)"/>
+</completion>

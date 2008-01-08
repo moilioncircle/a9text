@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Button" parent="Ext" extends="Observable">
+  <item repl="disabled" display="disabled : Boolean"/>
+  <item repl="hidden" display="hidden : Boolean"/>
+  <item repl="pressed" display="pressed : Boolean"/>
+  <item repl="Button" display="Button(String/HTMLElement/Element renderTo, Object config)"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="destroy" display="destroy() : void"/>
+  <item repl="disable" display="disable() : void"/>
+  <item repl="enable" display="enable() : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="focus" display="focus() : void"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="getText" display="getText() : String"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="hide" display="hide() : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="setDisabled" display="setDisabled(Boolean enabled) : void"/>
+  <item repl="setHandler" display="setHandler(Function handler, [Object scope]) : void"/>
+  <item repl="setText" display="setText(String text) : void"/>
+  <item repl="setVisible" display="setVisible(Boolean visible) : void"/>
+  <item repl="show" display="show() : void"/>
+  <item repl="toggle" display="toggle([Boolean state]) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="click" display="click : (Button this, EventObject e)"/>
+  <item repl="mouseout" display="mouseout : (Button this, Event e)"/>
+  <item repl="mouseover" display="mouseover : (Button this, Event e)"/>
+  <item repl="toggle" display="toggle : (Button this, Boolean pressed)"/>
+</completion>

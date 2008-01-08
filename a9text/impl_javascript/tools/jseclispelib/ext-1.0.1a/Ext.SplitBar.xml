@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="SplitBar" parent="Ext" extends="Observable">
+  <item repl="animate" display="animate : Boolean"/>
+  <item repl="maxSize" display="maxSize : Number"/>
+  <item repl="minSize" display="minSize : Number"/>
+  <item repl="useShim" display="useShim : Boolean"/>
+  <item repl="SplitBar" display="SplitBar(String/HTMLElement/Element dragElement, String/HTMLElement/Element resizingElement, [Number orientation], [Number placement])"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="destroy" display="destroy(Boolean removeEl) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getAdapter" display="getAdapter() : The"/>
+  <item repl="getMaximumSize" display="getMaximumSize() : Number"/>
+  <item repl="getMinimumSize" display="getMinimumSize() : Number"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="setAdapter" display="setAdapter(Object adapter) : void"/>
+  <item repl="setCurrentSize" display="setCurrentSize(Number size) : void"/>
+  <item repl="setMaximumSize" display="setMaximumSize(Number maxSize) : void"/>
+  <item repl="setMinimumSize" display="setMinimumSize(Number minSize) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="beforeresize" display="beforeresize : (Ext.SplitBar this)"/>
+  <item repl="moved" display="moved : (Ext.SplitBar this, Number newSize)"/>
+  <item repl="resize" display="resize : (Ext.SplitBar this, Number newSize)"/>
+</completion>

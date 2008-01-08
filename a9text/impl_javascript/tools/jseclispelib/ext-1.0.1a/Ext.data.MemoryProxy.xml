@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="MemoryProxy" parent="Ext.data" extends="Object">
+  <item repl="MemoryProxy" display="MemoryProxy(Object data)"/>
+  <item repl="load" display="load(Object params, Ext.data.DataReader) reader, Function callback, Object scope, Object arg) : void"/>
+</completion>

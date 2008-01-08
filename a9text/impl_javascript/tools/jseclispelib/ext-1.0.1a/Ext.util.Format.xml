@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Format" parent="Ext.util" extends="Object">
+  <item repl="capitalize" display="capitalize(String value) : String"/>
+  <item repl="date" display="date(Mixed value, [String format]) : String"/>
+  <item repl="dateRenderer" display="dateRenderer(String format) : Function"/>
+  <item repl="ellipsis" display="ellipsis(String value, Number length) : String"/>
+  <item repl="htmlEncode" display="htmlEncode(String value) : String"/>
+  <item repl="lowercase" display="lowercase(String value) : String"/>
+  <item repl="stripTags" display="stripTags(Mixed value) : String"/>
+  <item repl="substr" display="substr(String value, Number start, Number length) : String"/>
+  <item repl="trim" display="trim(String value) : String"/>
+  <item repl="undef" display="undef(Mixed value) : Mixed"/>
+  <item repl="uppercase" display="uppercase(String value) : String"/>
+  <item repl="usMoney" display="usMoney(Number/String value) : String"/>
+</completion>

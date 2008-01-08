@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Registry" parent="Ext.dd" extends="Object">
+  <item repl="getHandle" display="getHandle(String/HTMLElement id) : Object"/>
+  <item repl="getHandleFromEvent" display="getHandleFromEvent(Event e) : Object"/>
+  <item repl="getTarget" display="getTarget(String/HTMLElement id) : Object"/>
+  <item repl="getTargetFromEvent" display="getTargetFromEvent(Event e) : Object"/>
+  <item repl="register" display="register(String/HTMLElement) element, [Object data]) : void"/>
+  <item repl="unregister" display="unregister(String/HTMLElement) element) : void"/>
+</completion>

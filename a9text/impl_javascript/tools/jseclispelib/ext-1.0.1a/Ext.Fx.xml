@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Fx" parent="Ext" extends="Object">
+  <item repl="fadeIn" display="fadeIn([Object options]) : Element"/>
+  <item repl="fadeOut" display="fadeOut([Object options]) : Element"/>
+  <item repl="frame" display="frame([String color], [Number count], [Object options]) : Element"/>
+  <item repl="ghost" display="ghost([String anchor], [Object options]) : Element"/>
+  <item repl="hasActiveFx" display="hasActiveFx() : Boolean"/>
+  <item repl="hasFxBlock" display="hasFxBlock() : Boolean"/>
+  <item repl="highlight" display="highlight([String color], [Object options]) : Element"/>
+  <item repl="pause" display="pause(Number seconds) : Element"/>
+  <item repl="puff" display="puff([Object options]) : Element"/>
+  <item repl="scale" display="scale(Number width, Number height, [Object options]) : Element"/>
+  <item repl="sequenceFx" display="sequenceFx() : Element"/>
+  <item repl="shift" display="shift(Object options) : Element"/>
+  <item repl="slideIn" display="slideIn([String anchor], [Object options]) : Element"/>
+  <item repl="slideOut" display="slideOut([String anchor], [Object options]) : Element"/>
+  <item repl="stopFx" display="stopFx() : Element"/>
+  <item repl="switchOff" display="switchOff([Object options]) : Element"/>
+  <item repl="syncFx" display="syncFx() : Element"/>
+</completion>

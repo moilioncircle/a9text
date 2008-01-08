@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Toolbar" parent="Ext" extends="Object">
+  <item repl="Toolbar" display="Toolbar(String/HTMLElement/Element container, [Array buttons], Object config)"/>
+  <item repl="add" display="add(Mixed arg1, Mixed arg2, Mixed etc) : void"/>
+  <item repl="addButton" display="addButton(Object/Array config) : Ext.Toolbar.Button/Array"/>
+  <item repl="addDom" display="addDom(Object config) : Ext.Toolbar.Item"/>
+  <item repl="addElement" display="addElement(String/HTMLElement/Element el) : Ext.Toolbar.Item"/>
+  <item repl="addField" display="addField(Field field) : ToolbarItem"/>
+  <item repl="addItem" display="addItem(Toolbar.Item item) : Ext.Toolbar.Item"/>
+  <item repl="addSeparator" display="addSeparator() : Ext.Toolbar.Item"/>
+  <item repl="addSpacer" display="addSpacer() : Ext.Toolbar.Item"/>
+  <item repl="addText" display="addText(String text) : Ext.Toolbar.Item"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="insertButton" display="insertButton(Number index, Object/Toolbar.Item/Toolbar.Button (may) : Ext.Toolbar.Button/Item"/>
+</completion>

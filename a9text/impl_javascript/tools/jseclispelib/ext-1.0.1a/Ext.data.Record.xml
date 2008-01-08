@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Record" parent="Ext.data" extends="Object">
+  <item repl="dirty" display="dirty : Boolean"/>
+  <item repl="Record" display="Record(data {Array}, id (Optional))"/>
+  <item repl="commit" display="commit() : void"/>
+  <item repl="get" display="get(name {String}) : Object"/>
+  <item repl="reject" display="reject() : void"/>
+  <item repl="set" display="set(name {String}, value {Object}) : void"/>
+</completion>

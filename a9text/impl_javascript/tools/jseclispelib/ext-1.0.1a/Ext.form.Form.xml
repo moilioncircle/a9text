@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Form" parent="Ext.form" extends="BasicForm">
+  <item repl="buttons" display="buttons : Array"/>
+  <item repl="waitMsgTarget" display="waitMsgTarget : Mixed"/>
+  <item repl="Form" display="Form(Object config)"/>
+  <item repl="add" display="add(Field field1, [Field field2], [Field etc]) : Form"/>
+  <item repl="addButton" display="addButton(String/Object config, Function handler, [Object scope]) : Ext.Button"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="applyIfToFields" display="applyIfToFields(Object values) : void"/>
+  <item repl="applyToFields" display="applyToFields(Object values) : void"/>
+  <item repl="clearInvalid" display="clearInvalid() : void"/>
+  <item repl="column" display="column(Object config, [Field field1], [Field field2], [Field etc]) : Column"/>
+  <item repl="container" display="container(Object config, [Field field1], [Field field2], [Field etc]) : Layout"/>
+  <item repl="doAction" display="doAction(String actionName, Object options) : void"/>
+  <item repl="end" display="end() : Form"/>
+  <item repl="fieldset" display="fieldset(Object config, [Field field1], [Field field2], [Field etc]) : FieldSet"/>
+  <item repl="findField" display="findField(String id) : Field"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getValues" display="getValues(Boolean asString) : Object"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="isValid" display="isValid() : Boolean"/>
+  <item repl="load" display="load(Object options) : void"/>
+  <item repl="markInvalid" display="markInvalid(Array/Object errors) : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="remove" display="remove(Field field) : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="render" display="render(String/HTMLElement/Element container) : Form"/>
+  <item repl="reset" display="reset() : void"/>
+  <item repl="setValues" display="setValues(Array/Object values) : void"/>
+  <item repl="start" display="start(Object container) : Form"/>
+  <item repl="startMonitoring" display="startMonitoring() : void"/>
+  <item repl="stopMonitoring" display="stopMonitoring() : void"/>
+  <item repl="submit" display="submit(Object options) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="updateRecord" display="updateRecord(Record record) : void"/>
+  <item repl="actioncomplete " display="actioncomplete  : (Form this, Action action)"/>
+  <item repl="actionfailed" display="actionfailed : (Form this, Action action)"/>
+  <item repl="beforeaction" display="beforeaction : (Form this, Action action)"/>
+  <item repl="clientvalidation" display="clientvalidation : (Form this, Boolean valid)"/>
+</completion>

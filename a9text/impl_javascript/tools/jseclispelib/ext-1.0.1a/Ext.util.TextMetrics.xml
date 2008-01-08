@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="TextMetrics" parent="Ext.util" extends="Object">
+  <item repl="bind" display="bind(String/HTMLElement el) : void"/>
+  <item repl="createInstance" display="createInstance(String/HTMLElement el, [Number fixedWidth]) : Ext.util.TextMetrics.Instance"/>
+  <item repl="getHeight" display="getHeight(String text) : Number"/>
+  <item repl="getSize" display="getSize(String text) : Object"/>
+  <item repl="getWidth" display="getWidth(String text) : Number"/>
+  <item repl="measure" display="measure(String/HTMLElement el, String text, [Number fixedWidth]) : Object"/>
+  <item repl="setFixedWidth" display="setFixedWidth(Number width) : void"/>
+</completion>

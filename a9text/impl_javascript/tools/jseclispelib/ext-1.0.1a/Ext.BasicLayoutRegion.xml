@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="BasicLayoutRegion" parent="Ext" extends="Observable">
+  <item repl="panels" display="panels : Ext.util.MixedCollection"/>
+  <item repl="add" display="add(ContentPanel... panel) : Ext.ContentPanel"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getActivePanel" display="getActivePanel() : Ext.ContentPanel"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="getPanel" display="getPanel(Number/String/ContentPanel panel) : Ext.ContentPanel"/>
+  <item repl="getPosition" display="getPosition() : String"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="hasPanel" display="hasPanel(Number/String/ContentPanel panel) : Boolean"/>
+  <item repl="isVisible" display="isVisible() : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="remove" display="remove(Number/String/ContentPanel panel, Boolean preservePanel) : Ext.ContentPanel"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="resizeTo" display="resizeTo(Number newSize) : void"/>
+  <item repl="showPanel" display="showPanel(Number/String/ContentPanel panelId) : Ext.ContentPanel"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="beforeremove" display="beforeremove : (Ext.LayoutRegion this, Ext.ContentPanel panel, Object e)"/>
+  <item repl="collapsed" display="collapsed : (Ext.LayoutRegion this)"/>
+  <item repl="expanded" display="expanded : (Ext.LayoutRegion this)"/>
+  <item repl="invalidated" display="invalidated : (Ext.LayoutRegion this)"/>
+  <item repl="panelactivated" display="panelactivated : (Ext.LayoutRegion this, Ext.ContentPanel panel)"/>
+  <item repl="paneladded" display="paneladded : (Ext.LayoutRegion this, Ext.ContentPanel panel)"/>
+  <item repl="panelremoved" display="panelremoved : (Ext.LayoutRegion this, Ext.ContentPanel panel)"/>
+  <item repl="resized" display="resized : (Ext.LayoutRegion this, Number newSize)"/>
+  <item repl="slidehide" display="slidehide : (Ext.LayoutRegion this)"/>
+  <item repl="slideshow" display="slideshow : (Ext.LayoutRegion this)"/>
+  <item repl="visibilitychange" display="visibilitychange : (Ext.LayoutRegion this, Boolean visibility)"/>
+</completion>

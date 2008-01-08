@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="BorderLayout" parent="Ext" extends="LayoutManager">
+  <item repl="monitorWindowResize" display="monitorWindowResize : Boolean"/>
+  <item repl="BorderLayout" display="BorderLayout(String/HTMLElement/Element container, Object config)"/>
+  <item repl="add" display="add(String target, Ext.ContentPanel panel) : Ext.ContentPanel"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="addRegion" display="addRegion(String target, Object config) : BorderLayoutRegion"/>
+  <item repl="beginUpdate" display="beginUpdate() : void"/>
+  <item repl="endUpdate" display="endUpdate(Boolean noLayout) : void"/>
+  <item repl="findPanel" display="findPanel(String panelId) : Ext.ContentPanel"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="getRegion" display="getRegion(String target) : Ext.LayoutRegion"/>
+  <item repl="getViewSize" display="getViewSize() : Object"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="isUpdating" display="isUpdating() : Boolean"/>
+  <item repl="layout" display="layout() : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="remove" display="remove(String target, Number/String/Ext.ContentPanel panel) : Ext.ContentPanel"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="restoreState" display="restoreState([Ext.state.Provider provider]) : void"/>
+  <item repl="showPanel" display="showPanel(String/ContentPanel panelId) : Ext.ContentPanel"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="layout" display="layout : (Ext.LayoutManager this)"/>
+  <item repl="regioncollapsed" display="regioncollapsed : (Ext.LayoutRegion region)"/>
+  <item repl="regionexpanded" display="regionexpanded : (Ext.LayoutRegion region)"/>
+  <item repl="regionresized" display="regionresized : (Ext.LayoutRegion region, Number newSize)"/>
+</completion>

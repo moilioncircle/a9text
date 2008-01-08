@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="UpdateManager" parent="Ext" extends="Observable">
+  <item repl="defaultUrl" display="defaultUrl : String"/>
+  <item repl="disableCaching" display="disableCaching : Boolean"/>
+  <item repl="el" display="el : Ext.Element"/>
+  <item repl="formUpdateDelegate" display="formUpdateDelegate : Function"/>
+  <item repl="indicatorText" display="indicatorText : String"/>
+  <item repl="loadScripts" display="loadScripts : Boolean"/>
+  <item repl="refreshDelegate" display="refreshDelegate : Function"/>
+  <item repl="renderer" display="renderer : Object"/>
+  <item repl="showLoadIndicator" display="showLoadIndicator : String"/>
+  <item repl="sslBlankUrl" display="sslBlankUrl : String"/>
+  <item repl="timeout" display="timeout : Number"/>
+  <item repl="transaction" display="transaction : Object"/>
+  <item repl="updateDelegate" display="updateDelegate : Function"/>
+  <item repl="UpdateManager" display="UpdateManager(String/HTMLElement/Ext.Element el, [Boolean forceNew])"/>
+  <item repl="UpdateManager.updateElement" display="UpdateManager.updateElement(String/HTMLElement/Ext.Element el, String url, [String/Object params], [Object options]) : void"/>
+  <item repl="abort" display="abort() : void"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="formUpdate" display="formUpdate(String/HTMLElement form, [String url], [Boolean reset], [Function callback]) : void"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="isUpdating" display="isUpdating() : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="refresh" display="refresh([Function callback]) : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="setDefaultUrl" display="setDefaultUrl(String/Function defaultUrl) : void"/>
+  <item repl="setRenderer" display="setRenderer(Object renderer) : void"/>
+  <item repl="showLoading" display="showLoading() : void"/>
+  <item repl="startAutoRefresh" display="startAutoRefresh(Number interval, [String/Function url], [String/Object params], [Function callback], [Boolean refreshNow]) : void"/>
+  <item repl="stopAutoRefresh" display="stopAutoRefresh() : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="update" display="update(Object/String/Function url, [String/Object params], [Function callback], [Boolean discardUrl]) : void"/>
+  <item repl="beforeupdate" display="beforeupdate : (Ext.Element el, String/Object/Function url, String/Object params)"/>
+  <item repl="failure" display="failure : (Ext.Element el, Object oResponseObject)"/>
+  <item repl="update" display="update : (Ext.Element el, Object oResponseObject)"/>
+</completion>

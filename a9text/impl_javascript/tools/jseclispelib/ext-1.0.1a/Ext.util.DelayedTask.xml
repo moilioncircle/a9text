@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DelayedTask" parent="Ext.util" extends="Object">
+  <item repl="DelayedTask" display="DelayedTask([Function fn], [Object scope], [Array args])"/>
+  <item repl="cancel" display="cancel() : void"/>
+  <item repl="delay" display="delay(Number delay, [Function newFn], [Object newScope], [Array newArgs]) : void"/>
+</completion>

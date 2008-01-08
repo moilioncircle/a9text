@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="DragDropMgr" parent="Ext.dd" extends="Object">
+  <item repl="INTERSECT" display="INTERSECT : int"/>
+  <item repl="POINT" display="POINT : int"/>
+  <item repl="clickPixelThresh" display="clickPixelThresh : int"/>
+  <item repl="clickTimeThresh" display="clickTimeThresh : int"/>
+  <item repl="css" display="css : Object"/>
+  <item repl="el" display="el : Object"/>
+  <item repl="id" display="id : Object"/>
+  <item repl="mode" display="mode : int"/>
+  <item repl="preventDefault" display="preventDefault : boolean"/>
+  <item repl="stopPropagation" display="stopPropagation : boolean"/>
+  <item repl="useCache" display="useCache : boolean"/>
+  <item repl="getBestMatch" display="getBestMatch(DragDrop[] dds) : DragDrop"/>
+  <item repl="getCss" display="getCss(String id) : Object"/>
+  <item repl="getDDById" display="getDDById(String id) : DragDrop"/>
+  <item repl="getElement" display="getElement(String id) : Object"/>
+  <item repl="getLocation" display="getLocation(DragDrop oDD) : Ext.lib.Region"/>
+  <item repl="getPosX" display="getPosX(el the) : int"/>
+  <item repl="getPosY" display="getPosY(el the) : int"/>
+  <item repl="getRelated" display="getRelated(DragDrop p_oDD, boolean bTargetsOnly) : DragDrop[]"/>
+  <item repl="getScrollLeft" display="getScrollLeft() : int"/>
+  <item repl="getScrollTop" display="getScrollTop() : int"/>
+  <item repl="getStyle" display="getStyle(HTMLElement el, string styleProp) : string"/>
+  <item repl="handleWasClicked" display="handleWasClicked(node the) : void"/>
+  <item repl="isDragDrop" display="isDragDrop(String id) : boolean"/>
+  <item repl="isHandle" display="isHandle(String id) : boolean"/>
+  <item repl="isLegalTarget" display="isLegalTarget(DragDrop the, DragDrop the) : boolean"/>
+  <item repl="isLocked" display="isLocked() : boolean"/>
+  <item repl="isTypeOfDD" display="isTypeOfDD(Object the) : boolean"/>
+  <item repl="lock" display="lock() : void"/>
+  <item repl="moveToEl" display="moveToEl(HTMLElement moveEl, HTMLElement targetEl) : void"/>
+  <item repl="numericSort" display="numericSort() : void"/>
+  <item repl="refreshCache" display="refreshCache(Object groups) : void"/>
+  <item repl="regDragDrop" display="regDragDrop(DragDrop oDD, String sGroup) : void"/>
+  <item repl="regHandle" display="regHandle(String sDDId, String sHandleId) : void"/>
+  <item repl="startDrag" display="startDrag(x {int}, y {int}) : void"/>
+  <item repl="stopEvent" display="stopEvent(Event e) : void"/>
+  <item repl="swapNode" display="swapNode(n1 the, n2 the) : void"/>
+  <item repl="unlock" display="unlock() : void"/>
+  <item repl="verifyEl" display="verifyEl(HTMLElement el) : boolean"/>
+</completion>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="ContentPanel" parent="Ext" extends="Observable">
+  <item repl="ContentPanel" display="ContentPanel(String/HTMLElement/Element el, String/Object config, [String content])"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="destroy" display="destroy() : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getEl" display="getEl() : Ext.Element"/>
+  <item repl="getId" display="getId() : String"/>
+  <item repl="getTitle" display="getTitle() : String"/>
+  <item repl="getToolbar" display="getToolbar() : Ext.Toolbar"/>
+  <item repl="getUpdateManager" display="getUpdateManager() : Ext.UpdateManager"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="isClosable" display="isClosable() : Boolean"/>
+  <item repl="load" display="load(Object/String/Function url, [String/Object params], [Function callback], [Boolean discardUrl]) : Ext.ContentPanel"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="refresh" display="refresh() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="setContent" display="setContent(String content, [Boolean loadScripts]) : void"/>
+  <item repl="setTitle" display="setTitle(String title) : void"/>
+  <item repl="setUrl" display="setUrl(String/Function url, [String/Object params], [Boolean loadOnce]) : Ext.UpdateManager"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="activate" display="activate : (Ext.ContentPanel this)"/>
+  <item repl="deactivate" display="deactivate : (Ext.ContentPanel this)"/>
+  <item repl="resize" display="resize : (Ext.ContentPanel this, Number width, Number height)"/>
+</completion>

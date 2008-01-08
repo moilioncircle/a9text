@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="StatusProxy" parent="Ext.dd" extends="Object">
+  <item repl="StatusProxy" display="StatusProxy(Object config)"/>
+  <item repl="getEl" display="getEl() : Ext.Layer"/>
+  <item repl="getGhost" display="getGhost() : Ext.Element"/>
+  <item repl="hide" display="hide(Boolean clear) : void"/>
+  <item repl="repair" display="repair(Array xy, Function callback, Object scope) : void"/>
+  <item repl="reset" display="reset(Boolean clearGhost) : void"/>
+  <item repl="setStatus" display="setStatus(String cssClass) : void"/>
+  <item repl="show" display="show() : void"/>
+  <item repl="stop" display="stop() : void"/>
+  <item repl="sync" display="sync() : void"/>
+  <item repl="update" display="update(String html) : void"/>
+</completion>

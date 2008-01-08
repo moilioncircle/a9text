@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="TreePanel" parent="Ext.tree" extends="Tree">
+  <item repl="dragZone" display="dragZone : Ext.tree.TreeDragZone"/>
+  <item repl="dropZone" display="dropZone : Ext.tree.TreeDropZone"/>
+  <item repl="id" display="id : Object"/>
+  <item repl="root" display="root : Node"/>
+  <item repl="TreePanel" display="TreePanel(String/HTMLElement/Element el, Object config)"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="collapseAll" display="collapseAll() : void"/>
+  <item repl="expandAll" display="expandAll() : void"/>
+  <item repl="expandPath" display="expandPath(String path, [String attr], [Function callback]) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getEl" display="getEl() : void"/>
+  <item repl="getLoader" display="getLoader() : void"/>
+  <item repl="getNodeById" display="getNodeById(String id) : Node"/>
+  <item repl="getRootNode" display="getRootNode() : Node"/>
+  <item repl="getSelectionModel" display="getSelectionModel() : void"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="render" display="render() : void"/>
+  <item repl="selectPath" display="selectPath(String path, [String attr], [Function callback]) : void"/>
+  <item repl="setRootNode" display="setRootNode(Node node) : Node"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="append" display="append : (Tree tree, Node parent, Node node, Number index)"/>
+  <item repl="beforeappend" display="beforeappend : (Tree tree, Node parent, Node node)"/>
+  <item repl="beforechildrenrendered" display="beforechildrenrendered : (Node node)"/>
+  <item repl="beforeclick" display="beforeclick : (Node node, Ext.EventObject e)"/>
+  <item repl="beforecollapse" display="beforecollapse : (Node node, Boolean deep, Boolean anim)"/>
+  <item repl="beforeexpand" display="beforeexpand : (Node node, Boolean deep, Boolean anim)"/>
+  <item repl="beforeinsert" display="beforeinsert : (Tree tree, Node parent, Node node, Node refNode)"/>
+  <item repl="beforeload" display="beforeload : (Node node)"/>
+  <item repl="beforemove" display="beforemove : (Tree tree, Node node, Node oldParent, Node newParent, Number index)"/>
+  <item repl="beforenodedrop" display="beforenodedrop : (Object dropEvent)"/>
+  <item repl="beforeremove" display="beforeremove : (Tree tree, Node parent, Node node)"/>
+  <item repl="click" display="click : (Node node, Ext.EventObject e)"/>
+  <item repl="collapse" display="collapse : (Node node)"/>
+  <item repl="contextmenu" display="contextmenu : (Node node, Ext.EventObject e)"/>
+  <item repl="dblclick" display="dblclick : (Node node, Ext.EventObject e)"/>
+  <item repl="disabledchange" display="disabledchange : (Node node, Boolean disabled)"/>
+  <item repl="dragdrop" display="dragdrop : (Ext.tree.TreePanel this, Ext.tree.TreeNode node, DD dd, event e)"/>
+  <item repl="enddrag" display="enddrag : (Ext.tree.TreePanel this, Ext.tree.TreeNode node, event e)"/>
+  <item repl="expand" display="expand : (Node node)"/>
+  <item repl="insert" display="insert : (Tree tree, Node parent, Node node, Node refNode)"/>
+  <item repl="load" display="load : (Node node)"/>
+  <item repl="move" display="move : (Tree tree, Node node, Node oldParent, Node newParent, Number index)"/>
+  <item repl="nodedragover" display="nodedragover : (Object dragOverEvent)"/>
+  <item repl="nodedrop" display="nodedrop : (Object dropEvent)"/>
+  <item repl="remove" display="remove : (Tree tree, Node parent, Node node)"/>
+  <item repl="startdrag" display="startdrag : (Ext.tree.TreePanel this, Ext.tree.TreeNode node, event e)"/>
+  <item repl="textchange" display="textchange : (Node node, String text, String oldText)"/>
+</completion>

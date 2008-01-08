@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="ArrayReader" parent="Ext.data" extends="Ext.data.DataReader">
+  <item repl="ArrayReader" display="ArrayReader(Object meta, Array/Ext.data.Record constructor})"/>
+  <item repl="readRecords" display="readRecords(Object o) : Object"/>
+</completion>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Shadow" parent="Ext" extends="Object">
+  <item repl="Shadow" display="Shadow(Object config)"/>
+  <item repl="hide" display="hide() : void"/>
+  <item repl="isVisible" display="isVisible() : void"/>
+  <item repl="realign" display="realign(Number left, Number top, Number width, Number height) : void"/>
+  <item repl="setZIndex" display="setZIndex(Number zindex) : void"/>
+  <item repl="show" display="show(String/HTMLElement/Element targetEl) : void"/>
+</completion>

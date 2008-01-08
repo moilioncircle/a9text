@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="Element" parent="Ext" extends="Object">
+  <item repl="Element.DISPLAY" display="Element.DISPLAY : Number"/>
+  <item repl="Element.VISIBILITY" display="Element.VISIBILITY : Number"/>
+  <item repl="defaultUnit" display="defaultUnit : String"/>
+  <item repl="dom" display="dom : HTMLElement"/>
+  <item repl="id" display="id : String"/>
+  <item repl="originalDisplay" display="originalDisplay : String"/>
+  <item repl="Element" display="Element(String/HTMLElement element, [Boolean forceNew])"/>
+  <item repl="Element.fly" display="Element.fly(String/HTMLElement el, [String named]) : Element"/>
+  <item repl="Element.get" display="Element.get(String/HTMLElement/Element el) : Element"/>
+  <item repl="addClass" display="addClass(String/Array className) : Ext.Element"/>
+  <item repl="addClassOnClick" display="addClassOnClick(String className) : Ext.Element"/>
+  <item repl="addClassOnFocus" display="addClassOnFocus(String className) : Ext.Element"/>
+  <item repl="addClassOnOver" display="addClassOnOver(String className, [Boolean preventFlicker]) : Ext.Element"/>
+  <item repl="addKeyListener" display="addKeyListener(Number/Array/Object/String key, Function fn, [Object scope]) : Ext.KeyMap"/>
+  <item repl="addKeyMap" display="addKeyMap(Object config) : Ext.KeyMap"/>
+  <item repl="addListener" display="addListener(String eventName, Function fn, [Object scope], [Object options]) : void"/>
+  <item repl="alignTo" display="alignTo(String/HTMLElement/Ext.Element element, String position, [Array offsets], [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="anchorTo" display="anchorTo(String/HTMLElement/Ext.Element element, String position, [Array offsets], [Boolean/Object animate], [Boolean/Number monitorScroll],  ) : void"/>
+  <item repl="animate" display="animate(Object args, [Float duration], [Function onComplete], [String easing], [String animType]) : Ext.Element"/>
+  <item repl="appendChild" display="appendChild(String/HTMLElement/Array/Element/CompositeElement el) : Ext.Element"/>
+  <item repl="appendTo" display="appendTo(String/HTMLElement/Element el) : Ext.Element"/>
+  <item repl="applyStyles" display="applyStyles(String/Object/Function styles) : Ext.Element"/>
+  <item repl="autoHeight" display="autoHeight([Boolean animate], [Float duration], [Function onComplete], [String easing]) : Ext.Element"/>
+  <item repl="beginMeasure" display="beginMeasure() : Ext.Element"/>
+  <item repl="blur" display="blur() : Ext.Element"/>
+  <item repl="center" display="center([String/HTMLElement/Ext.Element centerIn]) : void"/>
+  <item repl="child" display="child(String selector, Boolean returnDom) : Element"/>
+  <item repl="clean" display="clean([Boolean forceReclean]) : void"/>
+  <item repl="clearOpacity" display="clearOpacity() : Ext.Element"/>
+  <item repl="clearPositioning" display="clearPositioning([String value]) : Ext.Element"/>
+  <item repl="clip" display="clip() : Ext.Element"/>
+  <item repl="contains" display="contains(HTMLElement/String el) : Boolean"/>
+  <item repl="createChild" display="createChild(Object config, [HTMLElement insertBefore], [Boolean returnDom]) : Ext.Element"/>
+  <item repl="createProxy" display="createProxy(String/Object config, [String/HTMLElement renderTo], [Boolean matchBox]) : Ext.Element"/>
+  <item repl="createShim" display="createShim() : Ext.Element"/>
+  <item repl="down" display="down(String selector, Boolean returnDom) : Element"/>
+  <item repl="enableDisplayMode" display="enableDisplayMode([String display]) : Ext.Element"/>
+  <item repl="endMeasure" display="endMeasure() : Ext.Element"/>
+  <item repl="findParent" display="findParent(String ss, [Number/String/HTMLElement/Element maxDepth], [Boolean returnEl]) : HTMLElement"/>
+  <item repl="findParentNode" display="findParentNode(String ss, [Number/String/HTMLElement/Element maxDepth], [Boolean returnEl]) : HTMLElement"/>
+  <item repl="fitToParent" display="fitToParent([Boolean monitorResize], [String/HTMLElment/Element targetParent]) : Ext.Element"/>
+  <item repl="focus" display="focus() : Ext.Element"/>
+  <item repl="getAlignToXY" display="getAlignToXY(String/HTMLElement/Ext.Element element, String position, [Array offsets]) : Array"/>
+  <item repl="getAnchorXY" display="getAnchorXY([String anchor], [Object size], [Boolean local]) : Array"/>
+  <item repl="getBorderWidth" display="getBorderWidth(String side) : Number"/>
+  <item repl="getBottom" display="getBottom(Boolean local) : Number"/>
+  <item repl="getBox" display="getBox([Boolean contentBox], [Boolean local]) : Object"/>
+  <item repl="getCenterXY" display="getCenterXY() : Array"/>
+  <item repl="getColor" display="getColor(String attr, String defaultValue, [String prefix]) : void"/>
+  <item repl="getComputedHeight" display="getComputedHeight() : Number"/>
+  <item repl="getComputedWidth" display="getComputedWidth() : Number"/>
+  <item repl="getFrameWidth" display="getFrameWidth(String sides) : Number"/>
+  <item repl="getHeight" display="getHeight([Boolean contentHeight]) : Number"/>
+  <item repl="getLeft" display="getLeft(Boolean local) : Number"/>
+  <item repl="getMargins" display="getMargins([String sides]) : Object/Number"/>
+  <item repl="getNextSibling" display="getNextSibling() : HTMLElement"/>
+  <item repl="getPadding" display="getPadding(String side) : Number"/>
+  <item repl="getPositioning" display="getPositioning() : Object"/>
+  <item repl="getPrevSibling" display="getPrevSibling() : HTMLElement"/>
+  <item repl="getRegion" display="getRegion() : Region"/>
+  <item repl="getRight" display="getRight(Boolean local) : Number"/>
+  <item repl="getSize" display="getSize([Boolean contentSize]) : Object"/>
+  <item repl="getStyle" display="getStyle(String property) : String"/>
+  <item repl="getStyles" display="getStyles(String style1, String style2, String etc) : Object"/>
+  <item repl="getTop" display="getTop(Boolean local) : Number"/>
+  <item repl="getUpdateManager" display="getUpdateManager() : Ext.UpdateManager"/>
+  <item repl="getValue" display="getValue(Boolean asNumber) : String/Number"/>
+  <item repl="getWidth" display="getWidth([Boolean contentWidth]) : Number"/>
+  <item repl="getX" display="getX() : Number"/>
+  <item repl="getXY" display="getXY() : Array"/>
+  <item repl="getY" display="getY() : Number"/>
+  <item repl="hasClass" display="hasClass(String className) : Boolean"/>
+  <item repl="hide" display="hide([Boolean/Object animate]) : Ext.Element"/>
+  <item repl="initDD" display="initDD(String group, Object config, Object overrides) : Ext.dd.DD"/>
+  <item repl="initDDProxy" display="initDDProxy(String group, Object config, Object overrides) : Ext.dd.DDProxy"/>
+  <item repl="initDDTarget" display="initDDTarget(String group, Object config, Object overrides) : Ext.dd.DDTarget"/>
+  <item repl="insertAfter" display="insertAfter(String/HTMLElement/Element el) : Ext.Element"/>
+  <item repl="insertBefore" display="insertBefore(String/HTMLElement/Element el) : Ext.Element"/>
+  <item repl="insertFirst" display="insertFirst(String/HTMLElement/Element/Object el) : Ext.Element"/>
+  <item repl="insertHtml" display="insertHtml(String where, String html) : HTMLElement"/>
+  <item repl="insertSibling" display="insertSibling(String/HTMLElement/Element/Object el, [String where], [Boolean returnDom]) : Ext.Element"/>
+  <item repl="is" display="is(String ss) : Boolean"/>
+  <item repl="isBorderBox" display="isBorderBox() : Boolean"/>
+  <item repl="isDisplayed" display="isDisplayed() : Boolean"/>
+  <item repl="isMasked" display="isMasked() : Boolean"/>
+  <item repl="isScrollable" display="isScrollable() : Boolean"/>
+  <item repl="isVisible" display="isVisible(Boolean deep) : Boolean"/>
+  <item repl="load" display="load(String/Function url, [String/Object params], [Function callback], [Boolean discardUrl]) : Ext.Element"/>
+  <item repl="mask" display="mask([String msg], [String msgCls]) : Element"/>
+  <item repl="move" display="move(String direction, Number distance, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="moveTo" display="moveTo(Number x, Number y, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="position" display="position([String pos], [Number zIndex], [Number x], [Number y]) : void"/>
+  <item repl="query" display="query(String selector) : Array"/>
+  <item repl="radioClass" display="radioClass(String className) : Ext.Element"/>
+  <item repl="remove" display="remove() : void"/>
+  <item repl="removeAllListeners" display="removeAllListeners() : Ext.Element"/>
+  <item repl="removeClass" display="removeClass(String/Array className) : Ext.Element"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function fn) : Ext.Element"/>
+  <item repl="repaint" display="repaint() : Ext.Element"/>
+  <item repl="replace" display="replace(String/HTMLElement/Element el) : Ext.Element"/>
+  <item repl="replaceClass" display="replaceClass(String oldClassName, String newClassName) : Ext.Element"/>
+  <item repl="scroll" display="scroll(String direction, Number distance, [Boolean/Object animate]) : Boolean"/>
+  <item repl="scrollIntoView" display="scrollIntoView([String/HTMLElement/Element container], [Boolean hscroll]) : Ext.Element"/>
+  <item repl="scrollTo" display="scrollTo(String side, Number value, [Boolean/Object animate]) : Element"/>
+  <item repl="select" display="select(String selector, Boolean unique) : CompositeElement/CompositeElementLite"/>
+  <item repl="set" display="set(Object o, [Boolean useSet]) : Ext.Element"/>
+  <item repl="setBottom" display="setBottom(String bottom) : Ext.Element"/>
+  <item repl="setBounds" display="setBounds(Number x, Number y, Number width, Number height, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setBox" display="setBox(Object box, [Boolean adjust], [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setDisplayed" display="setDisplayed(Boolean value) : Ext.Element"/>
+  <item repl="setHeight" display="setHeight(Number height, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setLeft" display="setLeft(String left) : Ext.Element"/>
+  <item repl="setLeftTop" display="setLeftTop() : Ext.Element"/>
+  <item repl="setLocation" display="setLocation(Number x, Number y, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setOpacity" display="setOpacity(Float opacity, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setPositioning" display="setPositioning(Object posCfg) : Ext.Element"/>
+  <item repl="setRegion" display="setRegion(Ext.lib.Region region, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setRight" display="setRight(String right) : Ext.Element"/>
+  <item repl="setSize" display="setSize(Number width, Number height, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setStyle" display="setStyle(String/Object property, [String val]) : Ext.Element"/>
+  <item repl="setTop" display="setTop(String top) : Ext.Element"/>
+  <item repl="setVisibilityMode" display="setVisibilityMode(visMode Element.VISIBILITY) : Ext.Element"/>
+  <item repl="setVisible" display="setVisible(Boolean visible, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setWidth" display="setWidth(Number width, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setX" display="setX(Number The, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setXY" display="setXY(Array pos, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="setY" display="setY(Number The, [Boolean/Object animate]) : Ext.Element"/>
+  <item repl="show" display="show([Boolean/Object animate]) : Ext.Element"/>
+  <item repl="swallowEvent" display="swallowEvent(String eventName, [Boolean preventDefault]) : Ext.Element"/>
+  <item repl="toggle" display="toggle([Boolean/Object animate]) : Ext.Element"/>
+  <item repl="toggleClass" display="toggleClass(String className) : Ext.Element"/>
+  <item repl="translatePoints" display="translatePoints(Number/Array x, Number y, Object An) : void"/>
+  <item repl="unclip" display="unclip() : Ext.Element"/>
+  <item repl="unmask" display="unmask() : void"/>
+  <item repl="unselectable" display="unselectable() : Ext.Element"/>
+  <item repl="up" display="up(String ss, [Number/String/HTMLElement/Element maxDepth]) : Ext.Element"/>
+  <item repl="update" display="update(String html, [Boolean loadScripts], Function callback) : Ext.Element"/>
+  <item repl="wrap" display="wrap([Object config], [Boolean returnDom]) : /HTMLElementElement"/>
+</completion>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="GridView" parent="Ext.grid" extends="AbstractGridView">
+  <item repl="GridView" display="GridView(Object config)"/>
+  <item repl="autoSizeColumn" display="autoSizeColumn(Number colIndex, Boolean forceMinSize) : void"/>
+  <item repl="autoSizeColumns" display="autoSizeColumns() : void"/>
+  <item repl="ensureVisible" display="ensureVisible(Number row, Number col, Boolean hscroll) : void"/>
+  <item repl="fitColumns" display="fitColumns(Boolean reserveScrollSpace) : void"/>
+  <item repl="focusCell" display="focusCell(Number row, Number col, Boolean hscroll) : void"/>
+  <item repl="focusRow" display="focusRow(Number row) : void"/>
+  <item repl="getFooterPanel" display="getFooterPanel(Boolean doShow) : Ext.Element"/>
+  <item repl="getHeaderPanel" display="getHeaderPanel(Boolean doShow) : Ext.Element"/>
+  <item repl="getRowClass" display="getRowClass(Record record, Number index) : void"/>
+  <item repl="refresh" display="refresh(Boolean headersToo) : void"/>
+  <item repl="scrollToTop" display="scrollToTop() : void"/>
+</completion>

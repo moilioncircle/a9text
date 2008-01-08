@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="RowSelectionModel" parent="Ext.grid" extends="AbstractSelectionModel">
+  <item repl="RowSelectionModel" display="RowSelectionModel(Object config)"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="clearSelections" display="clearSelections() : void"/>
+  <item repl="deselectRange" display="deselectRange(Number startRow, Number endRow) : void"/>
+  <item repl="deselectRow" display="deselectRow(Number row) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getCount" display="getCount() : Number"/>
+  <item repl="getSelected" display="getSelected() : Record"/>
+  <item repl="getSelections" display="getSelections() : Array"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="hasSelection" display="hasSelection() : Boolean"/>
+  <item repl="isIdSelected" display="isIdSelected(String id) : Boolean"/>
+  <item repl="isLocked" display="isLocked() : Boolean"/>
+  <item repl="isSelected" display="isSelected(Number/Record record) : Boolean"/>
+  <item repl="lock" display="lock() : void"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="selectAll" display="selectAll() : void"/>
+  <item repl="selectFirstRow" display="selectFirstRow() : void"/>
+  <item repl="selectLastRow" display="selectLastRow([Boolean keepExisting]) : void"/>
+  <item repl="selectNext" display="selectNext([Boolean keepExisting]) : void"/>
+  <item repl="selectPrevious" display="selectPrevious([Boolean keepExisting]) : void"/>
+  <item repl="selectRange" display="selectRange(Number startRow, Number endRow, [Boolean keepExisting]) : void"/>
+  <item repl="selectRecords" display="selectRecords(Array records, [Boolean keepExisting]) : void"/>
+  <item repl="selectRow" display="selectRow(Number row, [Boolean keepExisting]) : void"/>
+  <item repl="selectRows" display="selectRows(Array rows, [Boolean keepExisting]) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="unlock" display="unlock() : void"/>
+  <item repl="beforerowselect" display="beforerowselect : (SelectionModel this, Number rowIndex)"/>
+  <item repl="rowselect" display="rowselect : (SelectionModel this, Number rowIndex)"/>
+  <item repl="selectionchange" display="selectionchange : (SelectionModel this)"/>
+</completion>

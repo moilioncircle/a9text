@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////
+This JSEClipse Yui-Ext library created by        
+ FerlyCreator,General date at 2007/5/11.         
+/////////////////////////////////////////////////-->
+<completion version="ext-1.0.1a" prefix="ColumnModel" parent="Ext.grid" extends="Observable">
+  <item repl="config" display="config : Object"/>
+  <item repl="defaultSortable" display="defaultSortable : Boolean"/>
+  <item repl="defaultWidth" display="defaultWidth : Number"/>
+  <item repl="ColumnModel" display="ColumnModel(Object config)"/>
+  <item repl="addEvents" display="addEvents(Object object) : void"/>
+  <item repl="addListener" display="addListener(String eventName, Function handler, [Object scope], [Object options]) : void"/>
+  <item repl="fireEvent" display="fireEvent(String eventName, Object... args) : Boolean"/>
+  <item repl="getCellEditor" display="getCellEditor(Number colIndex, Number rowIndex) : Object"/>
+  <item repl="getColumnCount" display="getColumnCount() : Number"/>
+  <item repl="getColumnHeader" display="getColumnHeader(Number col) : String"/>
+  <item repl="getColumnId" display="getColumnId(Number index) : String"/>
+  <item repl="getColumnTooltip" display="getColumnTooltip(Number col) : String"/>
+  <item repl="getColumnWidth" display="getColumnWidth(Number col) : Number"/>
+  <item repl="getDataIndex" display="getDataIndex(Number col) : Number"/>
+  <item repl="getRenderer" display="getRenderer(Number col) : Function"/>
+  <item repl="getTotalWidth" display="getTotalWidth(Boolean includeHidden) : Number"/>
+  <item repl="hasListener" display="hasListener(String eventName) : Boolean"/>
+  <item repl="isCellEditable" display="isCellEditable(Number colIndex, Number rowIndex) : Boolean"/>
+  <item repl="isFixed" display="isFixed() : void"/>
+  <item repl="isHidden" display="isHidden(Number colIndex) : Boolean"/>
+  <item repl="isResizable" display="isResizable() : Boolean"/>
+  <item repl="isSortable" display="isSortable(Number col) : Boolean"/>
+  <item repl="on" display="on(String eventName, Function handler, [Object options]) : void"/>
+  <item repl="purgeListeners" display="purgeListeners() : void"/>
+  <item repl="removeListener" display="removeListener(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="setColumnHeader" display="setColumnHeader(Number col, String header) : void"/>
+  <item repl="setColumnTooltip" display="setColumnTooltip(Number col, String tooltip) : void"/>
+  <item repl="setColumnWidth" display="setColumnWidth(Number col, Number width) : void"/>
+  <item repl="setDataIndex" display="setDataIndex(Number col, Number dataIndex) : void"/>
+  <item repl="setEditable" display="setEditable(Number col, Boolean editable) : void"/>
+  <item repl="setEditor" display="setEditor(Number col, Object editor) : void"/>
+  <item repl="setHidden" display="setHidden(Number colIndex, Boolean hidden) : void"/>
+  <item repl="setRenderer" display="setRenderer(Number col, Function fn) : void"/>
+  <item repl="un" display="un(String eventName, Function handler, [Object scope]) : void"/>
+  <item repl="columlockchange" display="columlockchange : (ColumnModel this, Number colIndex, Boolean locked)"/>
+  <item repl="columnmoved" display="columnmoved : (ColumnModel this, Number oldIndex, Number newIndex)"/>
+  <item repl="headerchange" display="headerchange : (ColumnModel this, Number columnIndex, Number newText)"/>
+  <item repl="hiddenchange" display="hiddenchange : (ColumnModel this, Number columnIndex, Number hidden)"/>
+  <item repl="widthchange" display="widthchange : (ColumnModel this, Number columnIndex, Number newWidth)"/>
+</completion>
