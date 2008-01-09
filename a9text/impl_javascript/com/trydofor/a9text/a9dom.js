@@ -11,12 +11,12 @@ String getType()
 A9Dom  getParent()
 
 int    getTier()
-void   setTier(int)
+void   setTier(int tier)
 String getText()
-void   setText(text)
-Object getInfo(key)
+void   setText(String text)
+Object getInfo(String key)
     key == null 时,返回所有info's key-val对象
-void   putInfo(key,value)
+void   putInfo(String key, Object value)
 -----------------------------------------------------------
 int nowChild(pos)
     设置或查询枚举开始位置
