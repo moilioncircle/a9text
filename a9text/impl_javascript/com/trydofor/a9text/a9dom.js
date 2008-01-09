@@ -27,22 +27,22 @@ boolean hasNext()
 A9Dom nextChild()
     获得下一个child,如果没有或到最后一个child以后再调用,返回null;
 
-A9Dom newChild(type)
+A9Dom newChild(String type)
     得到一个新的child,推荐使用
 
-A9Dom getChildById(id)
+A9Dom getChildById(int id)
     获得指定id的child引用
     
-A9Dom getChildByPos(pos)
+A9Dom getChildByPos(int pos)
     获得指定位置的child引用
     
-A9Dom dropChild(id)
+A9Dom dropChild(int id)
     删除指定id的child.
 
-void  swapChild(id1,id2)
+void  swapChild(int id1,int id2)
     交换指定两个child的位置.
 
-[] getAllChildId()
+A9Dom[] getAllChildId()
     以数组形式返回所有child的id,无child,返回[];
 */
 var A9Dom = function(parent,type)
