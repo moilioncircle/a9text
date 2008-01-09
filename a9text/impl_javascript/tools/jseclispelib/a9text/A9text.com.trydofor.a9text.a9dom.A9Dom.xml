@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="A9Dom" extends="Object">
+    <item repl="__counter__" display="static counter"/>
+    <item repl="()" display="A9Dom(A9Dom parent,String type)"/>
+    <item repl="getId()" display="int getId()"/>
+    <item repl="getType()" display="String getType()"/>
+    <item repl="getParent()" display="A9Dom getParent()"/>
+    <item repl="getTier()" display="int getTier()"/>
+    <item repl="setTier()" display="void setTier(int tier)"/>
+    <item repl="getText()" display="String getText()"/>
+    <item repl="setText()" display="Void setText(String text)"/>
+    <item repl="getInfo()" display="Object getInfo(String key)"/>
+    <item repl="putInfo()" display="Void putInfo(String key,Object value)"/>
+    <item repl="nowChild()" display="int nowChild([int pos])"/>
+    <item repl="hasNext()" display="boolean hasNext()"/>
+    <item repl="nextChild()" display="A9Dom nextChild()"/>
+    <item repl="newChild()" display="A9Dom newChild(String type)"/>
+    <item repl="getChildById()" display="A9Dom getChildById(int id)"/>
+    <item repl="getChildByPos()" display="A9Dom getChildByPos(int pos)"/>
+    <item repl="dropChild()" display="A9Dom dropChild(int id)"/>
+    <item repl="swapChild()" display="void swapChild(int id1,int id2)"/>
+    <item repl="getAllChildId()" display="A9Dom[] getAllChildId()"/>
+</completion>

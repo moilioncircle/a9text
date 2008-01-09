@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="A9Conf" extends="XmlReaderClass">
+    <item repl="getConf()" display="String getConf(String key)"/>
+</completion>

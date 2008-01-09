@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="A9Util" extends="Object">
+    <item repl="getFile()" display="String getFile(String file,String dir)"/>
+    <item repl="getDir()" display="String getDir(String file)"/>
+    <item repl="htm2txt()" display="String htm2txt(String str,String mode)"/>
+    <item repl="txt2htm()" display="String txt2htm(String str,String mode)"/>
+    <item repl="trimBoth()" display="String trimBoth(String line)"/>
+    <item repl="trimLeft()" display="String trimLeft(String line)"/>
+    <item repl="trimRigth()" display="String trimRigth(String line)"/>
+    <item repl="calTier()" display="int calTier(String text)"/>
+    <item repl="isEscapeLine()" display="boolean isEscapeLine(String para)"/>
+    <item repl="trimEscape()" display="String trimEscape(String text,int pos)"/>
+    <item repl="isEscape()" display="boolean isEscape(String text,int pos)"/>
+    <item repl="hasVariable()" display="boolean hasVariable(String str)"/>
+    <item repl="getCRLF()" display="String getCRLF(String text)"/>
+    <item repl="progressInfo()" display="Void progressInfo(String info)"/>
+</completion>
