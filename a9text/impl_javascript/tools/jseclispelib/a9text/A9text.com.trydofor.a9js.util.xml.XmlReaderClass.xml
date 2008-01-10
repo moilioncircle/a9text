@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="XmlReaderClass" extends="Object">
+    <item repl="loadFormFile()" display="Void loadFormFile(String file)"/>
+    <item repl="loadFromText()" display="Void loadFromText(String text)"/>
+    <item repl="selectNodes()" display="Node[] selectNodes(String xpath, [Node node])"/>
+    <item repl="selectSingleNode()" display="Node selectSingleNode(String xpath, [Node node])"/>
+    <item repl="getNodeTextOrAttr()" display="String getNodeTextOrAttr(String xpath, [Node node])"/>
+    <item repl="getNodeAttribute()" display="String getNodeAttribute(Node node, String name)"/>
+    <item repl="getNodeText()" display="String getNodeText(Node node)"/>
+</completion>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="EncoderClass" extends="Object">
+    <item repl="base64Encode()" display="String base64Encode(String str)"/>
+    <item repl="base64Decode()" display="String base64Decode(String str)"/>
+    <item repl="utf16to8()" display="String utf16to8(String str)"/>
+    <item repl="utf8to16()" display="String utf8to16(String str)"/>
+</completion>

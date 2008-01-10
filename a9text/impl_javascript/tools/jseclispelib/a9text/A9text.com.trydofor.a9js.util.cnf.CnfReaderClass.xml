@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="CnfReaderClass" extends="Object">
+    <item repl="loadFormFile()" display="Void loadFormFile(String file)"/>
+    <item repl="loadFromText()" display="Void loadFromText(String text)"/>
+    <item repl="getValue()" display="String getValue(String key)"/>
+</completion>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="DESClass" extends="Object">
+    <item repl="getEncoder()" display="EncoderClass getEncoder()"/>
+    <item repl="encrypt()" display="String encrypt(String key, String val)"/>
+    <item repl="decrypt()" display="String decrypt(String key, String val)"/>
+</completion>

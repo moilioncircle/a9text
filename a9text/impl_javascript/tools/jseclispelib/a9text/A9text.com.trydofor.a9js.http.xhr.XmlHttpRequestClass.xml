@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="XmlHttpRequestClass" extends="Object">
+    <item repl="setMaxActive()" display="Void setMaxActive(int i)"/>
+    <item repl="setMinActive()" display="Void setMinActive(int i)"/>
+    <item repl="doSyncRequest()" display="String doSyncRequest(String method, String url, String data)"/>
+    <item repl="doSyncGet()" display="String doSyncGet(String url,String data)"/>
+    <item repl="doSyncPost()" display="String doSyncPost(String url,String data)"/>
+    <item repl="doAsyncRequest()" display="Void doAsyncRequest(String method, String url, Function callback, String data)"/>
+    <item repl="doAsyncGet()" display="Void doAsyncGet(String url,Function callback,String data)"/>
+    <item repl="doAsyncPost()" display="Void doAsyncPost(String url,Function callback,String data)"/>
+</completion>

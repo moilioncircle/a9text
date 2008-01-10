@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="DateFormatClass" extends="Object">
+    <item repl="format()" display="String format(String formatStr,Date date,Object userDic)"/>
+</completion>

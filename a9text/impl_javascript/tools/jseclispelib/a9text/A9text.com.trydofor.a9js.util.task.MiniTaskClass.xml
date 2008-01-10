@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="3.2" prefix="MiniTaskClass" extends="Object">
+    <item repl="()" display="MiniTaskClass(int timeout,int timeStep)"/>
+    <item repl="putBoolTask()" display="Void putBoolTask(Function func [,Object context,Function tmfunc, int timeout])"/>
+    <item repl="putFlowTask()" display="Void putFlowTask(Function[] funcArray [,Object context,Function tmfunc, int timeout])"/>
+</completion>
