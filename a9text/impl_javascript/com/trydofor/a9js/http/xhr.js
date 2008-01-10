@@ -1,17 +1,17 @@
 ﻿/**
 UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
-setMaxActive(i)
-setMinActive(i)
+Void setMaxActive(i)
+Void setMinActive(i)
 设置最大和最小活动的XMLHttpRequest数目
 
-doSyncRequest(method, url, data)
-doSyncGet(url,data)
-doSyncPost(url,data)
+String doSyncRequest(method, url, data)
+String doSyncGet(url,data)
+String doSyncPost(url,data)
 
-doAsyncRequest(method, url, callback, data)
-doAsyncGet( url, callback,data)
-doAsyncPost( url, callback, data)
+Void doAsyncRequest(method, url, callback, data)
+Void doAsyncGet( url, callback,data)
+Void doAsyncPost( url, callback, data)
     *callback = function(url,text)
 */
 
