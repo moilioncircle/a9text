@@ -2,7 +2,7 @@
 
 ================= table : todos =================
 id        done      content
-08010802  ??        制作jseclipse(spket考虑)自动完成库.
+08010802  08-01-12  制作jseclipse(spket考虑)自动完成库.
 08010801  ??        利用javadoc生产api.
 08010602  08-01-06  构建area的载入框架.
 08010601  08-01-06  按照impl(java/js)重构.

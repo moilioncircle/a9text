@@ -65,5 +65,18 @@
     <item repl="type.area$type" display="A9Dom.type.area$type"/>
     <item repl="type.area$info" display="A9Dom.type.area$info"/>
     <item repl="type.area$args" display="A9Dom.type.area$args"/>
-
+    <!-- A9Dom.type.area_table.*** -->
+    <item repl="type.area_table.$border" display="A9Dom.type.area_table.$border"/>
+    <item repl="type.area_table.$cellpadding" display="A9Dom.type.area_table.$cellpadding"/>
+    <item repl="type.area_table.$cellspacing" display="A9Dom.type.area_table.$cellspacing"/>
+    <item repl="type.area_table.$width" display="A9Dom.type.area_table.$width"/>
+    <item repl="type.area_table.$height" display="A9Dom.type.area_table.$height"/>
+    <item repl="type.area_table.tr" display="A9Dom.type.area_table.tr"/>
+    <item repl="type.area_table.td" display="A9Dom.type.area_table.td"/>
+    <item repl="type.area_table.td$colspan" display="A9Dom.type.area_table.td$colspan"/>
+    <item repl="type.area_table.td$rowspan" display="A9Dom.type.area_table.td$rowspan"/>
+    <item repl="type.area_table.td$blod" display="A9Dom.type.area_table.td$blod"/>
+    <item repl="type.area_table.td$left" display="A9Dom.type.area_table.td$left"/>
+    <item repl="type.area_table.td$center" display="A9Dom.type.area_table.td$center"/>
+    <item repl="type.area_table.td$right" display="A9Dom.type.area_table.td$right"/>
 </completion>
