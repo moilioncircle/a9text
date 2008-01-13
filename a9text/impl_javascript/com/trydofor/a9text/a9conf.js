@@ -1,4 +1,4 @@
-//UTF8(BOM)  GPL  trydofor.com  Dec.2007
+﻿//UTF8(BOM)  GPL  trydofor.com  Dec.2007
 /* property name is lowercase, class name is uppercase*/
 var A9Conf = new XmlReaderClass();
 

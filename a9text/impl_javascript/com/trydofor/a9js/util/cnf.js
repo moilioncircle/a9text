@@ -1,4 +1,4 @@
-/**
+﻿/**
 UTF8(BOM)  GPL  trydofor.com  Sep.2007
 ===========================================================
 config file (properties) reader

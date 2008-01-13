@@ -1,4 +1,4 @@
-/* UTF8(BOM)  GPL  trydofor.com  Jun.2007 */
+﻿/* UTF8(BOM)  GPL  trydofor.com  Jun.2007 */
 // __info__('js_file_name',['public_members'],['dependences']);
 __info__('a9dom.js',['A9Dom']);
 __info__('a9util.js',['A9Util']);
