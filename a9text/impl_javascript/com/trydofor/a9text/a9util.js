@@ -15,6 +15,8 @@ String A9Util.trimLeft(line)
     去掉左边的空白.
 String A9Util.trimRigth(line)
     去掉右边的空白.
+String A9Util.valueBlank(line)
+    等效空格处理.
 mumber A9Util.calTier(text)
     计算缩进层次.
 boolean A9Util.isEscapeLine(para)
@@ -119,6 +121,12 @@ A9Util.trimRigth = function(line)
 {
     if(line == null) return null;
     return line.replace(/[ 　\t]+$/,'');
+}
+
+A9Util.valueBlank = function(line)
+{
+    if(line == null) return null;
+    return line.replace(/　/g,'  ').replace(/\t/g,'    ');
 }
 
 A9Util.calTier = function(text)

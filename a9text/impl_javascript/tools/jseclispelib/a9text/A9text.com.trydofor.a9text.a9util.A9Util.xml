@@ -7,6 +7,7 @@
     <item repl="trimBoth()" display="String trimBoth(String line)"/>
     <item repl="trimLeft()" display="String trimLeft(String line)"/>
     <item repl="trimRigth()" display="String trimRigth(String line)"/>
+    <item repl="valueBlank()" display="String valueBlank(String line)"/>
     <item repl="calTier()" display="int calTier(String text)"/>
     <item repl="isEscapeLine()" display="boolean isEscapeLine(String para)"/>
     <item repl="trimEscape()" display="String trimEscape(String text,int pos)"/>

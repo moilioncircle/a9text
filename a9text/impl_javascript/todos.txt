@@ -1,18 +1,18 @@
 ﻿/*UTF8(BOM)  GPL  trydofor.com  May.2007 (UTC+8)*/
 
 ================= table : todos =================
-id        done      content
-08010802  08-01-12  制作jseclipse(spket考虑)自动完成库.
-08010801  ??        利用javadoc生产api.
-08010602  08-01-06  构建area的载入框架.
-08010601  08-01-06  按照impl(java/js)重构.
-08010402  08-01-05  配置文件支持xml和property格式.
-08010401  08-01-06  join,link等的路径重整.
-08010302  ??        制作area的parser和render.
-08010301  ??        完善join和link的render功能.
-07122901  ??        制作eclipse 插件，具备文本编辑和预览功能.
-07122801  07-12-28  增加window邮件菜单中a9text的设定方法.
-07122303  ??        增加link的简化形式(http/mailto/...).
-07122302  08-01-03  增加join等导入形式的路径 root$path.
-07122301  ??        增加area载入进度状态消息框.
+id          done        content
+08010802    08-01-12    制作jseclipse(spket考虑)自动完成库.
+08010801    ??          利用javadoc生产api.
+08010602    08-01-06    构建area的载入框架.
+08010601    08-01-06    按照impl(java/js)重构.
+08010402    08-01-05    配置文件支持xml和property格式.
+08010401    08-01-06    join,link等的路径重整.
+08010302    ??          制作area的parser和render.
+08010301    ??          完善join和link的render功能.
+07122901    ??          制作eclipse 插件，具备文本编辑和预览功能.
+07122801    07-12-28    增加window邮件菜单中a9text的设定方法.
+07122303    ??          增加link的简化形式(http/mailto/...).
+07122302    08-01-03    增加join等导入形式的路径 root$path.
+07122301    ??          增加area载入进度状态消息框.
 =================================================

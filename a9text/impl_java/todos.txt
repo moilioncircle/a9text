@@ -1,6 +1,6 @@
 ﻿/*UTF8(BOM)  GPL  trydofor.com  Jan.2008 (UTC+8)*/
 
 ================= table : todos =================
-id        done      content
+id          done        content
 
 =================================================
