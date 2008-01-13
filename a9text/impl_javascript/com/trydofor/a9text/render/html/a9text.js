@@ -545,7 +545,7 @@ var A9TextRender = function()
         
         var infoStr = "";
         var info = dom.getInfo(A9Dom.type.area$info);
-        if(info!=null && info == "")
+        if(info!=null && info != "")
         {
             __const_htm__.area$info[1]=A9Util.txt2htm(info,'<>');
             infoStr = __const_htm__.area$info.join('');

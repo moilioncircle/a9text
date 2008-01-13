@@ -14,9 +14,20 @@ var AreaTableRender = function()
     // public
     this.render = function(a9dom)
     {
+        a9dom.nowChild(0);
+        if(a9dom.hasNext())
+            __table__(a9dom)
+        else
+            __text__(a9dom)
+            
+        return __render_htm__.join('');
+    }
+    
+    function __text__(a9dom)
+    {
         var infoStr = "";
         var info = a9dom.getInfo(A9Dom.type.area$info);
-        if(info!=null && info == "")
+        if(info!=null && info != "")
         {
             __const_htm__.area$info[1]=A9Util.txt2htm(info,'<>');
             infoStr = __const_htm__.area$info.join('');
@@ -25,6 +36,45 @@ var AreaTableRender = function()
         __const_htm__.area[1] = a9dom.getTier();
         __const_htm__.area[3] = infoStr + A9Util.txt2htm(a9dom.getText());
         __render_htm__.push(__const_htm__.area.join(''));
-        return __render_htm__.join('');
+    }
+    
+    function __table__(a9dom)
+    {
+        
+        var infoStr = "";
+        var info = a9dom.getInfo(A9Dom.type.area$info);
+        if(info!=null && info != "")
+        {
+            infoStr=A9Util.txt2htm(info,'<>');
+            __render_htm__.push("<table border='0' cellpadding='2' cellspacing='0'><tr><td style='background-color:#666699; color:#FFFFFF'>&nbsp;"+infoStr+"&nbsp;&nbsp;</td></tr></table>");
+            //__render_htm__.push("<div style='height:1.5em;width:"+info.length+"em;background-color:#999999; color:#FFFFFF'> "+infoStr+" </div>");
+        }
+        
+        
+        a9dom.nowChild(0);
+
+        __render_htm__.push("<table  border='0' cellspacing='0' cellpadding='1'>");
+        __render_htm__.push("<tr><td valign='top' bgcolor='#666699'><table width='100%' border='0' cellspacing='1' cellpadding='5'>");        
+        
+        var index = 0;
+        while(a9dom.hasNext())
+        {
+            var tr = a9dom.nextChild();
+            __render_htm__.push("<tr bgcolor='#FFFFFF'>");
+            
+            while(tr.hasNext())
+            {
+                var td = tr.nextChild();
+                __render_htm__.push("<td>");
+                if(index ==0) __render_htm__.push("<b>");
+                __render_htm__.push(A9Util.txt2htm(td.getText(),'<>'));
+                if(index ==0) __render_htm__.push("</b>");
+                __render_htm__.push("</td>");
+            }
+            
+            __render_htm__.push("</tr>");
+            index ++;
+        }
+        __render_htm__.push("</table></td></tr></table>");
     }
 }
