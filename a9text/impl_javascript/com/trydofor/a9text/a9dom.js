@@ -259,8 +259,8 @@ A9Dom.type={
     mode_$htm:"mode:$htm",
     //
     area:"area",
-    area$crlf:"crlf",
-    area$type:"type",
-    area$info:"info",
-    area$args:"args"
+    area$crlf:"area$crlf",
+    area$type:"area$type",
+    area$info:"area$info",
+    area$args:"area$args"
 };

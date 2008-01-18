@@ -67,8 +67,6 @@
     <item repl="type.area$args" display="A9Dom.type.area$args"/>
     <!-- A9Dom.type.area_table.*** @see com.trydofor.a9text.parser.area.table.AreaTableParser -->
     <item repl="type.area_table.$border" display="A9Dom.type.area_table.$border"/>
-    <item repl="type.area_table.$cellpadding" display="A9Dom.type.area_table.$cellpadding"/>
-    <item repl="type.area_table.$cellspacing" display="A9Dom.type.area_table.$cellspacing"/>
     <item repl="type.area_table.$width" display="A9Dom.type.area_table.$width"/>
     <item repl="type.area_table.$height" display="A9Dom.type.area_table.$height"/>
     <item repl="type.area_table.tr" display="A9Dom.type.area_table.tr"/>

@@ -7,19 +7,17 @@ void parse(a9dom)
 var AreaTableParser = function()
 {
     A9Dom.type.area_table = {
-        $border:"border",
-        $cellpadding:"cellpadding",
-        $cellspacing:"cellpadding",
-        $width:"width",
-        $height:"height",
-        tr:"tr",
-        td:"td",
-        td$colspan  :"tdcolspan",
-        td$rowspan  :"rowspan",
-        td$bold  :"bold",
-        td$left  :"left",
-        td$center:"center",
-        td$right :"right"
+        $border:"area_table$border",
+        $width:"area_table$width",
+        $height:"area_table$height",
+        tr:"area_table$tr",
+        td:"area_table$td",
+        td$colspan  :"area_table$colspan",
+        td$rowspan  :"area_table$rowspan",
+        td$bold  :"area_table$bold",
+        td$left  :"area_table$left",
+        td$center:"area_table$center",
+        td$right :"area_table$right"
     };
     
     var __super__ = null; // top a9dom
