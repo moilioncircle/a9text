@@ -16,7 +16,7 @@ var AreaTableParser = function()
         td:"td",
         td$colspan  :"tdcolspan",
         td$rowspan  :"rowspan",
-        td$blod   :"blod",
+        td$bold  :"bold",
         td$left  :"left",
         td$center:"center",
         td$right :"right"
@@ -65,7 +65,7 @@ var AreaTableParser = function()
         // orgnize tds
         for(var i=0; i<__lines__.length; i++) 
         {
-            var parts = __lines__[i].split(/ {4,}/);
+            var parts = __lines__[i].split(/ {3,}/);
             
             var tds = [];
             for(var j=0; j<parts.length; j++) 
@@ -87,6 +87,7 @@ var AreaTableParser = function()
             for(var j=0; j<tdc; j++)
             {
                 var tdDom = trDom.newChild(A9Dom.type.area_table.td);
+                if(i == 0) tdDom.putInfo(A9Dom.type.area_table.td$bold,true);
                 if(tds[j]) tdDom.setText(tds[j]);
             }
         }

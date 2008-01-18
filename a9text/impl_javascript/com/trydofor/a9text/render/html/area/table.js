@@ -40,23 +40,21 @@ var AreaTableRender = function()
     
     function __table__(a9dom)
     {
-        
         var infoStr = "";
         var info = a9dom.getInfo(A9Dom.type.area$info);
         if(info!=null && info != "")
         {
             infoStr=A9Util.txt2htm(info,'<>');
-            __render_htm__.push("<table border='0' cellpadding='2' cellspacing='0'><tr><td style='background-color:#666699; color:#FFFFFF'>&nbsp;"+infoStr+"&nbsp;&nbsp;</td></tr></table>");
+            __render_htm__.push("<table border='0' cellpadding='2' cellspacing='0'><tr><td style='background-color:#666699; color:#FFFFFF'><b>&nbsp;"+infoStr+"&nbsp;&nbsp;</b></td></tr></table>");
             //__render_htm__.push("<div style='height:1.5em;width:"+info.length+"em;background-color:#999999; color:#FFFFFF'> "+infoStr+" </div>");
         }
         
         
         a9dom.nowChild(0);
-
+        
         __render_htm__.push("<table  border='0' cellspacing='0' cellpadding='1'>");
         __render_htm__.push("<tr><td valign='top' bgcolor='#666699'><table width='100%' border='0' cellspacing='1' cellpadding='5'>");        
         
-        var index = 0;
         while(a9dom.hasNext())
         {
             var tr = a9dom.nextChild();
@@ -65,15 +63,15 @@ var AreaTableRender = function()
             while(tr.hasNext())
             {
                 var td = tr.nextChild();
+                var isBold = td.getInfo(A9Dom.type.area_table.td$bold);
                 __render_htm__.push("<td>");
-                if(index ==0) __render_htm__.push("<b>");
+                if(isBold) __render_htm__.push("<b>");
                 __render_htm__.push(A9Util.txt2htm(td.getText(),'<>'));
-                if(index ==0) __render_htm__.push("</b>");
+                if(isBold) __render_htm__.push("</b>");
                 __render_htm__.push("</td>");
             }
             
             __render_htm__.push("</tr>");
-            index ++;
         }
         __render_htm__.push("</table></td></tr></table>");
     }
