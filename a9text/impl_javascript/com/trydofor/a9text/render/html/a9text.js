@@ -84,10 +84,7 @@ var A9TextRender = function()
         //"<link href='"+renderCss+"' rel='stylesheet' type='text/css' />"
         var linkCss = "";
         for(var i =0; i< __render_css__.length; i++)
-        {
-            alert("css: "+__render_css__[i]);
             linkCss += "<link href='"+__render_css__[i]+"' rel='stylesheet' type='text/css' />";
-        }
             
         var linkJs = "";
         for(var i =0; i< __render_js__.length; i++)

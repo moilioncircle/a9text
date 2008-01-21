@@ -64,19 +64,19 @@ __ViewText__.get = "<table width='600' border='0' cellpadding='3' cellspacing='1
 "var type = 1;"+
 "function onShowInput(val)"+
 "{"+
-"	document.getElementById('GETTEXT_3').style.display='none';"+
-"	document.getElementById('GETTEXT_2').style.display='none';"+
-"	document.getElementById('GETTEXT_1').style.display='none';"+
-"	document.getElementById('GETTEXT_'+val).style.display='';"+
-"	"+
-"	type = val;"+
+"    document.getElementById('GETTEXT_3').style.display='none';"+
+"    document.getElementById('GETTEXT_2').style.display='none';"+
+"    document.getElementById('GETTEXT_1').style.display='none';"+
+"    document.getElementById('GETTEXT_'+val).style.display='';"+
+"    "+
+"    type = val;"+
 "}"+
 "function onParseText()"+
 "{"+
-"	if(type == 2 || type == 3)"+
-"		parent.onLoadLocalFile(document.getElementById('GETTEXT_'+type).value);"+
-"	else"+
-"		parent.onParserText(document.getElementById('GETTEXT_1').value);"+
+"    if(type == 2 || type == 3)"+
+"        parent.onLoadLocalFile(document.getElementById('GETTEXT_'+type).value);"+
+"    else"+
+"        parent.onParserText(document.getElementById('GETTEXT_1').value);"+
 "}"+
 "</scr"+"ipt>";
 
@@ -99,8 +99,8 @@ function onChangeView(type)
             type = 'get';
     }
     
-	VIEWER.document.write(__ViewText__[type]);
-	VIEWER.document.close();
+    VIEWER.document.write(__ViewText__[type]);
+    VIEWER.document.close();
     document.close();
 }
 
@@ -112,7 +112,7 @@ function onParserText(text)
         return;
     }
 
-	__ViewText__.txt = '<pre>'+A9Util.txt2htm(text,'<>')+'</pre>';
+    __ViewText__.txt = '<pre>'+A9Util.txt2htm(text,'<>')+'</pre>';
     __ViewText__.dom = null;
     __ViewText__.htm = null;
     __A9dom__ = new A9Dom(null,A9Dom.type.root);
@@ -125,23 +125,23 @@ function onLoadLocalFile(fn)
 {
     if(fn == null || fn == '') return;
     a9textFile = fn;
-	onParserText(loadText('file://'+fn));
+    onParserText(loadText('file://'+fn));
 }
 
 function onShowA9textSpec()
 {
-	if(a9textSpec == null)
-	{
-		a9textSpec = loadText("../doc/cn/a9text/a9text-spec_3.2.txt",CORE_PATH);
+    if(a9textSpec == null)
+    {
+        a9textSpec = loadText("../doc/cn/a9text/a9text-spec_3.2.txt",CORE_PATH);
         a9textFile = CORE_PATH+"../doc/cn/a9text/a9text-spec_3.2.txt";
-		a9textSpec = A9Util.txt2htm(a9textSpec,'<>');
-	}
-	
-	var nw = open("about:blank");
-	nw.document.write("<pre>");
-	nw.document.write(a9textSpec);
-	nw.document.write("</pre>");
-	nw.document.close();
+        a9textSpec = A9Util.txt2htm(a9textSpec,'<>');
+    }
+    
+    var nw = open("about:blank");
+    nw.document.write("<pre>");
+    nw.document.write(a9textSpec);
+    nw.document.write("</pre>");
+    nw.document.close();
 
 }
 
