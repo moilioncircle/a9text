@@ -94,11 +94,14 @@ var A9TextParser = function()
     
     function __meetList__()
     {
+        if(__regexp__.para$line1.test(__lines__[__index__])) return false;
+        
+        //
         return __regexp__.list$item.test(__lines__[__index__]) ||
-               __regexp__.list$auto.test(__lines__[__index__]) ||
-               __regexp__.list$digt.test(__lines__[__index__]) ||
-               __regexp__.list$lchr.test(__lines__[__index__]) ||
-               __regexp__.list$uchr.test(__lines__[__index__]) ;
+                __regexp__.list$auto.test(__lines__[__index__]) ||
+                __regexp__.list$digt.test(__lines__[__index__]) ||
+                __regexp__.list$lchr.test(__lines__[__index__]) ||
+                __regexp__.list$uchr.test(__lines__[__index__]) ;
     }
     
     function __meetDict__()
