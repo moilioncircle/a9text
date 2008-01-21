@@ -79,12 +79,15 @@ var A9TextRender = function()
     {
         __domManager__(a9dom);
         
-        __render_css__.push(A9Conf.getConf("/root/render/htm/common/css/@path"));
+        __render_css__.push(A9Conf.getConf("/root/render/html/common/css/@path"));
         
         //"<link href='"+renderCss+"' rel='stylesheet' type='text/css' />"
         var linkCss = "";
         for(var i =0; i< __render_css__.length; i++)
+        {
+            alert("css: "+__render_css__[i]);
             linkCss += "<link href='"+__render_css__[i]+"' rel='stylesheet' type='text/css' />";
+        }
             
         var linkJs = "";
         for(var i =0; i< __render_js__.length; i++)
