@@ -93,6 +93,20 @@ var AreaTableParser = function()
     
     function __parseStandard__()
     {
+        // TODO
+        throw "not ready now";
+        
+        var trs = [];
+        var tdc = 0;
+        
+        // orgnize tds
+        for(var i=0; i<__lines__.length; i++) 
+        {
+            var line = __lines__[i];
+            
+        }
+        
+        // make doms
         
     }
     
