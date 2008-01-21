@@ -34,6 +34,10 @@ var str ="\\\\$var here";
 document.writeln(str+"|"+A9Util.hasVariable(str));
 var str ="\\$var here";
 document.writeln(str+"|"+A9Util.hasVariable(str));
+var str ="\t　　  ";
+document.writeln(A9Util.valueBlank(str).length+"|"+A9Util.valueBlank(A9Util.shiftBlank(str,5)).length);
+var str ="\t  　　";
+document.writeln(A9Util.valueBlank(str).length+"|"+A9Util.valueBlank(A9Util.shiftBlank(str,5)).length);
 
 document.writeln("</pre>");
 </script>

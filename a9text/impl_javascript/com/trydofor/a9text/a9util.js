@@ -137,7 +137,7 @@ A9Util.shiftBlank = function(line, num)
     if(num == null) return line;
     
     var j=0;
-    for(var i=0; i<num; i++)
+    for(var i=0; i<=num; i++)
     {
         var c = line.charAt(j);
         if( c == ' ') i+=1;
