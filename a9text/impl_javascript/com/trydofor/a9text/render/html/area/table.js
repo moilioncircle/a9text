@@ -66,19 +66,19 @@ var AreaTableRender = function()
                 var td = tr.nextChild();
                 
                 var span = "";
-                if(a9dom.getInfo(A9Dom.type.area_table.td$colspan)) // colspan
-                    span += " colspan='"+a9dom.getInfo(A9Dom.type.area_table.td$colspan)+"'";
-                if(a9dom.getInfo(A9Dom.type.area_table.td$rowspan)) // rowspan
-                    span += " rowspan='"+a9dom.getInfo(A9Dom.type.area_table.td$rowspan)+"'";
+                if(td.getInfo(A9Dom.type.area_table.td$colspan)) // colspan
+                    span += " colspan='"+td.getInfo(A9Dom.type.area_table.td$colspan)+"'";
+                if(td.getInfo(A9Dom.type.area_table.td$rowspan)) // rowspan
+                    span += " rowspan='"+td.getInfo(A9Dom.type.area_table.td$rowspan)+"'";
                 
                 var style = "";
-                if(a9dom.getInfo(A9Dom.type.area_table.td$bold)) // bold
+                if(td.getInfo(A9Dom.type.area_table.td$bold)) // bold
                     style += "font-weight: bold;";
-                if(a9dom.getInfo(A9Dom.type.area_table.td$left)) // left
+                if(td.getInfo(A9Dom.type.area_table.td$left)) // left
                     style += "text-align: left;";
-                if(a9dom.getInfo(A9Dom.type.area_table.td$center)) // center
+                if(td.getInfo(A9Dom.type.area_table.td$center)) // center
                     style += "text-align: center;";
-                if(a9dom.getInfo(A9Dom.type.area_table.td$right)) // right
+                if(td.getInfo(A9Dom.type.area_table.td$right)) // right
                     style += "text-align: right;";
                 
                 if(style != "") style = " style='" + style + "'";
