@@ -700,6 +700,7 @@ var A9TextParser = function()
         }
         
         //
+        var tier = A9Util.calTier(__lines__[__index__]);
         var type = RegExp.$1;
         var info = A9Util.trimBoth(RegExp.$2);
         if(info != null && info.charAt(0) == ':')
@@ -747,6 +748,7 @@ var A9TextParser = function()
         
         // text
         var dom = __basic__.newChild(A9Dom.type.area);
+        dom.setTier(tier);
         dom.putInfo(A9Dom.type.area$type,type);
         dom.putInfo(A9Dom.type.area$info,info);
         dom.putInfo(A9Dom.type.area$args,args);
@@ -766,12 +768,12 @@ var A9TextParser = function()
                 }
                 else // escape
                 {
-                     buffer[buffer.length] = A9Util.trimEscape(__lines__[__index__],slpos);
+                     buffer[buffer.length] = A9Util.shiftBlank(A9Util.trimEscape(__lines__[__index__],slpos),tier);
                 }
             }
             else
             {
-                buffer[buffer.length] = __lines__[__index__];
+                buffer[buffer.length] = A9Util.shiftBlank(__lines__[__index__],tier);
             }
         }
         

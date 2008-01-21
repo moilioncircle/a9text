@@ -8,6 +8,7 @@
     <item repl="trimLeft()" display="String trimLeft(String line)"/>
     <item repl="trimRigth()" display="String trimRigth(String line)"/>
     <item repl="valueBlank()" display="String valueBlank(String line)"/>
+    <item repl="shiftBlank()" display="String A9Util.shiftBlank(String line,int num)"/>
     <item repl="calTier()" display="int calTier(String text)"/>
     <item repl="isEscapeLine()" display="boolean isEscapeLine(String para)"/>
     <item repl="trimEscape()" display="String trimEscape(String text,int pos)"/>

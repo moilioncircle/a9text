@@ -17,6 +17,8 @@ String A9Util.trimRigth(line)
     去掉右边的空白.
 String A9Util.valueBlank(line)
     等效空格处理.
+String A9Util.shiftBlank(line,num)
+    去掉左侧num数量的等效空白.
 mumber A9Util.calTier(text)
     计算缩进层次.
 boolean A9Util.isEscapeLine(para)
@@ -127,6 +129,24 @@ A9Util.valueBlank = function(line)
 {
     if(line == null) return null;
     return line.replace(/　/g,'  ').replace(/\t/g,'    ');
+}
+
+A9Util.shiftBlank = function(line, num)
+{
+    if(line == null) return line;
+    if(num == null) return line;
+    
+    var j=0;
+    for(var i=0; i<num; i++)
+    {
+        var c = line.charAt(j);
+        if( c == ' ') i+=1;
+        else if (c == '\t') i+=4;
+        else if (c == '　') i+=2;
+        else break;
+        j++;
+    }
+    return j>0?line.substr(j):line;
 }
 
 A9Util.calTier = function(text)

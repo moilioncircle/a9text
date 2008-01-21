@@ -6,8 +6,8 @@ String render(a9Dom)
 var AreaTableRender = function()
 {
     var __const_htm__= {};
-    __const_htm__.table$info = ["<table border='0' cellpadding='2' cellspacing='0'><tr><td style='background-color:#666699; color:#FFFFFF'>&nbsp;","infoStr","&nbsp;&nbsp;</td></tr></table>"];
-    __const_htm__.table$head = ["<table  border='0' cellspacing='0' cellpadding='1'","","><tr><td valign='top' bgcolor='#666699'><table width='100%' border='0' cellspacing='","1","' cellpadding='4'>"];
+    __const_htm__.table$info = ["<table  border='0' cellspacing='0' cellpadding='0' style='margin-left:","0","ex;'><tr><td style='background-color:#666699;color:#FFFFFF;'>&nbsp;","infoStr","&nbsp;&nbsp;</td></tr></table>"];
+    __const_htm__.table$head = ["<table  border='0' cellspacing='0' cellpadding='1' style='margin-left:","0","ex;'","","><tr><td valign='top' bgcolor='#666699'><table width='100%' border='0' cellspacing='","1","' cellpadding='4'>"];
     __const_htm__.table$foot = "</table></td></tr></table>";
     __const_htm__.table$tr_head = "<tr bgcolor='#FFFFFF'>";
     __const_htm__.table$tr_foot = "</tr>";
@@ -34,20 +34,23 @@ var AreaTableRender = function()
         var info = a9dom.getInfo(A9Dom.type.area$info);
         if(info!=null && info != "")
         {
-            __const_htm__.table$info[1] = A9Util.txt2htm(info,txt2htm);
+            __const_htm__.table$info[1] = a9dom.getTier();
+            __const_htm__.table$info[3] = A9Util.txt2htm(info,txt2htm);
             __render_htm__.push(__const_htm__.table$info.join(''));
         }
         
+        __const_htm__.table$head[3]=a9dom.getTier();
+                
         var wh = "";
         if(a9dom.getInfo(A9Dom.type.area_table.$width)) // width
             wh += " widht='"+a9dom.getInfo(A9Dom.type.area_table.$width)+"'";
         if(a9dom.getInfo(A9Dom.type.area_table.$height)) // height
             wh += " height='"+a9dom.getInfo(A9Dom.type.area_table.$height)+"'";
             
-        __const_htm__.table$head[1]=wh;
+        __const_htm__.table$head[3]=wh;
 
         if(a9dom.getInfo(A9Dom.type.area_table.$border)) // border
-            __const_htm__.table$head[3] = a9dom.getInfo(A9Dom.type.area_table.$border);
+            __const_htm__.table$head[5] = a9dom.getInfo(A9Dom.type.area_table.$border);
         
         __render_htm__.push(__const_htm__.table$head.join(''));        
         

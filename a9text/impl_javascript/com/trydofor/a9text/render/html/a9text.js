@@ -23,9 +23,9 @@ var A9TextRender = function()
     __const_htm__.dict_foot = "</div>";
     __const_htm__.para_head = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'>"];
     __const_htm__.para_foot = "</div>";
-    __const_htm__.area = ["<pre style='margin-left:","$tier","ex;padding:6px;border:1px dashed #666699;'>","$para","</pre>"];
-    __const_htm__.area$info = ["<span style='background-color:#999999; color:#FFFFFF'> ","$info"," </span><br />"];
-    __const_htm__.area_text = ["<pre style='margin-left:","$tier","ex;padding:6px;border:","$border","px dashed #666699;'>","$para","</pre>"];
+    __const_htm__.area = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:1px dashed #666699;'>","$para","</pre></td></tr></table>"];
+    __const_htm__.area$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>&nbsp;&nbsp;","infostr","&nbsp;&nbsp;</span></td></tr>"];
+    __const_htm__.area_text = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:","0","px dashed #666699;'>","$para","</pre></td></tr></table>"];
     __const_htm__.text = ["<pre style='margin-left:","$tier","ex'>","$para","</pre>"];
     
     __const_htm__.list_head = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'>"];;
@@ -509,8 +509,9 @@ var A9TextRender = function()
         }
         
         __const_htm__.area_text[1] = dom.getTier();
-        __const_htm__.area_text[3] = border;
-        __const_htm__.area_text[5] = infoStr + A9Util.txt2htm(dom.getText());
+        __const_htm__.area_text[3] = infoStr;
+        __const_htm__.area_text[5] = border;
+        __const_htm__.area_text[7] = A9Util.txt2htm(dom.getText());
         __render_htm__.push(__const_htm__.area_text.join(''));
     }
     
@@ -550,9 +551,9 @@ var A9TextRender = function()
             __const_htm__.area$info[1]=A9Util.txt2htm(info,'<>');
             infoStr = __const_htm__.area$info.join('');
         }
-        
         __const_htm__.area[1] = dom.getTier();
-        __const_htm__.area[3] = infoStr + A9Util.txt2htm(dom.getText());
+        __const_htm__.area[3] = infoStr;
+        __const_htm__.area[5] = A9Util.txt2htm(dom.getText());
         __render_htm__.push(__const_htm__.area.join(''));
     }
     
