@@ -58,23 +58,63 @@ var AreaTableParser = function()
     function __parseSimple__()
     {
         var trs = [];
-        var tdc = 0;
+        var tdp = [];
         
+        var exp = / {3,}/;
         // orgnize tds
         for(var i=0; i<__lines__.length; i++) 
         {
-            var parts = __lines__[i].split(/ {3,}/);
+            var line = A9Util.trimBoth(__lines__[i]);
+            if(line == "") continue;
             
-            var tds = [];
-            for(var j=0; j<parts.length; j++) 
+            var tds = line.split(exp);
+            
+            if (tdp.length == 0)
             {
-            	if(parts[j] != "") tds.push(parts[j]);
+                var p = 0;
+                for(var j=0;j<tds.length;j++)
+                {
+                    p = line.indexOf(tds[j],p);
+                    tdp[j] = p;
+                }
+            }
+            else if (tds.length < tdp.length)
+            {
+                var tdst = [];
+                for(var j=0; j<tdp.length; j++)
+                    tdst.push("");
+                
+                //
+                var p = 0;
+                var m = 0;
+                for(var j=0; j<tdp.length; j++)
+                {
+                    p = line.indexOf(tds[j],p);
+                    for(var k = tdp.length; k>=m; k--)
+                    {
+                        if(p >= tdp[k])
+                        {
+                            m = k;
+                            tdst[j] = tds[j];
+                            break;
+                        }
+                    }
+                }
+                tds = tdst;
+            }
+            else if (tds.length > tdp.length)
+            {
+                var tdst = [];
+                for(var j=0; j<tdp.length; j++)
+                    tdst.push(tds[j]);
+                for(var j=tdp.length-1;j<tds.length;j++)
+                    tdst[tdp.length-1] += tds[j];
+                //
+                tds = tdst;
             }
             
-            if(tds.length == 0) continue;
-            
+            //alert(tds.length+":"+tds.join('|'));
             trs.push(tds);
-            if(tdc < tds.length) tdc = tds.length;
         }
         
         // make doms
@@ -82,7 +122,7 @@ var AreaTableParser = function()
         {
             var trDom = __super__.newChild(A9Dom.type.area_table.tr);
             var tds = trs[i];
-            for(var j=0; j<tdc; j++)
+            for(var j=0; j<tds.length; j++)
             {
                 var tdDom = trDom.newChild(A9Dom.type.area_table.td);
                 if(i == 0) tdDom.putInfo(A9Dom.type.area_table.td$bold,true);
