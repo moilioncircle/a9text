@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: A9Text Plug-in
+Bundle-SymbolicName: A9Text
+Bundle-Version: 1.0.0
+Bundle-Activator: com.trydofor.a9text.eplugin.A9Text
+Bundle-Vendor: trydofor.com
+Import-Package: org.osgi.framework;version="1.3.0"
