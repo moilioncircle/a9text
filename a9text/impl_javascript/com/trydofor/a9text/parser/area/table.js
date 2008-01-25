@@ -61,15 +61,16 @@ var AreaTableParser = function()
         var tdp = [];
         
         var exp = / {3,}/;
+        var bnk = /^ *$/;
         // orgnize tds
         for(var i=0; i<__lines__.length; i++) 
         {
-            var line = A9Util.trimBoth(__lines__[i]);
-            if(line == "") continue;
+            var line = __lines__[i];
+            if(bnk.test(line)) continue;
             
             var tds = line.split(exp);
             
-            if (tdp.length == 0)
+            if (tdp.length == 0) // init
             {
                 var p = 0;
                 for(var j=0;j<tds.length;j++)
@@ -78,42 +79,41 @@ var AreaTableParser = function()
                     tdp[j] = p;
                 }
             }
-            else if (tds.length < tdp.length)
+            else if (tds.length < tdp.length) // less than header
             {
                 var tdst = [];
                 for(var j=0; j<tdp.length; j++)
                     tdst.push("");
                 
                 //
-                var p = 0;
+                var p1 = 0;
+                var p2 = 0;
                 var m = 0;
                 for(var j=0; j<tdp.length; j++)
                 {
-                    p = line.indexOf(tds[j],p);
-                    for(var k = tdp.length; k>=m; k--)
+                    p2 = line.indexOf(tds[m],p1);
+                    if(p2 <= tdp[j] ||
+                       (tds.length-m >= tdp.length - j) ||
+                       (j<tdp.length-1 && (p2 + tds[m].length<tdp[j+1])))
                     {
-                        if(p >= tdp[k])
-                        {
-                            m = k;
-                            tdst[j] = tds[j];
-                            break;
-                        }
+                        tdst[j]=tds[m];
+                        m ++;
+                        p1 = p2;
                     }
                 }
                 tds = tdst;
             }
-            else if (tds.length > tdp.length)
+            else if (tds.length > tdp.length) // more than header
             {
                 var tdst = [];
                 for(var j=0; j<tdp.length; j++)
                     tdst.push(tds[j]);
-                for(var j=tdp.length-1;j<tds.length;j++)
+                for(var j=tdp.length;j<tds.length;j++)
                     tdst[tdp.length-1] += tds[j];
                 //
                 tds = tdst;
             }
-            
-            //alert(tds.length+":"+tds.join('|'));
+            //
             trs.push(tds);
         }
         
