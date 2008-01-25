@@ -705,6 +705,8 @@ var A9TextParser = function()
         //
         var tier = A9Util.calTier(__lines__[__index__]);
         var type = RegExp.$1;
+        if(type != null) type = type.toLowerCase();
+        
         var info = A9Util.trimBoth(RegExp.$2);
         if(info != null && info.charAt(0) == ':')
         {
