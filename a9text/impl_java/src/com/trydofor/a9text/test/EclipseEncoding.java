@@ -13,6 +13,7 @@ import java.io.IOException;
 
 public class EclipseEncoding {
 
+	private int count = 0;
 	
 	public void makePrefs(String root,String ext) throws IOException
 	{
@@ -20,6 +21,7 @@ public class EclipseEncoding {
 		StringBuffer out = new StringBuffer();
 		walkDir(file,ext,out);
 		
+		System.out.println(count);
 		System.out.println(out.toString());
 	}
 	
@@ -35,10 +37,22 @@ public class EclipseEncoding {
 		}
 		else
 		{
-			if(file.getName().endsWith(ext))
+			if(true)
 			{
-				out.append(file.getCanonicalPath());
-				out.append("\n");
+				count++;
+			}
+			else
+			{
+				if(ext == null)
+				{
+					out.append(file.getCanonicalPath());
+					out.append("\n");
+				}
+				else if(file.getName().endsWith(ext))
+				{
+					out.append(file.getCanonicalPath());
+					out.append("\n");
+				}
 			}
 		}
 	}
@@ -50,6 +64,6 @@ public class EclipseEncoding {
 	public static void main(String[] args) throws IOException 
 	{
 		EclipseEncoding ee = new EclipseEncoding();
-		ee.makePrefs("D:/workspace/a9text", ".js");
+		ee.makePrefs("D:/workspace/document/normal/jp", null);
 	}
 }
