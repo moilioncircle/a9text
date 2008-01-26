@@ -7,85 +7,50 @@ var AreaTTYRender = function()
 {
     var __const_htm__= {};
     __const_htm__.tty = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:1px dashed #666699;'>","$text","</pre></td></tr></table>"];
-    __const_htm__.tty$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>&nbsp;&nbsp;","infostr","&nbsp;&nbsp;</span></td></tr>"];
-        
+    __const_htm__.tty$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>","infostr","&nbsp;</span></td></tr>"];
+    __const_htm__.tty_word$stdin   = ["<font color='#EFEFEF'>","","</font>"];
+    __const_htm__.tty_word$stdout  = ["<font color='#EFEFEF'>","","</font>"];
+    __const_htm__.tty_word$stderr  = ["<font color='#EFEFEF'>","","</font>"];
+    __const_htm__.tty_word$comment = ["<font color='#EFEFEF'>","","</font>"];
+    __const_htm__.tty_line$number  = ["<font color='#EFEFEF'>","","</font>"];
+    
     var __render_htm__ = [];
     var txt2htm = '<>';
     
     // public
     this.render = function(a9dom)
     {
-        a9dom.nowChild(0);
-        if(a9dom.hasNext())
-            __table__(a9dom)
-        else
-            throw "no ready";
-            
-        return __render_htm__.join('');
-    }
-    
-    function __table__(a9dom)
-    {
-        var info = a9dom.getInfo(A9Dom.type.area$info);
-        if(info!=null && info != "")
-        {
-            __const_htm__.tty$info[1] = a9dom.getTier();
-            __const_htm__.tty$info[3] = A9Util.txt2htm(info,txt2htm);
-            __render_htm__.push(__const_htm__.tty$info.join(''));
-        }
+        var infoStr = "&lt;<b>"+A9Util.txt2htm(type,'<>')+"</b>&gt; ";
+        var info = dom.getInfo(A9Dom.type.area$info);
+        if(info!=null && info != "") infoStr += A9Util.txt2htm(info,'<>');
+        __const_htm__.tty$info[1] = infoStr;
         
-        __const_htm__.tty$head[3]=a9dom.getTier();
-                
-        var wh = "";
-        if(a9dom.getInfo(A9Dom.type.area_table.$width)) // width
-            wh += " widht='"+a9dom.getInfo(A9Dom.type.area_table.$width)+"'";
-        if(a9dom.getInfo(A9Dom.type.area_table.$height)) // height
-            wh += " height='"+a9dom.getInfo(A9Dom.type.area_table.$height)+"'";
-            
-        __const_htm__.tty$head[3]=wh;
-
-        if(a9dom.getInfo(A9Dom.type.area_table.$border)) // border
-            __const_htm__.tty$head[5] = a9dom.getInfo(A9Dom.type.area_table.$border);
+        //
+        __const_htm__.area[1] = dom.getTier();
+        __const_htm__.area[3] = __const_htm__.tty$info.join('');
+        __const_htm__.area[5] = A9Util.txt2htm(dom.getText());
         
-        __render_htm__.push(__const_htm__.tty$head.join(''));        
         
         a9dom.nowChild(0);
         
+        var seq = 1;
         while(a9dom.hasNext())
         {
-            var tr = a9dom.nextChild();
-            __render_htm__.push(__const_htm__.tty$tr_head);
+            var line_seq = (seq>1?"\n000":"000")+seq;
+            __const_htm__.tty_line$number = line_seq.substr(line_seq.length - 3)+" ";
+            __render_htm__.push(__const_htm__.tty_line$number.join(''));
             
-            while(tr.hasNext())
+            var lineDom = a9dom.nextChild();
+            while(lineDom.hasNext())
             {
-                var td = tr.nextChild();
-                
-                var span = "";
-                if(td.getInfo(A9Dom.type.area_table.td$colspan)) // colspan
-                    span += " colspan='"+td.getInfo(A9Dom.type.area_table.td$colspan)+"'";
-                if(td.getInfo(A9Dom.type.area_table.td$rowspan)) // rowspan
-                    span += " rowspan='"+td.getInfo(A9Dom.type.area_table.td$rowspan)+"'";
-                
-                var style = "";
-                if(td.getInfo(A9Dom.type.area_table.td$bold)) // bold
-                    style += "font-weight: bold;";
-                if(td.getInfo(A9Dom.type.area_table.td$left)) // left
-                    style += "text-align: left;";
-                if(td.getInfo(A9Dom.type.area_table.td$center)) // center
-                    style += "text-align: center;";
-                if(td.getInfo(A9Dom.type.area_table.td$right)) // right
-                    style += "text-align: right;";
-                
-                if(style != "") style = " style='" + style + "'";
-                __const_htm__.tty$td_head[1] = span + style;
-                
-                __render_htm__.push(__const_htm__.tty$td_head.join(''));
-                __render_htm__.push(A9Util.txt2htm(td.getText(),txt2htm));
-                __render_htm__.push(__const_htm__.tty$td_foot);
+                var wordDom = lineDom.nextChild();
+                var type = wordDom.getInfo();
             }
             
-            __render_htm__.push(__const_htm__.tty$tr_foot);
+            //
+            seq++;
         }
-        __render_htm__.push(__const_htm__.tty$foot);
+        
+       return __const_htm__.area.join('');
     }
 }
