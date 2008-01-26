@@ -7,16 +7,13 @@ void parse(a9dom)
 var AreaTTYParser = function()
 {
     A9Dom.type.area_tty = {
-        stdin:   "area_tty.stdin",
-        sdtout:  "area_tty.sdtout",
-        sdterr:  "area_tty.sdterr",
-        comment: "area_tty.comment",
-        crlf: "area_tty.crlf"
+        line: "area_tty.line",
+        word: "area_tty.word",
+        word$stdin:   "area_tty.word$stdin",
+        word$sdtout:  "area_tty.word$sdtout",
+        word$sdterr:  "area_tty.word$sdterr",
+        word$comment: "area_tty.word$comment"
     };
-    
-    var __super__ = null; // top a9dom
-    var __crlf__  = "\r\n";
-    var __lines__ = [];
 
     ////
     this.parse = function(a9dom)
@@ -29,14 +26,18 @@ var AreaTTYParser = function()
         if(text == null || text == "") return;
         
         text = A9Util.valueBlank(text);
-        __super__ = a9dom;
-        __crlf__  = a9dom.getInfo(A9Dom.type.area$crlf);
-        __lines__ = text.split(__crlf__);
+        var lines = text.split(a9dom.getInfo(A9Dom.type.area$crlf));
         
-        for(var i=0; i<__lines__.length; i++)
+        for(var i=0; i<lines.length; i++)
         {
-            var line = __lines__[i];
-            
+            var dom = a9dom.newChild(A9Dom.type.area_tty.line);
+            __parseLine__(lines[i],dom);
         }
+    }
+    
+    ///
+    function __parseLine__(line,dom)
+    {
+        
     }
 }

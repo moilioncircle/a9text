@@ -78,9 +78,10 @@
     <item repl="type.area_table.td$center" display="A9Dom.type.area_table.td$center"/>
     <item repl="type.area_table.td$right" display="A9Dom.type.area_table.td$right"/>
     <!-- A9Dom.type.area_tty.*** @see com.trydofor.a9text.parser.area.tty.AreaTTYParser -->
-    <item repl="type.area_tty.stdin"   display="A9Dom.type.area_tty.stdin"/>
-    <item repl="type.area_tty.sdtout"  display="A9Dom.type.area_tty.stdout"/>
-    <item repl="type.area_tty.sdterr"  display="A9Dom.type.area_tty.stderr"/>
-    <item repl="type.area_tty.comment" display="A9Dom.type.area_tty.comment"/>
-    <item repl="type.area_tty.crlf"    display="A9Dom.type.area_tty.crlf"/>
+    <item repl="type.area_tty.line"    display="A9Dom.type.area_tty.line"/>
+    <item repl="type.area_tty.word"    display="A9Dom.type.area_tty.word"/>
+    <item repl="type.area_tty.word$stdin"   display="A9Dom.type.area_tty.word$stdin"/>
+    <item repl="type.area_tty.word$sdtout"  display="A9Dom.type.area_tty.word$stdout"/>
+    <item repl="type.area_tty.word$sdterr"  display="A9Dom.type.area_tty.word$stderr"/>
+    <item repl="type.area_tty.word$comment" display="A9Dom.type.area_tty.word$comment"/>
 </completion>

@@ -6,13 +6,8 @@ String render(a9Dom)
 var AreaTTYRender = function()
 {
     var __const_htm__= {};
-    __const_htm__.tty$info = ["<table  border='0' cellspacing='0' cellpadding='0' style='margin-left:","0","ex;'><tr><td style='background-color:#666699;color:#FFFFFF;'>&nbsp;","infoStr","&nbsp;&nbsp;</td></tr></table>"];
-    __const_htm__.tty$head = ["<table  border='0' cellspacing='0' cellpadding='1' style='margin-left:","0","ex;'","","><tr><td valign='top' bgcolor='#666699'><table width='100%' border='0' cellspacing='","1","' cellpadding='4'>"];
-    __const_htm__.tty$foot = "</table></td></tr></table>";
-    __const_htm__.tty$tr_head = "<tr bgcolor='#FFFFFF'>";
-    __const_htm__.tty$tr_foot = "</tr>";
-    __const_htm__.tty$td_head = ["<td","",">"];
-    __const_htm__.tty$td_foot = "</td>";
+    __const_htm__.tty = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:1px dashed #666699;'>","$text","</pre></td></tr></table>"];
+    __const_htm__.tty$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>&nbsp;&nbsp;","infostr","&nbsp;&nbsp;</span></td></tr>"];
         
     var __render_htm__ = [];
     var txt2htm = '<>';
