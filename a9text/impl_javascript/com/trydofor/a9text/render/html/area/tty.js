@@ -8,6 +8,7 @@ var AreaTTYRender = function()
     var __const_htm__= {};
     __const_htm__.tty = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:1px dashed #666699;'>","$text","</pre></td></tr></table>"];
     __const_htm__.tty$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>","infostr","&nbsp;</span></td></tr>"];
+    __const_htm__.word_stdin   = ["<b>","","</b>"];
     __const_htm__.word_stdout  = ["<font color='#333399'>","","</font>"];
     __const_htm__.word_stderr  = ["<font color='#993333'>","","</font>"];
     __const_htm__.word_comment = ["<font color='#339933'>","","</font>"];
@@ -52,7 +53,8 @@ var AreaTTYRender = function()
                 }
                 else // stdin
                 {
-                    __render_htm__.push(A9Util.txt2htm(wordDom.getText(),txt2htm));
+                    __const_htm__.word_stdin[1] = A9Util.txt2htm(wordDom.getText(),txt2htm);
+                    __render_htm__.push(__const_htm__.word_stdin.join(''));
                 }
             }
         }
