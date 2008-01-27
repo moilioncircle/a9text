@@ -6,7 +6,8 @@ String render(a9Dom)
 var AreaTTYRender = function()
 {
     var __const_htm__= {};
-    __const_htm__.tty = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:1px dashed #666699;'>","$text","</pre></td></tr></table>"];
+    __const_htm__.tty = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr",
+                         "<tr><td style='border:1px dashed #666699;'><table border='0' cellspacing='2' cellpadding='1'><tr><td style='background-color:#DDDDDD;color:#990000;text-align: center;' valign='top'><pre>","$num","</pre></td><td valign='top'><pre>","$text","</pre></td></tr></table></td></tr></table>"];
     __const_htm__.tty$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>","infostr","&nbsp;</span></td></tr>"];
     __const_htm__.word_stdin   = ["<b>","","</b>"];
     __const_htm__.word_stdout  = ["<font color='#333399'>","","</font>"];
@@ -16,6 +17,7 @@ var AreaTTYRender = function()
     
     var txt2htm = '<>';
     var __render_htm__ = [];
+    var __render_seq__ = [];
     
     // public
     this.render = function(a9dom)
@@ -24,12 +26,6 @@ var AreaTTYRender = function()
         var seq = 0;
         while(a9dom.hasNext())
         {
-            /*
-            seq++;
-            var line_seq = "000"+seq;
-            __const_htm__.line$number[1] = (seq>1?"\n":"")+line_seq.substr(line_seq.length - 3);
-            __render_htm__.push(__const_htm__.line$number.join(''));
-            */
             __render_htm__.push("\n");
             var lineDom = a9dom.nextChild();
             while(lineDom.hasNext())
@@ -57,6 +53,10 @@ var AreaTTYRender = function()
                     __render_htm__.push(__const_htm__.word_stdin.join(''));
                 }
             }
+            
+            seq++;
+            var line_seq = "000"+seq;
+            __render_seq__.push(line_seq.substr(line_seq.length - 3));
         }
         
         var infoStr = "&lt;<b>tty</b>&gt; ";
@@ -67,7 +67,8 @@ var AreaTTYRender = function()
         //
         __const_htm__.tty[1] = a9dom.getTier();
         __const_htm__.tty[3] = __const_htm__.tty$info.join('');
-        __const_htm__.tty[5] = __render_htm__.join('');
+        __const_htm__.tty[5] = __render_seq__.join('\n');        
+        __const_htm__.tty[7] = __render_htm__.join('');
         
         return __const_htm__.tty.join('');
     }
