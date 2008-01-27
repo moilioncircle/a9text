@@ -45,7 +45,7 @@
 [[a9text-spec_3.2=>./a9text-spec_3.2.txt]]
 [[home=>http://a9text.sf.net]]
 
-1.4.HTML模式
+1.4. HTML模式
 ^^^^^^^^^^^^
 [*htm[<ul><li>html列表啊</li></ul>]]
     
@@ -132,7 +132,7 @@ args: arg1; arg2=val2;
 简化文本[![加粗无效]]
 .................
 
-4.1. 简单表格
+4.2. 简单表格
 ^^^^^^^^^^^^^
 ================ table: simple-table ================
 表头1    表头2     表头3
@@ -148,14 +148,47 @@ col1              col3      col4
 col1       col2     col3    col4
 ======================================
 
-4.2. 标准表格
-^^^^^^^^^^^^^
 ========== table:standard-table ==========
 ! r1-c1 | r1-c2! r1-c3|
 |r2-c1  |r2-c2 |r2-c3 |
 ||  r3-c1&2    |+ r3&4-c3 |
 |r4-c1 | r4-c2 |+ r4&4-c3 |
 ==========================================
+
+4.3. 控制台
+^^^^^^^^^^^
+=============== tty : 端口映射 =================
+/*
+加粗文字为标准输入
+红色文字为错误输出
+蓝色文字为标准输出
+绿色文字为注释内容
+*/
+iptables -L // 查看当前防火墙规则
+> Chain INPUT (policy ACCEPT)
+> target     prot opt source               destination
+> REJECT     all  --  10.0.172.0/24        anywhere            reject-with icmp-port-unreachable
+> 
+> Chain FORWARD (policy ACCEPT)
+> target     prot opt source               destination
+> 
+> Chain OUTPUT (policy ACCEPT)
+> target     prot opt source               destination
+
+#清空防火墙,如果存在的话
+/sbin/iptables -F -t nat
+/sbin/iptables -F INPUT
+
+# 执行一次就可以了
+echo "1" > /proc/sys/net/ipv4/ip_forward
+
+#端口映射
+/sbin/iptables -t nat -A POSTROUTING -j MASQUERADE 
+/sbin/iptables -t nat -A PREROUTING -p tcp -m tcp --dport 55000 -j DNAT --to-destination 10.0.172.210:50000 
+/sbin/iptables -t nat -A PREROUTING -p tcp -m tcp --dport 55001 -j DNAT --to-destination 10.0.172.209:50000
+
+================================================
+
 
 5. 列表演示
 ^^^^^^^^^^^

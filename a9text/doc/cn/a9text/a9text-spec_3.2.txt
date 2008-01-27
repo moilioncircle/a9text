@@ -275,7 +275,7 @@ list_step = ("#" / /[0-9]+/ / /[a-z]+/ / /[A-Z]+/) ("." / ")")
 
 2.7. 章节(sect/section)
 ^^^^^^^^^^^^^^^^^^^^^^^
-sect = head_blank sect_level sect_title char_line sect_token char_line sect_text
+sect = head_blank sect_level " " sect_title char_line sect_token char_line sect_text
 sect_level = 1*(digit ".")
 sect_title = /[^\r\n]+/
 sect_token = /\^{3,}/
