@@ -2,3 +2,4 @@
 // __info__('js_file_name',['public_members'],['dependences']);
 __info__('table.js',['AreaTableRender']);
 __info__('tty.js',['AreaTTYRender']);
+__info__('code.js',['AreaCodeRender']);
