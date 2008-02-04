@@ -77,6 +77,15 @@
     <item repl="type.area_table.td$left" display="A9Dom.type.area_table.td$left"/>
     <item repl="type.area_table.td$center" display="A9Dom.type.area_table.td$center"/>
     <item repl="type.area_table.td$right" display="A9Dom.type.area_table.td$right"/>
+    <!-- A9Dom.type.area_syntax.*** @see com.trydofor.a9text.parser.area.syntax.AreaSyntaxParser -->
+    <item repl="type.area_syntax.physical_line"      display="A9Dom.type.area_syntax.physical_line"/>
+    <item repl="type.area_syntax.word_keyword"       display="A9Dom.type.area_syntax.word_keyword"/>
+    <item repl="type.area_syntax.word_keyword$type"  display="A9Dom.type.area_syntax.word_keyword$type"/>
+    <item repl="type.area_syntax.word_partner"       display="A9Dom.type.area_syntax.word_partner"/>
+    <item repl="type.area_syntax.word_partner$type"  display="A9Dom.type.area_syntax.word_partner$type"/>
+    <item repl="type.area_syntax.word_comment_single"       display="A9Dom.type.area_syntax.word_comment_single"/>
+    <item repl="type.area_syntax.word_comment_multi"  display="A9Dom.type.area_syntax.word_comment_multi"/>
+    <item repl="type.area_syntax.word_literal"       display="A9Dom.type.area_syntax.word_literal"/>
     <!-- A9Dom.type.area_tty.*** @see com.trydofor.a9text.parser.area.tty.AreaTTYParser -->
     <item repl="type.area_tty.line"    display="A9Dom.type.area_tty.line"/>
     <item repl="type.area_tty.word_stdin"   display="A9Dom.type.area_tty.word_stdin"/>
