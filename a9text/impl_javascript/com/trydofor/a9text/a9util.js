@@ -206,18 +206,20 @@ A9Util.trimEscape = function(text,pos)
     return text.substring(0,b+c)+text.substr(pos+1);
 }
 
-A9Util.isEscape = function (text,pos)
+A9Util.isEscape = function (text,pos,escc)
 {
     if(text == null || text == '') return false;
     if(pos < 0 || pos > text.length-1 ) return false;
     
-    if(text.charAt(pos) != '\\')
+    if(escc == null) escc = '\\';
+    
+    if(text.charAt(pos) != escc)
        return false;
     if(pos == 0) 
        return true;
     
     for(var i = pos; i >= 0; i--)
-        if(text.charAt(i) != '\\' && (pos - i) % 2 == 1)
+        if(text.charAt(i) != escc && (pos - i) % 2 == 1)
               return true;
     
     return false;

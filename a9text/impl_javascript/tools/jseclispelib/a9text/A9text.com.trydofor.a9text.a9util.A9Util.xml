@@ -12,7 +12,7 @@
     <item repl="calTier()" display="int calTier(String text)"/>
     <item repl="isEscapeLine()" display="boolean isEscapeLine(String para)"/>
     <item repl="trimEscape()" display="String trimEscape(String text,int pos)"/>
-    <item repl="isEscape()" display="boolean isEscape(String text,int pos)"/>
+    <item repl="isEscape()" display="boolean isEscape(String text,int pos,String escc)"/>
     <item repl="hasVariable()" display="boolean hasVariable(String str)"/>
     <item repl="getCRLF()" display="String getCRLF(String text)"/>
     <item repl="progressInfo()" display="Void progressInfo(String info)"/>
