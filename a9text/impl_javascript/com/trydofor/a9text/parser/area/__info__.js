@@ -3,3 +3,4 @@
 __info__('table.js',['AreaTableParser']);
 __info__('tty.js',['AreaTTYParser']);
 __info__('syntax.js',['AreaSyntaxParser']);
+__info__('java.js',['AreaJavaParser'],['syntax']);
