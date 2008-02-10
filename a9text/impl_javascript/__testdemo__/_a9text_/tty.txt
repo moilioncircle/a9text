@@ -1,0 +1,13 @@
+============== tty : test =====================
+iptables -L // 查看当前防火墙规则
+> Chain INPUT (policy ACCEPT)
+> target     prot opt source               destination
+> REJECT     all  --  10.0.172.0/24        anywhere            reject-with icmp-port-unreachable
+
+#清空防火墙,如果存在的话
+/sbin/iptables -F -t nat
+/sbin/iptables -F INPUT
+
+/* 执行一次就可以了 */
+echo "1" > /proc/sys/net/ipv4/ip_forward
+==================================================

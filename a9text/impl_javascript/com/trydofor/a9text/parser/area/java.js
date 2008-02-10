@@ -18,8 +18,8 @@ var AreaJavaParser = function()
     {
         var asp = new AreaSyntaxCodeParser();
         asp.putMulQuote(A9Dom.type.area_java.comment_multi,'/*','*/');
-        asp.putMulQuote(A9Dom.type.area_java.type_string,'"','"','\\');
-        asp.putMulQuote(A9Dom.type.area_java.type_char,"'","'",'\\');
+        asp.putMulQuote(A9Dom.type.area_java.type_string,'"','"',true,'\\');
+        asp.putMulQuote(A9Dom.type.area_java.type_char,"'","'",true,'\\');
         asp.putOneQuote(A9Dom.type.area_java.comment_single,'//');
         
         asp.parse(a9dom);

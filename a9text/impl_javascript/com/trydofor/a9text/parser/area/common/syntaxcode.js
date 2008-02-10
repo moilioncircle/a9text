@@ -18,27 +18,29 @@ var AreaSyntaxCodeParser = function()
     var __obj_pairing__ = []; // in-line
 
 
-    this.putMulQuote = function(type,head,foot,escc)
+    this.putMulQuote = function(type,head,foot,isin,escc)
     {
         if(typeof(type) != 'string') throw "MultiQuote's type should be string";
-        
+        if(isin == null) isin = true;
         var obj = {
             'type':type,
             'head':head,
             'foot':foot,
+            'isin':isin,
             'escc':escc
         };
         
         __obj_mulquot__.push(obj);
     }
     
-    this.putOneQuote = function(type,head,escc)
+    this.putOneQuote = function(type,head,isin,escc)
     {
         if(typeof(type) != 'string') throw "OnelnQuote's type should be string";
-        
+        if(isin == null) isin = true;
         var obj = {
             'type':type,
             'head':head,
+            'isin':isin,
             'escc':escc
         };
         
@@ -109,28 +111,36 @@ var AreaSyntaxCodeParser = function()
                         while(tmp != '')
                         {
                             posMqf = tmp.search(mqFoot);
+                            
+                            // the head or escape
                             if(posMqf == 0 ||(posMqf > 0 && curMulquot['escc'] != null && A9Util.isEscape(tmp,posMqf-1,curMulquot['escc'])))
                             {
                                 var relpos = posMqf+RegExp.$1.length;
                                 tmp = tmp.substr(relpos);
                                 offset += relpos;
                             }
+                            else
+                            {
+                                break;
+                            }
                         }
                         if(posMqf>=0) posMqf+=offset;
-
                     }
                     else
                     {
                         posMqf = line.indexOf(mqFoot,offset);
                         while(posMqf>=0)
                         {
+                            // the head or escape
                             if(posMqf == 0 ||(posMqf > 0 && curMulquot['escc'] != null && A9Util.isEscape(line,posMqf-1,curMulquot['escc'])))
                             {
                                 offset += (posMqf+mqFoot.length);
                                 posMqf = line.indexOf(mqFoot,offset);
-                                continue;
                             }
-                            break;
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
                     
@@ -143,21 +153,23 @@ var AreaSyntaxCodeParser = function()
                     }
                     else // end in the line.
                     {
+                        var lenFoot = 0;
                         if(mqFoot instanceof RegExp)
-                            posMqf += RegExp.$1.length;
+                            lenFoot = RegExp.$1.length;
                         else
-                            posMqf += mqFoot.length;
+                            lenFoot = mqFoot.length;
                         
                         var wordDom = lineDom.newChild(curMulquot['type']);
-                        wordDom.setText(line.substring(0,posMqf));
+                        wordDom.setText(line.substring(0,curMulquot['isin']?(posMqf+lenFoot):posMqf));
                         
-                        line = line.substr(posMqf);
+                        line = line.substr(posMqf+lenFoot);
                         curMulquot = null;
                         continue;
                     }
                 }
                 
                 var posOqh = -1; // position of the onequote
+                var lenOqh = 0;
                 for(var m=0;m<__obj_onequot__.length;m++)
                 {
                     var p = -1;
@@ -170,14 +182,24 @@ var AreaSyntaxCodeParser = function()
                         while(tmp != '')
                         {
                             p = tmp.search(oqHead);
+                            // escape
                             if(p > 0 && __obj_onequot__[m]['escc'] != null && A9Util.isEscape(tmp,p-1,__obj_onequot__[m]['escc']))
                             {
                                 var relpos = p+RegExp.$1.length;
                                 tmp = tmp.substr(relpos);
                                 offset += relpos;
                             }
+                            else
+                            {
+                                break;
+                            }
                         }
-                        if(p>=0) p+=offset;
+                        
+                        if(p>=0)
+                        {
+                            p+=offset;
+                            lenOqh = RegExp.$1.length;
+                        }
 
                     }
                     else
@@ -185,14 +207,18 @@ var AreaSyntaxCodeParser = function()
                         p = line.indexOf(oqHead,offset);
                         while(p>=0)
                         {
+                            // escape
                             if(p > 0 && __obj_onequot__[m]['escc'] != null && A9Util.isEscape(line,p-1,__obj_onequot__[m]['escc']))
                             {
                                 offset += (p+oqHead.length);
                                 p = line.indexOf(oqHead,offset);
-                                continue;
                             }
-                            break;
+                            else
+                            {
+                                break;
+                            }
                         }
+                        lenOqh = oqHead.length;
                     }
                     
                     if(p>=0 && (posOqh<0 || p<posOqh))
@@ -203,6 +229,8 @@ var AreaSyntaxCodeParser = function()
                 }
                 
                 var posMqh = -1; // postition of the mulquote
+                var lenMqh = 0;
+                
                 for(var m=0;m<__obj_mulquot__.length;m++)
                 {
                     var p = -1;
@@ -215,14 +243,23 @@ var AreaSyntaxCodeParser = function()
                         while(tmp != '')
                         {
                             p = tmp.search(mqHead);
+                            // escape
                             if(p > 0 && __obj_mulquot__[m]['escc'] != null && A9Util.isEscape(tmp,p-1,__obj_mulquot__[m]['escc']))
                             {
                                 var relpos = p+RegExp.$1.length;
                                 tmp = tmp.substr(relpos);
                                 offset += relpos;
                             }
+                            else
+                            {
+                                break;
+                            }
                         }
-                        if(p>=0) p+=offset;
+                        if(p>=0)
+                        {
+                            p+=offset;
+                            lenMqh = RegExp.$1.length;
+                        }
 
                     }
                     else
@@ -230,14 +267,18 @@ var AreaSyntaxCodeParser = function()
                         p = line.indexOf(mqHead,offset);
                         while(p>=0)
                         {
+                            // escape
                             if(p > 0 && __obj_mulquot__[m]['escc'] != null && A9Util.isEscape(line,p-1,__obj_mulquot__[m]['escc']))
                             {
                                 offset += (p+mqHead.length);
                                 p = line.indexOf(mqHead,offset);
-                                continue;
                             }
-                            break;
+                            else
+                            {
+                                break;
+                            }
                         }
+                        lenMqh = mqHead.length;
                     }
                         
                     if(p>=0 && (posMqh<0 || p<posMqh))
@@ -255,7 +296,7 @@ var AreaSyntaxCodeParser = function()
                         __parseNonquot__(line.substring(0,posMqh),lineDom);
                     }
                     
-                    line = line.substr(posMqh);
+                    line = line.substr(curMulquot['isin']?posMqh:(posMqh+lenMqh));
                     continue;
                 }
                 
@@ -269,7 +310,7 @@ var AreaSyntaxCodeParser = function()
                 if(posOqh >= 0)
                 {
                     var wordDom = lineDom.newChild(curOnequot['type']);
-                    wordDom.setText(posOqh>0?line.substr(posOqh):line);
+                    wordDom.setText(posOqh>0?line.substr(curOnequot['isin']?posOqh:(posOqh+lenOqh)):line);
                 }
                 
                 break;
@@ -283,7 +324,8 @@ var AreaSyntaxCodeParser = function()
         wordDom.setText(line);
         return; // TODO
         
-                            
+//        var __obj_keyword__ = []; // in-line
+//        var __obj_pairing__ = []; // in-line  
         //
         if(line == null || line == '') return;
         
