@@ -15,8 +15,8 @@ var AreaTTYParser = function()
     };
 
     var __regexp__ = {
-        stdout:/(^ *> *)/,
-        stderr:/(^ *@ *)/
+        stdout:/(^ *>)/,
+        stderr:/(^ *@)/
     };
     var __strstr__ = {
         comment_s1 : "#",
