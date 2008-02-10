@@ -6,13 +6,10 @@ void parse(a9dom)
 
 var AreaSyntaxCodeParser = function()
 {
-    A9Dom.type.area_syntax = {
-        line_physical: "area_syntax.line_physical",
-        quot_mulline: "area_syntax.quot_mulline",
-        quot_oneline: "area_syntax.quot_oneline",
-        pair_$serial: "area_syntax.pair_$serial",
-        word_keyword: "area_syntax.word_keyword",
-        word_literal: "area_syntax.word_literal"
+    A9Dom.type.area_syntax_code = {
+        line_physical: "area_syntax_code.line_physical",
+        pair_$serial: "area_syntax_code.pair_$serial",
+        word_literal: "area_syntax_code.word_literal"
     };
 
     var __obj_mulquot__ = []; // mul-line quote, with escape char
@@ -94,7 +91,7 @@ var AreaSyntaxCodeParser = function()
         
         for(var i=0; i<lines.length; i++)
         {
-            var lineDom  = a9dom.newChild(A9Dom.type.area_syntax.line_physical);
+            var lineDom  = a9dom.newChild(A9Dom.type.area_syntax_code.line_physical);
             var line = lines[i];
 
             while(line != null && line != "")
@@ -282,7 +279,7 @@ var AreaSyntaxCodeParser = function()
     
     function __parseNonquot__(line,lineDom)
     {
-        var wordDom = lineDom.newChild(A9Dom.type.area_syntax.word_literal);
+        var wordDom = lineDom.newChild(A9Dom.type.area_syntax_code.word_literal);
         wordDom.setText(line);
         return; // TODO
         
