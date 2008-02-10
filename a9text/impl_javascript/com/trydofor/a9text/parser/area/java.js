@@ -16,7 +16,7 @@ var AreaJavaParser = function()
     ////
     this.parse = function(a9dom)
     {
-        var asp = new AreaSyntaxParser();
+        var asp = new AreaSyntaxCodeParser();
         asp.putMulQuote(A9Dom.type.area_java.comment_multi,'/*','*/');
         asp.putMulQuote(A9Dom.type.area_java.type_string,'"','"','\\');
         asp.putMulQuote(A9Dom.type.area_java.type_char,"'","'",'\\');

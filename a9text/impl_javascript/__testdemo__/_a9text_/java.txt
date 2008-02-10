@@ -1,0 +1,11 @@
+============== java : test =====================
+/** test*/
+/* sdfsdf */ aaaa // ssss
+// ssssssssssss
+ddd //wwwwwwwww
+'d' vvvvv
+uuuu"oooo" ppppp
+"str\"ing" fffff
+yyyy'c'
+aaaaaaaaa
+==================================================

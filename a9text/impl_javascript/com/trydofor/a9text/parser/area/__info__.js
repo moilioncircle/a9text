@@ -2,5 +2,4 @@
 // __info__('js_file_name',['public_members'],['dependences']);
 __info__('table.js',['AreaTableParser']);
 __info__('tty.js',['AreaTTYParser']);
-__info__('syntax.js',['AreaSyntaxParser']);
-__info__('java.js',['AreaJavaParser'],['syntax']);
+__info__('java.js',['AreaJavaParser'],['com.trydofor.a9text.parser.area.common.syntaxcode']);
