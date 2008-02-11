@@ -13,15 +13,16 @@ var AreaJavaParser = function()
         type_char: "area_java.type_char"
     };
 
+    var __ascp__ = new AreaSyntaxCodeParser();
+    {
+        __ascp__.putMulQuote(A9Dom.type.area_java.comment_multi,'/*','*/');
+        __ascp__.putMulQuote(A9Dom.type.area_java.type_string,'"','"',true,'\\');
+        __ascp__.putMulQuote(A9Dom.type.area_java.type_char,"'","'",true,'\\');
+        __ascp__.putOneQuote(A9Dom.type.area_java.comment_single,'//');
+    }
     ////
     this.parse = function(a9dom)
     {
-        var asp = new AreaSyntaxCodeParser();
-        asp.putMulQuote(A9Dom.type.area_java.comment_multi,'/*','*/');
-        asp.putMulQuote(A9Dom.type.area_java.type_string,'"','"',true,'\\');
-        asp.putMulQuote(A9Dom.type.area_java.type_char,"'","'",true,'\\');
-        asp.putOneQuote(A9Dom.type.area_java.comment_single,'//');
-        
-        asp.parse(a9dom);
+        __ascp__.parse(a9dom);
     }
 }
