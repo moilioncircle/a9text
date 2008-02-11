@@ -1,13 +1,14 @@
-============== tty : test =====================
-iptables -L // ²é¿´µ±Ç°·À»ðÇ½¹æÔò
-> Chain INPUT (policy ACCEPT)
-> target     prot opt source               destination
-> REJECT     all  --  10.0.172.0/24        anywhere            reject-with icmp-port-unreachable
+ï»¿============== tty : test =====================
+stdin line 1 // æŸ¥çœ‹å½“å‰é˜²ç«å¢™è§„åˆ™
+> stdout line 1
+> stdout line 2
+> stdout line 3
 
-#Çå¿Õ·À»ðÇ½,Èç¹û´æÔÚµÄ»°
-/sbin/iptables -F -t nat
-/sbin/iptables -F INPUT
+#æ¸…ç©ºé˜²ç«å¢™,å¦‚æžœå­˜åœ¨çš„è¯
+> stdout line 4
+@ stderr line 1
+@ stderr line 2
 
-/* Ö´ÐÐÒ»´Î¾Í¿ÉÒÔÁË */
+/* æ‰§è¡Œä¸€æ¬¡å°±å¯ä»¥äº† */
 echo "1" > /proc/sys/net/ipv4/ip_forward
 ==================================================

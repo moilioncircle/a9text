@@ -113,7 +113,7 @@ var AreaSyntaxCodeParser = function()
                             posMqf = tmp.search(mqFoot);
                             
                             // the head or escape
-                            if(posMqf == 0 ||(posMqf > 0 && curMulquot['escc'] != null && A9Util.isEscape(tmp,posMqf-1,curMulquot['escc'])))
+                            if(posMqf > 0 && curMulquot['escc'] != null && A9Util.isEscape(tmp,posMqf-1,curMulquot['escc']))
                             {
                                 var relpos = posMqf+RegExp.$1.length;
                                 tmp = tmp.substr(relpos);
@@ -132,7 +132,7 @@ var AreaSyntaxCodeParser = function()
                         while(posMqf>=0)
                         {
                             // the head or escape
-                            if(posMqf == 0 ||(posMqf > 0 && curMulquot['escc'] != null && A9Util.isEscape(line,posMqf-1,curMulquot['escc'])))
+                            if(posMqf > 0 && curMulquot['escc'] != null && A9Util.isEscape(line,posMqf-1,curMulquot['escc']))
                             {
                                 offset += (posMqf+mqFoot.length);
                                 posMqf = line.indexOf(mqFoot,offset);
@@ -173,6 +173,7 @@ var AreaSyntaxCodeParser = function()
                 for(var m=0;m<__obj_onequot__.length;m++)
                 {
                     var p = -1;
+                    var len = 0;
                     var oqHead = __obj_onequot__[m]['head'];
                     
                     var offset = 0;
@@ -198,7 +199,7 @@ var AreaSyntaxCodeParser = function()
                         if(p>=0)
                         {
                             p+=offset;
-                            lenOqh = RegExp.$1.length;
+                            len = RegExp.$1.length;
                         }
 
                     }
@@ -218,22 +219,23 @@ var AreaSyntaxCodeParser = function()
                                 break;
                             }
                         }
-                        lenOqh = oqHead.length;
+                        len = oqHead.length;
                     }
                     
                     if(p>=0 && (posOqh<0 || p<posOqh))
                     {
                         posOqh = p;
+                        lenOqh = len;
                         curOnequot = __obj_onequot__[m];
                     }
                 }
                 
                 var posMqh = -1; // postition of the mulquote
                 var lenMqh = 0;
-                
                 for(var m=0;m<__obj_mulquot__.length;m++)
                 {
                     var p = -1;
+                    var len = 0;
                     var mqHead = __obj_mulquot__[m]['head'];
                     
                     var offset = 0;
@@ -258,7 +260,7 @@ var AreaSyntaxCodeParser = function()
                         if(p>=0)
                         {
                             p+=offset;
-                            lenMqh = RegExp.$1.length;
+                            len = RegExp.$1.length;
                         }
 
                     }
@@ -278,12 +280,13 @@ var AreaSyntaxCodeParser = function()
                                 break;
                             }
                         }
-                        lenMqh = mqHead.length;
+                        len = mqHead.length;
                     }
                         
                     if(p>=0 && (posMqh<0 || p<posMqh))
                     {
-                        posMqh     = p;
+                        posMqh = p;
+                        lenMqh = len;
                         curMulquot = __obj_mulquot__[m];
                     }
                 }
@@ -296,7 +299,13 @@ var AreaSyntaxCodeParser = function()
                         __parseNonquot__(line.substring(0,posMqh),lineDom);
                     }
                     
-                    line = line.substr(curMulquot['isin']?posMqh:(posMqh+lenMqh));
+                    if(curMulquot['isin'])
+                    {
+                        var wordDom = lineDom.newChild(curMulquot['type']);
+                        wordDom.setText(line.substr(posMqh,lenMqh));
+                    }
+                    
+                    line = line.substr(posMqh+lenMqh);
                     continue;
                 }
                 
@@ -310,7 +319,10 @@ var AreaSyntaxCodeParser = function()
                 if(posOqh >= 0)
                 {
                     var wordDom = lineDom.newChild(curOnequot['type']);
-                    wordDom.setText(posOqh>0?line.substr(curOnequot['isin']?posOqh:(posOqh+lenOqh)):line);
+                    if(curOnequot['isin'])
+                        wordDom.setText(posOqh>0?line.substr(posOqh):line);
+                    else
+                        wordDom.setText(line.substr(posOqh+lenOqh));
                 }
                 
                 break;
