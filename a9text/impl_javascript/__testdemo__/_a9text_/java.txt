@@ -1,11 +1,16 @@
 ============== java : test =====================
-/** test*/
-/* sdfsdf */ aaaa // ssss
-// ssssssssssss
-ddd //wwwwwwwww
-'d' vvvvv
-uuuu"oooo" ppppp
-"str\"ing" fffff
-yyyy'c'
-aaaaaaaaa
+public class A9Text extends Applet
+{
+    private static final long serialVersionUID = 1009;
+    
+    /**
+     * Application
+     */
+    public static void main(String[] args /* args*/) 
+    {
+        int i=0; // test field
+        /* void */ char c = '"'; // a char
+        String str1= "str\"ing";Long l = null;
+    }
+}
 ==================================================

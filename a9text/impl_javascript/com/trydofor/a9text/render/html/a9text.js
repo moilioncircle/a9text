@@ -553,7 +553,7 @@ var A9TextRender = function()
         //
         __const_htm__.area[1] = dom.getTier();
         __const_htm__.area[3] = __const_htm__.area$info.join('');
-        __const_htm__.area[5] = A9Util.txt2htm(dom.getText());
+        __const_htm__.area[5] = A9Util.txt2htm(dom.getText(),'<>');
         __render_htm__.push(__const_htm__.area.join(''));
     }
     

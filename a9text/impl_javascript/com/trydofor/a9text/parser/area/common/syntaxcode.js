@@ -16,6 +16,9 @@ var AreaSyntaxCodeParser = function()
     var __obj_onequot__ = []; // one-line quote, with escape char
     var __obj_keyword__ = []; // in-line
     var __obj_pairing__ = []; // in-line
+    var __str_oprchar__ = []; // in-line
+    
+    var __reg_blank__ = /^ *$/;
 
 
     this.putMulQuote = function(type,head,foot,isin,escc)
@@ -49,21 +52,63 @@ var AreaSyntaxCodeParser = function()
     
     this.putKeyword = function(type,keys)
     {
-        if(typeof(type) != 'string') throw "Pairing's type should be string";
-        if(!(keys instanceof Array || keys instanceof String)) throw "Keyword's keys should be Array or String";
+        if(typeof(type) != 'string') throw "Keyword's type should be string";
+        if(!(keys instanceof Array || typeof(keys) == 'string' || keys instanceof RegExp))
+            throw "Keyword's keys should be Array or String or RegExp";
+        
+        if(!(keys instanceof Array))
+            keys = [keys];
+        
+        for(var i=0;i<keys.length;i++)
+        {
+            
+            if(typeof(keys[i]) == 'string')
+            {
+                // skip
+            }
+            else if(keys[i] instanceof RegExp)
+            {
+                var isi = keys[i].ignoreCase;
+                var src  = keys[i].source;
+                
+                if(src.charAt(src.length-1) != '$') src = src + '$';
+                if(src.charAt(0) != '^') src = '^'+src;
+                
+                if(isi)
+                    keys[i] = new RegExp(src,'i');
+                else
+                    keys[i] = new RegExp(src);
+
+            }
+            else
+            {
+                throw "the item["+keys[i]+"] of Keyword's keys should be String or RegExp";
+            }
+        }
         
         var obj = {
             'type':type,
-            'keys':(keys instanceof Array)?keys:[keys]
+            'keys':keys
         };
         
         __obj_keyword__.push(obj);
     }
-        
+    
+    this.putOprchar = function(str)
+    {
+        if(typeof(str) != 'string') throw "Oprchar should be string";
+        if(str != '')
+        {
+            __str_oprchar__.push(str);
+        }
+    }
+    
     this.putPairing = function(type,head,foot)
     {
         if(typeof(type) != 'string') throw "Pairing's type should be string";
-                        
+        if(typeof(head) != 'string') throw "Pairing's head should be string";
+        if(typeof(foot) != 'string') throw "Pairing's foot should be string";
+        
         var obj = {
             'type':type,
             'head':head,
@@ -85,7 +130,6 @@ var AreaSyntaxCodeParser = function()
         var text = a9dom.getText();
         if(text == null || text == "") return;
         
-        text = A9Util.valueBlank(text);
         var lines = text.split(a9dom.getInfo(A9Dom.type.area$crlf));
         
         var curMulquot = null;
@@ -332,42 +376,191 @@ var AreaSyntaxCodeParser = function()
     
     function __parseNonquot__(line,lineDom)
     {
-        var wordDom = lineDom.newChild(A9Dom.type.area_syntax_code.word_literal);
-        wordDom.setText(line);
-        return; // TODO
-        
-//        var __obj_keyword__ = []; // in-line
-//        var __obj_pairing__ = []; // in-line  
-        //
         if(line == null || line == '') return;
         
-        var parts = []; // hold parts divide by ' '
-        
-        var inBlank = false;
-        var lastPos = 0;
-        for(var i = 0; i<line.length; i++)
+        if(__obj_pairing__.length == 0 && __obj_keyword__.length == 0)
         {
-            var c = line.charAt(i);
-            if(c == ' ')
+            var wordDom = lineDom.newChild(A9Dom.type.area_syntax_code.word_literal);
+            wordDom.setText(line);
+            return;
+        }
+        
+        // split by blank
+        var blkParts = [];
+        {
+            var inBlank = false;
+            var lastPos = 0;
+            for(var i = 0; i<line.length; i++)
             {
-                if(!inBlank && i>lastPos)
+                var c = line.charAt(i);
+                if(c == ' ' || c == '\t')
                 {
-                    parts.push(line.substring(lastPos,i));
-                    lastPos = i;
+                    if(!inBlank && i>lastPos)
+                    {
+                        blkParts.push(line.substring(lastPos,i));
+                        lastPos = i;
+                    }
+                    inBlank = true;
                 }
-                inBlank = true;
-            }
-            else
-            {
-                if(inBlank) // end blank
+                else
                 {
-                    parts.push(line.substring(lastPos,i));
-                    lastPos = i;
-                    inBlank = false;
+                    if(inBlank && i>lastPos) // end blank
+                    {
+                        blkParts.push(line.substring(lastPos,i));
+                        lastPos = i;
+                        inBlank = false;
+                    }
+                    
+                    for(var k=0;k<__str_oprchar__.length;k++)
+                    {
+                        if(__str_oprchar__[k].indexOf(c)>=0)
+                        {
+                            if(i>lastPos) blkParts.push(line.substring(lastPos,i));
+                            
+                            blkParts.push(c);
+                            lastPos = i+1;
+                            inBlank = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if(lastPos < line.length)
+            {
+                blkParts.push(line.substr(lastPos)); // last part
+            }
+        }
+        
+        // check pairing
+        var objParts = [];
+        for(var i = 0 ; i< blkParts.length; i++)
+        {
+            var part = blkParts[i];
+            
+            if(__reg_blank__.test(part))
+            {
+                objParts.push(part);
+                continue;
+            }
+            
+            //
+            while(part != null)
+            {
+                var pos = -1;
+                var ih = true;
+                var curPair = null;
+                for(var m=0;m<__obj_pairing__.length;m++)
+                {
+                    var pair = __obj_pairing__[m];
+
+                    var ph = part.indexOf(pair['head']);
+                    var pf = part.indexOf(pair['foot']);
+                    
+                    if(ph>=0 && (pos <0 || ph<pos))
+                    {
+                        pos = ph;
+                        ih  = true;
+                        curPair = pair;
+                    }
+                    if(pf>=0 && (pos <0 || pf<pos))
+                    {
+                        pos = pf;
+                        ih  = false;
+                        curPair = pair;
+                    }
+                    
+                    if(pos == 0) break;
+                }
+                
+                if(pos <0)
+                {
+                    objParts.push(part);
+                    part = null;
+                }
+                else
+                {
+                    if(pos > 0)
+                    {
+                        objParts.push(part.substr(0,pos));
+                    }
+                    
+                    if(ih)
+                    {
+                        curPair['seqh'] = curPair['seqh']+1;
+                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['head'].length),'seq':'_h_'+curPair['seqh']});
+                        part = part.substr(pos+curPair['head'].length);
+                    }
+                    else
+                    {
+                        curPair['seqf'] = curPair['seqf']+1;
+                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['foot'].length),'seq':'_f_'+curPair['seqf']});
+                        part = part.substr(pos+curPair['foot'].length);
+                    }
+                    
+                    if(part == '') part = null;
                 }
             }
         }
-        parts.push(line.substr(lastPos)); // last part
+        
+        // obj 2 dom
+        var strbuff = "";
+        for(var i = 0 ; i< objParts.length; i++)
+        {
+            var keyt = null;
+            if(typeof(objParts[i]) == 'string' && !__reg_blank__.test(objParts[i]))
+            {
+                for(var m=0;m<__obj_keyword__.length;m++)
+                {
+                    var keys = __obj_keyword__[m]['keys'];
+                    for(var n=0; n<keys.length;n++)
+                    {
+                        if(typeof(keys[n]) == 'string' && keys[n] == objParts[i])
+                        {
+                            keyt = __obj_keyword__[m]['type'];
+                            break;
+                        }
+                        if(keys[n] instanceof RegExp && keys[n].test(objParts[i]))
+                        {
+                            keyt = __obj_keyword__[m]['type'];
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if(keyt != null || typeof(objParts[i]) != 'string')
+            {
+                if(strbuff.length > 0)
+                {
+                    var wordDom = lineDom.newChild(A9Dom.type.area_syntax_code.word_literal);
+                    wordDom.setText(strbuff);
+                    strbuff = "";
+                }
+                
+                if(keyt != null)
+                {
+                    var wordDom = lineDom.newChild(keyt);
+                    wordDom.setText(objParts[i]);
+                }
+                else
+                {
+                    var wordDom = lineDom.newChild(objParts[i]['type']);
+                    wordDom.setText(objParts[i]['text']);
+                    wordDom.putInfo(A9Dom.type.area_syntax_code.pair_$serial,objParts[i]['seq']);
+                }
+            }
+            else
+            {
+                strbuff += objParts[i];
+            }
+        }
+        //
+        if(strbuff.length > 0)
+        {
+            var wordDom = lineDom.newChild(A9Dom.type.area_syntax_code.word_literal);
+            wordDom.setText(strbuff);
+            strbuff = "";
+        }
     }
-
 }
