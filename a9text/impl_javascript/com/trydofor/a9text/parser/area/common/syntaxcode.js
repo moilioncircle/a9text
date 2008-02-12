@@ -50,7 +50,7 @@ var AreaSyntaxCodeParser = function()
         __obj_onequot__.push(obj);
     }
     
-    this.putKeyword = function(type,keys)
+    this.putKeyword = function(type,keys,casesensitive)
     {
         if(typeof(type) != 'string') throw "Keyword's type should be string";
         if(!(keys instanceof Array || typeof(keys) == 'string' || keys instanceof RegExp))
@@ -88,7 +88,8 @@ var AreaSyntaxCodeParser = function()
         
         var obj = {
             'type':type,
-            'keys':keys
+            'keys':keys,
+            'case':casesensitive
         };
         
         __obj_keyword__.push(obj);
@@ -515,11 +516,26 @@ var AreaSyntaxCodeParser = function()
                     var keys = __obj_keyword__[m]['keys'];
                     for(var n=0; n<keys.length;n++)
                     {
-                        if(typeof(keys[n]) == 'string' && keys[n] == objParts[i])
+                        if(typeof(keys[n]) == 'string')
                         {
-                            keyt = __obj_keyword__[m]['type'];
-                            break;
+                            var got = false;
+                            
+                            if(__obj_keyword__[m]['case'])
+                            {
+                                got = (keys[n] == objParts[i]);
+                            }
+                            else
+                            {
+                                got = (keys[n].toLowerCase() == objParts[i].toLowerCase());
+                            }
+                            
+                            if(got)
+                            {
+                                keyt = __obj_keyword__[m]['type'];
+                                break;
+                            }
                         }
+                        
                         if(keys[n] instanceof RegExp && keys[n].test(objParts[i]))
                         {
                             keyt = __obj_keyword__[m]['type'];
