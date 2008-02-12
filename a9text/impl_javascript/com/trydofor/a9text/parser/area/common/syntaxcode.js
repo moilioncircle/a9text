@@ -353,6 +353,10 @@ var AreaSyntaxCodeParser = function()
                     line = line.substr(posMqh+lenMqh);
                     continue;
                 }
+                else
+                {
+                    curMulquot = null;
+                }
                 
                 // nonquote
                 if(posOqh != 0)

@@ -1,0 +1,30 @@
+============== c : 7zAlloc.c =====================
+/* 7zAlloc.c */
+
+#include <stdlib.h>
+#include "7zAlloc.h"
+
+/* #define _SZ_ALLOC_DEBUG */
+/* use _SZ_ALLOC_DEBUG to debug alloc/free operations */
+
+#ifdef _SZ_ALLOC_DEBUG
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <stdio.h>
+int g_allocCount = 0;
+int g_allocCountTemp = 0;
+#endif
+
+void *SzAlloc(size_t size)
+{
+  if (size == 0)
+    return 0;
+  #ifdef _SZ_ALLOC_DEBUG
+  fprintf(stderr, "\nAlloc %10d bytes; count = %10d", size, g_allocCount);
+  g_allocCount++;
+  #endif
+  return malloc(size);
+}
+==================================================
