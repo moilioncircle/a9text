@@ -173,9 +173,9 @@ var AreaCppParser = function()
             'foreach',
             'forever'];
         
-        __ascp__.putKeyword(A9Dom.type.area_cpp.word_type,word_type,true);
-        __ascp__.putKeyword(A9Dom.type.area_cpp.word_keyword,word_keyword,true);
-        __ascp__.putKeyword(A9Dom.type.area_cpp.word_exts,word_exts,true);
+        __ascp__.putKeyword(A9Dom.type.area_cpp.word_type,word_type);
+        __ascp__.putKeyword(A9Dom.type.area_cpp.word_keyword,word_keyword);
+        __ascp__.putKeyword(A9Dom.type.area_cpp.word_exts,word_exts);
         
     }
     ////

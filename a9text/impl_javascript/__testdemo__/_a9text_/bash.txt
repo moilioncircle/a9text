@@ -1,0 +1,15 @@
+============== bash : test.sh =====================
+#newgame
+function New_game () {
+    
+    kill -9 $displaypid >/dev/null 2>&1
+
+    if [[ "$1" == "over" ]]
+    then 
+        exec $(dirname $0)/$(basename $0)
+    else
+        echo "$level $score $life $length $runtime" > $vartmp
+        exec $(dirname $0)/$(basename $0) display
+    fi
+}
+==================================================

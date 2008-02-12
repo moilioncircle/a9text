@@ -68,8 +68,8 @@ var AreaCParser = function()
             'union',
             'while'];
         
-        __ascp__.putKeyword(A9Dom.type.area_c.word_type,word_type,true);
-        __ascp__.putKeyword(A9Dom.type.area_c.word_keyword,word_keyword,true);
+        __ascp__.putKeyword(A9Dom.type.area_c.word_type,word_type);
+        __ascp__.putKeyword(A9Dom.type.area_c.word_keyword,word_keyword);
         
     }
     ////
