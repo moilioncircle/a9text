@@ -21,12 +21,12 @@ var AreaJavaParser = function()
 
     var __ascp__ = new AreaSyntaxCodeParser();
     {
+        __ascp__.putOprchar(';<>=?!&%^-+*/,:');
         __ascp__.putMulQuote(A9Dom.type.area_java.comment_doc,'/**','*/');
         __ascp__.putMulQuote(A9Dom.type.area_java.comment_multi,'/*','*/');
         __ascp__.putMulQuote(A9Dom.type.area_java.type_string,'"','"',true,'\\');
         __ascp__.putMulQuote(A9Dom.type.area_java.type_char,"'","'",true,'\\');
         __ascp__.putOneQuote(A9Dom.type.area_java.comment_single,'//');
-        __ascp__.putOprchar(';<>=?!&%^-+*/,:');
         __ascp__.putPairing(A9Dom.type.area_java.bracket_sm,'(',')');
         __ascp__.putPairing(A9Dom.type.area_java.bracket_md,'[',']');
         __ascp__.putPairing(A9Dom.type.area_java.bracket_bg,'{','}');

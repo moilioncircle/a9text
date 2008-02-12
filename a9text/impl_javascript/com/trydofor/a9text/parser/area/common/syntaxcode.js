@@ -50,7 +50,7 @@ var AreaSyntaxCodeParser = function()
         __obj_onequot__.push(obj);
     }
     
-    this.putKeyword = function(type,keys,casesensitive)
+    this.putKeyword = function(type,keys,ignoreCase)
     {
         if(typeof(type) != 'string') throw "Keyword's type should be string";
         if(!(keys instanceof Array || typeof(keys) == 'string' || keys instanceof RegExp))
@@ -69,7 +69,7 @@ var AreaSyntaxCodeParser = function()
             else if(keys[i] instanceof RegExp)
             {
                 var isi = keys[i].ignoreCase;
-                var src  = keys[i].source;
+                var src = keys[i].source;
                 
                 if(src.charAt(src.length-1) != '$') src = src + '$';
                 if(src.charAt(0) != '^') src = '^'+src;
@@ -89,7 +89,7 @@ var AreaSyntaxCodeParser = function()
         var obj = {
             'type':type,
             'keys':keys,
-            'case':casesensitive
+            'case':ignoreCase
         };
         
         __obj_keyword__.push(obj);
@@ -160,7 +160,7 @@ var AreaSyntaxCodeParser = function()
                             // the head or escape
                             if(posMqf > 0 && curMulquot['escc'] != null && A9Util.isEscape(tmp,posMqf-1,curMulquot['escc']))
                             {
-                                var relpos = posMqf+RegExp.$1.length;
+                                var relpos = posMqf+1;
                                 tmp = tmp.substr(relpos);
                                 offset += relpos;
                             }
@@ -179,7 +179,7 @@ var AreaSyntaxCodeParser = function()
                             // the head or escape
                             if(posMqf > 0 && curMulquot['escc'] != null && A9Util.isEscape(line,posMqf-1,curMulquot['escc']))
                             {
-                                offset += (posMqf+mqFoot.length);
+                                offset += (posMqf+1);
                                 posMqf = line.indexOf(mqFoot,offset);
                             }
                             else
@@ -231,7 +231,7 @@ var AreaSyntaxCodeParser = function()
                             // escape
                             if(p > 0 && __obj_onequot__[m]['escc'] != null && A9Util.isEscape(tmp,p-1,__obj_onequot__[m]['escc']))
                             {
-                                var relpos = p+RegExp.$1.length;
+                                var relpos = p+1;
                                 tmp = tmp.substr(relpos);
                                 offset += relpos;
                             }
@@ -256,7 +256,7 @@ var AreaSyntaxCodeParser = function()
                             // escape
                             if(p > 0 && __obj_onequot__[m]['escc'] != null && A9Util.isEscape(line,p-1,__obj_onequot__[m]['escc']))
                             {
-                                offset += (p+oqHead.length);
+                                offset += (p+1);
                                 p = line.indexOf(oqHead,offset);
                             }
                             else
@@ -293,7 +293,7 @@ var AreaSyntaxCodeParser = function()
                             // escape
                             if(p > 0 && __obj_mulquot__[m]['escc'] != null && A9Util.isEscape(tmp,p-1,__obj_mulquot__[m]['escc']))
                             {
-                                var relpos = p+RegExp.$1.length;
+                                var relpos = p+1;
                                 tmp = tmp.substr(relpos);
                                 offset += relpos;
                             }
@@ -317,7 +317,7 @@ var AreaSyntaxCodeParser = function()
                             // escape
                             if(p > 0 && __obj_mulquot__[m]['escc'] != null && A9Util.isEscape(line,p-1,__obj_mulquot__[m]['escc']))
                             {
-                                offset += (p+mqHead.length);
+                                offset += (p+1);
                                 p = line.indexOf(mqHead,offset);
                             }
                             else
@@ -522,11 +522,11 @@ var AreaSyntaxCodeParser = function()
                             
                             if(__obj_keyword__[m]['case'])
                             {
-                                got = (keys[n] == objParts[i]);
+                                got = (keys[n].toLowerCase() == objParts[i].toLowerCase());
                             }
                             else
                             {
-                                got = (keys[n].toLowerCase() == objParts[i].toLowerCase());
+                                got = (keys[n] == objParts[i]);
                             }
                             
                             if(got)

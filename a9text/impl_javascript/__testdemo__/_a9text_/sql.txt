@@ -1,0 +1,7 @@
+﻿============== sql : test =====================
+SELECT COUNT(*), 1+0.01 FROM USER -- comment1
+GO
+INSERT INTO USER(`HOST`, USER, PASSWORD) /*comment2*/
+VALUES('', '', NULL) // comment3
+GO
+==================================================
