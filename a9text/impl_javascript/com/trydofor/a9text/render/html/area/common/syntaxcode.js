@@ -16,6 +16,7 @@ var AreaSyntaxCodeRender = function()
     var __pairing_fg__ = "#FFFFFF";
     var __pairing_bg__ = "#FF0000";
     var __pairing_js__ = "<script language='javascript'>"
+        +"if(__A9TEXT_ASCP__ == null){"
         +"var __A9TEXT_ASCP__ = {"
         +"activedId:null,"
         +"activedFg:'"+__pairing_fg__+"',"
@@ -39,6 +40,7 @@ var AreaSyntaxCodeRender = function()
         +"    document.getElementById('F'+__A9TEXT_ASCP__.activedId).style.backgroundColor=__A9TEXT_ASCP__.activedBg;"
         +"}"
         +"};"
+        +"}"
         +"</script>";
     
     var __word_highlight__ = [];
