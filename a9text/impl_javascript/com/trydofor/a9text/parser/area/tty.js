@@ -23,6 +23,8 @@ var AreaTTYParser = function()
     ////
     this.parse = function(a9dom)
     {
+       if(a9dom == null || 'tty' != a9dom.getInfo(A9Dom.type.area$type))
+            return;
         __ascp__.parse(a9dom);
     }
 }

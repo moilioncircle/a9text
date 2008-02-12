@@ -114,7 +114,7 @@ var AreaSyntaxCodeParser = function()
             'head':head,
             'foot':foot,
             'seqh':0,
-            'seqf':0
+            'seqf':[]
         };
         
         __obj_pairing__.push(obj);
@@ -488,13 +488,13 @@ var AreaSyntaxCodeParser = function()
                     if(ih)
                     {
                         curPair['seqh'] = curPair['seqh']+1;
-                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['head'].length),'seq':'_h_'+curPair['seqh']});
+                        curPair['seqf'].push(curPair['seqh']);
+                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['head'].length),'seq':'H'+curPair['seqh']+'_'});
                         part = part.substr(pos+curPair['head'].length);
                     }
                     else
                     {
-                        curPair['seqf'] = curPair['seqf']+1;
-                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['foot'].length),'seq':'_f_'+curPair['seqf']});
+                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['foot'].length),'seq':'F'+curPair['seqf'].pop()+'_'});
                         part = part.substr(pos+curPair['foot'].length);
                     }
                     
