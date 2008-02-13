@@ -10,13 +10,36 @@ var htmRender = new A9TextRender(); //com.trydofor.a9text.render.html.a9text.A9T
 
 <!-- // Run As HTM
 /* --> <script type="text/javascript">
+var file2area = {
+'bash':"*.sh|*.bash",
+'java':"*.java",
+'c':"*.c",
+'cpp':"*.C|*.cpp|*.h",
+'sql':"*.sql"
+};
 var text = "";
 try{
     var file = PAGE_INFO || "doc/cn/a9text/a9text-demo_3.2.txt";
     text = loadText(file);
-    
     if(text != "")
     {
+        var ldot = file.lastIndexOf('.');
+        if(ldot>0)
+        {
+            var crlf = A9Util.getCRLF(text);
+            var extn = file.substr(ldot);
+            for(var key in file2area)
+            {
+                if(file2area[key].indexOf(extn) >=0)
+                {
+                    text = "========= "+key+":"+file+" =========" 
+                         + crlf + text + crlf
+                         + "====================================";
+                    break;
+                }
+            }
+        }
+        //
         var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
         a9dom.setText(text);
         a9dom.putInfo(A9Dom.type.root$path,A9Util.getDir(file));
