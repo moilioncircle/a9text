@@ -16,7 +16,6 @@ var AreaSyntaxCodeRender = function()
     var __pairing_fg__ = "#FFFFFF";
     var __pairing_bg__ = "#FF0000";
     var __pairing_js__ = "<script language='javascript'>"
-        +"if(__A9TEXT_ASCP__ == null){"
         +"var __A9TEXT_ASCP__ = {"
         +"activedId:null,"
         +"activedFg:'"+__pairing_fg__+"',"
@@ -40,7 +39,6 @@ var AreaSyntaxCodeRender = function()
         +"    document.getElementById('F'+__A9TEXT_ASCP__.activedId).style.backgroundColor=__A9TEXT_ASCP__.activedBg;"
         +"}"
         +"};"
-        +"}"
         +"</script>";
     
     var __word_highlight__ = [];
@@ -134,6 +132,15 @@ var AreaSyntaxCodeRender = function()
         __const_htm__.syntax_code[5] = __render_seq__.join('\n');        
         __const_htm__.syntax_code[7] = __render_htm__.join('');
         
-        return __pairing_js__ + __const_htm__.syntax_code.join('');
+        // check js in global
+        if(typeof(__A9TEXT_ASCP_PAIRING_EXPORTED__) == 'undefined')
+        {
+            return __pairing_js__ + __const_htm__.syntax_code.join('');
+        }
+        else
+        {
+            __A9TEXT_ASCP_PAIRING_EXPORTED__ = true;
+            return __const_htm__.syntax_code.join('');
+        }
     }
 }
