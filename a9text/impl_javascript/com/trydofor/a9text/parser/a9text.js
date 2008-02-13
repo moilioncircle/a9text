@@ -797,7 +797,7 @@ var A9TextParser = function()
             }
             catch(e)
             {
-                alert(e);
+                // alert(e);
                 A9Util.progressInfo("failed to load area parser:"+type);
             }
         }

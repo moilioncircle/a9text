@@ -3,7 +3,7 @@ UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
 void parse(a9dom)
 */
-var AreaSyntaxCodeParser$Serial = 0; // for pairing
+var AreaSyntaxCodeParser$PairingSerial = 0; // for pairing
 
 var AreaSyntaxCodeParser = function()
 {
@@ -132,7 +132,7 @@ var AreaSyntaxCodeParser = function()
         var text = a9dom.getText();
         if(text == null || text == "") return;
         
-        AreaSyntaxCodeParser$Serial ++;
+        AreaSyntaxCodeParser$PairingSerial ++;
         
         var lines = text.split(a9dom.getInfo(A9Dom.type.area$crlf));
         
@@ -497,12 +497,12 @@ var AreaSyntaxCodeParser = function()
                     {
                         curPair['seqh'] = curPair['seqh']+1;
                         curPair['seqf'].push(curPair['seqh']);
-                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['head'].length),'seq':'H'+curPair['seqh']+'$'+AreaSyntaxCodeParser$Serial+"_"});
+                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['head'].length),'seq':'H'+curPair['seqh']+'$'+AreaSyntaxCodeParser$PairingSerial+"_"});
                         part = part.substr(pos+curPair['head'].length);
                     }
                     else
                     {
-                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['foot'].length),'seq':'F'+curPair['seqf'].pop()+'$'+AreaSyntaxCodeParser$Serial+"_"});
+                        objParts.push({'type':curPair['type'],'text':part.substr(pos,curPair['foot'].length),'seq':'F'+curPair['seqf'].pop()+'$'+AreaSyntaxCodeParser$PairingSerial+"_"});
                         part = part.substr(pos+curPair['foot'].length);
                     }
                     

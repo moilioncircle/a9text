@@ -3,6 +3,8 @@ UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
 String render(a9Dom)
 */
+var AreaSyntaxCodeRender$PairingFlag = true;
+
 var AreaSyntaxCodeRender = function()
 {
     var __const_htm__= {};
@@ -132,15 +134,14 @@ var AreaSyntaxCodeRender = function()
         __const_htm__.syntax_code[5] = __render_seq__.join('\n');        
         __const_htm__.syntax_code[7] = __render_htm__.join('');
         
-        // check js in global
-        if(typeof(__A9TEXT_ASCP_PAIRING_EXPORTED__) == 'undefined')
+        var htmResult = __const_htm__.syntax_code.join('');
+        
+        if(AreaSyntaxCodeRender$PairingFlag)
         {
-            return __pairing_js__ + __const_htm__.syntax_code.join('');
+            htmResult = __pairing_js__ + htmResult;
+            AreaSyntaxCodeRender$PairingFlag = false;
         }
-        else
-        {
-            __A9TEXT_ASCP_PAIRING_EXPORTED__ = true;
-            return __const_htm__.syntax_code.join('');
-        }
+        
+        return htmResult;
     }
 }
