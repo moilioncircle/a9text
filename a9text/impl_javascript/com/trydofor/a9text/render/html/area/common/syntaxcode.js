@@ -3,7 +3,12 @@ UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
 String render(a9Dom)
 */
-var AreaSyntaxCodeRender$PairingFlag = true;
+var AreaSyntaxCodeRender$HasPairingFlag = true;
+
+var hasPairingJs = function(flag)
+{
+    AreaSyntaxCodeRender$HasPairingFlag = flag;
+}
 
 var AreaSyntaxCodeRender = function()
 {
@@ -136,10 +141,10 @@ var AreaSyntaxCodeRender = function()
         
         var htmResult = __const_htm__.syntax_code.join('');
         
-        if(AreaSyntaxCodeRender$PairingFlag)
+        if(AreaSyntaxCodeRender$HasPairingFlag)
         {
             htmResult = __pairing_js__ + htmResult;
-            AreaSyntaxCodeRender$PairingFlag = false;
+            AreaSyntaxCodeRender$HasPairingFlag = false;
         }
         
         return htmResult;

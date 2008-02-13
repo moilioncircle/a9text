@@ -91,7 +91,12 @@ function onChangeView(type)
         case 'dom':
         case 'htm':
             if(__ViewText__[type] == null) 
+            {
+                try{
+                    com.trydofor.a9text.render.html.area.common.syntaxcode.hasPairingJs(true);
+                }catch(e){};
                 __ViewText__[type] = __Renders__[type].render(__A9dom__);
+            }
             break;
         case 'txt':
             break;
