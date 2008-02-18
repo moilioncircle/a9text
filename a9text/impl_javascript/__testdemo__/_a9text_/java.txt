@@ -1,16 +1,50 @@
 ============== java : test =====================
-public class A9Text extends Applet
-{
-    private static final long serialVersionUID = 1009;
+package com.trydofor.a9text.test;
+
+ /************************************************************
+ * @author  : Shi Rongjiu (www.trydofor.com)
+ * @version : 2008-2-18 / $Revision$
+ * @see     : requires/documents
+ * ====================== change-logs =======================
+ * $Log$
+ ************************************************************/
+
+public abstract class Live {
     
-    /**
-     * Application
-     */
-    public static void main(String[] args /* args*/) 
+    public abstract void health();
+    public abstract void happy();
+    public abstract void hope();
+    public abstract void work();
+    public abstract void earn();
+    public abstract void love();
+    public abstract void thank();
+    public abstract void think(Throwable t);
+    public abstract void learn();
+    
+    private volatile boolean live;
+    public final void live()
     {
-        int i=0; // test field
-        /* void */ char c = '"'; // a char
-        String str1= "str\"ing";Long l = null;
+        while(live)
+        {
+            try
+            {
+                health();
+                happy();
+                hope();
+                work();
+                earn();
+                love();
+                thank();
+            }
+            catch(Throwable t)
+            {
+                think(t);
+            }
+            finally
+            {
+                learn();
+            }
+        }
     }
 }
 ==================================================
