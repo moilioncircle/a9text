@@ -3,3 +3,5 @@
 __info__('task.js',['MiniTaskClass']);
 __info__('cnf.js',['CnfReaderClass']);
 __info__('xml.js',['XmlReaderClass']);
+__info__('log.js',['Logger']);
+__info__('trace.js',['Tracer']);
