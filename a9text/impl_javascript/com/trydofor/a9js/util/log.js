@@ -53,9 +53,9 @@ Logger.log = function(mess,level,mark)
         text = "DEBUG";
 
     if(mark != null && mark !="") text+=" @ "+ mark;
-    text = "<b>[ "+text+" ]</b> "+mess;
+    text = "<b>"+text+"</b> "+mess;
     try{
-        if(typeof(Logger.log) != "function")
+        if(typeof(Logger.stdout) != "function")
         {
             var win = window.open("","A9EngineConsole","width=680,height=600,resizable,scrollbars=yes");
             win.document.write("<meta content='text/html; charset=utf-8' http-equiv='content-type'><body style='font-size:12px'></body>");
