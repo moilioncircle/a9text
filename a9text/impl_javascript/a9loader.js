@@ -32,8 +32,7 @@ var __A9Loader__ = function()
         
     }
     
-    
-    function __syncLoadText__()
+    function __syncLoadText__(url)
     {
         var xhr = __newXHRequest__();
         var resText = null;
@@ -59,7 +58,7 @@ var __A9Loader__ = function()
     
     function __newXHRequest__()
     {
-        if(window.XMLHttpRequest)// Gecko
+        if(window.XMLHttpRequest) // Gecko
         {
             return new XMLHttpRequest() ;
         }
@@ -73,6 +72,12 @@ var __A9Loader__ = function()
         {
             throw "can not create XMLHttpRequest on your browser";
         }
+    }
+    
+    function __checkType__(para,type,mess)
+    {
+        if(para == null) throw mess;
+        if(typeof(type) == 'string' && typeof(para) != type) throw mess;
     }
     
     function __init__()
@@ -90,6 +95,7 @@ var __A9Loader__ = function()
             }
         }
     }
+    
     // init
     __init__();
     
