@@ -1,4 +1,4 @@
-﻿/**
+/**
 UTF8(BOM)  GPL  trydofor.com  Feb.2008
 ===========================================================
 
@@ -6,17 +6,28 @@ UTF8(BOM)  GPL  trydofor.com  Feb.2008
 
 var __A9Loader__ = function()
 {
-    function __tagLoad__()
+    function __tagImportScript__()
     {
         
     }
     
-    function __syncLoad__()
+    function __syncImportClass__()
     {
         
     }
     
-    function __asyncLoad__()
+    function __asyncImportClass__()
+    {
+        
+    }
+    
+    
+    function __syncLoadText__()
+    {
+        
+    }
+    
+    function __asyncLoadText__()
     {
         
     }
@@ -27,9 +38,11 @@ var __A9Loader__ = function()
     }
     
     //
-    this.tagLoad   = __tagLoad__;
-    this.syncLoad  = __syncLoad__;
-    this.asyncLoan = __asyncLoad__;
+    this.tagImportScript  = __tagImportScript__;
+    this.syncImportClass  = __syncImportClass__;
+    this.asyncImportClass = __asyncImportClass__;
+    this.syncLoadText     = __syncLoadText__;
+    this.asyncLoadText    = __asyncLoadText__;
     
     // init
     __init__();
@@ -38,5 +51,5 @@ var __A9Loader__ = function()
 // init instance
 if(!(A9Loader instanceof __A9Loader__))
 {
-    A9Loader    = new __A9Loader__();
+    A9Loader = new __A9Loader__();
 }
