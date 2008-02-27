@@ -8,7 +8,7 @@ var __A9Loader__ = function()
 {
     var __selfConf__ = {name:"a9loader.js",path:"",ball:'.js',info:"__info__.js"};
     var __asyncCnt__ = 0;
-    
+
     function __tagImportScript__(url)
     {
         __checkType__(url,"string","url@__tagImportScript__");
@@ -66,30 +66,36 @@ var __A9Loader__ = function()
         return resText;
     }
     
+    function __asyncElement__(id)
+    {
+        var _id_ = id;
+        var _ob_ = [];
+        this.put()
+    }
+    
     function __asyncLoadText__(func,urls)
     {
         __checkType__(func,"Function","func@__asyncLoadText__");
         __checkType__(urls,"string","urls@__asyncLoadText__");
         
-        var xhr = __newXHRequest__();
-        xhr.onreadystatechange = function()
-        {
-            if ( xhr.readyState == 4 )
-            {
-                if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 )
-                {
-                    reqObj.resText = xhr.responseText==null?"":xhr.responseText;
-                    __requestManager__(reqObj);
-                }
-                else
-                {
-                    // do something
+        if(typeof(urls) == 'string') urls = [urls];
+        
+        for(var i=0;i<urls.length;i++){
+            var xhr = __newXHRequest__();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
+                        func(xhr.responseText);
+                    }else{
+                        // do something
+                    }
+                    delete xhr;
                 }
             }
+            xhr.open("GET", urls[i],true);
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+            xhr.send(null);
         }
-        xhr.open(reqObj.method, reqObj.url,true);
-        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
-        xhr.send(reqObj.data);
     }
     
     function __newXHRequest__()
@@ -114,18 +120,18 @@ var __A9Loader__ = function()
     {
         var mess = "para:"+para+" should be "+type+" ::"+info;
         if(para == null) throw mess;
-        if(para instanceof Array && type != "Array")
-        {
+        if(para instanceof Array && type != "Array"){
             for(var i=0; i<para.length; i++) {
-            	if(!(typeof(para) == type || eval("para instanceof "+type))) 
-                    throw mess;
+            	if(typeof(para[i]) == type) continue;
+            	try{
+            	   if(eval("para[i] instanceof "+type)) continue;
+            	}catch(e){};
+                throw mess;
             }
-        }
-        else
-        {
+            return;
+        }else{
             if(typeof(para) == type || eval("para instanceof "+type)) return;
         }
-        
         throw mess;
     }
     
