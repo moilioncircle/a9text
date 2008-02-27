@@ -7,9 +7,11 @@ UTF8(BOM)  GPL  trydofor.com  Feb.2008
 var __A9Loader__ = function()
 {
     var __selfConf__ = {name:"a9loader.js",path:"",ball:'.js',info:"__info__.js"};
+    var __asyncCnt__ = 0;
     
     function __tagImportScript__(url)
     {
+        __checkType__(url,"string","url@__tagImportScript__");
         try
         {
             var element=document.createElement('SCRIPT'); 
@@ -24,16 +26,29 @@ var __A9Loader__ = function()
     
     function __syncImportClass__(clzz)
     {
-        
+        __checkType__(clzz,"string","clzz@__syncImportClass__");
     }
     
-    function __asyncImportClass__()
+    function __asyncImportClass__(func,clzzes)
+    {
+        __checkType__(func,"Function","func@__asyncImportClass__");
+        __checkType__(clzzes,"string","clzzes@__asyncImportClass__");
+    }
+    
+    function __exportClassBall__(clzz,members)
+    {
+        __checkType__(clzz,"string","clzz@__exportClassBall__");
+        __checkType__(members,"string","members@__exportClassBall__");
+    }
+    
+    function __importDependence__()
     {
         
     }
     
     function __syncLoadText__(url)
     {
+        __checkType__(url,"string","url@__syncLoadText__");
         var xhr = __newXHRequest__();
         var resText = null;
         try
@@ -51,9 +66,30 @@ var __A9Loader__ = function()
         return resText;
     }
     
-    function __asyncLoadText__()
+    function __asyncLoadText__(func,urls)
     {
+        __checkType__(func,"Function","func@__asyncLoadText__");
+        __checkType__(urls,"string","urls@__asyncLoadText__");
         
+        var xhr = __newXHRequest__();
+        xhr.onreadystatechange = function()
+        {
+            if ( xhr.readyState == 4 )
+            {
+                if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 )
+                {
+                    reqObj.resText = xhr.responseText==null?"":xhr.responseText;
+                    __requestManager__(reqObj);
+                }
+                else
+                {
+                    // do something
+                }
+            }
+        }
+        xhr.open(reqObj.method, reqObj.url,true);
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+        xhr.send(reqObj.data);
     }
     
     function __newXHRequest__()
@@ -74,10 +110,23 @@ var __A9Loader__ = function()
         }
     }
     
-    function __checkType__(para,type,mess)
+    function __checkType__(para,type,info)
     {
+        var mess = "para:"+para+" should be "+type+" ::"+info;
         if(para == null) throw mess;
-        if(typeof(type) == 'string' && typeof(para) != type) throw mess;
+        if(para instanceof Array && type != "Array")
+        {
+            for(var i=0; i<para.length; i++) {
+            	if(!(typeof(para) == type || eval("para instanceof "+type))) 
+                    throw mess;
+            }
+        }
+        else
+        {
+            if(typeof(para) == type || eval("para instanceof "+type)) return;
+        }
+        
+        throw mess;
     }
     
     function __init__()
