@@ -7,7 +7,9 @@ UTF8(BOM)  GPL  trydofor.com  Feb.2008
 var __A9Loader__ = function()
 {
     var __selfConf__ = {name:"a9loader.js",path:"",ball:'.js',info:"__info__.js"};
-    var __asyncCnt__ = 0;
+    
+    var __asyncTaskId__  = 0;
+    var __asyncTaskMap__ = {};
 
     function __tagImportScript__(url)
     {
@@ -66,36 +68,92 @@ var __A9Loader__ = function()
         return resText;
     }
     
-    function __asyncElement__(id)
+    /**
+     * do xmlhttprequest as a thread of task group
+     * @param url
+     * @param taskid task group id
+     */
+    function __xhrEntry__(url,taskid)
     {
-        var _id_ = id;
-        var _ob_ = [];
-        this.put()
+        var taskid = taskid;
+        var url = url;
+        var text = null;
+        var done = false;
+        
+        this.isDone = function(){return done;}
+        this.getUrl = function(){return url;}
+        this.getText = function(){return text;}
+        
+        var xhr = __newXHRequest__();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
+                    text = xhr.responseText;
+                    done = true;
+                    
+                    if(typeof(__asyncTaskMap__[taskid]) == 'undefined') return;
+                    
+                    var xhrs = __asyncTaskMap__[taskid].xhrs;
+                    var isAllDone = true;
+                    for(var i=0;i<xhrs.length;i++){
+                        if(!xhrs[i].isDone()){
+                            isAllDone = false;
+                            break;
+                        }
+                    }
+                    if(isAllDone){
+                        var task = __asyncTaskMap__[taskid];
+                        if(typeof(task.urls) == 'string'){
+                            task.func(task.xhrs[0].getUrl(),task.xhrs[0].getText());
+                        }else{
+                            var urls  = [];
+                            var texts = [];
+                            for(var i=0;i<xhrs.length;i++){
+                                urls[i]  = xhrs[i].getUrl();
+                                texts[i] = xhrs[i].getText();
+                            }
+                            task.func(urls,texts);
+                        }
+                        
+                        delete __asyncTaskMap__[taskid];
+                    }
+                }else{
+                    // do something
+                }
+                delete xhr;
+            }
+        }
+        xhr.open("GET", url,true);
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+        xhr.send(null);
     }
     
+    /**
+     * async load text by one or more url,
+     * when all text is loaded,the func will be called back.
+     * @param func <Function> function(<String|Array>urls,<String|Array>text)
+     * @param urls <String|Array> 
+     */
     function __asyncLoadText__(func,urls)
     {
         __checkType__(func,"Function","func@__asyncLoadText__");
         __checkType__(urls,"string","urls@__asyncLoadText__");
         
-        if(typeof(urls) == 'string') urls = [urls];
+        __asyncTaskId__++;
+        var task = {};
+        task.id = __asyncTaskId__;
+        task.func = func;
+        task.urls = urls
+        task.xhrs = [];
         
-        for(var i=0;i<urls.length;i++){
-            var xhr = __newXHRequest__();
-            xhr.onreadystatechange = function(){
-                if(xhr.readyState == 4){
-                    if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
-                        func(xhr.responseText);
-                    }else{
-                        // do something
-                    }
-                    delete xhr;
-                }
+        if(typeof(urls) == 'string'){
+            task.xhrs[0] = new __xhrEntry__(urls,task.id);
+        }else{
+            for(var i=0;i<urls.length;i++){
+                task.xhrs[i] = new __xhrEntry__(urls[i],task.id);
             }
-            xhr.open("GET", urls[i],true);
-            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
-            xhr.send(null);
         }
+        __asyncTaskMap__[task.id] = task;
     }
     
     function __newXHRequest__()
