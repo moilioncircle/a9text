@@ -282,10 +282,13 @@ package com.trydofor.a9text.test;
 
  /************************************************************
  * @author  : Shi Rongjiu (www.trydofor.com)
- * @version : 2008-2-18 / $Revision: 1.16 $
+ * @version : 2008-2-18 / $Revision: 1.17 $
  * @see     : requires/documents
  * ====================== change-logs =======================
  * $Log: not supported by cvs2svn $
+ * Revision 1.16  2008/02/18 06:27:12  trydofor
+ * live in java
+ *
  ************************************************************/
 
 public abstract class Live {
@@ -363,7 +366,7 @@ B) 步骤B
 ^^^^^^^^
 1) 步骤1
 2) 步骤2
-3)步骤2-1
+3) 步骤2-1
     *) 二级条目1
     *) 二级条目2
     *) 二级条目3
