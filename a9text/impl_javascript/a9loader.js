@@ -9,7 +9,7 @@ var __A9Loader__ = function()
     var __selfConf__ = {name:"a9loader.js",path:"",ball:'.js',info:"__info__.js"};
     
     var __asyncTaskId__  = 0;
-    var __asyncTaskMap__ = {};
+    var __asyncTaskGroupMap__ = {};
 
     function __tagImportScript__(url)
     {
@@ -91,9 +91,9 @@ var __A9Loader__ = function()
                     text = xhr.responseText;
                     done = true;
                     
-                    if(typeof(__asyncTaskMap__[taskid]) == 'undefined') return;
+                    if(typeof(__asyncTaskGroupMap__[taskid]) == 'undefined') return;
                     
-                    var xhrs = __asyncTaskMap__[taskid].xhrs;
+                    var xhrs = __asyncTaskGroupMap__[taskid].xhrs;
                     var isAllDone = true;
                     for(var i=0;i<xhrs.length;i++){
                         if(!xhrs[i].isDone()){
@@ -102,7 +102,7 @@ var __A9Loader__ = function()
                         }
                     }
                     if(isAllDone){
-                        var task = __asyncTaskMap__[taskid];
+                        var task = __asyncTaskGroupMap__[taskid];
                         if(typeof(task.urls) == 'string'){
                             task.func(task.xhrs[0].getUrl(),task.xhrs[0].getText());
                         }else{
@@ -115,7 +115,7 @@ var __A9Loader__ = function()
                             task.func(urls,texts);
                         }
                         
-                        delete __asyncTaskMap__[taskid];
+                        delete __asyncTaskGroupMap__[taskid];
                     }
                 }else{
                     // do something
@@ -127,6 +127,10 @@ var __A9Loader__ = function()
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
         xhr.send(null);
     }
+    
+    /*
+     * {info,deps,impl,step}
+     */
     
     /**
      * async load text by one or more url,
@@ -153,7 +157,7 @@ var __A9Loader__ = function()
                 task.xhrs[i] = new __xhrEntry__(urls[i],task.id);
             }
         }
-        __asyncTaskMap__[task.id] = task;
+        __asyncTaskGroupMap__[task.id] = task;
     }
     
     function __newXHRequest__()
