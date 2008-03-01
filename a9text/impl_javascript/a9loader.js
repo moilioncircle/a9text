@@ -8,8 +8,7 @@ var __A9Loader__ = function()
 {
     var __selfConf__ = {name:"a9loader.js",path:"",ball:'.js',info:"__info__.js"};
     
-    var __asyncTaskId__  = 0;
-    var __asyncTaskGroupMap__ = {};
+    var __asyncTextTask__ = {num:0,map:{}};
 
     function __tagImportScript__(url)
     {
@@ -31,21 +30,14 @@ var __A9Loader__ = function()
         __checkType__(clzz,"string","clzz@__syncImportClass__");
     }
     
-    function __asyncImportClass__(func,clzzes)
+    function __asyncImportClass__(clzz)
     {
-        __checkType__(func,"Function","func@__asyncImportClass__");
-        __checkType__(clzzes,"string","clzzes@__asyncImportClass__");
+        __checkType__(clzz,"string","clzz@__asyncImportClass__");
     }
     
-    function __exportClassBall__(clzz,members)
+    function __runAfterImport__(func)
     {
-        __checkType__(clzz,"string","clzz@__exportClassBall__");
-        __checkType__(members,"string","members@__exportClassBall__");
-    }
-    
-    function __importDependence__()
-    {
-        
+        __checkType__(clzz,"Function","func@__runAfterImport__");
     }
     
     function __syncLoadText__(url)
@@ -91,9 +83,9 @@ var __A9Loader__ = function()
                     text = xhr.responseText;
                     done = true;
                     
-                    if(typeof(__asyncTaskGroupMap__[taskid]) == 'undefined') return;
+                    if(typeof(__asyncTextTask__.map[taskid]) == 'undefined') return;
                     
-                    var xhrs = __asyncTaskGroupMap__[taskid].xhrs;
+                    var xhrs = __asyncTextTask__.map[taskid].xhrs;
                     var isAllDone = true;
                     for(var i=0;i<xhrs.length;i++){
                         if(!xhrs[i].isDone()){
@@ -102,7 +94,7 @@ var __A9Loader__ = function()
                         }
                     }
                     if(isAllDone){
-                        var task = __asyncTaskGroupMap__[taskid];
+                        var task = __asyncTextTask__.map[taskid];
                         if(typeof(task.urls) == 'string'){
                             task.func(task.xhrs[0].getUrl(),task.xhrs[0].getText());
                         }else{
@@ -115,7 +107,7 @@ var __A9Loader__ = function()
                             task.func(urls,texts);
                         }
                         
-                        delete __asyncTaskGroupMap__[taskid];
+                        delete __asyncTextTask__.map[taskid];
                     }
                 }else{
                     // do something
@@ -143,9 +135,9 @@ var __A9Loader__ = function()
         __checkType__(func,"Function","func@__asyncLoadText__");
         __checkType__(urls,"string","urls@__asyncLoadText__");
         
-        __asyncTaskId__++;
+        __asyncTextTask__.num++;
         var task = {};
-        task.id = __asyncTaskId__;
+        task.id = __asyncTextTask__.num;
         task.func = func;
         task.urls = urls
         task.xhrs = [];
@@ -157,7 +149,7 @@ var __A9Loader__ = function()
                 task.xhrs[i] = new __xhrEntry__(urls[i],task.id);
             }
         }
-        __asyncTaskGroupMap__[task.id] = task;
+        __asyncTextTask__.map[task.id] = task;
     }
     
     function __newXHRequest__()
