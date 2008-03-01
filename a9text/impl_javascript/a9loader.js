@@ -59,67 +59,7 @@ var __A9Loader__ = function()
         }
         return resText;
     }
-    
-    /**
-     * do xmlhttprequest as a thread of task group
-     * @param url
-     * @param taskid task group id
-     */
-    function __xhrEntry__(url,taskid)
-    {
-        var taskid = taskid;
-        var url = url;
-        var text = null;
-        var done = false;
-        
-        this.isDone = function(){return done;}
-        this.getUrl = function(){return url;}
-        this.getText = function(){return text;}
-        
-        var xhr = __newXHRequest__();
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4){
-                if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
-                    text = xhr.responseText;
-                    done = true;
-                    
-                    if(typeof(__asyncTextTask__.map[taskid]) == 'undefined') return;
-                    
-                    var xhrs = __asyncTextTask__.map[taskid].xhrs;
-                    var isAllDone = true;
-                    for(var i=0;i<xhrs.length;i++){
-                        if(!xhrs[i].isDone()){
-                            isAllDone = false;
-                            break;
-                        }
-                    }
-                    if(isAllDone){
-                        var task = __asyncTextTask__.map[taskid];
-                        if(typeof(task.urls) == 'string'){
-                            task.func(task.xhrs[0].getUrl(),task.xhrs[0].getText());
-                        }else{
-                            var urls  = [];
-                            var texts = [];
-                            for(var i=0;i<xhrs.length;i++){
-                                urls[i]  = xhrs[i].getUrl();
-                                texts[i] = xhrs[i].getText();
-                            }
-                            task.func(urls,texts);
-                        }
-                        
-                        delete __asyncTextTask__.map[taskid];
-                    }
-                }else{
-                    // do something
-                }
-                delete xhr;
-            }
-        }
-        xhr.open("GET", url,true);
-        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
-        xhr.send(null);
-    }
-    
+
     /*
      * {info,deps,impl,step}
      */
@@ -135,6 +75,7 @@ var __A9Loader__ = function()
         __checkType__(func,"Function","func@__asyncLoadText__");
         __checkType__(urls,"string","urls@__asyncLoadText__");
         
+        
         __asyncTextTask__.num++;
         var task = {};
         task.id = __asyncTextTask__.num;
@@ -143,14 +84,85 @@ var __A9Loader__ = function()
         task.xhrs = [];
         
         if(typeof(urls) == 'string'){
-            task.xhrs[0] = new __xhrEntry__(urls,task.id);
+            task.xhrs[0] = new __textTask__(urls,task.id);
         }else{
             for(var i=0;i<urls.length;i++){
-                task.xhrs[i] = new __xhrEntry__(urls[i],task.id);
+                task.xhrs[i] = new __textTask__(urls[i],task.id);
             }
         }
         __asyncTextTask__.map[task.id] = task;
+
     }
+    
+    /////////////////// helper functions  ///////////////////
+    
+    function __textTaskCallback__(taskid)
+    {
+        if(typeof(__asyncTextTask__.map[taskid]) == 'undefined') return;
+        
+        var xhrs = __asyncTextTask__.map[taskid].xhrs;
+        var isAllDone = true;
+        for(var i=0;i<xhrs.length;i++){
+            if(!xhrs[i].isDone()){
+                isAllDone = false;
+                break;
+            }
+        }
+        
+        //alert(taskid+"::"+xhrs.length+":"+isAllDone)
+        if(isAllDone){
+            var task = __asyncTextTask__.map[taskid];
+            if(typeof(task.urls) == 'string'){
+                task.func(task.xhrs[0].getUrl(),task.xhrs[0].getText());
+            }else{
+                var urls  = [];
+                var texts = [];
+                for(var i=0;i<xhrs.length;i++){
+                    urls[i]  = xhrs[i].getUrl();
+                    texts[i] = xhrs[i].getText();
+                }
+                task.func(urls,texts);
+            }
+            
+            delete __asyncTextTask__.map[taskid];
+        }
+    }
+    
+    /**
+     * do xmlhttprequest as a thread of task group
+     * @param url
+     * @param taskid task group id
+     */
+    function __textTask__(url,taskid)
+    {
+        var text = null;
+        var done = false;
+        
+        var xhr = __newXHRequest__();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
+                    text = xhr.responseText;
+                    done = true;
+                    __textTaskCallback__(taskid);
+                }else{
+                    // do something
+                    alert(xhr.status);
+                }
+                xhr.abort();
+                delete xhr;
+            }
+        }
+        xhr.open("GET", url,true);
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+        xhr.send(null);
+        
+        //
+        this.isDone = function(){return done;}
+        this.getUrl = function(){return url;}
+        this.getText = function(){return text;}
+    }
+    
     
     function __newXHRequest__()
     {
@@ -213,6 +225,7 @@ var __A9Loader__ = function()
     this.tagImportScript  = __tagImportScript__;
     this.syncImportClass  = __syncImportClass__;
     this.asyncImportClass = __asyncImportClass__;
+    this.runAfterImport   = __runAfterImport__;
     this.syncLoadText     = __syncLoadText__;
     this.asyncLoadText    = __asyncLoadText__;
 }
