@@ -147,16 +147,15 @@ var __A9Loader__ = function()
                     __textTaskCallback__(taskid);
                 }else{
                     // do something
-                    alert(xhr.status);
                 }
                 xhr.abort();
                 delete xhr;
             }
         }
-        xhr.open("GET", url,true);
+        xhr.open("GET",url,true);
+        xhr.setRequestHeader("If-Modified-Since","0");
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
         xhr.send(null);
-        
         //
         this.isDone = function(){return done;}
         this.getUrl = function(){return url;}
