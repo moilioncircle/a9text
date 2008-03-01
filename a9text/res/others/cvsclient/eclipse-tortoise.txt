@@ -1,0 +1,16 @@
+
+The Eclipse IDE has a built-in SSH client, activated in its CVS browser by using the "extssh" protocol string. It's functionally equivalent to using the "ext" protocol string, but eliminates the need for an external SSH client. This is fine when only Eclipse is used, but as Tortoise doesn't support the protocol, only its offline features will be available.
+
+
+The workaround is the following:
+
+                                           
+   1. In Eclipse, go to Window -> Preferences -> Team -> CVS -> Ext connection method. For CVS_RSH, hit the browse button and find TortoisePlink.exe. The other settings are fine at their defaults.
+
+   2. In Eclipse, create a new Repository Location using ext, not extssh. Connect and checkout your project. 
+
+
+The CVS metadata folders now contain a connection string that TortoiseCVS can use. Both Eclipse and TortoiseCVS (and WinCVS, I imagine) now offer their full featureset.
+
+
+On the downside, Eclipse will now ask for your password for every CVS operation. How to work around this is already in the Tortoise FAQ.
