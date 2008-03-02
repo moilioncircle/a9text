@@ -1,0 +1,30 @@
+<body></body>
+<script type="text/javascript" src="../../a9loader.js"></script>
+<script type="text/javascript">
+function runAfer(){
+    try{
+        //alert(typeof(com.trydofor.a9js.code.des.DESClass));
+        //for(var k in com.trydofor.a9js.code.des.DESClass) alert(k+"::"+com.trydofor.a9js.code.des.DESClass[k]);
+        
+        var des = new com.trydofor.a9js.code.des.DESClass();
+        var txt = "it is a test";
+        var pss = "123";
+        var end = des.encrypt(pss,txt);
+        var ded = des.decrypt(pss,end);
+        document.body.innerHTML +="<br>txt:"+txt+"<br>encrypt:"+end+"<br>decrypt:"+ded;
+    }catch(e){
+        alert(e);
+    }
+}
+function asyncTest(){
+    A9Loader.asyncImportClass("com.trydofor.a9js.code.des");
+    A9Loader.runAfterImport(runAfer);
+    runAfer();
+}
+
+document.body.innerHTML +="<br>init";
+A9Loader.syncImportClass("com.trydofor.a9js.code.des");
+runAfer();
+
+</script>
+<input type = 'button' value="asyncImportClass()" onclick="asyncTest()" />

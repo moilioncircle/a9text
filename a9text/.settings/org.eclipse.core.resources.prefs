@@ -1,4 +1,4 @@
-#Tue Feb 12 09:46:04 CST 2008
+#Mon Feb 25 19:04:23 CST 2008
 =\=\=\=\=\=\=
 <<<<<<<=org.eclipse.core.resources.prefs
 >>>>>>>=1.5
@@ -15,7 +15,6 @@ encoding//impl_javascript/__testdemo__/data/require3.js=UTF-8
 encoding//impl_javascript/__testdemo__/data/require4.js=UTF-8
 encoding//impl_javascript/__testdemo__/data/require_text_error.js=UTF-8
 encoding//impl_javascript/__testdemo__/require3out.js=UTF-8
-encoding//impl_javascript/a9engine.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/code/__info__.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/code/des.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/code/encoder.js=UTF-8
@@ -28,6 +27,7 @@ encoding//impl_javascript/com/trydofor/a9js/http/xhr.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/util/__info__.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/util/cnf.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/util/task.js=UTF-8
+encoding//impl_javascript/com/trydofor/a9js/util/trace.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/util/xml.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9text/__info__.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9text/a9conf.js=UTF-8

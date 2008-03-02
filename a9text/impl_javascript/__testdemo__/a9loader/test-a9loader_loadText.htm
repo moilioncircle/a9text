@@ -1,0 +1,22 @@
+<body></body>
+<script type="text/javascript" src="../../a9loader.js"></script>
+<script type="text/javascript">
+function onreply(urls,text){
+    if(typeof(text) == "string")
+    {
+        urls = [urls];
+        text = [text];
+    }
+    var html = "<pre>\n<font color=red>got</font>";
+    for(var i=0;i<text.length;i++){
+        html += ("\n"+urls[i]+"\n"+text[i]);
+    }
+    html +="</pre>";
+    document.body.innerHTML += html;
+}
+
+A9Loader.asyncLoadText(onreply,['../data/require1.js','../data/require2.js']);
+A9Loader.asyncLoadText(onreply,['../data/require4.js','../data/require3.js']);
+A9Loader.asyncLoadText(onreply,'../data/require4.js');
+</script>
+<input type = 'button' value="asyncLoadText(1,2)" onclick="A9Loader.asyncLoadText(onreply,['../data/require1.js','../data/require2.js'])" />

@@ -6,11 +6,13 @@ UTF8(BOM)  GPL  trydofor.com  Feb.2008
 
 var __A9Loader__ = function()
 {
-    var __selfConf__ = {name:"a9loader.js",path:"",ball:'.js',info:"__info__.js"};
+    var __selfConf__ = {name:"a9loader.js",path:"",extn:'.js',info:"__info__.js"};
     
     var __asyncTextTask__ = {num:0,map:{}};
+    var __asyncClzzTask__ = {rcnt:0,clzz:[],func:[]};
+    var __clzzInfoPools__ = {}; //{clzz,pubs,deps,text,impl}
 
-    function __tagImportScript__(url)
+    function __tagLoadScript__(url)
     {
         __checkType__(url,"string","url@__tagImportScript__");
         try
@@ -28,16 +30,20 @@ var __A9Loader__ = function()
     function __syncImportClass__(clzz)
     {
         __checkType__(clzz,"string","clzz@__syncImportClass__");
+        new __clzzTask__(clzz,false);
     }
     
     function __asyncImportClass__(clzz)
     {
         __checkType__(clzz,"string","clzz@__asyncImportClass__");
+        new __clzzTask__(clzz,true);
     }
     
     function __runAfterImport__(func)
     {
-        __checkType__(clzz,"Function","func@__runAfterImport__");
+        __checkType__(func,"Function","func@__runAfterImport__");
+        if(__asyncClzzTask__.rcnt == 0) func();
+        else __asyncClzzTask__.func.push(func);
     }
     
     function __syncLoadText__(url)
@@ -60,10 +66,6 @@ var __A9Loader__ = function()
         return resText;
     }
 
-    /*
-     * {info,deps,impl,step}
-     */
-    
     /**
      * async load text by one or more url,
      * when all text is loaded,the func will be called back.
@@ -96,6 +98,231 @@ var __A9Loader__ = function()
     
     /////////////////// helper functions  ///////////////////
     
+    function __clzzTask__(clzz,async)
+    {
+    	//(step,init:0,info:1,text:2,impl:3)
+    	if(typeof(__clzzInfoPools__[clzz]) != 'undefined' 
+    	   && __clzzInfoPools__[clzz]['text'] != null) return;
+    	
+    	if(async == null||async != false) async = true;
+    	else async = false;
+    	
+    	if(typeof(__clzzInfoPools__[clzz]) == 'undefined'){
+	    	__clzzInfoPools__[clzz] = {'clzz':clzz,'pubs':null,'deps':null,'text':'','impl':null};
+    	}
+    	
+    	if(async){
+    		__asyncClzzTask__.clzz.push(clzz);
+    	}
+    	
+    	//document.body.innerHTML +="<br>"+clzz;
+    	var clzzUri = __selfConf__.path+clzz.replace(/\./g,'/')+__selfConf__.extn;
+    	var infoUri = clzzUri.substring(0,clzzUri.lastIndexOf('/')+1)+__selfConf__.info;
+    	
+    	// get info
+    	if(__clzzInfoPools__[clzz]['pubs'] == null){
+	    	var xhrInfo = __newXHRequest__();
+	    	if(async){
+	    		__asyncClzzTask__.rcnt++;
+		        xhrInfo.onreadystatechange = function(){
+		            if(xhrInfo.readyState == 4){
+		            	__asyncClzzTask__.rcnt--;
+		            	var infoText = null;
+		                if (xhrInfo.status == 0 || xhrInfo.status == 200 || xhrInfo.status == 304 ){
+				        	infoText=xhrInfo.responseText;
+		                }else{
+		                    // do something
+		                }
+		                xhrInfo.abort();
+		                delete xhrInfo;
+		                //
+		                if(infoText != null)eval(infoText);
+		            }
+		        }
+	        }
+	        
+	        xhrInfo.open('GET',infoUri,async);
+	        xhrInfo.setRequestHeader('If-Modified-Since','0');
+	        xhrInfo.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+	        xhrInfo.send(null);
+	        
+	        if(!async){
+	        	var infoText=xhrInfo.responseText;
+    			xhrInfo.abort();
+                delete xhrInfo;
+                if(infoText != null)eval(infoText);
+	        }
+    	}
+        // get text
+        var xhrClzz = __newXHRequest__();
+        if(async){
+        	__asyncClzzTask__.rcnt++;
+	        xhrClzz.onreadystatechange = function(){
+	            if(xhrClzz.readyState == 4){
+	            	__asyncClzzTask__.rcnt--;
+	                if (xhrClzz.status == 0 || xhrClzz.status == 200 || xhrClzz.status == 304 ){
+	                	__clzzInfoPools__[clzz]['text']=xhrClzz.responseText;
+	                }else{
+	                    // do something
+	                }
+	                xhrClzz.abort();
+	                delete xhrClzz;
+	                __clzzTaskCallback__(clzz);
+	            }
+	        }
+        }
+        
+        xhrClzz.open('GET',clzzUri,async);
+        xhrClzz.setRequestHeader('If-Modified-Since','0');
+        xhrClzz.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+        xhrClzz.send(null);
+        
+        if(!async){
+        	__clzzInfoPools__[clzz]['text']=xhrClzz.responseText;
+			xhrClzz.abort();
+            delete xhrClzz;
+            __initAndExportClzz__(clzz);
+        }
+	        
+        // inner function
+    	function __info__(scriptName,publicMemeber,dependencs){
+    		var clzzBall = clzz.substring(0,clzz.lastIndexOf('.')+1);
+    		var clzzName = clzzBall + scriptName.substring(0,scriptName.lastIndexOf(__selfConf__.extn));
+
+    		if(typeof(__clzzInfoPools__[clzzName]) == 'undefined'){
+	    		__clzzInfoPools__[clzzName] = {'clzz':clzzName,'pubs':publicMemeber,'deps':dependencs,'text':null,'impl':null};
+    		}else{
+    			__clzzInfoPools__[clzzName]['pubs']=(publicMemeber==null?[]:publicMemeber);
+    			__clzzInfoPools__[clzzName]['deps']=dependencs;
+    		}
+    		
+    		if(dependencs!= null){
+    			for(var i=0;i<dependencs.length;i++){
+    				if(dependencs[i].indexOf('.')<0) dependencs[i] = clzzBall+dependencs[i];
+    				new __clzzTask__(dependencs[i],async);
+    			}
+    		}
+    	}
+    }
+    
+    function __clzzTaskCallback__(clzz)
+    {
+    	if(__asyncClzzTask__.rcnt > 0) return;
+    	
+		var clzzs = __asyncClzzTask__.clzz;
+		var funcs = __asyncClzzTask__.func;
+    	__asyncClzzTask__.rcnt = 0;
+    	__asyncClzzTask__.clzz = [];
+    	__asyncClzzTask__.func = [];
+	
+    	for(var i=0;i<clzzs.length;i++){
+    		__initAndExportClzz__(clzzs[i]);
+    	}
+    	for(var i=0;i<funcs.length;i++){
+    		try{
+    			funcs[i]();
+    		}catch(e){ alert(e)};
+    	}
+    }
+    
+    function __initAndExportClzz__(clzz)
+    {
+    	if(typeof(__clzzInfoPools__[clzz]) == 'undefined' 
+    	   || __clzzInfoPools__[clzz]['impl'] != null
+    	   || __clzzInfoPools__[clzz]['text'] == null
+    	   ) return;
+    	
+    	// deps check
+    	var cip = __clzzInfoPools__[clzz];
+    	cip['impl'] = 'ready'; // avoid looping deps
+		for(var i=0;cip['deps']!=null && i<cip['deps'].length;i++){
+			__initAndExportClzz__(cip['deps'][i]);
+		}
+    	// init clzz
+    	var clzzScript = ["__clzzInfoPools__[clzz].impl = function(){\n"];
+    	if(cip['pubs']!=null)
+	        for(var i=0;i<cip['pubs'].length;i++)
+	    		clzzScript.push("var " + cip['pubs'][i] + ";\n");
+    	clzzScript.push(cip['text']);
+        clzzScript.push("\nreturn { __$:function(s){return eval(s)}\n");
+    	if(cip['pubs']!=null)
+	        for(var i=0;i<cip['pubs'].length;i++)
+            	clzzScript.push(","+cip['pubs'][i]+":"+cip['pubs'][i]+"\n");
+        clzzScript.push("};\n");
+        clzzScript.push("}();\n");
+        
+        try{
+            eval(clzzScript.join(''));
+        }catch(e){
+            throw "bad clzz :"+clzz+" :\n"+e;
+        }
+        delete clzzScript;
+        
+        // export ball
+        var ballScript = [];
+        var ballPart = clzz.split('.');
+        if(ballPart.length>1){
+        	ballScript.push("if(typeof("+ballPart[0]+")=='undefined')"+ballPart[0]+"={};\n");
+	        var ballCell = ballPart[0];
+	        for(var i=1;i<ballPart.length-1;i++){
+	            ballCell += "['"+ballPart[i]+"']";
+	            ballScript.push("if(typeof("+ballCell+")=='undefined') "+ballCell+"={};\n");
+	        }
+        }
+        
+        ballScript.push("if(typeof("+clzz+")!= 'undefined'){ throw '"+clzz+" exists';}\n");
+        ballScript.push("else{"+clzz+"=__clzzInfoPools__[clzz].impl;}\n");
+        try{
+            eval(ballScript.join(''));
+        }catch(e){
+        	throw "bad ball :"+clzz+" :\n"+e;
+        }
+        delete ballScript;
+        
+        // alias pubs
+        var aliasScript = [];
+        if(cip['pubs']!=null)
+	        for(var i=0;i<cip['pubs'].length;i++){
+	    		aliasScript.push("if(typeof("+cip['pubs'][i]+")!='undefined'){alert('conflict:"+clzz+"."+cip['pubs'][i]+"');}\n");
+	    		aliasScript.push("else{"+cip['pubs'][i]+"=__clzzInfoPools__[clzz].impl['"+cip['pubs'][i]+"']}\n");
+	        }
+        eval(aliasScript.join(''));
+		delete aliasScript;
+    }
+    /**
+     * do xmlhttprequest as a thread of task group
+     * @param url
+     * @param taskid task group id
+     */
+    function __textTask__(url,taskid)
+    {
+        var text = null;
+        var done = false;
+        
+        var xhr = __newXHRequest__();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
+                    text = xhr.responseText;
+                    done = true;
+                    __textTaskCallback__(taskid);
+                }else{
+                    // do something
+                }
+                xhr.abort();
+                delete xhr;
+            }
+        }
+        xhr.open('GET',url,true);
+        xhr.setRequestHeader('If-Modified-Since','0');
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+        xhr.send(null);
+        //
+        this.isDone = function(){return done;}
+        this.getUrl = function(){return url;}
+        this.getText = function(){return text;}
+    }
+    
     function __textTaskCallback__(taskid)
     {
         if(typeof(__asyncTextTask__.map[taskid]) == 'undefined') return;
@@ -126,42 +353,7 @@ var __A9Loader__ = function()
             
             delete __asyncTextTask__.map[taskid];
         }
-    }
-    
-    /**
-     * do xmlhttprequest as a thread of task group
-     * @param url
-     * @param taskid task group id
-     */
-    function __textTask__(url,taskid)
-    {
-        var text = null;
-        var done = false;
-        
-        var xhr = __newXHRequest__();
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4){
-                if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
-                    text = xhr.responseText;
-                    done = true;
-                    __textTaskCallback__(taskid);
-                }else{
-                    // do something
-                }
-                xhr.abort();
-                delete xhr;
-            }
-        }
-        xhr.open("GET",url,true);
-        xhr.setRequestHeader("If-Modified-Since","0");
-        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
-        xhr.send(null);
-        //
-        this.isDone = function(){return done;}
-        this.getUrl = function(){return url;}
-        this.getText = function(){return text;}
-    }
-    
+    }    
     
     function __newXHRequest__()
     {
@@ -221,7 +413,7 @@ var __A9Loader__ = function()
     
     // export public members
     this.path = __selfConf__['path'];
-    this.tagImportScript  = __tagImportScript__;
+    this.tagLoadScript    = __tagLoadScript__;
     this.syncImportClass  = __syncImportClass__;
     this.asyncImportClass = __asyncImportClass__;
     this.runAfterImport   = __runAfterImport__;
