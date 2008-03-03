@@ -21,6 +21,7 @@ A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
 A9Loader.asyncImportClass('com.trydofor.a9text.render.dom.a9text');
 A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
 
+var isReady = false;
 var __Strings__  = {};
 var __ViewText__ = {};
 var __Renders__  = {};
@@ -84,6 +85,11 @@ __ViewText__.get = "<table width='600' border='0' cellpadding='3' cellspacing='1
 
 function onChangeView(type)
 {
+    if(!isReady){
+        alert("async load data and script,please wait ...");
+        return;
+    }
+    
     switch(type)
     {
         case 'dom':
@@ -92,23 +98,30 @@ function onChangeView(type)
                 __ViewText__['dom'] = __A9dom__.getData();
             }
         case 'htm':
+            isReady = false;
             if(__ViewText__['htm'] == null){
                 try{
                     com.trydofor.a9text.render.html.area.common.syntaxcode.hasPairingJs(true);
                 }catch(e){};
                 __Renders__['htm'].render(__A9dom__,function(){
-                __ViewText__['htm'] = __A9dom__.getData();});
+                __ViewText__['htm'] = __A9dom__.getData();
+                VIEWER.document.write(__ViewText__[type]);
+                VIEWER.document.close();
+                document.close();
+                });
             }
+            isReady = true;
             break;
         case 'txt':
             break;
         default:
             type = 'get';
     }
-    
-    VIEWER.document.write(__ViewText__[type]);
-    VIEWER.document.close();
-    document.close();
+    if(__ViewText__[type] != null){
+        VIEWER.document.write(__ViewText__[type]);
+        VIEWER.document.close();
+        document.close();
+    }
 }
 
 function onParserText(text)
@@ -164,8 +177,12 @@ function init(){
     if(_view == null || _view == "") _view = 'htm';
     if(_file == null || _file == "") _file = '../../../doc/cn/a9text/a9text-demo_3.2.txt';
     a9textFile = _file;
-    onParserText(A9Loader.syncLoadText(_file));
-    A9Loader.runAfterImport(function(){onChangeView(_view)});
+    
+    A9Loader.runAfterImport(function(){
+        onParserText(A9Loader.syncLoadText(_file));
+        isReady = true;
+        onChangeView(_view);
+        });
 }
 
 A9Loader.runAfterImport(init);
