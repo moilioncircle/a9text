@@ -1,17 +1,5 @@
 ﻿<!-- // --> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- // --> <script type="text/javascript" src="./a9loader.js"></script>
-<!-- // --> <script type="text/javascript">
-A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
-A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
-var domParser = null; //com.trydofor.a9text.parser.a9text.A9TextParser
-var htmRender = null; //com.trydofor.a9text.render.html.a9text.A9TextRender
-
-A9Loader.runAfterImport(function(){
-domParser = new A9TextParser();
-htmRender = new A9TextRender();
-});
-<!-- // --> </script>
-
 <!-- // Run As HTM
 /* --> <script type="text/javascript">
 var file2area = {
@@ -22,10 +10,12 @@ var file2area = {
 'sql':"*.sql"
 };
 var text = "";
-
+A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
+A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
 A9Loader.runAfterImport(function(){
 try{
-    alert("got");
+    var domParser = new A9TextParser();
+    var htmRender = new A9TextRender();
     var file = A9Loader.getPageInfo() || "doc/cn/a9text/a9text-demo_3.2.txt";
     text = A9Loader.syncLoadText(file);
     if(text != "")
@@ -58,7 +48,7 @@ try{
         });
     }
 }catch(e){
-    //alert(e)
+    alert(e)
     document.write("<PRE>"+text+"</PRE>");
 }
 });
@@ -66,6 +56,8 @@ try{
 
 <!-- // Run As JS
 try{
+    var domParser = new A9TextParser();
+    var htmRender = new A9TextRender();
     var bodyHtml = document.body?document.body.innerHTML:"";
     var hasA9text = false;
     
@@ -77,19 +69,23 @@ try{
             var preText = preTags[i].innerText || preTags[i].textContent;
             if (preText == "") continue;
             
-            var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
-            a9dom.setText(preText);
-            a9dom.putInfo(A9Dom.type.root$path,PAGE_PATH);
-            domParser.parse(a9dom,function(){
-                    htmRender.render(a9dom,function(){
-                    var a9htm = a9dom.getData();
-                    // merger
-                    var preHtml = preTags[i].innerHTML;
-                    var prePos  = bodyHtml.indexOf(preHtml);
-                    var headPos = bodyHtml.lastIndexOf('<',prePos);
-                    var footPos = bodyHtml.indexOf('>',prePos+preHtml.length)+1;
-                    bodyHtml = bodyHtml.substring(0,headPos) + a9htm + bodyHtml.substr(footPos);
-                    hasA9text = true;
+            A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
+            A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
+            A9Loader.runAfterImport(function(){
+                var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
+                a9dom.setText(preText);
+                a9dom.putInfo(A9Dom.type.root$path,PAGE_PATH);
+                domParser.parse(a9dom,function(){
+                        htmRender.render(a9dom,function(){
+                        var a9htm = a9dom.getData();
+                        // merger
+                        var preHtml = preTags[i].innerHTML;
+                        var prePos  = bodyHtml.indexOf(preHtml);
+                        var headPos = bodyHtml.lastIndexOf('<',prePos);
+                        var footPos = bodyHtml.indexOf('>',prePos+preHtml.length)+1;
+                        bodyHtml = bodyHtml.substring(0,headPos) + a9htm + bodyHtml.substr(footPos);
+                        hasA9text = true;
+                    });
                 });
             });
         }
