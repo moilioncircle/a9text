@@ -8,7 +8,7 @@ var __A9Loader__ = function()
 {
     var __selfConf__ = {name:"a9loader.js",extn:'.js',info:"__info__.js"};
     var __pageInfo__ = {core:"",path:"",name:"",info:"",args:{}};
-    
+    var __stdoutHandler__ = null;
     var __asyncTextTask__ = {num:0,map:{}};
     var __asyncClzzTask__ = {rcnt:0,clzz:[],func:[]};
     var __clzzInfoPools__ = {}; //{clzz,pubs,deps,text,impl}
@@ -117,9 +117,8 @@ var __A9Loader__ = function()
     	}
     	
     	//document.body.innerHTML +="<br>"+clzz;
-    	var clzzUri = __selfConf__.path+clzz.replace(/\./g,'/')+__selfConf__.extn;
+    	var clzzUri = __pageInfo__.core+clzz.replace(/\./g,'/')+__selfConf__.extn;
     	var infoUri = clzzUri.substring(0,clzzUri.lastIndexOf('/')+1)+__selfConf__.info;
-    	
     	// get info
     	if(__clzzInfoPools__[clzz]['pubs'] == null){
 	    	var xhrInfo = __newXHRequest__();
@@ -189,11 +188,11 @@ var __A9Loader__ = function()
     	function __info__(scriptName,publicMemeber,dependencs){
     		var clzzBall = clzz.substring(0,clzz.lastIndexOf('.')+1);
     		var clzzName = clzzBall + scriptName.substring(0,scriptName.lastIndexOf(__selfConf__.extn));
-
+            
     		if(typeof(__clzzInfoPools__[clzzName]) == 'undefined'){
 	    		__clzzInfoPools__[clzzName] = {'clzz':clzzName,'pubs':publicMemeber,'deps':dependencs,'text':null,'impl':null};
     		}else{
-    			__clzzInfoPools__[clzzName]['pubs']=(publicMemeber==null?[]:publicMemeber);
+    			__clzzInfoPools__[clzzName]['pubs']=publicMemeber;
     			__clzzInfoPools__[clzzName]['deps']=dependencs;
     		}
     		
@@ -222,7 +221,7 @@ var __A9Loader__ = function()
     	for(var i=0;i<funcs.length;i++){
     		try{
     			funcs[i]();
-    		}catch(e){ alert(e)};
+    		}catch(e){ __stdout__(e)};
     	}
     }
     
@@ -284,7 +283,7 @@ var __A9Loader__ = function()
         var aliasScript = [];
         if(cip['pubs']!=null)
 	        for(var i=0;i<cip['pubs'].length;i++){
-	    		aliasScript.push("if(typeof("+cip['pubs'][i]+")!='undefined'){alert('conflict:"+clzz+"."+cip['pubs'][i]+"');}\n");
+	    		aliasScript.push("if(typeof("+cip['pubs'][i]+")!='undefined'){__stdout__('conflict:"+cip['pubs'][i]+"@"+clzz+"');}\n");
 	    		aliasScript.push("else{"+cip['pubs'][i]+"=__clzzInfoPools__[clzz].impl['"+cip['pubs'][i]+"']}\n");
 	        }
         eval(aliasScript.join(''));
@@ -393,6 +392,12 @@ var __A9Loader__ = function()
         throw mess;
     }
     
+    function __stdout__(info){
+        if(__stdoutHandler__ != null){
+            try{ __stdoutHandler__(info);}catch(e){};
+        }
+    }
+    
     function __init__()
     {
         // CORE
@@ -446,6 +451,8 @@ var __A9Loader__ = function()
     this.runAfterImport   = __runAfterImport__;
     this.syncLoadText     = __syncLoadText__;
     this.asyncLoadText    = __asyncLoadText__;
+    
+    this.setStdout        = function(f){if(f instanceof Function)__stdoutHandler__ = f;};
     
     this.__$              = function(s){return __clzzInfoPools__[s].impl;}
     this.getCorePath      = function(){ return __pageInfo__['core']; };
