@@ -1,3 +1,3 @@
 Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\*\shell\a9text\command]
-@="iexplore.exe file://D:/workspace/a9text/impl_javascript/a9text.htm#file://%1"
+@="iexplore.exe file://D:/workspace/a9text/impl_javascript/a9text.htm?file://%1"

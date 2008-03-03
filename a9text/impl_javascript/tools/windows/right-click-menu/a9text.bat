@@ -18,7 +18,7 @@ CD %CURRENT_DIR%
 
 :gotHome
 ECHO A9TEXT_HOME = %A9TEXT_HOME%
-SET REGVAL="iexplore.exe file://%A9TEXT_HOME%/a9text.htm#file://%%1"
+SET REGVAL="iexplore.exe file://%A9TEXT_HOME%/a9text.htm?file://%%1"
 SET REGKEY=HKEY_CLASSES_ROOT\*\shell\a9text\command /ve
 REG ADD %REGKEY% /t REG_SZ /d %REGVAL% /f
 

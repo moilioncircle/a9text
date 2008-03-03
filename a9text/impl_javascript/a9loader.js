@@ -6,7 +6,8 @@ UTF8(BOM)  GPL  trydofor.com  Feb.2008
 
 var __A9Loader__ = function()
 {
-    var __selfConf__ = {name:"a9loader.js",path:"",extn:'.js',info:"__info__.js"};
+    var __selfConf__ = {name:"a9loader.js",extn:'.js',info:"__info__.js"};
+    var __pageInfo__ = {core:"",path:"",name:"",info:"",args:{}};
     
     var __asyncTextTask__ = {num:0,map:{}};
     var __asyncClzzTask__ = {rcnt:0,clzz:[],func:[]};
@@ -394,7 +395,7 @@ var __A9Loader__ = function()
     
     function __init__()
     {
-        // PATH
+        // CORE
         var scriptTags = document.getElementsByTagName("SCRIPT");
         for(var i=0;i<scriptTags.length;i++)
         {
@@ -402,9 +403,36 @@ var __A9Loader__ = function()
             var pos = src.lastIndexOf(__selfConf__['name']);
             if( pos == (src.length - __selfConf__['name'].length))
             {
-                __selfConf__['path'] = src.substring(0,pos);
+                __pageInfo__['core'] = src.substring(0,pos);
                 break;
             }
+        }
+        
+        // PAGE
+        var theURL = self.location.href;
+        var questPos = theURL.indexOf('?');
+        var pureUrl = questPos<0?theURL:theURL.substring(0,questPos);
+        var slashPos = pureUrl.lastIndexOf('/') + 1;
+        
+        __pageInfo__['path'] = theURL.substring(0,slashPos);
+        __pageInfo__['name'] = questPos>slashPos ? theURL.substring(slashPos,questPos):theURL.substr(slashPos);
+        
+        // URL_ARGS
+        if(questPos > slashPos)
+        {
+            var queryString = theURL.substr(questPos+1);
+            var equalPos = 0;
+            var keyValArray = queryString.split("&");
+            for( var i = 0 ; i < keyValArray.length; i++)
+            {
+                equalPos = keyValArray[i].indexOf("=");
+                if(equalPos > 0)
+                    __pageInfo__['args'][keyValArray[i].substring(0,equalPos)] = keyValArray[i].substr(equalPos+1);
+                else
+                    __pageInfo__['args'][keyValArray[i]] = "";
+            }
+            
+            __pageInfo__['info'] = queryString;
         }
     }
     
@@ -412,13 +440,19 @@ var __A9Loader__ = function()
     __init__();
     
     // export public members
-    this.path = __selfConf__['path'];
     this.tagLoadScript    = __tagLoadScript__;
     this.syncImportClass  = __syncImportClass__;
     this.asyncImportClass = __asyncImportClass__;
     this.runAfterImport   = __runAfterImport__;
     this.syncLoadText     = __syncLoadText__;
     this.asyncLoadText    = __asyncLoadText__;
+    
+    this.__$              = function(s){return __clzzInfoPools__[s].impl;}
+    this.getCorePath      = function(){ return __pageInfo__['core']; };
+    this.getPagePath      = function(){ return __pageInfo__['path']; };
+    this.getPageName      = function(){ return __pageInfo__['name']; };
+    this.getPageInfo      = function(){ return __pageInfo__['info']; };
+    this.getPageArgs      = function(){ var t={};for(var k in __pageInfo__['args'])t[k]=__pageInfo__['args'][k]; return t;};
 }
 
 // init instance
