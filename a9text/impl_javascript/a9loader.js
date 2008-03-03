@@ -37,7 +37,7 @@ var __A9Loader__ = function()
     function __asyncImportClass__(clzz)
     {
         __checkType__(clzz,"string","clzz@__asyncImportClass__");
-        new __clzzTask__(clzz,false);
+        new __clzzTask__(clzz,true);
     }
     
     function __runAfterImport__(func)
