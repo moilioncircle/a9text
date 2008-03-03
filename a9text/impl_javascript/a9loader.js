@@ -8,7 +8,7 @@ var __A9Loader__ = function()
 {
     var __selfConf__ = {name:"a9loader.js",extn:'.js',info:"__info__.js"};
     var __pageInfo__ = {core:"",path:"",name:"",info:"",args:{}};
-    var __stdoutHandler__ = null;
+    var __consoleHandler__ = null;
     var __asyncTextTask__ = {num:0,map:{}};
     var __asyncClzzTask__ = {rcnt:0,clzz:[],func:[]};
     var __clzzInfoPools__ = {}; //{clzz,pubs,deps,text,impl}
@@ -393,8 +393,8 @@ var __A9Loader__ = function()
     }
     
     function __stdout__(info){
-        if(__stdoutHandler__ != null){
-            try{ __stdoutHandler__(info);}catch(e){};
+        if(__consoleHandler__ != null){
+            try{ __consoleHandler__(info);}catch(e){alert(e)};
         }
     }
     
@@ -452,7 +452,7 @@ var __A9Loader__ = function()
     this.syncLoadText     = __syncLoadText__;
     this.asyncLoadText    = __asyncLoadText__;
     
-    this.setStdout        = function(f){if(f instanceof Function)__stdoutHandler__ = f;};
+    this.setConsole       = function(f){if(f instanceof Function)__consoleHandler__ = f;};
     
     this.__$              = function(s){return __clzzInfoPools__[s].impl;}
     this.getCorePath      = function(){ return __pageInfo__['core']; };
