@@ -2,13 +2,13 @@
 /* property name is lowercase, class name is uppercase*/
 var A9Conf = new XmlReaderClass();
 
-A9Conf.loadFormFile(CORE_PATH+"com/trydofor/a9text/a9conf.xml");
+A9Conf.loadFormFile(A9Loader.getCorePath()+"com/trydofor/a9text/a9conf.xml");
 
 A9Conf.__EnvPath__ = {
-    "$PAGE_PATH/":   PAGE_PATH,
-    "$CORE_PATH/":   CORE_PATH,
-    "${PAGE_PATH}/": PAGE_PATH,
-    "${CORE_PATH}/": CORE_PATH
+    "$PAGE_PATH/":   A9Loader.getPagePath(),
+    "$CORE_PATH/":   A9Loader.getCorePath(),
+    "${PAGE_PATH}/": A9Loader.getPagePath(),
+    "${CORE_PATH}/": A9Loader.getCorePath()
 };
 
 //

@@ -18,15 +18,20 @@ var AreaTableRender = function()
     var txt2htm = '<>';
     
     // public
-    this.render = function(a9dom)
+    this.render = function(a9dom,func)
     {
+        __render_htm__ = [];
+        
         a9dom.nowChild(0);
         if(a9dom.hasNext())
             __table__(a9dom)
         else
             throw "no ready";
             
-        return __render_htm__.join('');
+        a9dom.setData(__render_htm__.join(''))
+        
+        if(func instanceof Function)
+        try{func(a9dom)}catch(e){};
     }
     
     function __table__(a9dom)

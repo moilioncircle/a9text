@@ -73,10 +73,13 @@ var AreaCParser = function()
         
     }
     ////
-    this.parse = function(a9dom)
+    this.parse = function(a9dom,func)
     {
        if(a9dom == null || 'c' != a9dom.getInfo(A9Dom.type.area$type))
             return;
         __ascp__.parse(a9dom);
+        
+        if(func instanceof Function)
+        try{func(a9dom)}catch(e){};
     }
 }

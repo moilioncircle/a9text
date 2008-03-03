@@ -26,7 +26,7 @@ var AreaTableParser = function()
 
     
     ////
-    this.parse = function(a9dom)
+    this.parse = function(a9dom,func)
     {
         if(a9dom == null || 'table' != a9dom.getInfo(A9Dom.type.area$type))
             return;
@@ -53,6 +53,8 @@ var AreaTableParser = function()
         else
             __parseStandard__();
         
+        if(func instanceof Function)
+        try{func(a9dom)}catch(e){};
     }
     
     function __parseSimple__()

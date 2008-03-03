@@ -81,29 +81,6 @@ var A9TextRender = function()
         "}"+
         "</scr"+"ipt>";
 
-/*
-    var __nodeHtml__ = ""+ //$ID,$TIER,$INFO,$TEXT,$COLOR
-        "<div id='NODE_$ID'><!-- strange for opera -->"+
-        "    <table width='100%' border='0' cellspacing='0' cellpadding='0'>"+
-        "    <tr class='a9text_dom_tr' bgcolor='"+__color__.view_info+"'>"+
-        "    <th width='$TIER' height='"+__const__.size_fontbox+"'></th>"+
-        "    <th width='"+__const__.size_fontbox+"'><a id='TOKEN_$ID' class='a9text_dom_a' href='javascript:onClickNode($ID)'>"+
-        (default_show?__const__.token_hide:__const__.token_show)+"</a></th>"+
-        "    <th onClick='onClickInfo($ID)' style='cursor:pointer'><font color='$COLOR'>$INFO</font></th>"+
-        "    </tr>"+
-        "    </table>"+
-        "    "+
-        "    <table id='TEXT_$ID' width='100%' border='0' cellspacing='0' cellpadding='0' "+
-        (default_show?"":"style='display:none;'")+">"+
-        "    <tr bgcolor='"+__color__.view_text+"'>"+
-        "    <td width='$TIER' height='"+__const__.size_fontbox+"'></td>"+
-        "    <td width='"+__const__.size_fontbox+"'></td>"+
-        "    <td><pre class='a9text_dom_pre'>$TEXT</pre></td>"+
-        "    </tr>"+
-        "    </table>"+
-        "</div>";
-*/
-
     var __nodeHtml__ = [ //$ID,$TIER,$INFO,$TEXT,$COLOR
         "<div id='NODE_",
         "$ID", // 1
@@ -148,8 +125,12 @@ var A9TextRender = function()
     var __render_htm__ = [];
     var __render_js__  = [];
     // public
-    this.render = function(a9dom)
+    this.render = function(a9dom,func)
     {
+        // dispose
+        __render_htm__ = [];
+        __render_js__  = [];
+        
         __walkDom__(a9dom,0);
         //
         var html = __css_js__+ 
@@ -158,11 +139,10 @@ var A9TextRender = function()
         __render_js__.join('') + 
         "</scr"+"ipt>";
         
-        // dispose
-        __render_htm__ = [];
-        __render_js__  = [];
-            
-        return html;
+        a9dom.setData(html)
+        
+        if(func instanceof Function)
+        try{func(a9dom)}catch(e){};
     }
     
     // private
@@ -205,12 +185,6 @@ var A9TextRender = function()
         
         //merge htm 
 
-//        var htm = __nodeHtml__.replace(/\$ID/g,id);
-//        htm = htm.replace(/\$TIER/g,tier);  
-//        htm = htm.replace(/\$INFO/g,info);  
-//        htm = htm.replace(/\$TEXT/g,text);  
-//        htm = htm.replace(/\$COLOR/g,color);  
-        
         __nodeHtml__[1]  = id;
         __nodeHtml__[5]  = id;
         __nodeHtml__[7]  = id;

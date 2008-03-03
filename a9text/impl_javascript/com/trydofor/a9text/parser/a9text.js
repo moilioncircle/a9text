@@ -43,20 +43,20 @@ var A9TextParser = function()
     var __join_ext__ = "*.txt|*.a9t";
     
     ////
-    this.parse = function(a9dom)
+    this.parse = function(a9dom,func)
     {
-        if(a9dom == null || !a9dom instanceof A9Dom || a9dom.getType() != A9Dom.type.root)
-            throw "a9dom should be a "+A9Dom.type.root;
         var text = a9dom.getText();
         if(text == null || text == "") return;
         
+        // clear
         __super__ = a9dom;
         __basic__ = a9dom;
-        //
+        __index__ = 0;
         __crlf__ = A9Util.getCRLF(text);
-        
-        //
         __lines__ = text.split(__crlf__);
+        __sect_flag__ = [];
+        __args_sect__ = {};
+        __args_dict__ = {};
         
         // a9text root and info
         __parseRoot__();
@@ -81,6 +81,10 @@ var A9TextParser = function()
         //
         a9dom.putInfo(A9Dom.type.root$dict,__args_dict__);
         a9dom.putInfo(A9Dom.type.root$sect,__args_sect__);
+        
+        if(func instanceof Function){
+            A9Loader.runAfterImport(function(){func(a9dom)});
+        }
     }
     
     /* private member */
@@ -638,7 +642,7 @@ var A9TextParser = function()
                         if(__join_ext__.indexOf(extnm) >= 0) // join a9text to parse
                         {
                             A9Util.progressInfo("loading joined text:"+jotxt);
-                            var lt = loadText(jotxt);
+                            var lt = A9Loader.syncLoadText(jotxt);
                             if(lt != null && lt != "") // merge into basic a9text
                             {
                                 var crlf = A9Util.getCRLF(lt);
@@ -788,16 +792,16 @@ var A9TextParser = function()
         {
             try
             {
-                var extClzz = A9Conf.getConf("/root/parser/area/"+type+"/@clzz");
-                A9Util.progressInfo("loading area parser:"+type);
-                require(extBall);
-                eval("var extParser = new "+extClzz+"()");
+                var extClzz = extBall+"."+A9Conf.getConf("/root/parser/area/"+type+"/@clzz");
                 
-                extParser.parse(dom);
+                A9Loader.asyncImportClass(extBall);
+                A9Loader.runAfterImport(function(){
+                eval("var extParser = new "+extClzz+"();");
+                extParser.parse(dom)});
             }
             catch(e)
             {
-                // alert(e);
+                alert(e);
                 A9Util.progressInfo("failed to load area parser:"+type);
             }
         }

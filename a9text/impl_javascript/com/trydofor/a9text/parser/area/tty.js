@@ -21,10 +21,13 @@ var AreaTTYParser = function()
         __ascp__.putOneQuote(A9Dom.type.area_tty.word_stderr,/(^ *@)/,false);
     }
     ////
-    this.parse = function(a9dom)
+    this.parse = function(a9dom,func)
     {
        if(a9dom == null || 'tty' != a9dom.getInfo(A9Dom.type.area$type))
             return;
         __ascp__.parse(a9dom);
+        
+        if(func instanceof Function)
+        try{func(a9dom)}catch(e){};
     }
 }

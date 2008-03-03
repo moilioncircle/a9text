@@ -22,8 +22,12 @@ var AreaJavaRender = function()
     }
     
     // public
-    this.render = function(a9dom)
+    this.render = function(a9dom,func)
     {
-        return __ascr__.render(a9dom);
+        var data = __ascr__.render(a9dom);
+        a9dom.setData(data)
+        
+        if(func instanceof Function)
+        try{func(a9dom)}catch(e){};
     }
 }

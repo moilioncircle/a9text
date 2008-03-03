@@ -14,6 +14,8 @@ int    getTier()
 void   setTier(int tier)
 String getText()
 void   setText(String text)
+String getData()
+void   setData(String data)
 Object getInfo(String key)
     key == null 时,返回所有info's key-val对象
 void   putInfo(String key, Object value)
@@ -51,6 +53,7 @@ var A9Dom = function(parent,type)
     var __tier__ = 0;
     var __type__ = null;
     var __text__ = null;
+    var __data__ = null;
     var __info__ = {};
     var __parent__ = null;
 
@@ -80,6 +83,8 @@ var A9Dom = function(parent,type)
     this.setTier   = function(tier){ __tier__ = tier;};
     this.getText   = function(){ return __text__; };
     this.setText   = function(text){ __text__ = text; };
+    this.getData   = function(){ return __data__; };
+    this.setData   = function(data){ __data__ = data; };
     
     this.getInfo   = function(key)
     { 

@@ -1,5 +1,5 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript" src="../../a9loader.js"></script>
 <body leftmargin='0' topmargin='0' scroll='no'>
 <table width='100%' height='100%' border='0' align='left' cellpadding='0' cellspacing='0'>
 <tr><td height='20'>
@@ -16,11 +16,18 @@
 </table>
 </body>
 <script type="text/javascript">
-require('com.trydofor.a9text.parser.a9text');
-require('com.trydofor.a9text.render.dom.a9text');
-require('com.trydofor.a9text.render.html.a9text');
+//A9Loader.setConsole(alert);
+A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
+A9Loader.asyncImportClass('com.trydofor.a9text.render.dom.a9text');
+A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
 
-var __Strings__ = {};
+var __Strings__  = {};
+var __ViewText__ = {};
+var __Renders__  = {};
+var a9textSpec   = null;
+var a9textFile   = null;
+var __A9dom__    = null;
+
 __Strings__.getm1 = '输入文本内容';
 __Strings__.getm2 = '输入本地文件(本地)';
 __Strings__.getm3 = '浏览本地文件(本地,非OPERA)';
@@ -28,74 +35,69 @@ __Strings__.psname = '解析';
 __Strings__.notxt = '没有载入任何文本,请尝试'+__Strings__.getm1;
 __Strings__.input = '请输入要解析的文件路径\n如:E:\\a9text.txt';
 __Strings__.help = '需要完成以下3步:\n 1) 选择文本,点<输入>按钮.\n 2) 解析文本,点1)中的<解析>按钮.\n 3) 观察结果,点<文本><对象><图文>.';
-
-var a9textSpec = null;
-var a9textFile = null;
-var __A9dom__ = null;
-var __ViewText__ = {};
 __ViewText__.txt = null;
 __ViewText__.dom = null;
 __ViewText__.htm = null;
 __ViewText__.get = "<table width='600' border='0' cellpadding='3' cellspacing='1'>"+
-"<tr>"+
-"<td bgcolor='#66CC00'>"+
-"<input type='radio' id='inputtext' name='inputmethod' value='1' onclick='onShowInput(this.value)' checked='checked'/>"+
-"<label for='inputtext'>"+__Strings__.getm1+"</label><br />"+
-"<input type='radio' id='inputfile' name='inputmethod' value='2' onclick='onShowInput(this.value)'/>"+
-"<label for='inputfile'>"+__Strings__.getm2+"</label><br />"+
-"<input type='radio' id='localfile' name='inputmethod' value='3' onclick='onShowInput(this.value)'/>"+
-"<label for='localfile'>"+__Strings__.getm3+"</label><br />"+
-"</td>"+
-"<td width='30' bgcolor='#3366CC'>"+
-"<input type='button' value='"+__Strings__.psname+"' onClick='onParseText()'  style='background-color:#CC9900' />"+
-"</td>"+
-"</tr>"+
-"</table>"+
-"<table width='600' border='0' cellpadding='3' cellspacing='1'>"+
-"<tr>"+
-"<td align='left' valign='top' bgcolor='#FFCC66'>"+
-"<input id='GETTEXT_3' type='file' size='70' style='display:none'>"+
-"<input id='GETTEXT_2' type='text' size='80' style='display:none'>"+
-"<textarea  id='GETTEXT_1' rows='40' style='width:99%'></textarea>"+
-"</td>"+
-"</tr>"+
-"</table>"+
-"<sc"+"ript type='text/javascript'>"+
-"var type = 1;"+
-"function onShowInput(val)"+
-"{"+
-"    document.getElementById('GETTEXT_3').style.display='none';"+
-"    document.getElementById('GETTEXT_2').style.display='none';"+
-"    document.getElementById('GETTEXT_1').style.display='none';"+
-"    document.getElementById('GETTEXT_'+val).style.display='';"+
-"    "+
-"    type = val;"+
-"}"+
-"function onParseText()"+
-"{"+
-"    if(type == 2 || type == 3)"+
-"        parent.onLoadLocalFile(document.getElementById('GETTEXT_'+type).value);"+
-"    else"+
-"        parent.onParserText(document.getElementById('GETTEXT_1').value);"+
-"}"+
-"</scr"+"ipt>";
-
-var __Renders__ = {};
-__Renders__.dom = new com.trydofor.a9text.render.dom.a9text.A9TextRender();
-__Renders__.htm = new com.trydofor.a9text.render.html.a9text.A9TextRender();
+    "<tr>"+
+    "<td bgcolor='#66CC00'>"+
+    "<input type='radio' id='inputtext' name='inputmethod' value='1' onclick='onShowInput(this.value)' checked='checked'/>"+
+    "<label for='inputtext'>"+__Strings__.getm1+"</label><br />"+
+    "<input type='radio' id='inputfile' name='inputmethod' value='2' onclick='onShowInput(this.value)'/>"+
+    "<label for='inputfile'>"+__Strings__.getm2+"</label><br />"+
+    "<input type='radio' id='localfile' name='inputmethod' value='3' onclick='onShowInput(this.value)'/>"+
+    "<label for='localfile'>"+__Strings__.getm3+"</label><br />"+
+    "</td>"+
+    "<td width='30' bgcolor='#3366CC'>"+
+    "<input type='button' value='"+__Strings__.psname+"' onClick='onParseText()'  style='background-color:#CC9900' />"+
+    "</td>"+
+    "</tr>"+
+    "</table>"+
+    "<table width='600' border='0' cellpadding='3' cellspacing='1'>"+
+    "<tr>"+
+    "<td align='left' valign='top' bgcolor='#FFCC66'>"+
+    "<input id='GETTEXT_3' type='file' size='70' style='display:none'>"+
+    "<input id='GETTEXT_2' type='text' size='80' style='display:none'>"+
+    "<textarea  id='GETTEXT_1' rows='40' style='width:99%'></textarea>"+
+    "</td>"+
+    "</tr>"+
+    "</table>"+
+    "<sc"+"ript type='text/javascript'>"+
+    "var type = 1;"+
+    "function onShowInput(val)"+
+    "{"+
+    "    document.getElementById('GETTEXT_3').style.display='none';"+
+    "    document.getElementById('GETTEXT_2').style.display='none';"+
+    "    document.getElementById('GETTEXT_1').style.display='none';"+
+    "    document.getElementById('GETTEXT_'+val).style.display='';"+
+    "    "+
+    "    type = val;"+
+    "}"+
+    "function onParseText()"+
+    "{"+
+    "    if(type == 2 || type == 3)"+
+    "        parent.onLoadLocalFile(document.getElementById('GETTEXT_'+type).value);"+
+    "    else"+
+    "        parent.onParserText(document.getElementById('GETTEXT_1').value);"+
+    "}"+
+    "</scr"+"ipt>";
 
 function onChangeView(type)
 {
     switch(type)
     {
         case 'dom':
+            if(__ViewText__['dom'] == null){
+                __Renders__['dom'].render(__A9dom__);
+                __ViewText__['dom'] = __A9dom__.getData();
+            }
         case 'htm':
-            if(__ViewText__[type] == null) 
-            {
+            if(__ViewText__['htm'] == null){
                 try{
                     com.trydofor.a9text.render.html.area.common.syntaxcode.hasPairingJs(true);
                 }catch(e){};
-                __ViewText__[type] = __Renders__[type].render(__A9dom__);
+                __Renders__['htm'].render(__A9dom__,function(){
+                __ViewText__['htm'] = __A9dom__.getData();});
             }
             break;
         case 'txt':
@@ -130,15 +132,15 @@ function onLoadLocalFile(fn)
 {
     if(fn == null || fn == '') return;
     a9textFile = fn;
-    onParserText(loadText('file://'+fn));
+    onParserText(A9Loader.syncLoadText('file://'+fn));
 }
 
 function onShowA9textSpec()
 {
     if(a9textSpec == null)
     {
-        a9textSpec = loadText("../doc/cn/a9text/a9text-spec_3.2.txt",CORE_PATH);
-        a9textFile = CORE_PATH+"../doc/cn/a9text/a9text-spec_3.2.txt";
+        a9textSpec = A9Loader.syncLoadText("../doc/cn/a9text/a9text-spec_3.2.txt",A9Loader.getCorePath());
+        a9textFile = A9Loader.getCorePath()+"../doc/cn/a9text/a9text-spec_3.2.txt";
         a9textSpec = A9Util.txt2htm(a9textSpec,'<>');
     }
     
@@ -151,12 +153,20 @@ function onShowA9textSpec()
 }
 
 // init
-var _view = PAGE_ARGS['view'];
-var _file = PAGE_ARGS['file'];
+function init(){
+    __Renders__.dom = new com.trydofor.a9text.render.dom.a9text.A9TextRender();
+    __Renders__.htm = new com.trydofor.a9text.render.html.a9text.A9TextRender();
+    
+    var args = A9Loader.getPageArgs();
+    var _view = args['view'];
+    var _file = args['file'];
 
-if(_view == null || _view == "") _view = 'htm';
-if(_file == null || _file == "") _file = '../../../doc/cn/a9text/a9text-demo_3.2.txt';
-a9textFile = _file;
-onParserText(loadText(_file));
-onChangeView(_view);
+    if(_view == null || _view == "") _view = 'htm';
+    if(_file == null || _file == "") _file = '../../../doc/cn/a9text/a9text-demo_3.2.txt';
+    a9textFile = _file;
+    onParserText(A9Loader.syncLoadText(_file));
+    A9Loader.runAfterImport(function(){onChangeView(_view)});
+}
+
+A9Loader.runAfterImport(init);
 </script>

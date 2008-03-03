@@ -1,0 +1,13 @@
+<body></body>
+<script type="text/javascript" src="../../a9loader.js"></script>
+<script type="text/javascript">
+document.writeln("<br>getCorePath:"+A9Loader.getCorePath());
+document.writeln("<br>getPagePath:"+A9Loader.getPagePath());
+document.writeln("<br>getPageName:"+A9Loader.getPageName());
+document.writeln("<br>getPageInfo:"+A9Loader.getPageInfo());
+document.writeln("<br>getPageArgs:");
+var args = A9Loader.getPageArgs();
+for(var k in args){
+document.writeln("<br>... "+k+"="+args[k]);
+}
+</script>

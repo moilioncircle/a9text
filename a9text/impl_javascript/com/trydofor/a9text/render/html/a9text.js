@@ -75,8 +75,15 @@ var A9TextRender = function()
     var __last_dom__ = null;
     
     // public
-    this.render = function(a9dom)
+    this.render = function(a9dom,func)
     {
+        if(!(func instanceof Function)) throw "a9text render need callback function for async";
+        // clear
+        __last_dom__ = null;
+        __render_htm__ = [];
+        __render_css__ = [];
+        __render_js__  = [];
+        
         __domManager__(a9dom);
         
         __render_css__.push(A9Conf.getConf("/root/render/html/common/css/@path"));
@@ -90,16 +97,10 @@ var A9TextRender = function()
         for(var i =0; i< __render_js__.length; i++)
             linkJs += "<script type='text/javascript' src='"+__render_js__[i]+"'></script>";
         
-        var html = linkCss+linkJs+
-                   __render_htm__.join('');
-        
-        // dispose
-        __last_dom__ = null;
-        __render_htm__ = [];
-        __render_css__ = [];
-        __render_js__  = [];
-        
-        return html;
+        A9Loader.runAfterImport(function(){
+            a9dom.setData(linkCss+linkJs+__render_htm__.join(''));
+            func(a9dom);
+        });
     }
     
     // private
@@ -364,7 +365,7 @@ var A9TextRender = function()
         }
     }
     
-    function __mode2htm__(dom) //TODO
+    function __mode2htm__(dom)
     {
         switch(dom.getType())
         {
@@ -530,12 +531,23 @@ var A9TextRender = function()
         {
             try
             {
-                var extClzz = A9Conf.getConf("/root/render/html/area/"+type+"/@clzz");
-                A9Util.progressInfo("loading area render:"+type);
-                require(extBall);
-                eval("var extRender = new "+extClzz+"()");
+                var extClzz = extBall+"."+A9Conf.getConf("/root/render/html/area/"+type+"/@clzz");
+
+                __render_htm__.push("##a9_future_data_holder## @ "+dom.getId());
+                                
+                A9Loader.asyncImportClass(extBall);
+                A9Loader.runAfterImport(function(){
+                    eval("var extRender = new "+extClzz+"();");
+                    extRender.render(dom,function(rdom){
+                        for(var x=0;x<__render_htm__.length;x++){
+                            if(__render_htm__[x]=="##a9_future_data_holder## @ "+rdom.getId()){
+                                __render_htm__[x] = rdom.getData();
+                                break;
+                            }
+                        }
+                    })
+                });
                 
-                __render_htm__.push(extRender.render(dom));
                 return;
             }
             catch(e)
