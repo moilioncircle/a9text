@@ -8,11 +8,14 @@ var __A9Loader__ = function()
 {
     var __selfConf__ = {name:"a9loader.js",extn:'.js',info:"__info__.js"};
     var __pageInfo__ = {core:"",path:"",name:"",info:"",args:{}};
-    var __consoleHandler__ = null;
+    var __stdHandler__ = {stdout:null,stderr:null};
     var __asyncTextTask__ = {num:0,map:{}};
     var __asyncClzzTask__ = {rcnt:0,clzz:[],func:[]};
     var __clzzInfoPools__ = {}; //{clzz,pubs,deps,text,impl}
 
+    __init__(); // init
+    
+    //
     function __tagLoadScript__(url)
     {
         __checkType__(url,"string","url@__tagImportScript__");
@@ -43,6 +46,7 @@ var __A9Loader__ = function()
     function __runAfterImport__(func)
     {
         __checkType__(func,"Function","func@__runAfterImport__");
+        __stdout__("__runAfterImport__:"+func);
         __asyncClzzTask__.func.push(func);
         __clzzTaskCallback__();
     }
@@ -52,15 +56,12 @@ var __A9Loader__ = function()
         __checkType__(url,"string","url@__syncLoadText__");
         var xhr = __newXHRequest__();
         var resText = null;
-        try
-        {
+        try{
             xhr.open("GET",url,false);
             xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
             xhr.send(null);
             resText = xhr.responseText;
-        }
-        finally
-        {
+        }finally{
             xhr.abort();
             delete xhr;
         }
@@ -78,7 +79,6 @@ var __A9Loader__ = function()
         __checkType__(func,"Function","func@__asyncLoadText__");
         __checkType__(urls,"string","urls@__asyncLoadText__");
         
-        
         __asyncTextTask__.num++;
         var task = {};
         task.id = __asyncTextTask__.num;
@@ -94,7 +94,6 @@ var __A9Loader__ = function()
             }
         }
         __asyncTextTask__.map[task.id] = task;
-
     }
     
     /////////////////// helper functions  ///////////////////
@@ -105,17 +104,16 @@ var __A9Loader__ = function()
     	if(typeof(__clzzInfoPools__[clzz]) != 'undefined' 
     	   && __clzzInfoPools__[clzz]['text'] != null) return;
     	
-    	__asyncClzzTask__.rcnt += 2;
-    	           
     	if(async == null||async != false) async = true;
     	else async = false;
     	
+    	__asyncClzzTask__.rcnt++;
+    	__asyncClzzTask__.clzz.push(clzz);
+    	
+        __stdout__("__clzzTask__:"+clzz+","+async);
+        
     	if(typeof(__clzzInfoPools__[clzz]) == 'undefined'){
 	    	__clzzInfoPools__[clzz] = {'clzz':clzz,'pubs':null,'deps':null,'text':'','impl':null};
-    	}
-    	
-    	if(async){
-    		__asyncClzzTask__.clzz.push(clzz);
     	}
     	
     	//document.body.innerHTML +="<br>"+clzz;
@@ -124,6 +122,7 @@ var __A9Loader__ = function()
     	
         // get info (async|sync)
         if(__clzzInfoPools__[clzz]['pubs'] == null){
+    		__asyncClzzTask__.rcnt++;
             var xhrInfo = __newXHRequest__();
             if(async){
                 xhrInfo.onreadystatechange = function(){
@@ -155,8 +154,6 @@ var __A9Loader__ = function()
                 if(infoText != null)eval(infoText);
                 __asyncClzzTask__.rcnt--;
             }
-        }else{
-            __asyncClzzTask__.rcnt--;
         }
     	
         // get text (async|sync)
@@ -187,10 +184,8 @@ var __A9Loader__ = function()
 			xhrClzz.abort();
             delete xhrClzz;
             __asyncClzzTask__.rcnt--;
-            __initAndExportClzz__(clzz);
+        	__clzzTaskCallback__();
         }
-        
-        __clzzTaskCallback__();
         
         // inner function
     	function __info__(scriptName,publicMemeber,dependencs){
@@ -204,6 +199,8 @@ var __A9Loader__ = function()
     			__clzzInfoPools__[clzzName]['deps']=dependencs;
     		}
     		
+    		__stdout__("__info__:"+clzzName);
+    		
     		if(dependencs!= null){
     			for(var i=0;i<dependencs.length;i++){
     				if(dependencs[i].indexOf('.')<0) dependencs[i] = clzzBall+dependencs[i];
@@ -215,22 +212,22 @@ var __A9Loader__ = function()
     
     function __clzzTaskCallback__()
     {
+    	__stdout__("__clzzTaskCallback__:"+__asyncClzzTask__.rcnt);
+    	
     	if(__asyncClzzTask__.rcnt > 0) return;
     	
-        __asyncClzzTask__.rcnt = 0;    	
-		var clzzs = __asyncClzzTask__.clzz;
-		var funcs = __asyncClzzTask__.func;
-    	__asyncClzzTask__.clzz = [];
-    	__asyncClzzTask__.func = [];
-	
-    	for(var i=0;i<clzzs.length;i++){
-    		__initAndExportClzz__(clzzs[i]);
-    	}
-    	for(var i=0;i<funcs.length;i++){
-    		try{
-    			funcs[i]();
-    		}catch(e){ __stdout__(e)};
-    	}
+		do{
+	    	var ci = __asyncClzzTask__.clzz.length;
+	    	var fi = __asyncClzzTask__.func.length;
+	    	for(var i=0;i<ci;i++){
+	    		__initAndExportClzz__(__asyncClzzTask__.clzz.shift());
+	    	}
+	    	for(var i=0;i<fi;i++){
+	    		try{
+	    			(__asyncClzzTask__.func.shift())();
+	    		}catch(e){ __stderr__("__clzzTaskCallback__:"+e)};
+	    	}
+		}while(__asyncClzzTask__.rcnt<=0 && (ci>0 ||fi>0))
     }
     
     function __initAndExportClzz__(clzz)
@@ -239,6 +236,8 @@ var __A9Loader__ = function()
     	   || __clzzInfoPools__[clzz]['impl'] != null
     	   || __clzzInfoPools__[clzz]['text'] == null
     	   ) return;
+    	   
+    	__stdout__("__initAndExportClzz__:"+clzz);
     	
     	// deps check
     	var cip = __clzzInfoPools__[clzz];
@@ -291,7 +290,7 @@ var __A9Loader__ = function()
         var aliasScript = [];
         if(cip['pubs']!=null)
 	        for(var i=0;i<cip['pubs'].length;i++){
-	    		aliasScript.push("if(typeof("+cip['pubs'][i]+")!='undefined'){__stdout__('conflict:"+cip['pubs'][i]+"@"+clzz+"');}\n");
+	    		aliasScript.push("if(typeof("+cip['pubs'][i]+")!='undefined'){__stderr__('conflict:"+cip['pubs'][i]+"@"+clzz+"');}\n");
 	    		aliasScript.push("else{"+cip['pubs'][i]+"=__clzzInfoPools__[clzz].impl['"+cip['pubs'][i]+"']}\n");
 	        }
         eval(aliasScript.join(''));
@@ -343,7 +342,6 @@ var __A9Loader__ = function()
                 break;
             }
         }
-        
         //alert(taskid+"::"+xhrs.length+":"+isAllDone)
         if(isAllDone){
             var task = __asyncTextTask__.map[taskid];
@@ -400,9 +398,14 @@ var __A9Loader__ = function()
         throw mess;
     }
     
+    function __stderr__(info){
+        if(__stdHandler__.stderr != null){
+            try{__stdHandler__.stderr(info);}catch(e){alert(e)};
+        }
+    }
     function __stdout__(info){
-        if(__consoleHandler__ != null){
-            try{ __consoleHandler__(info);}catch(e){alert(e)};
+        if(__stdHandler__.stdout != null){
+            try{__stdHandler__.stdout(info);}catch(e){alert(e)};
         }
     }
     
@@ -420,7 +423,6 @@ var __A9Loader__ = function()
                 break;
             }
         }
-        
         // PAGE
         var theURL = self.location.href;
         var questPos = theURL.indexOf('?');
@@ -429,7 +431,6 @@ var __A9Loader__ = function()
         
         __pageInfo__['path'] = theURL.substring(0,slashPos);
         __pageInfo__['name'] = questPos>slashPos ? theURL.substring(slashPos,questPos):theURL.substr(slashPos);
-        
         // URL_ARGS
         if(questPos > slashPos)
         {
@@ -444,13 +445,9 @@ var __A9Loader__ = function()
                 else
                     __pageInfo__['args'][keyValArray[i]] = "";
             }
-            
             __pageInfo__['info'] = queryString;
         }
     }
-    
-    // init
-    __init__();
     
     // export public members
     this.tagLoadScript    = __tagLoadScript__;
@@ -460,8 +457,9 @@ var __A9Loader__ = function()
     this.syncLoadText     = __syncLoadText__;
     this.asyncLoadText    = __asyncLoadText__;
     
-    this.setConsole       = function(f){if(f instanceof Function)__consoleHandler__ = f;};
-    
+    this.setStdout       = function(f){if(f instanceof Function)__stdHandler__.stdout = f;};
+    this.setStderr       = function(f){if(f instanceof Function)__stdHandler__.stderr = f;};
+        
     this.__$              = function(s){return __clzzInfoPools__[s].impl;}
     this.getCorePath      = function(){ return __pageInfo__['core']; };
     this.getPagePath      = function(){ return __pageInfo__['path']; };
@@ -473,5 +471,17 @@ var __A9Loader__ = function()
 // init instance
 if(typeof(A9Loader) == 'undefined' || !(A9Loader instanceof __A9Loader__))
 {
+    var win = window.open("","A9LoaderConsole","width=680,height=600,resizable,scrollbars=yes");
+    win.document.write("<meta content='text/html; charset=utf-8' http-equiv='content-type'><body style='font-size:12px'></body>");
+    //win.document.close();
+    var stdout = function(info){
+    	win.document.write("<pre>"+info+"</pre>");
+    }
+    var stderr = function(info){
+        stdout("[ERR]"+info);
+    }
+    
     A9Loader = new __A9Loader__();
+	A9Loader.setStdout(stdout);
+	A9Loader.setStderr(stderr);
 }
