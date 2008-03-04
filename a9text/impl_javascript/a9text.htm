@@ -57,46 +57,44 @@ try{
 <!-- // Run As JS
 try{
     var bodyHtml = document.body?document.body.innerHTML:"";
-    var hasA9text = false;
+    var a9PreText = [];
+    var a9PreHtml = [];
+    var a9DomHtml = {};
     
     var preTags = document.getElementsByTagName("PRE");
     for(var i=0; i<preTags.length;i++){
         if(/a9text/i.test(preTags[i].getAttribute("title"))){
             var preText = preTags[i].innerText || preTags[i].textContent;
             if (preText != ""){
-                hasA9text = true;
-                break;
+                a9PreText.push(preText);
+                a9PreHtml.push(preTags[i].innerHTML);
             }
         }
     }
-    if(hasA9text){
+    if(a9PreText.length >0){
         A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
         A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
+        
         A9Loader.runAfterImport(function(){
-            for(var i=0; i<preTags.length;i++){
-                if(/a9text/i.test(preTags[i].getAttribute("title"))){
-                    var preText = preTags[i].innerText || preTags[i].textContent;
-                    if (preText == "") continue;
-                    A9Loader.runAfterImport(function(){
-                        var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
-                        a9dom.setText(preText);
-                        a9dom.putInfo(A9Dom.type.root$path,A9Loader.getPagePath());
-                        new A9TextParser().parse(a9dom,function(){
-                                new A9TextRender().render(a9dom,function(){
-                                var a9htm = a9dom.getData();
-                                // merger
-                                var preHtml = preTags[i].innerHTML;
-                                var prePos  = bodyHtml.indexOf(preHtml);
-                                var headPos = bodyHtml.lastIndexOf('<',prePos);
-                                var footPos = bodyHtml.indexOf('>',prePos+preHtml.length)+1;
-                                bodyHtml = bodyHtml.substring(0,headPos) + a9htm + bodyHtml.substr(footPos);
-                                if(document.body) document.body.innerHTML="";
-                                document.write(bodyHtml);
-                                document.close();
-                            });
-                        });
+            for(var i=0; i<a9PreText.length;i++){
+                var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
+                a9dom.setText(a9PreText[i]);
+                a9dom.putInfo(A9Dom.type.root$path,A9Loader.getPagePath());
+                a9DomHtml[a9dom.getId()] = a9PreHtml[i];
+                
+                new A9TextParser().parse(a9dom,function(){
+                    new A9TextRender().render(a9dom,function(){
+                        var a9htm = a9dom.getData();
+                        var preHtml = a9DomHtml[a9dom.getId()];
+                        var prePos  = bodyHtml.indexOf(preHtml);
+                        var headPos = bodyHtml.lastIndexOf('<',prePos);
+                        var footPos = bodyHtml.indexOf('>',prePos+preHtml.length)+1;
+                        bodyHtml = bodyHtml.substring(0,headPos) + a9htm + bodyHtml.substr(footPos);
+                        if(document.body) document.body.innerHTML="";
+                        document.write(bodyHtml);
+                        document.close();
                     });
-                }
+                });
             }
         });
     }

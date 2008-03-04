@@ -43,8 +43,8 @@ var __A9Loader__ = function()
     function __runAfterImport__(func)
     {
         __checkType__(func,"Function","func@__runAfterImport__");
-        if(__asyncClzzTask__.rcnt == 0) func();
-        else __asyncClzzTask__.func.push(func);
+        __asyncClzzTask__.func.push(func);
+        __clzzTaskCallback__();
     }
     
     function __syncLoadText__(url)
@@ -105,6 +105,8 @@ var __A9Loader__ = function()
     	if(typeof(__clzzInfoPools__[clzz]) != 'undefined' 
     	   && __clzzInfoPools__[clzz]['text'] != null) return;
     	
+    	__asyncClzzTask__.rcnt += 2;
+    	           
     	if(async == null||async != false) async = true;
     	else async = false;
     	
@@ -120,44 +122,46 @@ var __A9Loader__ = function()
     	var clzzUri = __pageInfo__.core+clzz.replace(/\./g,'/')+__selfConf__.extn;
     	var infoUri = clzzUri.substring(0,clzzUri.lastIndexOf('/')+1)+__selfConf__.info;
     	
-    	// get info (async|sync)
-    	if(__clzzInfoPools__[clzz]['pubs'] == null){
-	    	var xhrInfo = __newXHRequest__();
-	    	if(async){
-	    		__asyncClzzTask__.rcnt++;
-		        xhrInfo.onreadystatechange = function(){
-		            if(xhrInfo.readyState == 4){
-		            	var infoText = null;
-		                if (xhrInfo.status == 0 || xhrInfo.status == 200 || xhrInfo.status == 304 ){
-				        	infoText=xhrInfo.responseText;
-		                }else{
-		                    // do something
-		                }
-		                xhrInfo.abort();
-		                delete xhrInfo;
-		                //
-		                if(infoText != null)eval(infoText);
-		                __asyncClzzTask__.rcnt--;
-		            }
-		        }
-	        }
-	        
-	        xhrInfo.open('GET',infoUri,async);
-	        xhrInfo.setRequestHeader('If-Modified-Since','0');
-	        xhrInfo.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
-	        xhrInfo.send(null);
-	        
-	        if(!async){
-	        	var infoText=xhrInfo.responseText;
-    			xhrInfo.abort();
+        // get info (async|sync)
+        if(__clzzInfoPools__[clzz]['pubs'] == null){
+            var xhrInfo = __newXHRequest__();
+            if(async){
+                xhrInfo.onreadystatechange = function(){
+                    if(xhrInfo.readyState == 4){
+                        var infoText = null;
+                        if (xhrInfo.status == 0 || xhrInfo.status == 200 || xhrInfo.status == 304 ){
+                            infoText=xhrInfo.responseText;
+                        }else{
+                            // do something
+                        }
+                        xhrInfo.abort();
+                        delete xhrInfo;
+                        //
+                        if(infoText != null)eval(infoText);
+                        __asyncClzzTask__.rcnt--;
+                    }
+                }
+            }
+            
+            xhrInfo.open('GET',infoUri,async);
+            xhrInfo.setRequestHeader('If-Modified-Since','0');
+            xhrInfo.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+            xhrInfo.send(null);
+            
+            if(!async){
+                var infoText=xhrInfo.responseText;
+                xhrInfo.abort();
                 delete xhrInfo;
                 if(infoText != null)eval(infoText);
-	        }
-    	}
+                __asyncClzzTask__.rcnt--;
+            }
+        }else{
+            __asyncClzzTask__.rcnt--;
+        }
+    	
         // get text (async|sync)
         var xhrClzz = __newXHRequest__();
         if(async){
-        	__asyncClzzTask__.rcnt++;
 	        xhrClzz.onreadystatechange = function(){
 	            if(xhrClzz.readyState == 4){
 	                if (xhrClzz.status == 0 || xhrClzz.status == 200 || xhrClzz.status == 304 ){
@@ -168,7 +172,7 @@ var __A9Loader__ = function()
 	                xhrClzz.abort();
 	                delete xhrClzz;
 	                __asyncClzzTask__.rcnt--;
-	                __clzzTaskCallback__(clzz);
+	                __clzzTaskCallback__();
 	            }
 	        }
         }
@@ -182,9 +186,12 @@ var __A9Loader__ = function()
         	__clzzInfoPools__[clzz]['text']=xhrClzz.responseText;
 			xhrClzz.abort();
             delete xhrClzz;
+            __asyncClzzTask__.rcnt--;
             __initAndExportClzz__(clzz);
         }
-	        
+        
+        __clzzTaskCallback__();
+        
         // inner function
     	function __info__(scriptName,publicMemeber,dependencs){
     		var clzzBall = clzz.substring(0,clzz.lastIndexOf('.')+1);
@@ -206,13 +213,13 @@ var __A9Loader__ = function()
     	}
     }
     
-    function __clzzTaskCallback__(clzz)
+    function __clzzTaskCallback__()
     {
     	if(__asyncClzzTask__.rcnt > 0) return;
     	
+        __asyncClzzTask__.rcnt = 0;    	
 		var clzzs = __asyncClzzTask__.clzz;
 		var funcs = __asyncClzzTask__.func;
-    	__asyncClzzTask__.rcnt = 0;
     	__asyncClzzTask__.clzz = [];
     	__asyncClzzTask__.func = [];
 	
