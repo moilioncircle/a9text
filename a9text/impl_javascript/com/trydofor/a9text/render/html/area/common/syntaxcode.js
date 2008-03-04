@@ -14,9 +14,9 @@ var AreaSyntaxCodeRender = function()
 {
     var __const_htm__= {};
     __const_htm__.syntax_code = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr",
-                         "<tr><td style='border:1px dashed #666699;'><table border='0' cellspacing='2' cellpadding='1'><tr><td style='background-color:#DDDDDD;color:#990000;text-align: center;' valign='top'><pre>","$num","</pre></td><td valign='top'><pre>","$text","</pre></td></tr></table></td></tr></table>"];
+                         "<tr><td style='border:1px dashed #666699;'><table border='0' cellspacing='2' cellpadding='1'><tr><td style='width:4ex;background-color:#DDDDDD;color:#990000;' align='center' valign='top'><pre>",
+                         "$num","</pre></td><td valign='top'><pre>","$text","</pre></td></tr></table></td></tr></table>"];
     __const_htm__.syntax_code$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>","infostr","&nbsp;</span></td></tr>"];
-    __const_htm__.line$number    = ["<span style='color: #FFFFFF; background-color:#DEDEDE'}>","","</span> "];
     __const_htm__.word_highlight = ["<span style='","","'>","","</span>"];
     __const_htm__.word_pairing   = ["<span id='","$id","' onclick='__A9TEXT_ASCP__.matchPairing(this)'>","","</span>"];
     
@@ -85,7 +85,7 @@ var AreaSyntaxCodeRender = function()
         var seq = 0;
         while(a9dom.hasNext())
         {
-            __render_htm__.push("\n");
+            if(seq>0)__render_htm__.push("\n");
             var lineDom = a9dom.nextChild();
             while(lineDom.hasNext())
             {

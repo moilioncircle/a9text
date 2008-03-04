@@ -1,6 +1,12 @@
 ﻿body{
     font-size:small;
 }
+
+pre{
+    overflow:auto; 
+    width:100%;
+    margin-bottom:0px;
+}
 .a9text_breakall{
     white-space:normal;
     word-break:break-all; 
