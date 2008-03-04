@@ -37,7 +37,8 @@ var __A9Loader__ = function()
     function __asyncImportClass__(clzz)
     {
         __checkType__(clzz,"string","clzz@__asyncImportClass__");
-        new __clzzTask__(clzz,self.location.protocol.indexOf('file')<0);
+        //new __clzzTask__(clzz,self.location.protocol.indexOf('file')<0);
+        new __clzzTask__(clzz,true);
     }
     
     function __runAfterImport__(func)
@@ -119,14 +120,14 @@ var __A9Loader__ = function()
     	//document.body.innerHTML +="<br>"+clzz;
     	var clzzUri = __pageInfo__.core+clzz.replace(/\./g,'/')+__selfConf__.extn;
     	var infoUri = clzzUri.substring(0,clzzUri.lastIndexOf('/')+1)+__selfConf__.info;
-    	// get info
+    	
+    	// get info (async|sync)
     	if(__clzzInfoPools__[clzz]['pubs'] == null){
 	    	var xhrInfo = __newXHRequest__();
 	    	if(async){
 	    		__asyncClzzTask__.rcnt++;
 		        xhrInfo.onreadystatechange = function(){
 		            if(xhrInfo.readyState == 4){
-		            	__asyncClzzTask__.rcnt--;
 		            	var infoText = null;
 		                if (xhrInfo.status == 0 || xhrInfo.status == 200 || xhrInfo.status == 304 ){
 				        	infoText=xhrInfo.responseText;
@@ -137,6 +138,7 @@ var __A9Loader__ = function()
 		                delete xhrInfo;
 		                //
 		                if(infoText != null)eval(infoText);
+		                __asyncClzzTask__.rcnt--;
 		            }
 		        }
 	        }
@@ -153,13 +155,12 @@ var __A9Loader__ = function()
                 if(infoText != null)eval(infoText);
 	        }
     	}
-        // get text
+        // get text (async|sync)
         var xhrClzz = __newXHRequest__();
         if(async){
         	__asyncClzzTask__.rcnt++;
 	        xhrClzz.onreadystatechange = function(){
 	            if(xhrClzz.readyState == 4){
-	            	__asyncClzzTask__.rcnt--;
 	                if (xhrClzz.status == 0 || xhrClzz.status == 200 || xhrClzz.status == 304 ){
 	                	__clzzInfoPools__[clzz]['text']=xhrClzz.responseText;
 	                }else{
@@ -167,6 +168,7 @@ var __A9Loader__ = function()
 	                }
 	                xhrClzz.abort();
 	                delete xhrClzz;
+	                __asyncClzzTask__.rcnt--;
 	                __clzzTaskCallback__(clzz);
 	            }
 	        }
