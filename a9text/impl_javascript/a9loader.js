@@ -37,7 +37,6 @@ var __A9Loader__ = function()
     function __asyncImportClass__(clzz)
     {
         __checkType__(clzz,"string","clzz@__asyncImportClass__");
-        //new __clzzTask__(clzz,self.location.protocol.indexOf('file')<0);
         new __clzzTask__(clzz,true);
     }
     
