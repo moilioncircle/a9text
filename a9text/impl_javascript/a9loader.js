@@ -138,6 +138,7 @@ var __A9Loader__ = function()
                         //
                         if(infoText != null)eval(infoText);
                         __asyncClzzTask__.rcnt--;
+                        __clzzTaskCallback__();
                     }
                 }
             }
@@ -153,6 +154,7 @@ var __A9Loader__ = function()
                 delete xhrInfo;
                 if(infoText != null)eval(infoText);
                 __asyncClzzTask__.rcnt--;
+                __clzzTaskCallback__();
             }
         }
     	
@@ -242,6 +244,7 @@ var __A9Loader__ = function()
     	// deps check
     	var cip = __clzzInfoPools__[clzz];
     	cip['impl'] = 'ready'; // avoid looping deps
+    	
 		for(var i=0;cip['deps']!=null && i<cip['deps'].length;i++){
 			__initAndExportClzz__(cip['deps'][i]);
 		}
@@ -471,17 +474,22 @@ var __A9Loader__ = function()
 // init instance
 if(typeof(A9Loader) == 'undefined' || !(A9Loader instanceof __A9Loader__))
 {
-    var win = window.open("","A9LoaderConsole","width=680,height=600,resizable,scrollbars=yes");
-    win.document.write("<meta content='text/html; charset=utf-8' http-equiv='content-type'><body style='font-size:12px'></body>");
-    //win.document.close();
+    A9Loader = new __A9Loader__();
+    
+    /*
+    var _console_ = null;
     var stdout = function(info){
-    	win.document.write("<pre>"+info+"</pre>");
+        if(_console_ == null){
+            _console_= window.open("","A9LoaderConsole","width=680,height=600,resizable,scrollbars=yes");
+            _console_.document.write("<meta content='text/html; charset=utf-8' http-equiv='content-type'><body style='font-size:12px'></body>");
+        }
+    	_console_.document.write("<pre>"+info+"</pre>");
     }
     var stderr = function(info){
         stdout("[ERR]"+info);
     }
     
-    A9Loader = new __A9Loader__();
 	A9Loader.setStdout(stdout);
 	A9Loader.setStderr(stderr);
+	*/
 }
