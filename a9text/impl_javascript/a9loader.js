@@ -2,6 +2,53 @@
 UTF8(BOM)  GPL  trydofor.com  Feb.2008
 ===========================================================
 
+void A9Loader.tagLoadScript(String url)
+    load the js/text by html tag(script)
+    @param url (String) the url of script
+
+void A9Loader.syncImportClass(String clzz)
+    sync import an js and export like java
+    @param clzz (String) eg:'com.trydofor.a9text.parser.a9text'
+
+void A9Loader.asyncImportClass(String clzz)
+    async import an js and export like java
+    @param clzz (String) eg:'com.trydofor.a9text.parser.a9text'
+
+void A9Loader.runAfterImport(Function func)
+    run the func when all class imported
+    @param func (Function)
+
+void A9Loader.syncLoadText(String url)
+    sync load a text
+    @param url (String)
+
+void A9Loader.asyncLoadText(Function func,String|Array urls)
+    sync load a text or Array of text
+    @param func (Function) function(String|Array urls,String|Array texts)
+    @param url  (String or Array of String)
+
+void A9Loader.setStdout(Function func)
+    show the stdout info of a9loader
+    @param func (Function) function(info)
+void A9Loader.setStderr(Function func)
+    show the stderr info of a9loader
+    @param func (Function) function(info)
+    
+Object A9Loader.__$(String clzz)
+    get class object by class name. eg
+    A9Loader.__$('com.trydofor.a9text.parser.a9text')
+    return com.trydofor.a9text.parser.a9text
+    
+String A9Loader.getCorePath()
+    get the path of a9loader.js
+String A9Loader.getPagePath()
+    get the path of html page
+String A9Loader.getPageName()
+    get the name of html page
+String A9Loader.getPageInfo()
+    get the querystring of html page
+Object A9Loader.getPageArgs()
+    get the querystring's key-value pairs of html page
 */
 
 var __A9Loader__ = function()
