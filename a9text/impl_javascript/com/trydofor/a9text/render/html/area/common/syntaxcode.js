@@ -14,7 +14,7 @@ var AreaSyntaxCodeRender = function()
 {
     var __const_htm__= {};
     __const_htm__.syntax_code = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr",
-                         "<tr><td style='border:1px dashed #666699;'><table border='0' cellspacing='2' cellpadding='1'><tr><td style='width:4ex;background-color:#DDDDDD;color:#990000;' align='center' valign='top'><pre>",
+                         "<tr><td style='border:1px dashed #666699;'><table border='0' cellspacing='2' cellpadding='1'><tr><td style='width:4ex;background-color:#DDDDDD;color:#990000;border-right:1px solid #666699;' align='center' valign='top'><pre>",
                          "$num","</pre></td><td valign='top'><pre>","$text","</pre></td></tr></table></td></tr></table>"];
     __const_htm__.syntax_code$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>","infostr","&nbsp;</span></td></tr>"];
     __const_htm__.word_highlight = ["<span style='","","'>","","</span>"];
