@@ -83,6 +83,7 @@ var AreaSyntaxCodeRender = function()
     
         a9dom.nowChild(0);
         var seq = 0;
+        var firstPairing = null;
         while(a9dom.hasNext())
         {
             if(seq>0)__render_htm__.push("\n");
@@ -99,6 +100,9 @@ var AreaSyntaxCodeRender = function()
                     {
                         __const_htm__.word_pairing[1] = wordDom.getInfo(A9Dom.type.area_syntax_code.pair_$serial)+__word_pairing__[i]['pfix'];
                         __const_htm__.word_pairing[3] = A9Util.txt2htm(wordDom.getText(),txt2htm);
+                        
+                        if(firstPairing == null) firstPairing = __const_htm__.word_pairing[1];
+                        
                         __render_htm__.push(__const_htm__.word_pairing.join(''));
                         isNext = false;
                         break;
@@ -145,6 +149,10 @@ var AreaSyntaxCodeRender = function()
         {
             htmResult = __pairing_js__ + htmResult;
             AreaSyntaxCodeRender$HasPairingFlag = false;
+        }
+        if(firstPairing != null)
+        {
+            htmResult = htmResult+"<script>__A9TEXT_ASCP__.matchPairing(document.getElementById('"+firstPairing+"'))</script>";
         }
         
         return htmResult;
