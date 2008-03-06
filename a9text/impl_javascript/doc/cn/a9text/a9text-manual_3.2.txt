@@ -23,7 +23,7 @@ a9text.htm 是a9text 提供的一个对外接口,本身采用了特殊写法,
 
 在网页里应该做以下引用
 =========== htm:a9text.htm ===========
-<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript" src="../../a9loader.js"></script>
 <script type="text/javascript" src="../../a9text.htm"></script>
 ======================================
 其中,"../../"为相对路径.
