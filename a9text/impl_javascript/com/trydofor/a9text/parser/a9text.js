@@ -27,8 +27,8 @@ var A9TextParser = function()
         para$line1 : /^[ 　\t]*\\*-{9,}$/,
         para$line0 : /^\\*[ 　\t]*$/,
         mode_trig  : /\[(!|\/|_|\-|'|,|(#[0-9a-fA-F]{6})|(&[0-9a-fA-F]{6})|(%[0-9]+))+\[/,
-        mode_link  : /\[\[.*=\>/,
-        mode_join  : /\[\[.*\<=/,
+        mode_link  : /\[\[.*=>/,
+        mode_join  : /\[\[.*<=/,
         mode_$htm  : /\[\*htm\[/
     };
     ////
@@ -40,7 +40,16 @@ var A9TextParser = function()
     var __sect_flag__ = []; // hold sects info
     var __args_sect__ = {};
     var __args_dict__ = {};
-    var __join_ext__  = A9Conf.getConf("/root/parser/join/txt@extn");
+    var __join_ext__  = A9Conf.getConf("/root/parser/join/txt/@extn");
+    
+    var __simple_link__ = [];
+    {
+        var nodes = A9Conf.selectNodes("/root/parser/link/simple");
+        for (var i=0;i<nodes.length;i++){
+            __simple_link__.push({'addr':A9Conf.getNodeAttribute(nodes[i],'addr'),
+                        'regexp':new RegExp(A9Conf.getNodeAttribute(nodes[i],'regexp'),"i")});
+        }
+    }
     
     ////
     this.parse = function(a9dom,func)
@@ -515,8 +524,34 @@ var A9TextParser = function()
                 var str = doneStr+todoStr;
                 if(str.length > 0)
                 {
-                    var modeDom = dom.newChild(A9Dom.type.mode_text);
-                    modeDom.setText(doneStr+todoStr);
+                    while(true){
+                        var sk = -1;
+                        for(var i=0;i< __simple_link__.length;i++){
+                            if(__simple_link__[i]['regexp'].test(str)){
+                                sk = i;
+                                break;
+                            }
+                        }
+                        if(sk < 0){
+                            var modeDom = dom.newChild(A9Dom.type.mode_text);
+                            modeDom.setText(str);
+                            break;
+                        }else{
+                            var slStr = RegExp.$1;
+                            var pos = str.indexOf(slStr);
+                            var modeDom = dom.newChild(A9Dom.type.mode_text);
+                            modeDom.setText(str.substr(0,pos));
+                            
+                            //
+                            var modeDom = dom.newChild(A9Dom.type.mode_link);
+                            modeDom.setText(slStr);
+                            modeDom.putInfo(A9Dom.type.mode_link$join,false);
+                            modeDom.putInfo(A9Dom.type.mode_link$name,slStr);
+                            modeDom.putInfo(A9Dom.type.mode_link$addr,slStr.replace(__simple_link__[sk]['regexp'],__simple_link__[sk]['addr']));
+                            
+                            str = str.substr(pos+slStr.length);
+                        }
+                    }
                 }
                 break;
             }
@@ -636,7 +671,7 @@ var A9TextParser = function()
                     {
                         // no need to render path;
                     }
-                    else // join file TODO
+                    else // join file
                     {
                         joAddr = A9Util.getFile(joAddr,__super__.getInfo(A9Dom.type.root$path));
                         var extnm = joAddr.substr(joAddr.lastIndexOf("."));

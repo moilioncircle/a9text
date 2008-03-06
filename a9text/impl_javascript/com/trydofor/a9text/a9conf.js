@@ -5,10 +5,10 @@ var A9Conf = new XmlReaderClass();
 A9Conf.loadFormFile(A9Loader.getCorePath()+"com/trydofor/a9text/a9conf.xml");
 
 A9Conf.__EnvPath__ = {
-    "$PAGE_PATH/":   A9Loader.getPagePath(),
-    "$CORE_PATH/":   A9Loader.getCorePath(),
-    "${PAGE_PATH}/": A9Loader.getPagePath(),
-    "${CORE_PATH}/": A9Loader.getCorePath()
+    '$PAGE_PATH/':   A9Loader.getPagePath(),
+    '$CORE_PATH/':   A9Loader.getCorePath(),
+    '${PAGE_PATH}/': A9Loader.getPagePath(),
+    '${CORE_PATH}/': A9Loader.getCorePath()
 };
 
 //

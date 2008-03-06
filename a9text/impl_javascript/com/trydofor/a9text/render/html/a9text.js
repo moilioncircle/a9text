@@ -349,7 +349,6 @@ var A9TextRender = function()
     
     function __line2htm__(dom)
     {
-        // TODO
         var size = dom.getInfo(A9Dom.type.para_line$size);
         if(size > 0)
         {
@@ -423,14 +422,16 @@ var A9TextRender = function()
                     __render_htm__.push(__const_htm__.mode_trig_st_foot);
                  break;
             case A9Dom.type.mode_join:
-                var text = dom.getText();
-                if(text == __const_var__.join_$index)
+                var joName = dom.getInfo(A9Dom.type.mode_join$name);
+                var joAddr = dom.getInfo(A9Dom.type.mode_join$addr);
+                
+                if(joAddr == __const_var__.join_$index)
                 {
                     __render_htm__.push(__genIndex__());
                 }
-                else if(text.charAt(0)== '$')
+                else if(joAddr.charAt(0)== '$')
                 {
-                    var key = text.substr(1);
+                    var key = joAddr.substr(1);
                     var dicts = __root__.getInfo(A9Dom.type.root$dict);
                     var dict = dicts[key];
                     
@@ -457,10 +458,10 @@ var A9TextRender = function()
                 }
                 else
                 {
-                     __const_htm__.mode_join[1] = A9Util.txt2htm(dom.getText());
+                     __const_htm__.mode_join[1] = A9Util.txt2htm(joAddr);
                      __render_htm__.push(__const_htm__.mode_join.join(''));
                 }
-                 break;
+                break;
             case A9Dom.type.mode_link:
                  if(dom.getInfo(A9Dom.type.mode_link$addr) == null) //anchor
                  {

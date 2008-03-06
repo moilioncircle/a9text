@@ -87,6 +87,7 @@ var __A9Loader__ = function()
     function __asyncImportClass__(clzz)
     {
         __checkType__(clzz,"string","clzz@__asyncImportClass__");
+        //new __clzzTask__(clzz,true);
         new __clzzTask__(clzz,self.location.protocol.indexOf('file')<0);
     }
     
@@ -265,6 +266,7 @@ var __A9Loader__ = function()
     	
     	if(__asyncClzzTask__.rcnt > 0) return;
     	
+    	__asyncClzzTask__.rcnt ++;
 		do{
 	    	var ci = __asyncClzzTask__.clzz.length;
 	    	var fi = __asyncClzzTask__.func.length;
@@ -276,7 +278,9 @@ var __A9Loader__ = function()
 	    			(__asyncClzzTask__.func.shift())();
 	    		}catch(e){ __stderr__("__clzzTaskCallback__:"+e)};
 	    	}
-		}while(__asyncClzzTask__.rcnt<=0 && (ci>0 ||fi>0))
+		}while(__asyncClzzTask__.rcnt<=1 && (ci>0 ||fi>0))
+		
+		__asyncClzzTask__.rcnt --;
     }
     
     function __initAndExportClzz__(clzz)
@@ -285,16 +289,16 @@ var __A9Loader__ = function()
     	   || __clzzInfoPools__[clzz]['impl'] != null
     	   || __clzzInfoPools__[clzz]['text'] == null
     	   ) return;
-    	   
-    	__stdout__("__initAndExportClzz__:"+clzz);
     	
     	// deps check
     	var cip = __clzzInfoPools__[clzz];
     	cip['impl'] = 'ready'; // avoid looping deps
-    	
+    	//__stdout__("check@__initAndExportClzz__:"+clzz);
 		for(var i=0;cip['deps']!=null && i<cip['deps'].length;i++){
+            __stdout__("deps@__initAndExportClzz__:"+clzz+"->"+cip['deps'][i]);
 			__initAndExportClzz__(cip['deps'][i]);
 		}
+		__stdout__("init@__initAndExportClzz__:"+clzz);
     	// init clzz
     	var clzzScript = ["__clzzInfoPools__[clzz].impl = function(){\n"];
     	if(cip['pubs']!=null)
@@ -538,5 +542,6 @@ if(typeof(A9Loader) == 'undefined' || !(A9Loader instanceof __A9Loader__))
     
 	A9Loader.setStdout(stdout);
 	A9Loader.setStderr(stderr);
+	
 	*/
 }
