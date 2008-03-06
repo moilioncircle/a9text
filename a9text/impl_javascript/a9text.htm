@@ -14,9 +14,9 @@ A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
 A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
 A9Loader.runAfterImport(function(){
 try{
-    var domParser = new A9TextParser();
-    var htmRender = new A9TextRender();
-    var file = A9Loader.getPageInfo() || "doc/cn/a9text/a9text-demo_3.2.txt";
+    var file = A9Loader.getPageInfo();
+    if(A9Util.isBlank(file)) file = "doc/cn/a9text/a9text-manual_3.2.txt";
+    
     text = A9Loader.syncLoadText(file);
     if(text != "")
     {
@@ -40,8 +40,8 @@ try{
         var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
         a9dom.setText(text);
         a9dom.putInfo(A9Dom.type.root$path,A9Util.getDir(file));
-        domParser.parse(a9dom,function(){
-                htmRender.render(a9dom,function(){
+        new A9TextParser().parse(a9dom,function(){
+                new A9TextRender().render(a9dom,function(){
                 document.write(a9dom.getData());
                 document.close();
             });
