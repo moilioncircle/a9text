@@ -206,6 +206,18 @@ A9Util.trimEscape = function(text,pos)
     return text.substring(0,b+c)+text.substr(pos+1);
 }
 
+A9Util.isEmpty = function (text)
+{
+    if(text == null || text == '') return true;
+    return false;
+}
+
+A9Util.isBlank = function (text)
+{
+    if(text == null || text == '') return true;
+    return /^[ 　\t]*$/.test(text);
+}
+
 A9Util.isEscape = function (text,pos,escc)
 {
     if(text == null || text == '') return false;
