@@ -113,9 +113,9 @@ mode_token = "!" / "/" / "_" / "-" / "'" / "," /
 
 2.2.2. 模式:链入(mode_join)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mode_join = "[[" name_part "<=" src_part "]]"
-name_part= 0*char 
-src_part = 0*1"$" 1*char
+mode_join = "[[" name_part "<=" addr_part "]]"
+name_part = 0*char 
+addr_part = 0*1"$" 1*char
 
 "模式:链入",可以在指定位置上导入变量,文本,图片,声音,视频或其他内容.
 "模式:链入",可以自动根据文件扩展名来决定载入方式,
@@ -137,9 +137,9 @@ src_part = 0*1"$" 1*char
 2.2.3. 模式:链出(mode_link)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ..............................................................
-mode_link = "[[" show_part "=>" link_part "]]"
+mode_link = "[[" show_part "=>" addr_part "]]"
 show_part = 0*char
-link_part = 1*char
+addr_part = 1*char
 
 "模式:链出",可以页面跳转和显示多媒体内容并跳转.
 "模式:链出"内的"物理行(physical_line)",视为"软换行(soft_line)".
