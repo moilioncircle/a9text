@@ -40,12 +40,11 @@ a9text.htm 是a9text 提供的一个对外接口,本身采用了特殊写法,
 如果没有参数,则自动载入a9text的定义文件.
 
 使用方法:
-  * a9text.htm#doc/cn/a9text/a9text-manual_3.2.txt
-  * a9text.htm?doc/cn/a9text/a9text-manual_3.2.txt
+a9text.htm#doc/cn/a9text/a9text-manual_3.2.txt
    
 1.2.1.Windows右键菜单
 ^^^^^^^^^^^^^^^^^^^^^
 在注册表中加入以下内容.(其中E:/workspace/ 替换为 a9text所在目录)
 Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\*\shell\a9text\command]
-@="iexplore.exe file:///E:/workspace/a9text/a9text.htm#file://%1"
+@="iexplore.exe file:///E:/workspace/a9text/a9text.htm?file://%1"
