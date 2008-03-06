@@ -257,6 +257,8 @@ A9Dom.type={
     mode_trig$flag_sz:"fontsize", // %
     mode_trig$pair:"pair",
     mode_join:"mode:join",
+    mode_join$name:"mode:name",
+    mode_join$addr:"mode:addr",
     mode_link:"mode:link",
     mode_link$join:"join",
     mode_link$name:"name",

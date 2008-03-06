@@ -28,7 +28,7 @@ var A9TextParser = function()
         para$line0 : /^\\*[ 　\t]*$/,
         mode_trig  : /\[(!|\/|_|\-|'|,|(#[0-9a-fA-F]{6})|(&[0-9a-fA-F]{6})|(%[0-9]+))+\[/,
         mode_link  : /\[\[.*=\>/,
-        mode_join  : /\[\[\<=/,
+        mode_join  : /\[\[.*\<=/,
         mode_$htm  : /\[\*htm\[/
     };
     ////
@@ -40,7 +40,7 @@ var A9TextParser = function()
     var __sect_flag__ = []; // hold sects info
     var __args_sect__ = {};
     var __args_dict__ = {};
-    var __join_ext__ = "*.txt|*.a9t";
+    var __join_ext__  = A9Conf.getConf("/root/parser/join/txt@extn");
     
     ////
     this.parse = function(a9dom,func)
@@ -628,21 +628,23 @@ var A9TextParser = function()
                 }
                 else if(modeType == 3) //join
                 {
-                    var jotxt = modeTxt.substr(2);
+                    var jp = modeTxt.indexOf("<=");
+                    var joName = jp<=0?"":A9Util.trimBoth(modeTxt.substr(0,jp));
+                    var joAddr = A9Util.trimBoth(modeTxt.substr(jp+2));
                     
-                    if(A9Util.hasVariable(jotxt)) // join a variable
+                    if(A9Util.hasVariable(joAddr)) // join a variable
                     {
                         // no need to render path;
                     }
-                    else // join file
+                    else // join file TODO
                     {
-                        jotxt = A9Util.getFile(jotxt,__super__.getInfo(A9Dom.type.root$path));
-                        var extnm = jotxt.substr(jotxt.lastIndexOf("."));
+                        joAddr = A9Util.getFile(joAddr,__super__.getInfo(A9Dom.type.root$path));
+                        var extnm = joAddr.substr(joAddr.lastIndexOf("."));
                         
                         if(__join_ext__.indexOf(extnm) >= 0) // join a9text to parse
                         {
-                            A9Util.progressInfo("loading joined text:"+jotxt);
-                            var lt = A9Loader.syncLoadText(jotxt);
+                            A9Util.progressInfo("loading joined text:"+joAddr);
+                            var lt = A9Loader.syncLoadText(joAddr);
                             if(lt != null && lt != "") // merge into basic a9text
                             {
                                 var crlf = A9Util.getCRLF(lt);
@@ -680,17 +682,22 @@ var A9TextParser = function()
                     }
                     //
                     var modeDom = dom.newChild(A9Dom.type.mode_join);
-                    modeDom.setText(jotxt);
+                    modeDom.putInfo(A9Dom.type.mode_join$name,joName);
+                    modeDom.putInfo(A9Dom.type.mode_join$addr,joAddr);
+                    modeDom.setText(modeTxt);
                 }
                 else // link
                 {
                     var lp = modeTxt.indexOf("=>");
                     var jo = (modeTxt.indexOf("<=")==0);
+                    var lkName = A9Util.trimBoth(modeTxt.substring(jo?2:0,lp));
+                    var lkAddr = A9Util.trimBoth(modeTxt.substr(lp+2));
+                    
                     var modeDom = dom.newChild(A9Dom.type.mode_link);
                     modeDom.setText(modeTxt);
                     modeDom.putInfo(A9Dom.type.mode_link$join,jo);
-                    modeDom.putInfo(A9Dom.type.mode_link$name,modeTxt.substring(jo?2:0,lp));
-                    modeDom.putInfo(A9Dom.type.mode_link$addr,A9Util.getFile(modeTxt.substr(lp+2),__super__.getInfo(A9Dom.type.root$path)));
+                    modeDom.putInfo(A9Dom.type.mode_link$name,lkName);
+                    modeDom.putInfo(A9Dom.type.mode_link$addr,A9Util.getFile(lkAddr,__super__.getInfo(A9Dom.type.root$path)));
                 }
             }
         }
