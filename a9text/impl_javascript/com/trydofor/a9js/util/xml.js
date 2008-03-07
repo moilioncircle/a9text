@@ -76,7 +76,7 @@ var XmlReaderClass = function()
         else // Mozilla, Firefox, Opera, etc.
         {
             var parser = new DOMParser();
-            var __root__ = parser.parseFromString(text,"text/xml");
+            __root__ = parser.parseFromString(text,"text/xml");
         }
         
         if(__root__ == null) throw "your browser do not support xml dom !";
