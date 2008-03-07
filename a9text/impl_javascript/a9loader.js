@@ -275,7 +275,9 @@ var __A9Loader__ = function()
 	    	}
 	    	for(var i=0;i<fi;i++){
 	    		try{
-	    			(__asyncClzzTask__.func.shift())();
+	    		    var func = __asyncClzzTask__.func.shift();
+	    		    __stdout__("__asyncClzzTask__.func:"+i+"\n"+func);
+	    			func();
 	    		}catch(e){ __stderr__("__clzzTaskCallback__:"+e)};
 	    	}
 		}while(__asyncClzzTask__.rcnt<=1 && (ci>0 ||fi>0))
@@ -542,6 +544,5 @@ if(typeof(A9Loader) == 'undefined' || !(A9Loader instanceof __A9Loader__))
     
 	A9Loader.setStdout(stdout);
 	A9Loader.setStderr(stderr);
-	
 	*/
 }
