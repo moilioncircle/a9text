@@ -60,6 +60,7 @@ try{
     var a9PreText = [];
     var a9PreHtml = [];
     var a9DomHtml = {};
+    var lastDomId = -1;
     
     var preTags = document.getElementsByTagName("PRE");
     for(var i=0; i<preTags.length;i++){
@@ -81,6 +82,7 @@ try{
                 a9dom.setText(a9PreText[i]);
                 a9dom.putInfo(A9Dom.type.root$path,A9Loader.getPagePath());
                 a9DomHtml[a9dom.getId()] = a9PreHtml[i];
+                if(i == a9PreText.length-1) lastDomId=a9dom.getId();
                 
                 new A9TextParser().parse(a9dom,function(){
                     new A9TextRender().render(a9dom,function(){
@@ -90,9 +92,13 @@ try{
                         var headPos = bodyHtml.lastIndexOf('<',prePos);
                         var footPos = bodyHtml.indexOf('>',prePos+preHtml.length)+1;
                         bodyHtml = bodyHtml.substring(0,headPos) + a9htm + bodyHtml.substr(footPos);
-                        if(document.body) document.body.innerHTML="";
-                        document.write(bodyHtml);
-                        document.close();
+                        
+                        if(lastDomId == a9dom.getId()){
+                            if(document.body) document.body.innerHTML='';
+                            document.write(bodyHtml);
+                            //window.setTimeout("document.write(\""+bodyHtml+"\")",1000);
+                            //document.close();
+                        }
                     });
                 });
             }
