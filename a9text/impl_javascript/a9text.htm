@@ -94,10 +94,8 @@ try{
                         bodyHtml = bodyHtml.substring(0,headPos) + a9htm + bodyHtml.substr(footPos);
                         
                         if(lastDomId == a9dom.getId()){
-                            if(document.body) document.body.innerHTML='';
-                            document.write(bodyHtml);
-                            //window.setTimeout("document.write(\""+bodyHtml+"\")",1000);
-                            //document.close();
+                            window.setTimeout(function(){document.write(bodyHtml)},1000);
+                            document.close();
                         }
                     });
                 });
