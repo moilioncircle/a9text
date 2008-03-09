@@ -1,52 +1,16 @@
 /**
 UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
-String render(a9Dom)
 */
-var AreaSyntaxCodeRender$HasPairingFlag = true;
-
-var hasPairingJs = function(flag)
-{
-    AreaSyntaxCodeRender$HasPairingFlag = flag;
-}
-
 var AreaSyntaxCodeRender = function()
 {
     var __const_htm__= {};
     __const_htm__.syntax_code = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr",
-                         "<tr><td style='border:1px dashed #666699;'><table border='0' cellspacing='2' cellpadding='1'><tr><td style='width:4ex;background-color:#DDDDDD;color:#990000;border-right:1px solid #666699;' align='center' valign='top'><pre>",
+                         "<tr><td class='a9text_area_syntax_border'><table border='0' cellspacing='2' cellpadding='1'><tr><td style='a9text_area_syntax_lnum' align='center' valign='top'><pre>",
                          "$num","</pre></td><td valign='top'><pre>","$text","</pre></td></tr></table></td></tr></table>"];
-    __const_htm__.syntax_code$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>","infostr","&nbsp;</span></td></tr>"];
+    __const_htm__.syntax_code$info = ["<tr><td><span class='a9text_area_syntax_info'>","infostr","&nbsp;</span></td></tr>"];
     __const_htm__.word_highlight = ["<span style='","","'>","","</span>"];
     __const_htm__.word_pairing   = ["<span id='","$id","' onclick='__A9TEXT_ASCP__.matchPairing(this)'>","","</span>"];
-    
-    var __pairing_fg__ = "#FFFFFF";
-    var __pairing_bg__ = "#FF0000";
-    var __pairing_js__ = "<script language='javascript'>"
-        +"var __A9TEXT_ASCP__ = {"
-        +"activedId:null,"
-        +"activedFg:'"+__pairing_fg__+"',"
-        +"activedBg:'"+__pairing_bg__+"',"
-        +"originalFg:'',"
-        +"originalBg:'',"
-        +"matchPairing:function(obj){"
-        +"    if(__A9TEXT_ASCP__.activedId != null){"
-        +"        document.getElementById('H'+__A9TEXT_ASCP__.activedId).style.color=__A9TEXT_ASCP__.originalFg;"
-        +"        document.getElementById('H'+__A9TEXT_ASCP__.activedId).style.backgroundColor=__A9TEXT_ASCP__.originalBg;"
-        +"        document.getElementById('F'+__A9TEXT_ASCP__.activedId).style.color=__A9TEXT_ASCP__.originalFg;"
-        +"        document.getElementById('F'+__A9TEXT_ASCP__.activedId).style.backgroundColor=__A9TEXT_ASCP__.originalBg;"
-        +"    }"
-        +"    if(obj.id.substr(1) == __A9TEXT_ASCP__.activedId) {__A9TEXT_ASCP__.activedId = null; return;}"
-        +"    __A9TEXT_ASCP__.activedId = obj.id.substr(1);"
-        +"    __A9TEXT_ASCP__.originalBg = obj.style.backgroundColor?obj.style.backgroundColor:'#FFFFFF';"
-        +"    __A9TEXT_ASCP__.originalFg = obj.style.color?obj.style.color:'#000000';"
-        +"    document.getElementById('H'+__A9TEXT_ASCP__.activedId).style.color=__A9TEXT_ASCP__.activedFg;"
-        +"    document.getElementById('H'+__A9TEXT_ASCP__.activedId).style.backgroundColor=__A9TEXT_ASCP__.activedBg;"
-        +"    document.getElementById('F'+__A9TEXT_ASCP__.activedId).style.color=__A9TEXT_ASCP__.activedFg;"
-        +"    document.getElementById('F'+__A9TEXT_ASCP__.activedId).style.backgroundColor=__A9TEXT_ASCP__.activedBg;"
-        +"}"
-        +"};"
-        +"</script>";
     
     var __word_highlight__ = [];
     var __word_pairing__   = [];
@@ -73,9 +37,9 @@ var AreaSyntaxCodeRender = function()
     }
     
     
-    this.render = function(a9dom)
+    this.render = function(a9dom,func)
     {
-        if(a9dom == null) return;
+    	if(!(func instanceof Function)) throw "a9text render need callback function for async";
         
         var txt2htm = '<>';
         var __render_htm__ = [];
@@ -83,7 +47,6 @@ var AreaSyntaxCodeRender = function()
     
         a9dom.nowChild(0);
         var seq = 0;
-        var firstPairing = null;
         while(a9dom.hasNext())
         {
             if(seq>0)__render_htm__.push("\n");
@@ -100,8 +63,6 @@ var AreaSyntaxCodeRender = function()
                     {
                         __const_htm__.word_pairing[1] = wordDom.getInfo(A9Dom.type.area_syntax_code.pair_$serial)+__word_pairing__[i]['pfix'];
                         __const_htm__.word_pairing[3] = A9Util.txt2htm(wordDom.getText(),txt2htm);
-                        
-                        if(firstPairing == null) firstPairing = __const_htm__.word_pairing[1];
                         
                         __render_htm__.push(__const_htm__.word_pairing.join(''));
                         isNext = false;
@@ -143,18 +104,11 @@ var AreaSyntaxCodeRender = function()
         __const_htm__.syntax_code[5] = __render_seq__.join('\n');        
         __const_htm__.syntax_code[7] = __render_htm__.join('');
         
-        var htmResult = __const_htm__.syntax_code.join('');
+        a9dom.setData({'htmltext':__const_htm__.syntax_code.join(''),
+	        'linkjs':[A9Conf.getConf("/root/render/html/common/js/syntax/@path")],
+	        'linkcss':null});
         
-        if(AreaSyntaxCodeRender$HasPairingFlag)
-        {
-            htmResult = __pairing_js__ + htmResult;
-            AreaSyntaxCodeRender$HasPairingFlag = false;
-        }
-        if(firstPairing != null)
-        {
-            htmResult = htmResult+"<script>__A9TEXT_ASCP__.matchPairing(document.getElementById('"+firstPairing+"'))</script>";
-        }
-        
-        return htmResult;
+        if(func instanceof Function)
+        try{func(a9dom)}catch(e){};
     }
 }

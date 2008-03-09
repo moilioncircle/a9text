@@ -92,7 +92,7 @@ var A9TextParser = function()
         a9dom.putInfo(A9Dom.type.root$sect,__args_sect__);
         
         if(func instanceof Function){
-            A9Loader.runAfterImport(function(){func(a9dom)});
+            A9Loader.runAfterClassLoaded(function(){func(a9dom)});
         }
     }
     
@@ -836,8 +836,8 @@ var A9TextParser = function()
             {
                 var extClzz = extBall+"."+A9Conf.getConf("/root/parser/area/"+type+"/@clzz");
                 
-                A9Loader.asyncImportClass(extBall);
-                A9Loader.runAfterImport(function(){
+                A9Loader.asyncLoadClass(extBall);
+                A9Loader.runAfterClassLoaded(function(){
                 eval("var extParser = new "+extClzz+"();");
                 extParser.parse(dom)});
             }

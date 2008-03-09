@@ -1,4 +1,4 @@
-﻿<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
 <pre title="a9text">
 A9text - ascii doc
 ^^^^^^^^^^^^^^^^^^
@@ -71,10 +71,10 @@ In fact, the a9loader is a class loader of a9text,it make js works like java.
 it is an important part of a9text runtime,it can works standalong.
 
 code example:
-=============== js : A9Loader.asyncImportClass ===============
-A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
-A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
-A9Loader.runAfterImport(function(){
+=============== js : A9Loader.asyncLoadClass ===============
+A9Loader.asyncLoadClass('com.trydofor.a9text.parser.a9text');
+A9Loader.asyncLoadClass('com.trydofor.a9text.render.html.a9text');
+A9Loader.runAfterClassLoaded(function(){
 domRender = new com.trydofor.a9text.render.dom.a9text.A9TextRender();
 htmRender = new com.trydofor.a9text.render.html.a9text.A9TextRender();
 });
@@ -101,4 +101,4 @@ more powerful to write and translate(docbook,pdf,word)
 more in cvs, good luck :)
 </pre>
 <script type="text/javascript" src="impl_javascript/a9loader.js"></script>
-<script type="text/javascript" src="impl_javascript/a9text.htm"></script>
+<script type="text/javascript" src="impl_javascript/a9text.js"></script>

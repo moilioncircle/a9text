@@ -17,14 +17,14 @@ function runAfer(){
     }
 }
 function asyncTest(){
-    A9Loader.asyncImportClass("com.trydofor.a9js.code.des");
-    A9Loader.runAfterImport(runAfer);
+    A9Loader.asyncLoadClass("com.trydofor.a9js.code.des");
+    A9Loader.runAfterClassLoaded(runAfer);
     runAfer();
 }
 
 document.body.innerHTML +="<br>init";
-A9Loader.syncImportClass("com.trydofor.a9js.code.des");
+A9Loader.syncLoadClass("com.trydofor.a9js.code.des");
 runAfer();
 
 </script>
-<input type = 'button' value="asyncImportClass()" onclick="asyncTest()" />
+<input type = 'button' value="asyncLoadClass()" onclick="asyncTest()" />

@@ -23,8 +23,8 @@ var A9TextRender = function()
     __const_htm__.dict_foot = "</div>";
     __const_htm__.para_head = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'>"];
     __const_htm__.para_foot = "</div>";
-    __const_htm__.area = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:1px dashed #666699;'>","$para","</pre></td></tr></table>"];
-    __const_htm__.area$info = ["<tr><td><span style='background-color:#999999;color:#FFFFFF;'>","infostr","&nbsp;</span></td></tr>"];
+    __const_htm__.area = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre class='a9text_area'>","$para","</pre></td></tr></table>"];
+    __const_htm__.area$info = ["<tr><td><span class='a9text_area_info'>","infostr","&nbsp;</span></td></tr>"];
     __const_htm__.area_text = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:","0","px dashed #666699;'>","$para","</pre></td></tr></table>"];
     __const_htm__.text = ["<pre style='margin-left:","$tier","ex'>","$para","</pre>"];
     
@@ -84,21 +84,13 @@ var A9TextRender = function()
         __render_css__ = [];
         __render_js__  = [];
         
+        __render_css__.push(A9Conf.getConf("/root/render/html/common/css/a9text/@path"));
+        
+        //
         __domManager__(a9dom);
         
-        __render_css__.push(A9Conf.getConf("/root/render/html/common/css/@path"));
-        
-        //"<link href='"+renderCss+"' rel='stylesheet' type='text/css' />"
-        var linkCss = "";
-        for(var i =0; i< __render_css__.length; i++)
-            linkCss += "<link href='"+__render_css__[i]+"' rel='stylesheet' type='text/css' />";
-            
-        var linkJs = "";
-        for(var i =0; i< __render_js__.length; i++)
-            linkJs += "<script type='text/javascript' src='"+__render_js__[i]+"'></script>";
-        
-        A9Loader.runAfterImport(function(){
-            a9dom.setData(linkCss+linkJs+__render_htm__.join(''));
+        A9Loader.runAfterClassLoaded(function(){
+            a9dom.setData({'htmltext':__render_htm__.join(''),'linkjs':__render_js__,'linkcss':__render_css__});
             func(a9dom);
         });
     }
@@ -536,13 +528,22 @@ var A9TextRender = function()
 
                 __render_htm__.push("##a9_future_data_holder## @ "+dom.getId());
                                 
-                A9Loader.asyncImportClass(extBall);
-                A9Loader.runAfterImport(function(){
+                A9Loader.asyncLoadClass(extBall);
+                A9Loader.runAfterClassLoaded(function(){
                     eval("var extRender = new "+extClzz+"();");
                     extRender.render(dom,function(rdom){
+                    	var data = rdom.getData();
+                    	if(typeof(data['linkjs'])!='undefined' && data['linkjs']!=null){
+	                    	for(var x=0;x<data['linkjs'].length;x++)
+	                    		__render_js__.push(data['linkjs'][x]);
+                    	}
+                    	if(typeof(data['linkcss'])!='undefined' && data['linkcss']!=null){
+	                        for(var x=0;x<data['linkcss'].length;x++)
+	                    		__render_css__.push(data['linkcss'][x]);
+                    	}
                         for(var x=0;x<__render_htm__.length;x++){
                             if(__render_htm__[x]=="##a9_future_data_holder## @ "+rdom.getId()){
-                                __render_htm__[x] = rdom.getData();
+                                __render_htm__[x] = data['htmltext'];
                                 break;
                             }
                         }
@@ -603,5 +604,4 @@ var A9TextRender = function()
         
         return buffer.join('');
     }
-    
 }

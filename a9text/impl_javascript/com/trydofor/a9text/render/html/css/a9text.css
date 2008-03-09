@@ -95,3 +95,33 @@ pre{
     text-decoration: underline;
     color:#FF0000; background-color:#dddddd;
 }
+.a9text_area{
+    padding:6px;
+    border:1px dashed #666699;
+}
+.a9text_area_info{
+    background-color:#999999;
+    color:#FFFFFF;
+}
+.a9text_area_syntax_border{
+    border:1px dashed #666699;
+}
+.a9text_area_syntax_info{
+    background-color:#999999;color:#FFFFFF;
+}
+.a9text_area_syntax_lnum{
+    width:4ex;
+    background-color:#DDDDDD;
+    color:#990000;
+    border-right:1px solid #666699;
+}
+.a9text_area_table_info{
+    background-color:#666699;
+    color:#FFFFFF;
+}
+.a9text_area_table_head{
+    background-color:#666699;
+}
+.a9text_area_table_row{
+    background-color:#FFFFFF;
+}

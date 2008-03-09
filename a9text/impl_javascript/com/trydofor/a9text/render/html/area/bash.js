@@ -1,7 +1,6 @@
 /**
 UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
-String render(a9Dom)
 */
 var AreaBashRender = function()
 {
@@ -20,12 +19,7 @@ var AreaBashRender = function()
     }
     
     // public
-    this.render = function(a9dom,func)
-    {
-        var data = __ascr__.render(a9dom);
-        a9dom.setData(data)
-        
-        if(func instanceof Function)
-        try{func(a9dom)}catch(e){};
+    this.render = function(a9dom,func){
+        __ascr__.render(a9dom,func);
     }
 }

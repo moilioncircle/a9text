@@ -1,0 +1,12 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body></body>
+<script type="text/javascript" src="../../a9loader.js"></script>
+<script type="text/javascript">
+A9Loader.syncLoadClass('com.trydofor.a9js.ui.pgbar');
+var pgbar = new ProgressBar(window.document);
+pgbar.show();
+function test(){
+pgbar.work(5,(new Date()));
+}
+</script>
+<input type='button' value="+5%" onclick="test()" />

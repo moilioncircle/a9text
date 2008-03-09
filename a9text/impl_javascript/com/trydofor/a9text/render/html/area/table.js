@@ -1,15 +1,14 @@
 ﻿/**
 UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
-String render(a9Dom)
 */
 var AreaTableRender = function()
 {
     var __const_htm__= {};
-    __const_htm__.table$info = ["<table  border='0' cellspacing='0' cellpadding='0' style='margin-left:","0","ex;'><tr><td style='background-color:#666699;color:#FFFFFF;'>&nbsp;","infoStr","&nbsp;&nbsp;</td></tr></table>"];
-    __const_htm__.table$head = ["<table  border='0' cellspacing='0' cellpadding='1' style='margin-left:","0","ex;'","","><tr><td valign='top' bgcolor='#666699'><table width='100%' border='0' cellspacing='","1","' cellpadding='4'>"];
+    __const_htm__.table$info = ["<table  border='0' cellspacing='0' cellpadding='0' style='margin-left:","0","ex;'><tr><td class='a9text_area_table_info'>&nbsp;","infoStr","&nbsp;&nbsp;</td></tr></table>"];
+    __const_htm__.table$head = ["<table  border='0' cellspacing='0' cellpadding='1' style='margin-left:","0","ex;'","","><tr><td valign='top' class='a9text_area_table_head'><table width='100%' border='0' cellspacing='","1","' cellpadding='4'>"];
     __const_htm__.table$foot = "</table></td></tr></table>";
-    __const_htm__.table$tr_head = "<tr bgcolor='#FFFFFF'>";
+    __const_htm__.table$tr_head = "<tr class='a9text_area_table_row'>";
     __const_htm__.table$tr_foot = "</tr>";
     __const_htm__.table$td_head = ["<td","",">"];
     __const_htm__.table$td_foot = "</td>";
@@ -28,7 +27,7 @@ var AreaTableRender = function()
         else
             throw "no ready";
             
-        a9dom.setData(__render_htm__.join(''))
+        a9dom.setData({'htmltext':__render_htm__.join(''),'linkjs':null,'linkcss':null});
         
         if(func instanceof Function)
         try{func(a9dom)}catch(e){};

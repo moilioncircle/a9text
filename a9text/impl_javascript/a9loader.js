@@ -6,15 +6,15 @@ void A9Loader.tagLoadScript(String url)
     load the js/text by html tag(script)
     @param url (String) the url of script
 
-void A9Loader.syncImportClass(String clzz)
+void A9Loader.syncLoadClass(String clzz)
     sync import an js and export like java
     @param clzz (String) eg:'com.trydofor.a9text.parser.a9text'
 
-void A9Loader.asyncImportClass(String clzz)
+void A9Loader.asyncLoadClass(String clzz)
     async import an js and export like java
     @param clzz (String) eg:'com.trydofor.a9text.parser.a9text'
 
-void A9Loader.runAfterImport(Function func)
+void A9Loader.runAfterClassLoaded(Function func)
     run the func when all class imported
     @param func (Function)
 
@@ -78,23 +78,23 @@ var __A9Loader__ = function()
         }
     }
     
-    function __syncImportClass__(clzz)
+    function __syncLoadClass__(clzz)
     {
-        __checkType__(clzz,"string","clzz@__syncImportClass__");
+        __checkType__(clzz,"string","clzz@__syncLoadClass__");
         new __clzzTask__(clzz,false);
     }
     
-    function __asyncImportClass__(clzz)
+    function __asyncLoadClass__(clzz)
     {
-        __checkType__(clzz,"string","clzz@__asyncImportClass__");
+        __checkType__(clzz,"string","clzz@__asyncLoadClass__");
         //new __clzzTask__(clzz,true);
         new __clzzTask__(clzz,self.location.protocol.indexOf('file')<0);
     }
     
-    function __runAfterImport__(func)
+    function __runAfterClassLoaded__(func)
     {
-        __checkType__(func,"Function","func@__runAfterImport__");
-        __stdout__("__runAfterImport__:"+func);
+        __checkType__(func,"Function","func@__runAfterClassLoaded__");
+        __stdout__("__runAfterClassLoaded__:"+func);
         __asyncClzzTask__.func.push(func);
         __clzzTaskCallback__();
     }
@@ -507,9 +507,9 @@ var __A9Loader__ = function()
     
     // export public members
     this.tagLoadScript    = __tagLoadScript__;
-    this.syncImportClass  = __syncImportClass__;
-    this.asyncImportClass = __asyncImportClass__;
-    this.runAfterImport   = __runAfterImport__;
+    this.syncLoadClass  = __syncLoadClass__;
+    this.asyncLoadClass = __asyncLoadClass__;
+    this.runAfterClassLoaded   = __runAfterClassLoaded__;
     this.syncLoadText     = __syncLoadText__;
     this.asyncLoadText    = __asyncLoadText__;
     

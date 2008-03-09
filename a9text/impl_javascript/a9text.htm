@@ -1,7 +1,7 @@
-﻿<!-- // --> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!-- // --> <script type="text/javascript" src="./a9loader.js"></script>
-<!-- // Run As HTM
-/* --> <script type="text/javascript">
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body></body>
+<script type="text/javascript" src="./a9loader.js"></script>
+<script type="text/javascript">
 var file2area = {
 'bash':"*.sh|*.bash",
 'java':"*.java",
@@ -10,9 +10,9 @@ var file2area = {
 'sql':"*.sql"
 };
 var text = "";
-A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
-A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
-A9Loader.runAfterImport(function(){
+A9Loader.asyncLoadClass('com.trydofor.a9text.parser.a9text');
+A9Loader.asyncLoadClass('com.trydofor.a9text.render.html.a9text');
+A9Loader.runAfterClassLoaded(function(){
 try{
     var file = A9Loader.getPageInfo();
     if(A9Util.isBlank(file)) file = "doc/cn/a9text/a9text-manual_3.2.txt";
@@ -40,10 +40,31 @@ try{
         var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
         a9dom.setText(text);
         a9dom.putInfo(A9Dom.type.root$path,A9Util.getDir(file));
-        new A9TextParser().parse(a9dom,function(){
-                new A9TextRender().render(a9dom,function(){
-                document.write(a9dom.getData());
-                document.close();
+        new A9TextParser().parse(a9dom,function(prdom){
+                new A9TextRender().render(prdom,function(rrdom){
+                var data = rrdom.getData();
+                var linkCss = "";
+                for(var i =0; i< data['linkcss'].length; i++)
+                    linkCss += "<link href='"+data['linkcss'][i]+"' rel='stylesheet' type='text/css' />";
+                var linkJs = "";
+                for(var i =0; i< data['linkjs'].length; i++)
+                    linkJs += "<scr"+"ipt type='text/javascript' src='"+data['linkjs'][i]+"'></scr"+"ipt>";
+                var a9htm = linkCss+linkJs+data['htmltext'];
+                var ifr=document.createElement('IFRAME');
+                ifr.setAttribute('id','a9text_'+a9dom.getId());
+                ifr.setAttribute('src','about:blank');
+                ifr.setAttribute('frameborder','0',0);
+                ifr.setAttribute('frameSpacing','0');
+                ifr.setAttribute('scrolling','no');
+                ifr.setAttribute('width','100%');
+                document.body.appendChild(ifr);
+                var doc = ifr.contentWindow.document;
+                doc.open();
+                doc.write(a9htm);
+                doc.close();
+                window.setTimeout(function(){
+                    ifr.setAttribute('height',doc.body.scrollHeight+20);
+                },100);
             });
         });
     }
@@ -52,57 +73,4 @@ try{
     document.write("<PRE>"+text+"</PRE>");
 }
 });
-<!-- */// --> </script>
-
-<!-- // Run As JS
-try{
-    var bodyHtml = document.body?document.body.innerHTML:"";
-    var a9PreText = [];
-    var a9PreHtml = [];
-    var a9DomHtml = {};
-    var lastDomId = -1;
-    
-    var preTags = document.getElementsByTagName("PRE");
-    for(var i=0; i<preTags.length;i++){
-        if(/a9text/i.test(preTags[i].getAttribute("title"))){
-            var preText = preTags[i].innerText || preTags[i].textContent;
-            if (preText != ""){
-                a9PreText.push(preText);
-                a9PreHtml.push(preTags[i].innerHTML);
-            }
-        }
-    }
-    if(a9PreText.length >0){
-        A9Loader.asyncImportClass('com.trydofor.a9text.parser.a9text');
-        A9Loader.asyncImportClass('com.trydofor.a9text.render.html.a9text');
-        
-        A9Loader.runAfterImport(function(){
-            for(var i=0; i<a9PreText.length;i++){
-                var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
-                a9dom.setText(a9PreText[i]);
-                a9dom.putInfo(A9Dom.type.root$path,A9Loader.getPagePath());
-                a9DomHtml[a9dom.getId()] = a9PreHtml[i];
-                if(i == a9PreText.length-1) lastDomId=a9dom.getId();
-                
-                new A9TextParser().parse(a9dom,function(){
-                    new A9TextRender().render(a9dom,function(){
-                        var a9htm = a9dom.getData();
-                        var preHtml = a9DomHtml[a9dom.getId()];
-                        var prePos  = bodyHtml.indexOf(preHtml);
-                        var headPos = bodyHtml.lastIndexOf('<',prePos);
-                        var footPos = bodyHtml.indexOf('>',prePos+preHtml.length)+1;
-                        bodyHtml = bodyHtml.substring(0,headPos) + a9htm + bodyHtml.substr(footPos);
-                        
-                        if(lastDomId == a9dom.getId()){
-                            window.setTimeout(function(){document.write(bodyHtml)},1000);
-                            document.close();
-                        }
-                    });
-                });
-            }
-        });
-    }
-}catch(e){
-    alert("failed to do a9text: "+e);
-}
-// -->
+</script>
