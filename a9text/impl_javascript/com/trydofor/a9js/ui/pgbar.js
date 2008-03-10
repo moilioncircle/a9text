@@ -15,7 +15,7 @@ var ProgressBar = function(doc)
 			var divHTML = ""+
 			//"<div id='id' style='position:absolute; left:100px; top:100px; width:210px; height:30px; z-index:1;'>"+
 			"  <table width='210' height='30' border='0' cellpadding='0' cellspacing='1' bgcolor='#FFFFFF' style='border:1px solid #000000;'>"+
-			"    <tr><td height='16'><div id='"+__barId__+"_info' style='font-size:12px; height:16px; width:100%; overflow:hidden'>loading...</div></td></tr>"+
+			"    <tr><td height='16'><div id='"+__barId__+"_info' style='font-size:12px; height:16px; width:100%; overflow:hidden;padding:2px'>loading...</div></td></tr>"+
 			"    <tr><td height='14' style='border:1px solid #000000;'><div id='"+__barId__+"_perc' style='font-size:12px;width:"+__worked__+"%;height:14px; background-color:#3366CC; color:#FFFFFF; text-align:center; overflow:hidden'>"+
 			"    "+__worked__+"%"+
 			"    </div></td></tr>"+
