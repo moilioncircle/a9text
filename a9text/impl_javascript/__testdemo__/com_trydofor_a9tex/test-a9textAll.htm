@@ -30,7 +30,6 @@ var isReady = false;
 var __Strings__  = {};
 var __ViewText__ = {};
 var __Renders__  = {};
-var a9textSpec   = null;
 var a9textFile   = null;
 var __A9dom__    = null;
 
@@ -156,21 +155,8 @@ function onLoadLocalFile(fn)
     onParserText(A9Loader.syncLoadText('file://'+fn));
 }
 
-function onShowA9textSpec()
-{
-    if(a9textSpec == null)
-    {
-        a9textSpec = A9Loader.syncLoadText("../doc/cn/a9text/a9text-spec_3.2.txt",A9Loader.getCorePath());
-        a9textFile = A9Loader.getCorePath()+"../doc/cn/a9text/a9text-spec_3.2.txt";
-        a9textSpec = A9Util.txt2htm(a9textSpec,'<>');
-    }
-    
-    var nw = open("about:blank");
-    nw.document.write("<pre>");
-    nw.document.write(a9textSpec);
-    nw.document.write("</pre>");
-    nw.document.close();
-
+function onShowA9textSpec(){
+    open(A9Loader.getPagePath()+"../../../doc/cn/a9text/a9text-demo_3.2.txt");
 }
 
 // init
