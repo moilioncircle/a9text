@@ -107,7 +107,8 @@ pre{
     border:1px dashed #666699;
 }
 .a9text_area_syntax_info{
-    background-color:#999999;color:#FFFFFF;
+    background-color:#999999;
+    color:#FFFFFF;
 }
 .a9text_area_syntax_lnum{
     width:4ex;

@@ -6,7 +6,7 @@ var AreaSyntaxCodeRender = function()
 {
     var __const_htm__= {};
     __const_htm__.syntax_code = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr",
-                         "<tr><td class='a9text_area_syntax_border'><table border='0' cellspacing='2' cellpadding='1'><tr><td style='a9text_area_syntax_lnum' align='center' valign='top'><pre>",
+                         "<tr><td class='a9text_area_syntax_border'><table border='0' cellspacing='2' cellpadding='1'><tr><td class='a9text_area_syntax_lnum' align='center' valign='top'><pre>",
                          "$num","</pre></td><td valign='top'><pre>","$text","</pre></td></tr></table></td></tr></table>"];
     __const_htm__.syntax_code$info = ["<tr><td><span class='a9text_area_syntax_info'>","infostr","&nbsp;</span></td></tr>"];
     __const_htm__.word_highlight = ["<span style='","","'>","","</span>"];
