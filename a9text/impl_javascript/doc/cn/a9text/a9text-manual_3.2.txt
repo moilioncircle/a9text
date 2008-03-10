@@ -3,19 +3,20 @@
 - 作者: 史荣久(trydofor.com)
 - 授权: 共同创作
 - 创建: 2007-12-05
-- 修改: 2008-03-08
+- 修改: 2008-03-10
 ============================
 
 0. 目录
 ^^^^^^^^
 [[<=$INDEX]]
 
-1. a9text.htm 的使用
-^^^^^^^^^^^^^^^^^^^
-a9text.htm 是a9text 提供的一个对外接口,本身采用了特殊写法,
-可以支持htm和javascript 两种方式运行.
+1. a9text 的使用
+^^^^^^^^^^^^^^^^
+a9text对外提供了两个接口:
+    $a9text/impl_javascript/a9text.js
+    $a9text/impl_javascript/a9text.htm
 
-1.1. 作为js引用
+1.1. a9text.js
 ^^^^^^^^^^^^^^^
 工作原理:
 引用后即被执行,查找所有 title='a9text'的PRE标签.
@@ -32,19 +33,21 @@ a9text.htm 是a9text 提供的一个对外接口,本身采用了特殊写法,
  1. Pre标签的title属性为atext,即pre title="a9text".
  2. a9text.htm 的引用要放到所有上面提到的标签之后.
 
-1.2. 作为htm使用
-^^^^^^^^^^^^^^^^
+1.2. a9text.htm
+^^^^^^^^^^^^^^^
 工作原理:
-作为htm独立运行时,利用a9engine的参数功能获得需要解析的文件名.
-然后对文件内容进行解析和绘制.
-如果没有参数,则自动载入a9text的定义文件.
+独立运行的HTML,利用querystring形式('?a9text_file_path')来获得要解析的a9text.
+当在本地运行,能够自动识别文件扩展名,进行语法标亮.
 
-使用方法:
-a9text.htm#doc/cn/a9text/a9text-manual_3.2.txt
-   
-1.2.1.Windows右键菜单
+如果没有querystring参数,则默认载入doc/cn/a9text/a9text-manual_3.2.txt.
+即 a9text.htm 等价于 a9text.htm?doc/cn/a9text/a9text-manual_3.2.txt
+
+1.2.1. Windows右键菜单
 ^^^^^^^^^^^^^^^^^^^^^
 在注册表中加入以下内容.(其中E:/workspace/ 替换为 a9text所在目录)
 Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\*\shell\a9text\command]
 @="iexplore.exe file:///E:/workspace/a9text/a9text.htm?file://%1"
+
+然后右键选择文件,就可以使用a9text来阅读了.
+如果是源代码文件,还可以自动识别文件名,进行语法标亮和括号匹配.

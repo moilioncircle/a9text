@@ -31,8 +31,6 @@ boolean A9Util.hasVariable(str)
     是否含有变量($).
 String A9Util.getCRLF(text)
     获得文本换行符.
-void A9Util.progressInfo(info)
-    显示进度信息.
 */
 var A9Util = {};
 
@@ -268,9 +266,4 @@ A9Util.getCRLF = function(text)
     }
     return crlf;
     
-}
-
-A9Util.progressInfo = function(info)
-{
-    if(info == null || info == "" ) return ;
 }

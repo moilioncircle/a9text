@@ -10,13 +10,22 @@ var file2area = {
 'sql':"*.sql"
 };
 var text = "";
+A9Loader.asyncLoadClass('com.trydofor.a9js.ui.pgbar');
 A9Loader.asyncLoadClass('com.trydofor.a9text.parser.a9text');
 A9Loader.asyncLoadClass('com.trydofor.a9text.render.html.a9text');
 A9Loader.runAfterClassLoaded(function(){
 try{
+    var pgbar = new ProgressBar(window.document);
+    pgbar.show();
     var file = A9Loader.getPageInfo();
-    if(A9Util.isBlank(file)) file = "doc/cn/a9text/a9text-manual_3.2.txt";
+    if(A9Util.isBlank(file)){
+        file = "doc/cn/a9text/a9text-manual_3.2.txt";
+    }
+    if(file.indexOf(':')<0){
+        file = A9Loader.getPagePath()+file;
+    }
     
+    pgbar.work(10,'loading text');
     text = A9Loader.syncLoadText(file);
     if(text != "")
     {
@@ -40,8 +49,13 @@ try{
         var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
         a9dom.setText(text);
         a9dom.putInfo(A9Dom.type.root$path,A9Util.getDir(file));
-        new A9TextParser().parse(a9dom,function(prdom){
-                new A9TextRender().render(prdom,function(rrdom){
+        var a9tParser = new A9TextParser();
+        a9tParser.setProgressBar(pgbar);
+        a9tParser.parse(a9dom,function(prdom){
+                var a9tRender = new A9TextRender();
+                a9tRender.setProgressBar(pgbar);
+                a9tRender.render(prdom,function(rrdom){
+                pgbar.done();
                 var data = rrdom.getData();
                 var linkCss = "";
                 for(var i =0; i< data['linkcss'].length; i++)

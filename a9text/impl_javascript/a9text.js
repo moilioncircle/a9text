@@ -14,10 +14,15 @@ try{
         }
     }
     if(a9PreText.length >0){
+        A9Loader.syncLoadClass('com.trydofor.a9js.ui.pgbar');
+        var pgbar = new ProgressBar(window.document);
+        pgbar.work(20,"loading a9text class");
+        
         A9Loader.asyncLoadClass('com.trydofor.a9text.parser.a9text');
         A9Loader.asyncLoadClass('com.trydofor.a9text.render.html.a9text');
         
         A9Loader.runAfterClassLoaded(function(){
+            pgbar.done();
             for(var i=0; i<a9PreText.length;i++){
                 var a9dom = new A9Dom(null,A9Dom.type.root); //com.trydofor.a9text.A9Dom
                 a9dom.setText(a9PreText[i]);
@@ -36,9 +41,17 @@ try{
                 ifrDoc.write("<pre style='background-color:#dedede'>"+a9PreText[i]+"</pre>");
                 ifrDoc.close();
                 iframeMap[a9dom.getId()]=ifr;
+                var ifrpgb = new ProgressBar(ifrDoc);
+                ifrpgb.work(10,'parsing a9text ...');
                 //
-                new A9TextParser().parse(a9dom,function(prdom){
-                    new A9TextRender().render(prdom,function(rrdom){
+                var a9Parser = new A9TextParser();
+                a9Parser.setProgressBar(ifrpgb);
+                a9Parser.parse(a9dom,function(prdom){
+                    var a9Render = new A9TextRender();
+                    ifrpgb.work(10,'rendering a9text ...');
+                    a9Render.setProgressBar(ifrpgb);
+                    a9Render.render(prdom,function(rrdom){
+                        ifrpgb.done();
                         var data = rrdom.getData();
                         var linkCss = "";
                         for(var i =0; i< data['linkcss'].length; i++)

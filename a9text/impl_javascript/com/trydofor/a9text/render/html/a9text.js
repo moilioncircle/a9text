@@ -38,7 +38,7 @@ var A9TextRender = function()
     __const_htm__.list_entry_foot = "</li>";
     __const_htm__.list_line_token = "<br />";
     
-    __const_htm__.mode_link = ["<a href='","$addr","' class='a9text_link'>","$name","</a>"];
+    __const_htm__.mode_link = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"];
     __const_htm__.mode_anchor = ["<a name='","$name","'></a>"];
     __const_htm__.mode_join = ["<span>","$value","</span>"];
     
@@ -74,7 +74,15 @@ var A9TextRender = function()
     var __root__ = null;
     var __last_dom__ = null;
     
+    var __progress_bar__ = null;
+    var __total_doms__ = 0;
+    var __root_domid__ = 0;
+    
     // public
+    this.setProgressBar = function(pgb){
+        if(pgb != null)__progress_bar__ = pgb;
+    }
+    
     this.render = function(a9dom,func)
     {
         if(!(func instanceof Function)) throw "a9text render need callback function for async";
@@ -87,6 +95,8 @@ var A9TextRender = function()
         __render_css__.push(A9Conf.getConf("/root/render/html/common/css/a9text/@path"));
         
         //
+        __total_doms__ = A9Dom.__counter__ - a9dom.getId();
+        __root_domid__ = a9dom.getId();
         __domManager__(a9dom);
         
         A9Loader.runAfterClassLoaded(function(){
@@ -98,6 +108,12 @@ var A9TextRender = function()
     // private
     function __domManager__(dom)
     {
+        if(__progress_bar__ != null){
+            try{
+                __progress_bar__.work(Math.ceil(40*(dom.getId()-__root_domid__)/__total_doms__));
+            }catch(e){};
+        }
+        
         switch(dom.getType())
         {
             case A9Dom.type.root:
@@ -524,6 +540,11 @@ var A9TextRender = function()
         {
             try
             {
+                var ferLen = Math.ceil(40*(dom.getId()-__root_domid__)/__total_doms__);
+                try{
+                    __progress_bar__.work(-ferLen);
+                }catch(e){};
+            
                 var extClzz = extBall+"."+A9Conf.getConf("/root/render/html/area/"+type+"/@clzz");
 
                 __render_htm__.push("##a9_future_data_holder## @ "+dom.getId());
@@ -532,6 +553,9 @@ var A9TextRender = function()
                 A9Loader.runAfterClassLoaded(function(){
                     eval("var extRender = new "+extClzz+"();");
                     extRender.render(dom,function(rdom){
+                        try{
+                            __progress_bar__.work(ferLen);
+                        }catch(e){};
                     	var data = rdom.getData();
                     	if(typeof(data['linkjs'])!='undefined' && data['linkjs']!=null){
 	                    	for(var x=0;x<data['linkjs'].length;x++)
@@ -554,8 +578,7 @@ var A9TextRender = function()
             }
             catch(e)
             {
-                // alert(e)
-                A9Util.progressInfo("failed to load area render:"+type);
+                //alert(e)
             };
         }
         

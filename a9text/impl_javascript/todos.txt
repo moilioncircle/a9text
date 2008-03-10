@@ -2,6 +2,7 @@
 
 ================= table : todos =================
 id          done        content
+08030701    08-03-10    增加a9text进度条显示
 08022901    08-03-03    精简jsloader,提供全异步能力(a9loader.js)
 08021601    ??          增加DES加密area
 08011302    ??          增加python,pl的语法标亮.

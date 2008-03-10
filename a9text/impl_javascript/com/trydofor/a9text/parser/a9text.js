@@ -51,7 +51,14 @@ var A9TextParser = function()
         }
     }
     
-    ////
+    var __progress_bar__ = null;
+    var __total_lines__ = 0;
+     
+    // public
+    this.setProgressBar = function(pgb){
+        if(pgb != null)__progress_bar__ = pgb;
+    }
+    
     this.parse = function(a9dom,func)
     {
         var text = a9dom.getText();
@@ -67,12 +74,23 @@ var A9TextParser = function()
         __args_sect__ = {};
         __args_dict__ = {};
         
+        __total_lines__ = __lines__.length;
+        
         // a9text root and info
         __parseRoot__();
         
         // elements of root
+        var lastLine = 0;
         for(;__hasLine__(); __index__ ++)
         {
+            //
+            if(__progress_bar__ != null){
+                try{
+                    __progress_bar__.work(Math.ceil(40*(__index__-lastLine)/__total_lines__));
+                }catch(e){};
+            }
+            lastLine = __index__;
+            //
             if(__meetSect__())
                  __parseSect__();
             else if (__meetList__())
@@ -84,7 +102,9 @@ var A9TextParser = function()
             else if (__meetArea$etxt__())
                  __parseArea$etxt__();                 
             else 
-                 __parsePara__();            
+                 __parsePara__();
+            
+
         }
         
         //
@@ -678,7 +698,6 @@ var A9TextParser = function()
                         
                         if(__join_ext__.indexOf(extnm) >= 0) // join a9text to parse
                         {
-                            A9Util.progressInfo("loading joined text:"+joAddr);
                             var lt = A9Loader.syncLoadText(joAddr);
                             if(lt != null && lt != "") // merge into basic a9text
                             {
@@ -835,16 +854,23 @@ var A9TextParser = function()
             try
             {
                 var extClzz = extBall+"."+A9Conf.getConf("/root/parser/area/"+type+"/@clzz");
-                
+                var ferLen = Math.ceil(40*(buffer.length)/__total_lines__);
+                try{
+                    __progress_bar__.work(-ferLen);
+                }catch(e){};
+            
                 A9Loader.asyncLoadClass(extBall);
                 A9Loader.runAfterClassLoaded(function(){
-                eval("var extParser = new "+extClzz+"();");
-                extParser.parse(dom)});
+                    try{
+                        __progress_bar__.work(ferLen);
+                    }catch(e){};
+                    eval("var extParser = new "+extClzz+"();");
+                    extParser.parse(dom)
+                });
             }
             catch(e)
             {
-                alert(e);
-                A9Util.progressInfo("failed to load area parser:"+type);
+                //alert(e);
             }
         }
     }
