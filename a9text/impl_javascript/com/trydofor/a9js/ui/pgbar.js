@@ -20,7 +20,7 @@ var ProgressBar = function(doc)
     		if(__divObj__ == null){
     			var divHTML = ""+
     			//"<div id='id' style='position:absolute; left:100px; top:100px; width:210px; height:30px; z-index:1;'>"+
-    			"  <table width='210' height='30' border='0' cellpadding='0' cellspacing='1' bgcolor='#FFFFFF' style='border:1px solid #000000;'>"+
+    			"  <table width='210' height='30' border='0' cellpadding='0' cellspacing='1' style='border:1px solid #000000;'>"+
     			"    <tr><td height='16'><div id='"+__barId__+"_info' style='font-size:12px; height:16px; width:100%; overflow:hidden;padding:2px;color:#3366CC'>loading...</div></td></tr>"+
     			"    <tr><td height='14' style='border:1px solid #000000;'><div id='"+__barId__+"_perc' style='font-size:12px;width:"+__worked__+"%;height:14px; background-color:#3366CC; color:#FFFFFF; text-align:center; overflow:hidden'>"+
     			"    "+__worked__+"%"+
@@ -28,11 +28,12 @@ var ProgressBar = function(doc)
     			"  </table>";
     			//"</div>";
     			
-    			__divObj__ = document.createElement('DIV');
+    			__divObj__ = doc.createElement('DIV');
     		    __divObj__.setAttribute('id',__barId__);
-    		    __divObj__.setAttribute('style','position:absolute; left:'+x+'px; top:'+y+'px; width:210px; height:30px; z-index:1;');
+    		    __divObj__.setAttribute('style','left:'+x+'px; top:'+y+'px; width:210px; height:30px;background-color:#FFFFFF;',0);
+    		    //__divObj__.setAttribute('style','position:absolute; left:'+x+'px; top:'+y+'px; width:210px; height:30px; z-index:1;',0);
     		    __divObj__.innerHTML=divHTML;
-    			doc.body.appendChild(__divObj__);
+    		    doc.body.insertBefore(__divObj__, doc.body.firstChild)
     		}else{
     			__divObj__.style.display='';
                 __divObj__.style.left  = x+'px';
@@ -40,17 +41,18 @@ var ProgressBar = function(doc)
     		}
 	    }catch(e){
 	        // ignore
+	        __divObj__ = null;
 	    }
 	}
 	
-	function __work__(w,info){
+	function __work__(w,info,inner){
 		if(w == null) return;
 		try{
     		__worked__ += w;
     		if(__worked__ >100) __worked__ =100;
     		if(__worked__ <0) __worked__ = 0;
     		
-    		if(__divObj__ == null) __show__();
+    		if(__divObj__  == null) __show__();
     		
     		if(__infoObj__ == null) __infoObj__ = doc.getElementById(__barId__+"_info");
     		if(__percObj__ == null) __percObj__ = doc.getElementById(__barId__+"_perc");
@@ -59,8 +61,9 @@ var ProgressBar = function(doc)
     		__percObj__.style.width=__worked__+"%";
     		__percObj__.innerHTML=__worked__+"%";
 		}catch(e){
-		    __divObj__ = null;
-		    __show__();
+		    __divObj__  = null;
+		    __infoObj__ = null;
+		    __percObj__ = null;
 		}
 	}
 	
@@ -69,7 +72,9 @@ var ProgressBar = function(doc)
     		__worked__ = 0;
     		__divObj__.style.display='none';
 	    }catch(e){
-	        // ignore
+            __divObj__  = null;
+            __infoObj__ = null;
+            __percObj__ = null;
 	    }
 	}
 	

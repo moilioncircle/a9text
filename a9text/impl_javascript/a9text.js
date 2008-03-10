@@ -16,6 +16,7 @@ try{
     if(a9PreText.length >0){
         A9Loader.syncLoadClass('com.trydofor.a9js.ui.pgbar');
         var pgbar = new ProgressBar(window.document);
+        pgbar.show();
         pgbar.work(20,"loading a9text class");
         
         A9Loader.asyncLoadClass('com.trydofor.a9text.parser.a9text');
@@ -38,10 +39,11 @@ try{
                 a9PreObjs[i].parentNode.replaceChild(ifr,a9PreObjs[i]);
                 var ifrDoc = ifr.contentWindow.document;
                 ifrDoc.open();
-                ifrDoc.write("<pre style='background-color:#dedede'>"+a9PreText[i]+"</pre>");
+                ifrDoc.write("<body BGCOLOR='#DEDEDE'><pre>"+a9PreText[i]+"</pre></body>");
                 ifrDoc.close();
                 iframeMap[a9dom.getId()]=ifr;
                 var ifrpgb = new ProgressBar(ifrDoc);
+                ifrpgb.show();
                 ifrpgb.work(10,'parsing a9text ...');
                 //
                 var a9Parser = new A9TextParser();
@@ -67,7 +69,7 @@ try{
                         doc.close();
                         window.setTimeout(function(){
                             ifr.setAttribute('height',doc.body.scrollHeight+20);
-                        },100);
+                        },500);
                     });
                 });
             }
