@@ -16,27 +16,31 @@ var ProgressBar = function(doc)
 	    if(x==null) x=5;
 	    if(y==null) y=5;
 	    
-		if(__divObj__ == null){
-			var divHTML = ""+
-			//"<div id='id' style='position:absolute; left:100px; top:100px; width:210px; height:30px; z-index:1;'>"+
-			"  <table width='210' height='30' border='0' cellpadding='0' cellspacing='1' bgcolor='#FFFFFF' style='border:1px solid #000000;'>"+
-			"    <tr><td height='16'><div id='"+__barId__+"_info' style='font-size:12px; height:16px; width:100%; overflow:hidden;padding:2px;color:#3366CC'>loading...</div></td></tr>"+
-			"    <tr><td height='14' style='border:1px solid #000000;'><div id='"+__barId__+"_perc' style='font-size:12px;width:"+__worked__+"%;height:14px; background-color:#3366CC; color:#FFFFFF; text-align:center; overflow:hidden'>"+
-			"    "+__worked__+"%"+
-			"    </div></td></tr>"+
-			"  </table>";
-			//"</div>";
-			
-			__divObj__ = document.createElement('DIV');
-		    __divObj__.setAttribute('id',__barId__);
-		    __divObj__.setAttribute('style','position:absolute; left:'+x+'px; top:'+y+'px; width:210px; height:30px; z-index:1;');
-		    __divObj__.innerHTML=divHTML;
-			doc.body.appendChild(__divObj__);
-		}else{
-			__divObj__.style.display='';
-            __divObj__.style.left  = x+'px';
-            __divObj__.style.top   = y+'px';
-		}
+	    try{
+    		if(__divObj__ == null){
+    			var divHTML = ""+
+    			//"<div id='id' style='position:absolute; left:100px; top:100px; width:210px; height:30px; z-index:1;'>"+
+    			"  <table width='210' height='30' border='0' cellpadding='0' cellspacing='1' bgcolor='#FFFFFF' style='border:1px solid #000000;'>"+
+    			"    <tr><td height='16'><div id='"+__barId__+"_info' style='font-size:12px; height:16px; width:100%; overflow:hidden;padding:2px;color:#3366CC'>loading...</div></td></tr>"+
+    			"    <tr><td height='14' style='border:1px solid #000000;'><div id='"+__barId__+"_perc' style='font-size:12px;width:"+__worked__+"%;height:14px; background-color:#3366CC; color:#FFFFFF; text-align:center; overflow:hidden'>"+
+    			"    "+__worked__+"%"+
+    			"    </div></td></tr>"+
+    			"  </table>";
+    			//"</div>";
+    			
+    			__divObj__ = document.createElement('DIV');
+    		    __divObj__.setAttribute('id',__barId__);
+    		    __divObj__.setAttribute('style','position:absolute; left:'+x+'px; top:'+y+'px; width:210px; height:30px; z-index:1;');
+    		    __divObj__.innerHTML=divHTML;
+    			doc.body.appendChild(__divObj__);
+    		}else{
+    			__divObj__.style.display='';
+                __divObj__.style.left  = x+'px';
+                __divObj__.style.top   = y+'px';
+    		}
+	    }catch(e){
+	        // ignore
+	    }
 	}
 	
 	function __work__(w,info){
