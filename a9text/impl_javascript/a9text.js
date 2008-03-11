@@ -65,7 +65,7 @@ try{
                         var ifr = iframeMap[rrdom.getId()];
                         var doc = ifr.contentWindow.document;
                         doc.open();
-                        doc.write(a9htm);
+                        doc.write("<body>"+a9htm+"</body>");
                         doc.close();
                         window.setTimeout(function(){
                             ifr.setAttribute('height',doc.body.scrollHeight+20);
