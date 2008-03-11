@@ -33,7 +33,8 @@ try{
                 ifr.setAttribute('src','about:blank');
                 ifr.setAttribute('frameborder','0',0);
                 ifr.setAttribute('frameSpacing','0');
-                ifr.setAttribute('scrolling','no');
+                ifr.setAttribute('style','overflow-x:scroll;overflow-y:hidden;');
+                //ifr.setAttribute('scrolling','no');
                 ifr.setAttribute('width','100%');
                 ifr.setAttribute('height',a9PreObjs[i].scrollHeight+20);
                 a9PreObjs[i].parentNode.replaceChild(ifr,a9PreObjs[i]);
@@ -65,11 +66,9 @@ try{
                         var ifr = iframeMap[rrdom.getId()];
                         var doc = ifr.contentWindow.document;
                         doc.open();
-                        doc.write("<body>"+a9htm+"</body>");
+                        doc.write("<body>"+a9htm+"</body><scr"+"ipt>window.setTimeout(function(){parent.document.getElementById(\"a9text_"+
+                            rrdom.getId()+"\").style.height=document.body.scrollHeight},100);</scr"+"ipt>");
                         doc.close();
-                        window.setTimeout(function(){
-                            ifr.setAttribute('height',doc.body.scrollHeight+20);
-                        },500);
                     });
                 });
             }

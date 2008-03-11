@@ -40,6 +40,8 @@ var A9TextParser = function()
     var __sect_flag__ = []; // hold sects info
     var __args_sect__ = {};
     var __args_dict__ = {};
+    var __args_area__ = {};
+    var __args_hash__ = {};
     var __join_ext__  = A9Conf.getConf("/root/parser/join/txt/@extn");
     
     var __simple_link__ = [];
@@ -73,7 +75,8 @@ var A9TextParser = function()
         __sect_flag__ = [];
         __args_sect__ = {};
         __args_dict__ = {};
-        
+        __args_area__ = {};
+        __args_hash__ = {};
         __total_lines__ = __lines__.length;
         
         // a9text root and info
@@ -110,6 +113,8 @@ var A9TextParser = function()
         //
         a9dom.putInfo(A9Dom.type.root$dict,__args_dict__);
         a9dom.putInfo(A9Dom.type.root$sect,__args_sect__);
+        a9dom.putInfo(A9Dom.type.root$area,__args_area__);
+        a9dom.putInfo(A9Dom.type.root$hash,__args_hash__);        
         
         if(func instanceof Function){
             A9Loader.runAfterClassLoaded(function(){func(a9dom)});
@@ -740,7 +745,7 @@ var A9TextParser = function()
                     modeDom.putInfo(A9Dom.type.mode_join$addr,joAddr);
                     modeDom.setText(modeTxt);
                 }
-                else // link
+                else // link __args_hash__
                 {
                     var lp = modeTxt.indexOf("=>");
                     var jo = (modeTxt.indexOf("<=")==0);
@@ -752,6 +757,8 @@ var A9TextParser = function()
                     modeDom.putInfo(A9Dom.type.mode_link$join,jo);
                     modeDom.putInfo(A9Dom.type.mode_link$name,lkName);
                     modeDom.putInfo(A9Dom.type.mode_link$addr,A9Util.getFile(lkAddr,__super__.getInfo(A9Dom.type.root$path)));
+                    
+                    if(lkAddr == '')__args_hash__[lkName]=modeDom;
                 }
             }
         }
@@ -773,9 +780,14 @@ var A9TextParser = function()
         if(type != null) type = type.toLowerCase();
         
         var info = A9Util.trimBoth(RegExp.$2);
-        if(info != null && info.charAt(0) == ':')
+        var name = '';
+        if(info != null)
         {
-            info =  A9Util.trimLeft(info.substr(1));
+            var ni =  info.indexOf(':');
+            if(ni>0){
+                name = A9Util.trimRight(info.substr(0,ni));
+                info =  A9Util.trimLeft(info.substr(ni+1));
+            }
         }
         
         // args
@@ -820,10 +832,12 @@ var A9TextParser = function()
         var dom = __basic__.newChild(A9Dom.type.area);
         dom.setTier(tier);
         dom.putInfo(A9Dom.type.area$type,type);
+        dom.putInfo(A9Dom.type.area$name,name);
         dom.putInfo(A9Dom.type.area$info,info);
         dom.putInfo(A9Dom.type.area$args,args);
         dom.putInfo(A9Dom.type.area$crlf,__crlf__);
         
+        if(name != '') __args_area__[name] = dom;
         //
         var buffer = [];
         for(;__hasLine__(); __index__ ++)

@@ -44,6 +44,7 @@
 \[[显示名=>地址]][[显示名=>地址]]
 [[a9text-spec_3.2=>./a9text-spec_3.2.txt]]
 [[home=>http://a9text.sf.net]]
+[[anchor=>]]
 
 1.4. HTML模式
 ^^^^^^^^^^^^
@@ -282,10 +283,13 @@ package com.trydofor.a9text.test;
 
  /************************************************************
  * @author  : Shi Rongjiu (www.trydofor.com)
- * @version : 2008-2-18 / $Revision: 1.17 $
+ * @version : 2008-2-18 / $Revision: 1.18 $
  * @see     : requires/documents
  * ====================== change-logs =======================
  * $Log: not supported by cvs2svn $
+ * Revision 1.17  2008/02/29 02:45:07  trydofor
+ * a9text
+ *
  * Revision 1.16  2008/02/18 06:27:12  trydofor
  * live in java
  *

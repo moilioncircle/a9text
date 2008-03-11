@@ -222,6 +222,8 @@ A9Dom.type={
     root$name:"name",
     root$dict:"dict",
     root$sect:"sect",
+    root$area:"area",
+    root$hash:"hash",
     root$path:"path",
     info:"info",
     //
@@ -267,6 +269,7 @@ A9Dom.type={
     //
     area:"area",
     area$crlf:"area$crlf",
+    area$name:"area$name",
     area$type:"area$type",
     area$info:"area$info",
     area$args:"area$args"

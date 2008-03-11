@@ -5,7 +5,7 @@ UTF8(BOM)  GPL  trydofor.com  May.2007
 var AreaSyntaxCodeRender = function()
 {
     var __const_htm__= {};
-    __const_htm__.syntax_code = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr",
+    __const_htm__.syntax_code = ["<table id='AREA_","area_id","' style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr",
                          "<tr><td class='a9text_area_syntax_border'><table border='0' cellspacing='2' cellpadding='1'><tr><td class='a9text_area_syntax_lnum' align='center' valign='top'><pre>",
                          "$num","</pre></td><td valign='top'><pre>","$text","</pre></td></tr></table></td></tr></table>"];
     __const_htm__.syntax_code$info = ["<tr><td><span class='a9text_area_syntax_info'>","infostr","&nbsp;</span></td></tr>"];
@@ -99,10 +99,11 @@ var AreaSyntaxCodeRender = function()
         __const_htm__.syntax_code$info[1] = infoStr;
         
         //
-        __const_htm__.syntax_code[1] = a9dom.getTier();
-        __const_htm__.syntax_code[3] = __const_htm__.syntax_code$info.join('');
-        __const_htm__.syntax_code[5] = __render_seq__.join('\n');        
-        __const_htm__.syntax_code[7] = __render_htm__.join('');
+        __const_htm__.syntax_code[1] = a9dom.getId();
+        __const_htm__.syntax_code[3] = a9dom.getTier();
+        __const_htm__.syntax_code[5] = __const_htm__.syntax_code$info.join('');
+        __const_htm__.syntax_code[7] = __render_seq__.join('\n');        
+        __const_htm__.syntax_code[9] = __render_htm__.join('');
         
         a9dom.setData({'htmltext':__const_htm__.syntax_code.join(''),
 	        'linkjs':[A9Conf.getConf("/root/render/html/common/js/syntax/@path")],

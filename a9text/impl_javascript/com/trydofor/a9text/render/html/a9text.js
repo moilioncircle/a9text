@@ -10,22 +10,22 @@ var A9TextRender = function()
     
     var __const_htm__= {};
     
-    __const_htm__.index_item = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'><strong>","$flag","</strong>&nbsp;<a class='a9text_link' target='_self' href='#","$flag","'>","$title","</a></div>"];
+    __const_htm__.index_item = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'><strong>","$flag","</strong>&nbsp;<a class='a9text_link' href='javascript:{parent.window.scrollBy(0,document.getElementById(\"","sect_id","\").offsetTop)}'>","$title","</a></div>"];
     
     __const_htm__.root = ["<div class='a9text_root'>","$title","</div>"];
     __const_htm__.info_head = "<div class='a9text_info'>";
     __const_htm__.info_foot = "</div>";
     
-    __const_htm__.sect = ["<a name='","$flag","'></a><div class='a9text_sect_","$level","'>","$flag","  ","$title","</div>"];
+    __const_htm__.sect = ["<div id='SECT_","sect_id","' class='a9text_sect_","$level","'>","$flag","  ","$title","</div>"];
     __const_htm__.sect_head = "<div class='a9text_sect_head'>";
     __const_htm__.sect_foot = "</div>";
-    __const_htm__.dict_head = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'><strong>","$key","</strong> "];
+    __const_htm__.dict_head = ["<div id='DICT_","dict_id","' class='a9text_breakall' style='margin-left:","$tier","ex'><strong>","$key","</strong> "];
     __const_htm__.dict_foot = "</div>";
     __const_htm__.para_head = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'>"];
     __const_htm__.para_foot = "</div>";
-    __const_htm__.area = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre class='a9text_area'>","$para","</pre></td></tr></table>"];
+    __const_htm__.area = ["<table id='AREA_","area_id","' style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre class='a9text_area'>","$para","</pre></td></tr></table>"];
     __const_htm__.area$info = ["<tr><td><span class='a9text_area_info'>","infostr","&nbsp;</span></td></tr>"];
-    __const_htm__.area_text = ["<table style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:","0","px dashed #666699;'>","$para","</pre></td></tr></table>"];
+    __const_htm__.area_text = ["<table id='AREA_","area_id","' style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:","0","px dashed #666699;'>","$para","</pre></td></tr></table>"];
     __const_htm__.text = ["<pre style='margin-left:","$tier","ex'>","$para","</pre>"];
     
     __const_htm__.list_head = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'>"];;
@@ -39,7 +39,7 @@ var A9TextRender = function()
     __const_htm__.list_line_token = "<br />";
     
     __const_htm__.mode_link = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"];
-    __const_htm__.mode_anchor = ["<a name='","$name","'></a>"];
+    __const_htm__.mode_anchor = ["<span id='HASH_","hash_id","'>","name","</span>"];
     __const_htm__.mode_join = ["<span>","$value","</span>"];
     
     __const_htm__.mode_trig_st_head = "<strong>"; // !
@@ -97,6 +97,8 @@ var A9TextRender = function()
         //
         __total_doms__ = A9Dom.__counter__ - a9dom.getId();
         __root_domid__ = a9dom.getId();
+        __root__ = dom;
+        
         __domManager__(a9dom);
         
         A9Loader.runAfterClassLoaded(function(){
@@ -165,9 +167,6 @@ var A9TextRender = function()
     //
     function __root2htm__(dom)
     {
-        __root__ = dom;
-        
-        //
         dom.nowChild(0);
         __const_htm__.root[1] = dom.getInfo(A9Dom.type.root$name);
         __render_htm__.push(__const_htm__.root.join(''));
@@ -195,7 +194,7 @@ var A9TextRender = function()
         var flag = dom.getInfo(A9Dom.type.sect$flag);
         var le = flag.split('.').length;
         
-        __const_htm__.sect[1] = flag;
+        __const_htm__.sect[1] = dom.getId();
         __const_htm__.sect[3] = le>5?5:le;
         __const_htm__.sect[5] = flag;
         __const_htm__.sect[7] = A9Util.txt2htm(dom.getInfo(A9Dom.type.sect$title));
@@ -215,8 +214,9 @@ var A9TextRender = function()
     
     function __dict2htm__(dom)
     {
-        __const_htm__.dict_head[1] = dom.getTier();
-        __const_htm__.dict_head[3] = dom.getInfo(A9Dom.type.dict$key);
+        __const_htm__.dict_head[1] = dom.getId();
+        __const_htm__.dict_head[3] = dom.getTier();
+        __const_htm__.dict_head[5] = dom.getInfo(A9Dom.type.dict$key);
         __render_htm__.push(__const_htm__.dict_head.join(''));
 
         //
@@ -429,7 +429,7 @@ var A9TextRender = function()
                  if(dom.getInfo(A9Dom.type.mode_trig$flag_st))
                     __render_htm__.push(__const_htm__.mode_trig_st_foot);
                  break;
-            case A9Dom.type.mode_join:
+            case A9Dom.type.mode_join: // TODO
                 var joName = dom.getInfo(A9Dom.type.mode_join$name);
                 var joAddr = dom.getInfo(A9Dom.type.mode_join$addr);
                 
@@ -471,21 +471,58 @@ var A9TextRender = function()
                 }
                 break;
             case A9Dom.type.mode_link:
-                 if(dom.getInfo(A9Dom.type.mode_link$addr) == null) //anchor
+                 var addr = dom.getInfo(A9Dom.type.mode_link$addr);
+                 if( addr == null) //anchor(hash)
                  {
-                      __const_htm__.mode_anchor[1] = dom.getInfo(A9Dom.type.mode_link$name);
+                      __const_htm__.mode_anchor[1] = dom.getId();
+                      __const_htm__.mode_anchor[3] = A9Util.txt2htm(dom.getInfo(A9Dom.type.mode_link$name));
                       __render_htm__.push(__const_htm__.mode_anchor.join(''));
                  }
                  else
                  {
-                      __const_htm__.mode_link[1] = dom.getInfo(A9Dom.type.mode_link$addr);
-                      __const_htm__.mode_link[3] = A9Util.txt2htm(dom.getInfo(A9Dom.type.mode_link$name));
-                      if(__const_htm__.mode_link[3] == null || __const_htm__.mode_link[3] == '')
-                         __const_htm__.mode_link[3] = __const_htm__.mode_link[1];
-                         
-                      //if(__const_htm__.mode_link[3].charAt(0)== '#') // link to anchor
-                      //    __const_htm__.mode_link[3] = __const_htm__.mode_link[3].substr(1);
-                      
+                      if(addr.charAt(0)=='#') // link to anchor TODO
+                      {
+                          var mpos = addr.indexOf(':');
+                          if(mpos>=0)
+                          {
+                              var type = A9Util.trimBoth(addr.substr(1,mpos));
+                              var hash = A9Util.trimBoth(addr.substr(mpos+1));
+                              var hdom = null;
+                              if(/SECT/i.test(type)){
+                                  var sectMap = a9dom.getInfo(A9Dom.type.root$sect);
+                                  hdom = sectMap[hash]||sectMap[hash.substr(0,hash.length-1)]
+                              }else if(/DICT/i.test(type)){
+                                 a9dom.getInfo(A9Dom.type.root$dict);                                  
+                              }else if(/AREA/i.test(type)){
+                                 a9dom.getInfo(A9Dom.type.root$area);                                  
+                              }else if(/HASH/i.test(type)){
+                                 a9dom.getInfo(A9Dom.type.root$hash);                                  
+                              }else{
+                                 __const_htm__.mode_link[1] = addr;
+                                 __const_htm__.mode_link[3] = addr.substr(1);
+                              }
+                          }
+                          else
+                          {
+                              __const_htm__.mode_link[1] = addr;
+                              __const_htm__.mode_link[3] = addr.substr(1);
+                          }
+                          /*
+                             SECT:2.2.4
+                             DICT:key
+                             AREA:name
+                             HASH:anchor
+                           */
+
+                      }
+                      else
+                      {
+                          addr = A9Util.getFile(addr,__root__.getInfo(A9Dom.type.root$path));
+                          __const_htm__.mode_link[1] = addr;
+                          __const_htm__.mode_link[3] = A9Util.txt2htm(dom.getInfo(A9Dom.type.mode_link$name));
+                          if(__const_htm__.mode_link[3] == null || __const_htm__.mode_link[3] == '')
+                             __const_htm__.mode_link[3] = addr;
+                      }
                       __render_htm__.push(__const_htm__.mode_link.join(''));
                  }
 
@@ -518,10 +555,11 @@ var A9TextRender = function()
             infoStr = __const_htm__.area$info.join('');
         }
         
-        __const_htm__.area_text[1] = dom.getTier();
-        __const_htm__.area_text[3] = infoStr;
-        __const_htm__.area_text[5] = border;
-        __const_htm__.area_text[7] = A9Util.txt2htm(dom.getText());
+        __const_htm__.area_text[1] = dom.getId();
+        __const_htm__.area_text[3] = dom.getTier();
+        __const_htm__.area_text[5] = infoStr;
+        __const_htm__.area_text[7] = border;
+        __const_htm__.area_text[9] = A9Util.txt2htm(dom.getText());
         __render_htm__.push(__const_htm__.area_text.join(''));
     }
     
@@ -588,9 +626,10 @@ var A9TextRender = function()
         __const_htm__.area$info[1] = infoStr;
         
         //
-        __const_htm__.area[1] = dom.getTier();
-        __const_htm__.area[3] = __const_htm__.area$info.join('');
-        __const_htm__.area[5] = A9Util.txt2htm(dom.getText(),'<>');
+        __const_htm__.area[1] = dom.getId();
+        __const_htm__.area[3] = dom.getTier();
+        __const_htm__.area[5] = __const_htm__.area$info.join('');
+        __const_htm__.area[7] = A9Util.txt2htm(dom.getText(),'<>');
         __render_htm__.push(__const_htm__.area.join(''));
     }
     
@@ -620,7 +659,7 @@ var A9TextRender = function()
             if(max < k.length) max = k.length;
             __const_htm__.index_item[1] = (sects[k].getInfo(A9Dom.type.sect$level)-1)*2;
             __const_htm__.index_item[3] = k;
-            __const_htm__.index_item[5] = k;
+            __const_htm__.index_item[5] = "SECT_"+sects[k].getId();
             __const_htm__.index_item[7] = sects[k].getInfo(A9Dom.type.sect$title);
             buffer.push(__const_htm__.index_item.join(''));
         }

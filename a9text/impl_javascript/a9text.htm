@@ -69,16 +69,15 @@ try{
                 ifr.setAttribute('src','about:blank');
                 ifr.setAttribute('frameborder','0',0);
                 ifr.setAttribute('frameSpacing','0');
-                ifr.setAttribute('scrolling','no');
+                ifr.setAttribute('style','overflow-x:scroll;overflow-y:hidden;');
+                //ifr.setAttribute('scrolling','no');
                 ifr.setAttribute('width','100%');
                 document.body.appendChild(ifr);
                 var doc = ifr.contentWindow.document;
                 doc.open();
-                doc.write("<body>"+a9htm+"</body>");
+                doc.write("<body>"+a9htm+"</body><scr"+"ipt>window.setTimeout(function(){parent.document.getElementById(\"a9text_"+
+                    a9dom.getId()+"\").style.height=document.body.scrollHeight},100);</scr"+"ipt>");
                 doc.close();
-                window.setTimeout(function(){
-                    ifr.setAttribute('height',doc.body.scrollHeight+20);
-                },100);
             });
         });
     }
