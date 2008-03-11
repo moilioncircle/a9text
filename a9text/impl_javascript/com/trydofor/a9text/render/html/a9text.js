@@ -97,7 +97,7 @@ var A9TextRender = function()
         //
         __total_doms__ = A9Dom.__counter__ - a9dom.getId();
         __root_domid__ = a9dom.getId();
-        __root__ = dom;
+        __root__ = a9dom;
         
         __domManager__(a9dom);
         
@@ -525,7 +525,6 @@ var A9TextRender = function()
                       }
                       __render_htm__.push(__const_htm__.mode_link.join(''));
                  }
-
                  break;
             case A9Dom.type.mode_$htm:
                  __render_htm__.push(dom.getText());
