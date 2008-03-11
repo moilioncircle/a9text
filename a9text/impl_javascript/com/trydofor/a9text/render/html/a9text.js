@@ -488,18 +488,36 @@ var A9TextRender = function()
                               var type = A9Util.trimBoth(addr.substr(1,mpos));
                               var hash = A9Util.trimBoth(addr.substr(mpos+1));
                               var hdom = null;
+                              var haddr = "";
+                              var hname = "";
                               if(/SECT/i.test(type)){
-                                  var sectMap = a9dom.getInfo(A9Dom.type.root$sect);
-                                  hdom = sectMap[hash]||sectMap[hash.substr(0,hash.length-1)]
+                                 haddr = "SECT_";
+                                 var sectMap = a9dom.getInfo(A9Dom.type.root$sect);
+                                 hdom = sectMap[hash];
+                                 if(hdom==null && hash.charAt(hash.length-1)=='.')
+                                    hdom = sectMap[hash.substr(0,hash.length-1)];
+                                 if(hdome != null){
+                                    hname = hash+" "+sects[k].getInfo(A9Dom.type.sect$title);
+                                 }
                               }else if(/DICT/i.test(type)){
-                                 a9dom.getInfo(A9Dom.type.root$dict);                                  
+                                 haddr = "DICT_";
+                                 hdom = a9dom.getInfo(A9Dom.type.root$dict)[hash]; 
+                                 hname = hash;                                 
                               }else if(/AREA/i.test(type)){
-                                 a9dom.getInfo(A9Dom.type.root$area);                                  
+                                 haddr = "AREA_";
+                                 hdom = a9dom.getInfo(A9Dom.type.root$area)[hash];
+                                 hname = hash                                
                               }else if(/HASH/i.test(type)){
-                                 a9dom.getInfo(A9Dom.type.root$hash);                                  
-                              }else{
+                                 haddr = "HASH_";
+                                 hdom = a9dom.getInfo(A9Dom.type.root$hash)[hash];
+                                 hname = hash;                              
+                              }
+                              if(hdom == null){
                                  __const_htm__.mode_link[1] = addr;
                                  __const_htm__.mode_link[3] = addr.substr(1);
+                              }else{
+                                 __const_htm__.mode_link[1] = "javascript:{parent.window.scrollBy(0,document.getElementById(\""+haddr+hdom.getId()+"\").offsetTop)}";
+                                 __const_htm__.mode_link[3] = hname;
                               }
                           }
                           else
