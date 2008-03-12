@@ -13,7 +13,7 @@ String A9Util.trimBoth(line)
     去掉左右两边的空白.
 String A9Util.trimLeft(line)
     去掉左边的空白.
-String A9Util.trimRigth(line)
+String A9Util.trimRight(line)
     去掉右边的空白.
 String A9Util.valueBlank(line)
     等效空格处理.
@@ -108,7 +108,7 @@ A9Util.txt2htm = function(str,mode)
 A9Util.trimBoth  = function(line)
 {
     if(line == null) return null;
-    return A9Util.trimRigth(A9Util.trimLeft(line));
+    return A9Util.trimRight(A9Util.trimLeft(line));
 }
 
 A9Util.trimLeft  = function(line)
@@ -117,7 +117,7 @@ A9Util.trimLeft  = function(line)
     return line.replace(/^[ 　\t]+/,'');
 }
 
-A9Util.trimRigth = function(line)
+A9Util.trimRight = function(line)
 {
     if(line == null) return null;
     return line.replace(/[ 　\t]+$/,'');

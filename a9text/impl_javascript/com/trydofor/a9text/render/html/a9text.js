@@ -10,7 +10,7 @@ var A9TextRender = function()
     
     var __const_htm__= {};
     
-    __const_htm__.index_item = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'><strong>","$flag","</strong>&nbsp;<a class='a9text_link' href='javascript:{parent.window.scrollBy(0,document.getElementById(\"","sect_id","\").offsetTop)}'>","$title","</a></div>"];
+    __const_htm__.index_item = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'><strong>","$flag","</strong>&nbsp;<a class='a9text_link' href='javascript:{}' onclick='parent.window.scrollBy(0,document.getElementById(\"","sect_id","\").offsetTop-this.offsetTop)'>","$title","</a></div>"];
     
     __const_htm__.root = ["<div class='a9text_root'>","$title","</div>"];
     __const_htm__.info_head = "<div class='a9text_info'>";
@@ -39,7 +39,8 @@ var A9TextRender = function()
     __const_htm__.list_line_token = "<br />";
     
     __const_htm__.mode_link = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"];
-    __const_htm__.mode_anchor = ["<span id='HASH_","hash_id","'>","name","</span>"];
+    __const_htm__.mode_hash = ["<a  href='javascript:{}' onclick='","$addr","' class='a9text_link'>","$name","</a>"];
+    __const_htm__.mode_anchor = ["<span  class='a9text_anchor' id='HASH_","hash_id","'>","name","</span>"];
     __const_htm__.mode_join = ["<span>","$value","</span>"];
     
     __const_htm__.mode_trig_st_head = "<strong>"; // !
@@ -472,7 +473,7 @@ var A9TextRender = function()
                 break;
             case A9Dom.type.mode_link:
                  var addr = dom.getInfo(A9Dom.type.mode_link$addr);
-                 if( addr == null) //anchor(hash)
+                 if( addr == null || addr == '') //anchor(hash)
                  {
                       __const_htm__.mode_anchor[1] = dom.getId();
                       __const_htm__.mode_anchor[3] = A9Util.txt2htm(dom.getInfo(A9Dom.type.mode_link$name));
@@ -480,7 +481,7 @@ var A9TextRender = function()
                  }
                  else
                  {
-                      if(addr.charAt(0)=='#') // link to anchor TODO
+                      if(addr.charAt(0)=='#') // link to anchor
                       {
                           var mpos = addr.indexOf(':');
                           if(mpos>=0)
@@ -492,56 +493,58 @@ var A9TextRender = function()
                               var hname = "";
                               if(/SECT/i.test(type)){
                                  haddr = "SECT_";
-                                 var sectMap = a9dom.getInfo(A9Dom.type.root$sect);
+                                 var sectMap = __root__.getInfo(A9Dom.type.root$sect);
                                  hdom = sectMap[hash];
-                                 if(hdom==null && hash.charAt(hash.length-1)=='.')
-                                    hdom = sectMap[hash.substr(0,hash.length-1)];
-                                 if(hdome != null){
-                                    hname = hash+" "+sects[k].getInfo(A9Dom.type.sect$title);
+                                 if(hdom==null && hash.charAt(hash.length-1)!='.')
+                                    hdom = sectMap[hash+'.'];
+                                 if(hdom != null){
+                                    hname = hash+" "+A9Util.txt2htm(hdom.getInfo(A9Dom.type.sect$title));
                                  }
                               }else if(/DICT/i.test(type)){
                                  haddr = "DICT_";
-                                 hdom = a9dom.getInfo(A9Dom.type.root$dict)[hash]; 
+                                 hdom = __root__.getInfo(A9Dom.type.root$dict)[hash]; 
                                  hname = hash;                                 
                               }else if(/AREA/i.test(type)){
                                  haddr = "AREA_";
-                                 hdom = a9dom.getInfo(A9Dom.type.root$area)[hash];
+                                 hdom = __root__.getInfo(A9Dom.type.root$area)[hash];
                                  hname = hash                                
                               }else if(/HASH/i.test(type)){
                                  haddr = "HASH_";
-                                 hdom = a9dom.getInfo(A9Dom.type.root$hash)[hash];
+                                 hdom = __root__.getInfo(A9Dom.type.root$hash)[hash];
                                  hname = hash;                              
                               }
+                              var lname = dom.getInfo(A9Dom.type.mode_link$name);
+                              if(lname != null && lname != '') hname = lname;
+                              if(hname == null || hname == '') hname = addr.substr(1);
+                              
                               if(hdom == null){
                                  __const_htm__.mode_link[1] = addr;
-                                 __const_htm__.mode_link[3] = addr.substr(1);
+                                 __const_htm__.mode_link[3] = A9Util.txt2htm(hname);
+                                 __render_htm__.push(__const_htm__.mode_link.join(''));
                               }else{
-                                 __const_htm__.mode_link[1] = "javascript:{parent.window.scrollBy(0,document.getElementById(\""+haddr+hdom.getId()+"\").offsetTop)}";
-                                 __const_htm__.mode_link[3] = hname;
+                                 __const_htm__.mode_hash[1] = "parent.window.scrollBy(0,document.getElementById(\""+haddr+hdom.getId()+"\").offsetTop-this.offsetTop)";
+                                 __const_htm__.mode_hash[3] = A9Util.txt2htm(hname);
+                                 __render_htm__.push(__const_htm__.mode_hash.join(''));
                               }
                           }
                           else
                           {
                               __const_htm__.mode_link[1] = addr;
                               __const_htm__.mode_link[3] = addr.substr(1);
+                              __render_htm__.push(__const_htm__.mode_link.join(''));
                           }
-                          /*
-                             SECT:2.2.4
-                             DICT:key
-                             AREA:name
-                             HASH:anchor
-                           */
-
                       }
                       else
                       {
                           addr = A9Util.getFile(addr,__root__.getInfo(A9Dom.type.root$path));
                           __const_htm__.mode_link[1] = addr;
                           __const_htm__.mode_link[3] = A9Util.txt2htm(dom.getInfo(A9Dom.type.mode_link$name));
+                          
                           if(__const_htm__.mode_link[3] == null || __const_htm__.mode_link[3] == '')
                              __const_htm__.mode_link[3] = addr;
+                          
+                          __render_htm__.push(__const_htm__.mode_link.join(''));
                       }
-                      __render_htm__.push(__const_htm__.mode_link.join(''));
                  }
                  break;
             case A9Dom.type.mode_$htm:

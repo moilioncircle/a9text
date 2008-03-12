@@ -878,8 +878,12 @@ var A9TextParser = function()
                     try{
                         __progress_bar__.work(ferLen);
                     }catch(e){};
-                    eval("var extParser = new "+extClzz+"();");
-                    extParser.parse(dom)
+                    try{
+                        eval("var extParser = new "+extClzz+"();");
+                        extParser.parse(dom)
+                    }catch(e){
+                        dom.putInfo(A9Dom.type.area$type,'text');
+                    }
                 });
             }
             catch(e)

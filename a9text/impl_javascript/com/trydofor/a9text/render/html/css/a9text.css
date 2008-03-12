@@ -87,6 +87,11 @@ pre{
     font-weight:bolder;
     margin:0px;
 }
+.a9text_anchor {
+    text-decoration: none;
+    color:#0066CC;
+    background-color:#dddddd;
+}
 .a9text_link {
     text-decoration: none;
     color:#0066CC;

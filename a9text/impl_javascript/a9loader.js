@@ -456,12 +456,12 @@ var __A9Loader__ = function()
     
     function __stderr__(info){
         if(__stdHandler__.stderr != null){
-            try{__stdHandler__.stderr(info);}catch(e){alert(e)};
+            try{__stdHandler__.stderr(info);}catch(e){alert("stderr:\n"+e)};
         }
     }
     function __stdout__(info){
         if(__stdHandler__.stdout != null){
-            try{__stdHandler__.stdout(info);}catch(e){alert(e)};
+            try{__stdHandler__.stdout(info);}catch(e){alert("stdout:\n"+e)};
         }
     }
     

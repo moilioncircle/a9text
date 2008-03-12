@@ -45,6 +45,15 @@
 [[a9text-spec_3.2=>./a9text-spec_3.2.txt]]
 [[home=>http://a9text.sf.net]]
 [[anchor=>]]
+[[=>#SECT:5.]]
+[[第5节=>#SECT:5.]]
+[[字典=>#DICT:多行字典]]
+[[=>#DICT:多行字典]]
+[[=>#AREA:代码1]]
+[[端口映射=>#AREA:代码1]]
+[[=>#HASH:自定义锚点]]
+[[我的锚点=>#HASH:自定义锚点]]
+
 
 1.4. HTML模式
 ^^^^^^^^^^^^
@@ -94,6 +103,8 @@
 地址]][[<=
 ./readme.txt]][!/-%150#FF0000&00FF00[
 背景绿色前景红色加粗倾斜下划]]
+
+[[自定义锚点=>]]
 
 3. 字典演示
 ^^^^^^^^^^^
@@ -158,7 +169,7 @@ col1       col2     col3    col4
 
 4.3. 控制台
 ^^^^^^^^^^^
-=============== tty : 端口映射 =================
+=============== tty 代码1:端口映射 =================
 /*
 加粗文字为标准输入
 红色文字为错误输出
@@ -283,10 +294,13 @@ package com.trydofor.a9text.test;
 
  /************************************************************
  * @author  : Shi Rongjiu (www.trydofor.com)
- * @version : 2008-2-18 / $Revision: 1.18 $
+ * @version : 2008-2-18 / $Revision: 1.19 $
  * @see     : requires/documents
  * ====================== change-logs =======================
  * $Log: not supported by cvs2svn $
+ * Revision 1.18  2008/03/11 12:58:07  trydofor
+ * gogo
+ *
  * Revision 1.17  2008/02/29 02:45:07  trydofor
  * a9text
  *
