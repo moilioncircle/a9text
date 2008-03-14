@@ -42,6 +42,7 @@ var A9TextParser = function()
     var __args_dict__ = {};
     var __args_area__ = {};
     var __args_hash__ = {};
+    var __args_join__ = {};
     var __join_ext__  = A9Conf.getConf("/root/parser/join/txt/@extn");
     
     var __simple_link__ = [];
@@ -77,6 +78,7 @@ var A9TextParser = function()
         __args_dict__ = {};
         __args_area__ = {};
         __args_hash__ = {};
+        __args_join__ = {};
         __total_lines__ = __lines__.length;
         
         // a9text root and info
@@ -114,7 +116,9 @@ var A9TextParser = function()
         a9dom.putInfo(A9Dom.type.root$dict,__args_dict__);
         a9dom.putInfo(A9Dom.type.root$sect,__args_sect__);
         a9dom.putInfo(A9Dom.type.root$area,__args_area__);
-        a9dom.putInfo(A9Dom.type.root$hash,__args_hash__);        
+        a9dom.putInfo(A9Dom.type.root$hash,__args_hash__);
+        a9dom.putInfo(A9Dom.type.root$join,__args_join__);
+             
         
         if(func instanceof Function){
             A9Loader.runAfterClassLoaded(function(){func(a9dom)});
@@ -744,6 +748,7 @@ var A9TextParser = function()
                     modeDom.putInfo(A9Dom.type.mode_join$name,joName);
                     modeDom.putInfo(A9Dom.type.mode_join$addr,joAddr);
                     modeDom.setText(modeTxt);
+                    if(joName != '') __args_join__[joName]=modeDom;
                 }
                 else // link __args_hash__
                 {

@@ -224,6 +224,7 @@ A9Dom.type={
     root$sect:"sect",
     root$area:"area",
     root$hash:"hash",
+    root$join:"join",
     root$path:"path",
     info:"info",
     //

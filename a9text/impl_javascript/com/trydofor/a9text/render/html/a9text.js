@@ -41,7 +41,7 @@ var A9TextRender = function()
     __const_htm__.mode_link = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"];
     __const_htm__.mode_hash = ["<a  href='javascript:{}' onclick='","$addr","' class='a9text_link'>","$name","</a>"];
     __const_htm__.mode_anchor = ["<span  class='a9text_anchor' id='HASH_","hash_id","'>","name","</span>"];
-    __const_htm__.mode_join = ["<span>","$value","</span>"];
+    __const_htm__.mode_join = ["<span id='JOIN_'>","$value","</span>"]; //TODO
     
     __const_htm__.mode_trig_st_head = "<strong>"; // !
     __const_htm__.mode_trig_em_head = "<em>"; // /
@@ -512,7 +512,12 @@ var A9TextRender = function()
                                  haddr = "HASH_";
                                  hdom = __root__.getInfo(A9Dom.type.root$hash)[hash];
                                  hname = hash;                              
+                              }else if(/JOIN/i.test(type)){
+                                 haddr = "JOIN_";
+                                 hdom = __root__.getInfo(A9Dom.type.root$join)[hash];
+                                 hname = hash;                              
                               }
+                              
                               var lname = dom.getInfo(A9Dom.type.mode_link$name);
                               if(lname != null && lname != '') hname = lname;
                               if(hname == null || hname == '') hname = addr.substr(1);
