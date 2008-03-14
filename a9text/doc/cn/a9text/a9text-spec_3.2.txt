@@ -241,7 +241,7 @@ para_line = head_blank 1*(9*"-" / 9*"=" / 9*"#" ) char_line
 2.5. 字典(dict)
 ^^^^^^^^^^^^^^^
 dict = head_blank dict_key *char_blank dict_token dict_val
-dict_key   = /\[?[ 　\t^`^@#\$%\^&\*\(\)\{\}\[\]\:\;'",<.>\?/</.>=+\r\n]+\]?/ ;非标点和空白
+dict_key   = 1*char
 dict_token = /:{2,}/
 dict_val   = *1char_line 1*para
 
