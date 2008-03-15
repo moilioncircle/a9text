@@ -33,7 +33,7 @@ try{
                 ifr.setAttribute('src','about:blank');
                 ifr.setAttribute('frameborder','0',0);
                 ifr.setAttribute('frameSpacing','0');
-                ifr.setAttribute('style','overflow-x:scroll;overflow-y:hidden;');
+                ifr.setAttribute('style','overflow-x:auto;overflow-y:hidden;');
                 //ifr.setAttribute('scrolling','no');
                 ifr.setAttribute('width','100%');
                 ifr.setAttribute('height',a9PreObjs[i].scrollHeight+20);
