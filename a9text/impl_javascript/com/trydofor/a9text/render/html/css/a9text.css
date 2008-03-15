@@ -108,6 +108,9 @@ pre{
     background-color:#999999;
     color:#FFFFFF;
 }
+.a9text_area_syntax{
+    width:100%;
+}
 .a9text_area_syntax_border{
     border:1px dashed #666699;
 }
