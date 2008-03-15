@@ -745,9 +745,40 @@ var A9TextParser = function()
                     }
                     //
                     var modeDom = dom.newChild(A9Dom.type.mode_join);
+                    modeDom.setText(modeTxt);
                     modeDom.putInfo(A9Dom.type.mode_join$name,joName);
                     modeDom.putInfo(A9Dom.type.mode_join$addr,joAddr);
-                    modeDom.setText(modeTxt);
+                    
+                    if(modeDom.prevBrother()!=null || todoStr != null) // round
+                    {
+                        modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_round);
+                    }
+                    else
+                    {
+                        var pt = dom.getTier();
+                        var ppb = dom.prevBrother();
+                        if(ppb == null) // first para
+                        {
+                            if( pt== 0)
+                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_left);
+                            else if(pt>10)
+                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_right);
+                            else
+                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_center);
+                        }
+                        else
+                        {
+                            var ppt = ppb.getTier();
+                            if(pt<=ppt)
+                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_left);
+                            else if((pt-ppt)>10)
+                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_right);
+                            else
+                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_center);
+                        }
+                    }
+                    
+
                     if(joName != '') __args_join__[joName]=modeDom;
                 }
                 else // link __args_hash__ TODO
@@ -762,6 +793,38 @@ var A9TextParser = function()
                     modeDom.putInfo(A9Dom.type.mode_link$join,jo);
                     modeDom.putInfo(A9Dom.type.mode_link$name,lkName);
                     modeDom.putInfo(A9Dom.type.mode_link$addr,A9Util.getFile(lkAddr,__super__.getInfo(A9Dom.type.root$path)));
+                    
+                    if(jo)
+                    {
+                        if(modeDom.prevBrother()!=null || todoStr != null) // round
+                        {
+                            modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_round);
+                        }
+                        else
+                        {
+                            var pt = dom.getTier();
+                            var ppb = dom.prevBrother();
+                            if(ppb == null) // first para
+                            {
+                                if( pt== 0)
+                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_left);
+                                else if(pt>10)
+                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_right);
+                                else
+                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_center);
+                            }
+                            else
+                            {
+                                var ppt = ppb.getTier();
+                                if(pt<=ppt)
+                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_left);
+                                else if((pt-ppt)>10)
+                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_right);
+                                else
+                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_center);
+                            }
+                        }
+                    }
                     
                     if(lkAddr == '')__args_hash__[lkName]=modeDom;
                 }

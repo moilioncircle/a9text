@@ -29,6 +29,9 @@ boolean hasNext()
 A9Dom nextChild()
     获得下一个child,如果没有或到最后一个child以后再调用,返回null;
 
+A9Dom prevBrother()
+    获得和前一个本身平级的兄弟节点
+    
 A9Dom newChild(String type)
     得到一个新的child,推荐使用
 
@@ -55,8 +58,8 @@ var A9Dom = function(parent,type)
     var __text__ = null;
     var __data__ = null;
     var __info__ = {};
+    var __prior__ = null;
     var __parent__ = null;
-
     //
     var __childnow__ = 0;
     var __childseq__ = [];
@@ -126,6 +129,11 @@ var A9Dom = function(parent,type)
         return __childmap__[__childseq__[__childnow__++]];
     }
     
+    this.prevBrother = function()
+    {
+        return __prior__;
+    }
+    
     //
     this.getChildById = function(id)
     {
@@ -142,6 +150,9 @@ var A9Dom = function(parent,type)
     {
         var r = new A9Dom (this,type);
         
+        if(__childseq__.length>0){
+            __prior__ = __childmap__[__childseq__[__childseq__.length-1]];
+        }
         __childseq__[__childseq__.length] = r.getId();
         __childmap__[r.getId()] = r;
         return r;
@@ -266,6 +277,7 @@ A9Dom.type={
     mode_join$algn_left:"mode:algn_left",
     mode_join$algn_center:"mode:algn_center",
     mode_join$algn_right:"mode:algn_right",
+    mode_join$algn_round:"mode:algn_round",
     mode_link:"mode:link",
     mode_link$join:"join",
     mode_link$name:"name",
