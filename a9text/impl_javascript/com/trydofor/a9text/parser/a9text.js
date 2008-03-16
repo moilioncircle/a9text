@@ -748,36 +748,7 @@ var A9TextParser = function()
                     modeDom.setText(modeTxt);
                     modeDom.putInfo(A9Dom.type.mode_join$name,joName);
                     modeDom.putInfo(A9Dom.type.mode_join$addr,joAddr);
-                    
-                    if(modeDom.prevBrother()!=null || todoStr != null) // round
-                    {
-                        modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_round);
-                    }
-                    else
-                    {
-                        var pt = dom.getTier();
-                        var ppb = dom.prevBrother();
-                        if(ppb == null) // first para
-                        {
-                            if( pt== 0)
-                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_left);
-                            else if(pt>10)
-                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_right);
-                            else
-                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_center);
-                        }
-                        else
-                        {
-                            var ppt = ppb.getTier();
-                            if(pt<=ppt)
-                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_left);
-                            else if((pt-ppt)>10)
-                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_right);
-                            else
-                                modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_center);
-                        }
-                    }
-                    
+                    __setJoinAlign__(dom,modeDom,todoStr);
 
                     if(joName != '') __args_join__[joName]=modeDom;
                 }
@@ -794,44 +765,14 @@ var A9TextParser = function()
                     modeDom.putInfo(A9Dom.type.mode_link$name,lkName);
                     modeDom.putInfo(A9Dom.type.mode_link$addr,A9Util.getFile(lkAddr,__super__.getInfo(A9Dom.type.root$path)));
                     
-                    if(jo)
-                    {
-                        if(modeDom.prevBrother()!=null || todoStr != null) // round
-                        {
-                            modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_round);
-                        }
-                        else
-                        {
-                            var pt = dom.getTier();
-                            var ppb = dom.prevBrother();
-                            if(ppb == null) // first para
-                            {
-                                if( pt== 0)
-                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_left);
-                                else if(pt>10)
-                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_right);
-                                else
-                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_center);
-                            }
-                            else
-                            {
-                                var ppt = ppb.getTier();
-                                if(pt<=ppt)
-                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_left);
-                                else if((pt-ppt)>10)
-                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_right);
-                                else
-                                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_center);
-                            }
-                        }
-                    }
+                    if(jo)__setJoinAlign__(dom,modeDom,todoStr);
                     
                     if(lkAddr == '')__args_hash__[lkName]=modeDom;
                 }
             }
         }
     }
-        
+    
     function __parseArea__() //escape case
     {
         var eqpos = __lines__[__index__].indexOf('=');
@@ -1000,6 +941,7 @@ var A9TextParser = function()
     }
     
     /* helper */
+    
     function __hasLine__()
     {
         return __index__ < __lines__.length;
@@ -1079,5 +1021,42 @@ var A9TextParser = function()
         }
         
         return doneStr + todoStr;
+    }
+        
+    function __setJoinAlign__(dom,modeDom,todoStr)
+    {
+        var pb = modeDom.prevBrother();
+        if( pb != null) // inline
+        {
+            modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_ilinside);
+        }
+        else if (pb == null && (todoStr == null || todoStr == '')) // inline
+        {
+            modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_illeft);
+        }
+        else // new line
+        {
+            var pt = dom.getTier();
+            var ppb = dom.prevBrother();
+            if(ppb == null) // first child of para
+            {
+                if( pt== 0)
+                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_nlleft);
+                else if(pt>10)
+                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_nlright);
+                else
+                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_nlcenter);
+            }
+            else
+            {
+                var ppt = ppb.getTier();
+                if(pt<=ppt)
+                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_nlleft);
+                else if((pt-ppt)>10)
+                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_nlright);
+                else
+                    modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_nlcenter);
+            }
+        }
     }
 }
