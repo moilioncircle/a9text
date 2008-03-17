@@ -41,11 +41,11 @@ var A9TextRender = function()
     __const_htm__.mode_hash = ["<a  href='javascript:{}' onclick='","$addr","' class='a9text_link'>","$name","</a>"];
     __const_htm__.mode_anchor = ["<span  class='a9text_anchor' id='HASH_","hash_id","'>","name","</span>"];
     __const_htm__.mode_link = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"];
-    __const_htm__.mode_joinlink = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$join","</a>"]; //TODO
-    __const_htm__.mode_joinline = ["<div>","$join","</div>"]; //TODO
+    __const_htm__.mode_joinlink = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$join","</a>"];
+    __const_htm__.mode_joinline = ["<div style='text-align: ","align",";'>","$joininline","</div>"];
     __const_htm__.mode_join_etc = ["<a id='JOIN_","join_id","' href='","$addr","' class='a9text_link' target='_blank'>","$join","</a>"];
-    __const_htm__.mode_join$img = ["<span id='JOIN_'>","$value","</span>"]; //TODO
-    __const_htm__.mode_join$swf = ["<span id='JOIN_'>","$value","</span>"]; //TODO
+    __const_htm__.mode_join$img = ["<img id='JOIN_","join_id","' src='","$src","' alt='","$name","' ","align",""," border='0'/>"];
+    __const_htm__.mode_join$swf = ["<object  id='JOIN_","join_id","' ",""," classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0'><param name='movie' value='","$swf","'><param name='quality' value='high'><embed ",""," src='","$swf","' quality='high' pluginspage='http://www.macromedia.com/go/getflashplayer' type='application/x-shockwave-flash'></embed></object>"];
     
     __const_htm__.mode_trig_st_head = "<strong>"; // !
     __const_htm__.mode_trig_em_head = "<em>"; // /
@@ -477,26 +477,61 @@ var A9TextRender = function()
                 }
                 else
                 {
-                    //__join_extn__['img']
-                    //__join_extn__['swf']
-                    var extnm = joAddr.substr(joAddr.lastIndexOf("."));
+                    var extnm = joAddr.substr(joAddr.lastIndexOf(".")).toLowerCase();
                     var jtype = dom.getInfo(A9Dom.type.mode_join$algn);
-                    
+                    var bsize = "";
+                    var sw = dom.getInfo(A9Dom.type.mode_join$width);
+                    if( sw != null && sw != '') bsize+=" width='"+sw+"'"
+                    var sh = dom.getInfo(A9Dom.type.mode_join$height);
+                    if( sh != null && sh != '') bsize+=" height='"+sh+"'"
+                    var jtext = "";
+
                     if(extnm.length >0 && __join_extn__['img'].indexOf(extnm)>=0) // img
                     {
-                        
+                        __const_htm__.mode_join$img[1] = dom.getId();
+                        __const_htm__.mode_join$img[3] = joAddr;
+                        __const_htm__.mode_join$img[5] = joName;
+                        __const_htm__.mode_join$img[7] = (jtype == A9Dom.type.mode_join$algn_illeft)? align="align='left'":"";
+                        __const_htm__.mode_join$img[8] = bsize;
+                        jtext = __const_htm__.mode_join$img.join('');
                     }
                     else if(extnm.length >0 && __join_extn__['swf'].indexOf(extnm)>=0) // swf
                     {
-                        
+                        __const_htm__.mode_join$swf[1] = dom.getId();
+                        __const_htm__.mode_join$swf[3] = bsize;
+                        __const_htm__.mode_join$swf[5] = joAddr;
+                        __const_htm__.mode_join$swf[7] = bsize;
+                        __const_htm__.mode_join$swf[9] = joAddr;
+                        jtext = __const_htm__.mode_join$swf.join('');
                     }
-                    else
+                    else // others as link
                     {
                         __const_htm__.mode_join_etc[1] = dom.getId();
-                        __const_htm__.mode_join_etc[3] = A9Util.txt2htm(joAddr);
+                        __const_htm__.mode_join_etc[3] = joAddr;
                         __const_htm__.mode_join_etc[5] = A9Util.txt2htm(joName==''?joAddr:joName);
-                        __render_htm__.push(__const_htm__.mode_join_etc.join(''));
+                        jtext = __const_htm__.mode_join_etc.join('');
                     }
+                    
+                    if(jtype == A9Dom.type.mode_join$algn_nlleft)
+                    {
+                        __const_htm__.mode_joinline[1] = "left";
+                        __const_htm__.mode_joinline[3] = jtext;
+                        jtext = __const_htm__.mode_joinline.join('');
+                    }
+                    else if (jtype == A9Dom.type.mode_join$algn_nlcenter)
+                    {
+                        __const_htm__.mode_joinline[1] = "center";
+                        __const_htm__.mode_joinline[3] = jtext;
+                        jtext = __const_htm__.mode_joinline.join('');
+                    }
+                    else if (jtype == A9Dom.type.mode_join$algn_nlright)
+                    {
+                        __const_htm__.mode_joinline[1] = "right";
+                        __const_htm__.mode_joinline[3] = jtext;
+                        jtext = __const_htm__.mode_joinline.join('');
+                    }
+                    
+                    __render_htm__.push(jtext);
                 }
                 break;
             case A9Dom.type.mode_link:
@@ -570,13 +605,59 @@ var A9TextRender = function()
                       else
                       {
                           addr = A9Util.getFile(addr,__root__.getInfo(A9Dom.type.root$path));
-                          __const_htm__.mode_link[1] = addr;
-                          __const_htm__.mode_link[3] = A9Util.txt2htm(dom.getInfo(A9Dom.type.mode_link$name));
-                          
-                          if(__const_htm__.mode_link[3] == null || __const_htm__.mode_link[3] == '')
-                             __const_htm__.mode_link[3] = addr;
-                          
-                          __render_htm__.push(__const_htm__.mode_link.join(''));
+                          var isDone = false;
+                          if(dom.getInfo(A9Dom.type.mode_link$join)){
+                              var joAddr = A9Util.getFile(dom.getInfo(A9Dom.type.mode_link$name),__root__.getInfo(A9Dom.type.root$path));
+                              var extnm = joAddr.substr(joAddr.lastIndexOf(".")).toLowerCase();
+                              var jtype = dom.getInfo(A9Dom.type.mode_join$algn);
+                              if(extnm.length >0 && __join_extn__['img'].indexOf(extnm)>=0) // img
+                              {
+                                  __const_htm__.mode_join$img[1] = dom.getId();
+                                  __const_htm__.mode_join$img[3] = joAddr;
+                                  __const_htm__.mode_join$img[5] = joAddr;
+                                  __const_htm__.mode_join$img[7] = "";
+                                  
+                                  var jtext = __const_htm__.mode_join$img.join('');
+                                  __const_htm__.mode_joinlink[1] = addr;
+                                  __const_htm__.mode_joinlink[3] = jtext;
+                                  
+                                  
+                                  jtext = __const_htm__.mode_joinlink.join('');
+                                  if(jtype == A9Dom.type.mode_join$algn_nlleft)
+                                  {
+                                      __const_htm__.mode_joinline[1] = "left";
+                                      __const_htm__.mode_joinline[3] = jtext;
+                                      jtext = __const_htm__.mode_joinline.join('');
+                                  }
+                                  else if (jtype == A9Dom.type.mode_join$algn_nlcenter)
+                                  {
+                                      __const_htm__.mode_joinline[1] = "center";
+                                      __const_htm__.mode_joinline[3] = jtext;
+                                      jtext = __const_htm__.mode_joinline.join('');
+                                  }
+                                  else if (jtype == A9Dom.type.mode_join$algn_nlright)
+                                  {
+                                      __const_htm__.mode_joinline[1] = "right";
+                                      __const_htm__.mode_joinline[3] = jtext;
+                                      jtext = __const_htm__.mode_joinline.join('');
+                                  }
+                                  
+                                  __render_htm__.push(jtext);
+                                  
+                                  isDone = true;
+                              }
+                          }
+                          //
+                          if(!isDone)
+                          {
+                              __const_htm__.mode_link[1] = addr;
+                              __const_htm__.mode_link[3] = A9Util.txt2htm(dom.getInfo(A9Dom.type.mode_link$name));
+                              
+                              if(__const_htm__.mode_link[3] == null || __const_htm__.mode_link[3] == '')
+                                 __const_htm__.mode_link[3] = addr;
+                              
+                              __render_htm__.push(__const_htm__.mode_link.join(''));
+                          }
                       }
                  }
                  break;

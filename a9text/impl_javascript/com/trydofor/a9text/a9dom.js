@@ -129,9 +129,14 @@ var A9Dom = function(parent,type)
         return __childmap__[__childseq__[__childnow__++]];
     }
     
-    this.prevBrother = function()
+    this.getPrevBrother = function()
     {
         return __prior__;
+    }
+    
+    this.setPrevBrother = function(prior)
+    {
+        __prior__ = prior;
     }
     
     //
@@ -151,7 +156,7 @@ var A9Dom = function(parent,type)
         var r = new A9Dom (this,type);
         
         if(__childseq__.length>0){
-            __prior__ = __childmap__[__childseq__[__childseq__.length-1]];
+            r.setPrevBrother(__childmap__[__childseq__[__childseq__.length-1]]);
         }
         __childseq__[__childseq__.length] = r.getId();
         __childmap__[r.getId()] = r;
@@ -273,6 +278,8 @@ A9Dom.type={
     mode_join:"mode:join",
     mode_join$name:"mode:name",
     mode_join$addr:"mode:addr",
+    mode_join$width:"mode:width",
+    mode_join$height:"mode:height",
     mode_join$algn:"mode:algn",
     mode_join$algn_nlleft:"mode:algn_nlleft",
     mode_join$algn_nlcenter:"mode:algn_nlcenter",

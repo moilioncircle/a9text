@@ -28,7 +28,7 @@ var A9TextParser = function()
         para$line0 : /^\\*[ 　\t]*$/,
         mode_trig  : /\[(!|\/|_|\-|'|,|(#[0-9a-fA-F]{6})|(&[0-9a-fA-F]{6})|(%[0-9]+))+\[/,
         mode_link  : /\[\[.*=>/,
-        mode_join  : /\[\[.*<=/,
+        mode_join  : /\[((\d+%?)?\*(\d+%?)?)?\[.*<=/,
         mode_$htm  : /\[\*htm\[/
     };
     ////
@@ -681,20 +681,22 @@ var A9TextParser = function()
                 for(var i=toescape.length -1;i>=0;i--)
                     modeTxt = A9Util.trimEscape(modeTxt,toescape[i]);
                 
-                modeTxt = modeTxt.substr(modeTxt.indexOf('[',1)+1);
+                var modeHead = modeTxt.substr(1,modeTxt.indexOf('[',1)-1);
+                var modeBody = modeTxt.substr(modeTxt.indexOf('[',1)+1);
+                
                 //document.writeln("<br><font color=red>modeTxt:"+modeTxt+" || "+todoStr+"</font>");
                 
                 //
                 if(modeType == 1) //*htm
                 {
                     var modeDom = dom.newChild(A9Dom.type.mode_$htm);
-                    modeDom.setText(modeTxt);
+                    modeDom.setText(modeBody);
                 }
                 else if(modeType == 3) //join
                 {
-                    var jp = modeTxt.indexOf("<=");
-                    var joName = jp<=0?"":A9Util.trimBoth(modeTxt.substr(0,jp));
-                    var joAddr = A9Util.trimBoth(modeTxt.substr(jp+2));
+                    var jp = modeBody.indexOf("<=");
+                    var joName = jp<=0?"":A9Util.trimBoth(modeBody.substr(0,jp));
+                    var joAddr = A9Util.trimBoth(modeBody.substr(jp+2));
                     
                     if(A9Util.hasVariable(joAddr)) // join a variable
                     {
@@ -703,7 +705,7 @@ var A9TextParser = function()
                     else // join file
                     {
                         joAddr = A9Util.getFile(joAddr,__super__.getInfo(A9Dom.type.root$path));
-                        var extnm = joAddr.substr(joAddr.lastIndexOf("."));
+                        var extnm = joAddr.substr(joAddr.lastIndexOf(".")).toLowerCase();
                         
                         if(__join_ext__.indexOf(extnm) >= 0) // join a9text to parse
                         {
@@ -745,22 +747,29 @@ var A9TextParser = function()
                     }
                     //
                     var modeDom = dom.newChild(A9Dom.type.mode_join);
-                    modeDom.setText(modeTxt);
+                    modeDom.setText(modeBody);
                     modeDom.putInfo(A9Dom.type.mode_join$name,joName);
                     modeDom.putInfo(A9Dom.type.mode_join$addr,joAddr);
+                    if(modeHead != null && modeHead != ''){
+                        var pstar = modeHead.indexOf('*');
+                        if(pstar >=0){
+                            modeDom.putInfo(A9Dom.type.mode_join$width,modeHead.substr(0,pstar));
+                            modeDom.putInfo(A9Dom.type.mode_join$height,modeHead.substr(pstar+1));
+                        }
+                    }
                     __setJoinAlign__(dom,modeDom,todoStr);
 
                     if(joName != '') __args_join__[joName]=modeDom;
                 }
                 else // link __args_hash__
                 {
-                    var lp = modeTxt.indexOf("=>");
-                    var jo = (modeTxt.indexOf("<=")==0);
-                    var lkName = A9Util.trimBoth(modeTxt.substring(jo?2:0,lp));
-                    var lkAddr = A9Util.trimBoth(modeTxt.substr(lp+2));
+                    var lp = modeBody.indexOf("=>");
+                    var jo = (modeBody.indexOf("<=")==0);
+                    var lkName = A9Util.trimBoth(modeBody.substring(jo?2:0,lp));
+                    var lkAddr = A9Util.trimBoth(modeBody.substr(lp+2));
                     
                     var modeDom = dom.newChild(A9Dom.type.mode_link);
-                    modeDom.setText(modeTxt);
+                    modeDom.setText(modeBody);
                     modeDom.putInfo(A9Dom.type.mode_link$join,jo);
                     modeDom.putInfo(A9Dom.type.mode_link$name,lkName);
                     modeDom.putInfo(A9Dom.type.mode_link$addr,A9Util.getFile(lkAddr,__super__.getInfo(A9Dom.type.root$path)));
@@ -1025,19 +1034,20 @@ var A9TextParser = function()
         
     function __setJoinAlign__(dom,modeDom,todoStr)
     {
-        var pb = modeDom.prevBrother();
+        var pb = modeDom.getPrevBrother();
+        
         if( pb != null) // inline
         {
             modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_ilinside);
         }
-        else if (pb == null && (todoStr == null || todoStr == '')) // inline
+        else if (pb == null && (todoStr != null && todoStr != '')) // inline
         {
             modeDom.putInfo(A9Dom.type.mode_join$algn,A9Dom.type.mode_join$algn_illeft);
         }
         else // new line
         {
             var pt = dom.getTier();
-            var ppb = dom.prevBrother();
+            var ppb = dom.getPrevBrother();
             if(ppb == null) // first child of para
             {
                 if( pt== 0)
