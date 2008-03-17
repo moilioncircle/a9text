@@ -42,10 +42,10 @@ var A9TextRender = function()
     __const_htm__.mode_anchor = ["<span  class='a9text_anchor' id='HASH_","hash_id","'>","name","</span>"];
     __const_htm__.mode_link = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"];
     __const_htm__.mode_joinlink = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"]; //TODO
+    __const_htm__.mode_joinline = ["<span id='JOIN_'>","$value","</span>"]; //TODO
+    __const_htm__.mode_join_etc = ["<span id='JOIN_'>","$value","</span>"]; //TODO
     __const_htm__.mode_join$img = ["<span id='JOIN_'>","$value","</span>"]; //TODO
     __const_htm__.mode_join$swf = ["<span id='JOIN_'>","$value","</span>"]; //TODO
-    __const_htm__.mode_join = ["<span id='JOIN_'>","$value","</span>"]; //TODO
-    
     
     __const_htm__.mode_trig_st_head = "<strong>"; // !
     __const_htm__.mode_trig_em_head = "<em>"; // /
@@ -471,8 +471,8 @@ var A9TextRender = function()
                 }
                 else
                 {
-                     __const_htm__.mode_join[1] = A9Util.txt2htm(joAddr);
-                     __render_htm__.push(__const_htm__.mode_join.join(''));
+                     __const_htm__.mode_join_etc[1] = A9Util.txt2htm(joAddr);
+                     __render_htm__.push(__const_htm__.mode_join_etc.join(''));
                 }
                 break;
             case A9Dom.type.mode_link:
