@@ -690,7 +690,7 @@ var A9TextParser = function()
                     var modeDom = dom.newChild(A9Dom.type.mode_$htm);
                     modeDom.setText(modeTxt);
                 }
-                else if(modeType == 3) //join TODO
+                else if(modeType == 3) //join
                 {
                     var jp = modeTxt.indexOf("<=");
                     var joName = jp<=0?"":A9Util.trimBoth(modeTxt.substr(0,jp));
@@ -752,7 +752,7 @@ var A9TextParser = function()
 
                     if(joName != '') __args_join__[joName]=modeDom;
                 }
-                else // link __args_hash__ TODO
+                else // link __args_hash__
                 {
                     var lp = modeTxt.indexOf("=>");
                     var jo = (modeTxt.indexOf("<=")==0);

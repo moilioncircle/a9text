@@ -41,9 +41,9 @@ var A9TextRender = function()
     __const_htm__.mode_hash = ["<a  href='javascript:{}' onclick='","$addr","' class='a9text_link'>","$name","</a>"];
     __const_htm__.mode_anchor = ["<span  class='a9text_anchor' id='HASH_","hash_id","'>","name","</span>"];
     __const_htm__.mode_link = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"];
-    __const_htm__.mode_joinlink = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$name","</a>"]; //TODO
-    __const_htm__.mode_joinline = ["<span id='JOIN_'>","$value","</span>"]; //TODO
-    __const_htm__.mode_join_etc = ["<span id='JOIN_'>","$value","</span>"]; //TODO
+    __const_htm__.mode_joinlink = ["<a href='","$addr","' class='a9text_link' target='_blank'>","$join","</a>"]; //TODO
+    __const_htm__.mode_joinline = ["<div>","$join","</div>"]; //TODO
+    __const_htm__.mode_join_etc = ["<a id='JOIN_","join_id","' href='","$addr","' class='a9text_link' target='_blank'>","$join","</a>"];
     __const_htm__.mode_join$img = ["<span id='JOIN_'>","$value","</span>"]; //TODO
     __const_htm__.mode_join$swf = ["<span id='JOIN_'>","$value","</span>"]; //TODO
     
@@ -76,6 +76,8 @@ var A9TextRender = function()
     var __render_css__ = [];
     var __render_js__  = [];
     
+    var __join_extn__ = {'img':'','swf':''};
+    
     var __root__ = null;
     var __last_dom__ = null;
     
@@ -97,8 +99,12 @@ var A9TextRender = function()
         __render_css__ = [];
         __render_js__  = [];
         
-        __render_css__.push(A9Conf.getConf("/root/render/html/common/css/a9text/@path"));
-        
+        var jimg = A9Conf.getConf("/root/render/html/join/img/@extn");
+        var jswf = A9Conf.getConf("/root/render/html/join/swf/@extn");
+        if(jimg != null && jimg != '')__join_extn__['img'] = jimg;
+        if(jswf != null && jswf != '')__join_extn__['swf'] = jswf;
+
+        __render_css__.push(A9Conf.getConf("/root/render/html/common/css/a9text/@path"));        
         //
         __total_doms__ = A9Dom.__counter__ - a9dom.getId();
         __root_domid__ = a9dom.getId();
@@ -471,8 +477,26 @@ var A9TextRender = function()
                 }
                 else
                 {
-                     __const_htm__.mode_join_etc[1] = A9Util.txt2htm(joAddr);
-                     __render_htm__.push(__const_htm__.mode_join_etc.join(''));
+                    //__join_extn__['img']
+                    //__join_extn__['swf']
+                    var extnm = joAddr.substr(joAddr.lastIndexOf("."));
+                    var jtype = dom.getInfo(A9Dom.type.mode_join$algn);
+                    
+                    if(extnm.length >0 && __join_extn__['img'].indexOf(extnm)>=0) // img
+                    {
+                        
+                    }
+                    else if(extnm.length >0 && __join_extn__['swf'].indexOf(extnm)>=0) // swf
+                    {
+                        
+                    }
+                    else
+                    {
+                        __const_htm__.mode_join_etc[1] = dom.getId();
+                        __const_htm__.mode_join_etc[3] = A9Util.txt2htm(joAddr);
+                        __const_htm__.mode_join_etc[5] = A9Util.txt2htm(joName==''?joAddr:joName);
+                        __render_htm__.push(__const_htm__.mode_join_etc.join(''));
+                    }
                 }
                 break;
             case A9Dom.type.mode_link:
