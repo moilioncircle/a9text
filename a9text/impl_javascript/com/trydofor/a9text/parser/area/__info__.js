@@ -1,8 +1,10 @@
 ﻿/* UTF8(BOM)  GPL  trydofor.com  May.2007 */
 // __info__('js_file_name',['public_members'],['dependences']);
 __info__('bash.js',['AreaBashParser'],['com.trydofor.a9text.parser.area.common.syntaxcode']);
+__info__('b64.js',['AreaB64Parser']);
 __info__('c.js',['AreaCParser'],['com.trydofor.a9text.parser.area.common.syntaxcode']);
 __info__('cpp.js',['AreaCppParser'],['com.trydofor.a9text.parser.area.common.syntaxcode']);
+__info__('des.js',['AreaDesParser'],['com.trydofor.a9text.parser.area.common.b64']);
 __info__('java.js',['AreaJavaParser'],['com.trydofor.a9text.parser.area.common.syntaxcode']);
 __info__('js.js',['AreaJsParser'],['com.trydofor.a9text.parser.area.common.syntaxcode']);
 __info__('sql.js',['AreaSQLParser'],['com.trydofor.a9text.parser.area.common.syntaxcode']);
