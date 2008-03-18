@@ -76,7 +76,7 @@ try{
                 var doc = ifr.contentWindow.document;
                 doc.open();
                 doc.write("<body>"+a9htm+"</body><scr"+"ipt>window.setTimeout(function(){parent.document.getElementById(\"a9text_"+
-                    a9dom.getId()+"\").style.height=document.body.scrollHeight},100);</scr"+"ipt>");
+                    a9dom.getId()+"\").style.height=document.body.scrollHeight+40},100);</scr"+"ipt>");
                 doc.close();
             });
         });

@@ -36,7 +36,7 @@ try{
                 ifr.setAttribute('style','overflow-x:auto;overflow-y:auto;');
                 //ifr.setAttribute('scrolling','no');
                 ifr.setAttribute('width','100%');
-                ifr.setAttribute('height',a9PreObjs[i].scrollHeight+20);
+                ifr.setAttribute('height',a9PreObjs[i].scrollHeight+40);
                 a9PreObjs[i].parentNode.replaceChild(ifr,a9PreObjs[i]);
                 var ifrDoc = ifr.contentWindow.document;
                 ifrDoc.open();
@@ -67,7 +67,7 @@ try{
                         var doc = ifr.contentWindow.document;
                         doc.open();
                         doc.write("<body>"+a9htm+"</body><scr"+"ipt>window.setTimeout(function(){parent.document.getElementById(\"a9text_"+
-                            rrdom.getId()+"\").style.height=document.body.scrollHeight},100);</scr"+"ipt>");
+                            rrdom.getId()+"\").style.height=document.body.scrollHeight+40},100);</scr"+"ipt>");
                         doc.close();
                     });
                 });
