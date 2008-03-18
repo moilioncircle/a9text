@@ -12,9 +12,8 @@ A9Conf.__EnvPath__ = {
 };
 
 //
-A9Conf.getConf = function(xpath)
+A9Conf.valueEnv = function(str)
 {
-    var str = A9Conf.getNodeTextOrAttr(xpath);
     if(str == null || str == "") return "";
     
     for(var key in A9Conf.__EnvPath__)
@@ -26,4 +25,10 @@ A9Conf.getConf = function(xpath)
     }
     
     return str;
+}
+
+A9Conf.getConf = function(xpath)
+{
+    var str = A9Conf.getNodeTextOrAttr(xpath);
+    return A9Conf.valueEnv(str);
 }

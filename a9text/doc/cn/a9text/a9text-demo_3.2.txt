@@ -298,10 +298,13 @@ package com.trydofor.a9text.test;
 
  /************************************************************
  * @author  : Shi Rongjiu (www.trydofor.com)
- * @version : 2008-2-18 / $Revision: 1.20 $
+ * @version : 2008-2-18 / $Revision: 1.21 $
  * @see     : requires/documents
  * ====================== change-logs =======================
  * $Log: not supported by cvs2svn $
+ * Revision 1.20  2008/03/17 12:19:29  trydofor
+ * goo
+ *
  * Revision 1.19  2008/03/12 06:30:50  trydofor
  * xx
  *
@@ -357,6 +360,7 @@ public abstract class Live {
 ==================================================
 
 4.8. sql
+^^^^^^^^
 ============== sql : test =====================
 SELECT COUNT(*), 1+0.01 FROM USER -- comment1
 GO
@@ -365,6 +369,14 @@ VALUES('', '', NULL) // comment3
 GO
 ==================================================
 
+4.9. des
+^^^^^^^^^
+================== des : passwd is "没有密码" ================
+QHmH WRPE F5xq DbQd Gh8Y pFxW fJvL NV6G EKIY +u7o D3uy Emh8 WrRn rALh rwuS o8K9
+RZVe A3GS ckpP Ipuk v+MG HLWc QMIU b3iW d3Wl 9UJH /E+V quR2 LONu 1hpU 7PxY VB5J
+2isZ +50+ /0Fk ccN6 kdHZ dBQa NW/K 1xYG rF2n iMZp xuTG cJbd acKV WRG+ jiLp pPvS
+I0Il 9Lc3 u3/l 2myB JqmA hA==
+==============================================================
 5. 列表演示
 ^^^^^^^^^^^
 5.1. 条目
