@@ -238,7 +238,7 @@ A9Util.isEscape = function (text,pos,escc)
 A9Util.hasVariable = function (str)
 {
     if(str == null || str == "") return false;
-    var rgxp = /\$\{?\w+\}?\W+/;
+    var rgxp = /\$\{?\w+\}?/;
     var pos = str.search(rgxp);
     while(pos >=0)
     {
