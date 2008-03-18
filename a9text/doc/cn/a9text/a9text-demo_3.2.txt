@@ -298,10 +298,13 @@ package com.trydofor.a9text.test;
 
  /************************************************************
  * @author  : Shi Rongjiu (www.trydofor.com)
- * @version : 2008-2-18 / $Revision: 1.21 $
+ * @version : 2008-2-18 / $Revision: 1.22 $
  * @see     : requires/documents
  * ====================== change-logs =======================
  * $Log: not supported by cvs2svn $
+ * Revision 1.21  2008/03/18 12:29:41  trydofor
+ * des
+ *
  * Revision 1.20  2008/03/17 12:19:29  trydofor
  * goo
  *
@@ -369,8 +372,8 @@ VALUES('', '', NULL) // comment3
 GO
 ==================================================
 
-4.9. des
-^^^^^^^^^
+4.9. des 加密域
+^^^^^^^^^^^^^^^
 ================== des : passwd is "没有密码" ================
 QHmH WRPE F5xq DbQd Gh8Y pFxW fJvL NV6G EKIY +u7o D3uy Emh8 WrRn rALh rwuS o8K9
 RZVe A3GS ckpP Ipuk v+MG HLWc QMIU b3iW d3Wl 9UJH /E+V quR2 LONu 1hpU 7PxY VB5J
