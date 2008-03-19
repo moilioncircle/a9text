@@ -39,7 +39,7 @@ var AreaTableRender = function()
         if(info!=null && info != "")
         {
             __const_htm__.table$info[1] = a9dom.getTier();
-            __const_htm__.table$info[3] = A9Util.txt2htm(info,txt2htm);
+            __const_htm__.table$info[3] = A9Util.txt2htm("<table>"+info,txt2htm);
             __render_htm__.push(__const_htm__.table$info.join(''));
         }
         

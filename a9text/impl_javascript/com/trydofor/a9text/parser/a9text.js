@@ -17,7 +17,7 @@ var A9TextParser = function()
         list$digt  : /^[ 　\t]*\\*([0-9]+)[ 　\t]*[\.\)][ 　\t]+/,
         list$lchr  : /^[ 　\t]*\\*([a-z]+)[ 　\t]*[\.\)][ 　\t]+/,
         list$uchr  : /^[ 　\t]*\\*([A-Z]+)[ 　\t]*[\.\)][ 　\t]+/,
-        dict       : /^[ 　\t]*\[?(.+)[ 　\t]*\]?\\*(:{2,})/,
+        dict       : /^[ 　\t]*\[?([^:\]]+)[ 　\t]*\]?\\*(:{2,})/,
         area$head  : /^[ 　\t]*\\*={9,}[ 　\t]*(\*?\w+)[ 　\t]*(.*[^=])?={9,}$/,
         area$args  : /^[ 　\t]*\\*args:[ 　\t]*(.*)/,
         area$foot  : /^[ 　\t]*\\*={9,}$/,
@@ -802,7 +802,7 @@ var A9TextParser = function()
         if(info != null)
         {
             var ni =  info.indexOf(':');
-            if(ni>0){
+            if(ni>=0){
                 name = A9Util.trimRight(info.substr(0,ni));
                 info =  A9Util.trimLeft(info.substr(ni+1));
             }

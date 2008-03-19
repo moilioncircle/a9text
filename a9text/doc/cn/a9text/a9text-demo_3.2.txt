@@ -1,10 +1,10 @@
 ﻿阿九文本演示
 ^^^^^^^^^^^^
-- 作者: 史荣久(trydofor.com)
-- 授权: 共同创作
-- 创建: 2007-09-06
-- 修改: 2007-09-06
-\- 这个不是 info
+    - 作者: 史荣久(trydofor.com)
+    - 授权: 共同创作
+    - 创建: 2007-09-06
+    - 修改: 2007-09-06
+    \- 这个不是 info
 ============================
 
 0. 目录
@@ -15,434 +15,439 @@
 ^^^^^^^^^^^
 1.1. 修饰模式
 ^^^^^^^^^^^^^
-\[![加粗]][![加粗]]
-\[/[倾斜]][/[倾斜]]
-\[_[下划]][_[下划]]
-\[-[删除]][-[删除]]
-\['[上标]]['[上标]]
-\[,[下标]][,[下标]]
-\[%150[放大150]][%150[放大150]]
-\[#FF0000[前景红色]][#FF0000[前景红色]]
-\[&00FF00[背景绿色]][&00FF00[背景绿色]]
-\[!/-%150#FF0000&00FF00[背景绿色前景红色加粗倾斜下划]]\
-[!/-%150#FF0000&00FF00[背景绿色前景红色加粗倾斜下划]]
+    \[![加粗]][![加粗]]
+    \[/[倾斜]][/[倾斜]]
+    \[_[下划]][_[下划]]
+    \[-[删除]][-[删除]]
+    \['[上标]]['[上标]]
+    \[,[下标]][,[下标]]
+    \[%150[放大150]][%150[放大150]]
+    \[#FF0000[前景红色]][#FF0000[前景红色]]
+    \[&00FF00[背景绿色]][&00FF00[背景绿色]]
+    \[!/_%150#FF0000&00FF00[背景绿色前景红色加粗倾斜下划]]\
+    [!/_%150#FF0000&00FF00[背景绿色前景红色加粗倾斜下划]]
     
 1.2. 链入模式
 ^^^^^^^^^^^^^
-在下行插入readme.txt的内容
-[[<=../../../impl_javascript/todos.txt]]
-在下行插入图片(gif/png/jpg/bmp)
-[[<=../../../a9text.png]]
-[[<=../../../a9text.png]] <== 这个是文字环绕的图片, 
-当文字折行的时候,你可以看到效果,如果不折行, 
-就会和图片在同一行啦 :)
-在下行插入flash(swf)
-[400*200[<=../../../res/private/learn2earn.swf]]
-作者:: 臭豆腐[trydofor]
-引入变量:[[<=$作者]]
+    在下行插入readme.txt的内容
+    [[<=../../../impl_javascript/todos.txt]]
+    在下行插入图片(gif/png/jpg/bmp)
+    [[<=../../../a9text.png]]
+    [[<=../../../a9text.png]] <== 这个是文字环绕的图片, 
+    当文字折行的时候,你可以看到效果,如果不折行, 
+    就会和图片在同一行啦 :)
+    在下行插入flash(swf)
+    [400*200[<=../../../res/private/learn2earn.swf]]
+    作者:: 臭豆腐[trydofor]
+    引入变量:[[<=$作者]]
     
 1.3. 链出模式
 ^^^^^^^^^^^^^
-\[[=>地址]][[=>地址]]
-\[[显示名=>地址]][[显示名=>地址]]
-[[<=../../../a9text.png=>../../../res/private/learn2earn.swf]]
-[[a9text-spec_3.2=>./a9text-spec_3.2.txt]]
-[[home=>http://a9text.sf.net]]
-[[anchor=>]]
-[[=>#SECT:5.]]
-[[第5节=>#SECT:5.]]
-[[字典=>#DICT:多行字典]]
-[[=>#DICT:多行字典]]
-[[=>#AREA:代码1]]
-[[端口映射=>#AREA:代码1]]
-[[=>#HASH:自定义锚点]]
-[[我的锚点=>#HASH:自定义锚点]]
+    \[[=>地址]][[=>地址]]
+    \[[显示名=>地址]][[显示名=>地址]]
+    [[<=../../../a9text.png=>../../../res/private/learn2earn.swf]]
+    [[a9text-spec_3.2=>./a9text-spec_3.2.txt]]
+    [[home=>http://a9text.sf.net]]
+    [[anchor=>]]
+    [[=>#SECT:5.]]
+    [[第5节=>#SECT:5.]]
+    [[字典=>#DICT:多行字典]]
+    [[=>#DICT:多行字典]]
+    [[=>#AREA:代码1]]
+    [[端口映射=>#AREA:代码1]]
+    [[=>#HASH:自定义锚点]]
+    [[我的锚点=>#HASH:自定义锚点]]
 
 
 1.4. HTML模式
 ^^^^^^^^^^^^
-[*htm[<ul><li>html列表啊</li></ul>]]
+    [*htm[<ul><li>html列表啊</li></ul>]]
     
 1.5. 混合模式
 ^^^^^^^^^^^^^
-[!/-%150#FF0000&00FF00[背景绿色前景红色加粗['[上标]]倾斜下划]]普通文字,带]]的
-]]]]]]]]]]]]]][!/-%150#FF0000&00FF00[背景绿色前景红色加粗['[上标]]倾斜下划
-]]普通文字,带]]的
+    [!/-%150#FF0000&00FF00[背景绿色前景红色加粗['[上标]]倾斜删除线]]普通文字,带]]的
+    ]]]]]]]]]]]]]][!/_%150#FF0000&00FF00[背景绿色前景红色加粗['[上标]]倾斜下划
+    ]]普通文字,带]]的
  
 1.6. 综合
 ^^^^^^^^^
-文本模式[!#FF0000[[[前景红色加粗显示名=>
-地址]]]][[<=
-./readme.txt]][!/-%150#FF0000&00FF00[
-背景绿色前景红色加粗倾斜下划]]
+    文本模式[!#FF0000[前景红色加粗[[显示名=>
+    地址]]]][[<=
+    ./readme.txt]][!/_%150#FF0000&00FF00[
+    背景绿色前景红色加粗倾斜下划]]
     
 2. 段落演示
 ^^^^^^^^^^^
 2.1. 物理行
 ^^^^^^^^^^^
-这是一个物理行,没有' '和奇数个'\'在行尾
+    这是一个物理行,没有' '和奇数个'\'在行尾
     
 2.2. 空行和分割线
 ^^^^^^^^^^^^^^^^^
                         
---------------------
-====================
-####################
+    --------------------
+    ====================
+    ####################
 
 2.3. 软换行
 ^^^^^^^^^^^
-以空格表示的软换行(1' ') 
-以空格表示的软换行(2' ')  
-以反斜线表示的软换行(1'\')\
-以反斜线表示的软换行(3'\')\\\
-以上会合成一个物理行.
+    以空格表示的软换行(1' ') 
+    以空格表示的软换行(2' ')  
+    以反斜线表示的软换行(1'\')\
+    以反斜线表示的软换行(3'\')\\\
+    以上会合成一个物理行.
 
-这个不是软换行(2\)\\
-这个是物理行.
+    这个不是软换行(2\)\\
+    这个是物理行.
 
 2.4. 综合
 ^^^^^^^^^
-会自动合并软换行的综合段落:\
-[![前景红色显示名=>
-地址]][[<=
-./readme.txt]][!/-%150#FF0000&00FF00[
-背景绿色前景红色加粗倾斜下划]]
+    会自动合并软换行的综合段落:\
+    [![加粗显示名=>
+    地址]][[<=
+    ./readme.txt]][!/_%150#FF0000&00FF00[
+    背景绿色前景红色加粗倾斜下划]]
 
-[[自定义锚点=>]]
+    [[自定义锚点=>]]
 
 3. 字典演示
 ^^^^^^^^^^^
-多行字典:: 对应的字典值
-    可以通过[[<=$关键字]]引入到当前位置.
-    关键字中不能包含空白和标点,比如下面就不是字典了.
-    关键,字:: 值.
+    多行字典:: 对应的字典值
+        可以通过\[[<=$关键字]]引入到当前位置.
+        关键字中不能包":]".
 
-换行字典::
-    换行了的内容 
-    [![还可以放加粗模式]]
-    这才是第二行.
+    换行字典::
+        换行了的内容 
+        [![还可以放加粗模式]]
+        这才是第二行.
 
-带冒号的字典 ::: 能看到冒号吧.
-
-[NOTE]:: 单行提示.
-[WARN]::
-    字典不支持自动缩排,
-    所有对于多行内容,
-    请使用多行字典.
-
-[NOTE :: 这不是字典.
-NOTE] :: 这也不是字典.
+    带冒号的字典 ::: 能看到冒号吧.
+    
+3.1. 提示
+^^^^^^^^^
+    提示是特殊的字典,不能被引用,不自动缩排.
+    [NOTE]:: 单行提示.
+    [WARN]::
+            提示不支持自动缩排,
+        保留文本原来的缩进,这是考虑到作者的自由排版.
+    
+    [NOTE :: 这不是字典.
+    NOTE] :: 这也不是字典.
 
 4. 区域演示
 ^^^^^^^^^^^
-=========== text : 一个复杂的参数 ==============
-args: arg1; arg2=val2; 
-    arg3=val3
-\================================================
-上面是转义的横线,下面才是真正的结束
-=================================================
+    =========== text name : info ==============
+    args: arg1; arg2=val2; 
+        arg3=val3
+    \================================================
+    上面是转义的横线,下面才是真正的结束
+    =================================================
 
 4.1. 简单文本
 ^^^^^^^^^^^^^
-.................
-简化文本[![加粗无效]]
-.................
+    .................
+    简化文本[![加粗无效]]
+    .................
 
 4.2. 简单表格
 ^^^^^^^^^^^^^
-================ table: simple-table ================
-表头1    表头2     表头3
-行1列1   行1列2    行1列3
-行2列1   行2列2    行2列3
-=====================================================
+    ================ table: simple-table ================
+    表头1    表头2     表头3
+    行1列1   行1列2    行1列3
+    行2列1   行2列2    行2列3
+    =====================================================
 
-============ table:bad-blank ==============
-head1      head2    head3     head4
-col1       col2     col3      col4
-col1              col3      col4
-              col2     col3            col4
-col1       col2     col3    col4
-======================================
+    ============ table:bad-blank ==============
+    head1      head2    head3     head4
+    col1       col2     col3      col4
+    col1              col3      col4
+                  col2     col3            col4
+    col1       col2     col3    col4
+    ======================================
 
-========== table:standard-table ==========
-! r1-c1 | r1-c2! r1-c3|
-|r2-c1  |r2-c2 |r2-c3 |
-||  r3-c1&2    |+ r3&4-c3 |
-|r4-c1 | r4-c2 |+ r4&4-c3 |
-==========================================
+    ========== table:standard-table ==========
+    ! r1-c1 | r1-c2! r1-c3|
+    |r2-c1  |r2-c2 |r2-c3 |
+    ||  r3-c1&2    |+ r3&4-c3 |
+    |r4-c1 | r4-c2 |+ r4&4-c3 |
+    ==========================================
 
 4.3. 控制台
 ^^^^^^^^^^^
-=============== tty 代码1:端口映射 =================
-/*
-加粗文字为标准输入
-红色文字为错误输出
-蓝色文字为标准输出
-绿色文字为注释内容
-*/
-iptables -L // 查看当前防火墙规则
-> Chain INPUT (policy ACCEPT)
-> target     prot opt source               destination
-> REJECT     all  --  10.0.172.0/24        anywhere            reject-with icmp-port-unreachable
-> 
-> Chain FORWARD (policy ACCEPT)
-> target     prot opt source               destination
-> 
-> Chain OUTPUT (policy ACCEPT)
-> target     prot opt source               destination
+    =============== tty 代码1:端口映射 =================
+    /*
+    加粗文字为标准输入
+    红色文字为错误输出
+    蓝色文字为标准输出
+    绿色文字为注释内容
+    */
+    iptables -L // 查看当前防火墙规则
+    > Chain INPUT (policy ACCEPT)
+    > target     prot opt source               destination
+    > REJECT     all  --  10.0.172.0/24        anywhere            reject-with icmp-port-unreachable
+    > 
+    > Chain FORWARD (policy ACCEPT)
+    > target     prot opt source               destination
+    > 
+    > Chain OUTPUT (policy ACCEPT)
+    > target     prot opt source               destination
 
-#清空防火墙,如果存在的话
-/sbin/iptables -F -t nat
-/sbin/iptables -F INPUT
+    #清空防火墙,如果存在的话
+    /sbin/iptables -F -t nat
+    /sbin/iptables -F INPUT
 
-# 执行一次就可以了
-echo "1" > /proc/sys/net/ipv4/ip_forward
+    # 执行一次就可以了
+    echo "1" > /proc/sys/net/ipv4/ip_forward
 
-#端口映射
-/sbin/iptables -t nat -A POSTROUTING -j MASQUERADE 
-/sbin/iptables -t nat -A PREROUTING -p tcp -m tcp --dport 55000 -j DNAT --to-destination 10.0.172.210:50000 
-/sbin/iptables -t nat -A PREROUTING -p tcp -m tcp --dport 55001 -j DNAT --to-destination 10.0.172.209:50000
+    #端口映射
+    /sbin/iptables -t nat -A POSTROUTING -j MASQUERADE 
+    /sbin/iptables -t nat -A PREROUTING -p tcp -m tcp --dport 55000 -j DNAT --to-destination 10.0.172.210:50000 
+    /sbin/iptables -t nat -A PREROUTING -p tcp -m tcp --dport 55001 -j DNAT --to-destination 10.0.172.209:50000
 
-================================================
+    ================================================
 
-4.4. c
+4.4. c 代码
 ^^^^^^^^^^^
-============== c : 7zAlloc.c =====================
-/* 7zAlloc.c */
+    ============== c : 7zAlloc.c =====================
+    /* 7zAlloc.c */
 
-#include <stdlib.h>
-#include "7zAlloc.h"
+    #include <stdlib.h>
+    #include "7zAlloc.h"
 
-/* #define _SZ_ALLOC_DEBUG */
-/* use _SZ_ALLOC_DEBUG to debug alloc/free operations */
+    /* #define _SZ_ALLOC_DEBUG */
+    /* use _SZ_ALLOC_DEBUG to debug alloc/free operations */
 
-#ifdef _SZ_ALLOC_DEBUG
+    #ifdef _SZ_ALLOC_DEBUG
 
-#ifdef _WIN32
-#include <windows.h>
-#endif
-#include <stdio.h>
-int g_allocCount = 0;
-int g_allocCountTemp = 0;
-#endif
+    #ifdef _WIN32
+    #include <windows.h>
+    #endif
+    #include <stdio.h>
+    int g_allocCount = 0;
+    int g_allocCountTemp = 0;
+    #endif
 
-void *SzAlloc(size_t size)
-{
-  if (size == 0)
-    return 0;
-  #ifdef _SZ_ALLOC_DEBUG
-  fprintf(stderr, "\nAlloc %10d bytes; count = %10d", size, g_allocCount);
-  g_allocCount++;
-  #endif
-  return malloc(size);
-}
-==================================================
-4.5. c++
-^^^^^^^^^^^
-============== cpp : ArchiveExports.cpp =====================
-// ArchiveExports.cpp
-
-#include "StdAfx.h"
-
-#include "../../Common/ComTry.h"
-#include "../../Common/Types.h"
-#include "../../Windows/PropVariant.h"
-#include "../Common/RegisterArc.h"
-
-#include "IArchive.h"
-#include "../ICoder.h"
-#include "../IPassword.h"
-
-static const unsigned int kNumArcsMax = 32;
-static unsigned int g_NumArcs = 0;
-static const CArcInfo *g_Arcs[kNumArcsMax]; 
-void RegisterArc(const CArcInfo *arcInfo) 
-{ 
-  if (g_NumArcs < kNumArcsMax)
-    g_Arcs[g_NumArcs++] = arcInfo; 
-}
-
-DEFINE_GUID(CLSID_CArchiveHandler, 
-0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x00, 0x00, 0x00);
-
-#define CLS_ARC_ID_ITEM(cls) ((cls).Data4[5])
-
-static inline HRESULT SetPropString(const char *s, unsigned int size, PROPVARIANT *value)
-{
-  if ((value->bstrVal = ::SysAllocStringByteLen(s, size)) != 0)
-    value->vt = VT_BSTR;
-  return S_OK;
-}
-==================================================
-4.6. bash
-^^^^^^^^^^^
-============== bash : test.sh =====================
-#newgame
-function New_game () {
-    
-    kill -9 $displaypid >/dev/null 2>&1
-
-    if [[ "$1" == "over" ]]
-    then 
-        exec $(dirname $0)/$(basename $0)
-    else
-        echo "$level $score $life $length $runtime" > $vartmp
-        exec $(dirname $0)/$(basename $0) display
-    fi
-}
-==================================================
-4.7. java
-^^^^^^^^^^^
-============== java : test =====================
-package com.trydofor.a9text.test;
-
- /************************************************************
- * @author  : Shi Rongjiu (www.trydofor.com)
- * @version : 2008-2-18 / $Revision: 1.22 $
- * @see     : requires/documents
- * ====================== change-logs =======================
- * $Log: not supported by cvs2svn $
- * Revision 1.21  2008/03/18 12:29:41  trydofor
- * des
- *
- * Revision 1.20  2008/03/17 12:19:29  trydofor
- * goo
- *
- * Revision 1.19  2008/03/12 06:30:50  trydofor
- * xx
- *
- * Revision 1.18  2008/03/11 12:58:07  trydofor
- * gogo
- *
- * Revision 1.17  2008/02/29 02:45:07  trydofor
- * a9text
- *
- * Revision 1.16  2008/02/18 06:27:12  trydofor
- * live in java
- *
- ************************************************************/
-
-public abstract class Live {
-    
-    public abstract void health();
-    public abstract void happy();
-    public abstract void hope();
-    public abstract void work();
-    public abstract void earn();
-    public abstract void love();
-    public abstract void thank();
-    public abstract void think(Throwable t);
-    public abstract void learn();
-    
-    private volatile boolean live;
-    public final void live()
+    void *SzAlloc(size_t size)
     {
-        while(live)
+      if (size == 0)
+        return 0;
+      #ifdef _SZ_ALLOC_DEBUG
+      fprintf(stderr, "\nAlloc %10d bytes; count = %10d", size, g_allocCount);
+      g_allocCount++;
+      #endif
+      return malloc(size);
+    }
+    ==================================================
+4.5. c++ 代码
+^^^^^^^^^^^^^
+    ============== cpp : ArchiveExports.cpp =====================
+    // ArchiveExports.cpp
+
+    #include "StdAfx.h"
+
+    #include "../../Common/ComTry.h"
+    #include "../../Common/Types.h"
+    #include "../../Windows/PropVariant.h"
+    #include "../Common/RegisterArc.h"
+
+    #include "IArchive.h"
+    #include "../ICoder.h"
+    #include "../IPassword.h"
+
+    static const unsigned int kNumArcsMax = 32;
+    static unsigned int g_NumArcs = 0;
+    static const CArcInfo *g_Arcs[kNumArcsMax]; 
+    void RegisterArc(const CArcInfo *arcInfo) 
+    { 
+      if (g_NumArcs < kNumArcsMax)
+        g_Arcs[g_NumArcs++] = arcInfo; 
+    }
+
+    DEFINE_GUID(CLSID_CArchiveHandler, 
+    0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x00, 0x00, 0x00);
+
+    #define CLS_ARC_ID_ITEM(cls) ((cls).Data4[5])
+
+    static inline HRESULT SetPropString(const char *s, unsigned int size, PROPVARIANT *value)
+    {
+      if ((value->bstrVal = ::SysAllocStringByteLen(s, size)) != 0)
+        value->vt = VT_BSTR;
+      return S_OK;
+    }
+    ==================================================
+4.6. bash 代码
+^^^^^^^^^^^^^^
+    ============== bash : test.sh =====================
+    #newgame
+    function New_game () {
+        
+        kill -9 $displaypid >/dev/null 2>&1
+
+        if [[ "$1" == "over" ]]
+        then 
+            exec $(dirname $0)/$(basename $0)
+        else
+            echo "$level $score $life $length $runtime" > $vartmp
+            exec $(dirname $0)/$(basename $0) display
+        fi
+    }
+    ==================================================
+4.7. java 代码
+^^^^^^^^^^^^^^
+    ============== java : test =====================
+    package com.trydofor.a9text.test;
+
+     /************************************************************
+     * @author  : Shi Rongjiu (www.trydofor.com)
+     * @version : 2008-2-18 / $Revision: 1.23 $
+     * @see     : requires/documents
+     * ====================== change-logs =======================
+     * $Log: not supported by cvs2svn $
+     * Revision 1.22  2008/03/18 12:37:17  trydofor
+     * des
+     *
+     * Revision 1.21  2008/03/18 12:29:41  trydofor
+     * des
+     *
+     * Revision 1.20  2008/03/17 12:19:29  trydofor
+     * goo
+     *
+     * Revision 1.19  2008/03/12 06:30:50  trydofor
+     * xx
+     *
+     * Revision 1.18  2008/03/11 12:58:07  trydofor
+     * gogo
+     *
+     * Revision 1.17  2008/02/29 02:45:07  trydofor
+     * a9text
+     *
+     * Revision 1.16  2008/02/18 06:27:12  trydofor
+     * live in java
+     *
+     ************************************************************/
+
+    public abstract class Live {
+        
+        public abstract void health();
+        public abstract void happy();
+        public abstract void hope();
+        public abstract void work();
+        public abstract void earn();
+        public abstract void love();
+        public abstract void thank();
+        public abstract void think(Throwable t);
+        public abstract void learn();
+        
+        private volatile boolean live;
+        public final void live()
         {
-            try
+            while(live)
             {
-                health();
-                happy();
-                hope();
-                work();
-                earn();
-                love();
-                thank();
-            }
-            catch(Throwable t)
-            {
-                think(t);
-            }
-            finally
-            {
-                learn();
+                try
+                {
+                    health();
+                    happy();
+                    hope();
+                    work();
+                    earn();
+                    love();
+                    thank();
+                }
+                catch(Throwable t)
+                {
+                    think(t);
+                }
+                finally
+                {
+                    learn();
+                }
             }
         }
     }
-}
-==================================================
+    ==================================================
 
-4.8. sql
-^^^^^^^^
-============== sql : test =====================
-SELECT COUNT(*), 1+0.01 FROM USER -- comment1
-GO
-INSERT INTO USER(`HOST`, USER, PASSWORD) /*comment2*/
-VALUES('', '', NULL) // comment3
-GO
-==================================================
+4.8. sql 代码
+^^^^^^^^^^^^^
+    ============== sql : test =====================
+    SELECT COUNT(*), 1+0.01 FROM USER -- comment1
+    GO
+    INSERT INTO USER(`HOST`, USER, PASSWORD) /*comment2*/
+    VALUES('', '', NULL) // comment3
+    GO
+    ==================================================
 
 4.9. des 加密域
 ^^^^^^^^^^^^^^^
-================== des : passwd is "没有密码" ================
-QHmH WRPE F5xq DbQd Gh8Y pFxW fJvL NV6G EKIY +u7o D3uy Emh8 WrRn rALh rwuS o8K9
-RZVe A3GS ckpP Ipuk v+MG HLWc QMIU b3iW d3Wl 9UJH /E+V quR2 LONu 1hpU 7PxY VB5J
-2isZ +50+ /0Fk ccN6 kdHZ dBQa NW/K 1xYG rF2n iMZp xuTG cJbd acKV WRG+ jiLp pPvS
-I0Il 9Lc3 u3/l 2myB JqmA hA==
-==============================================================
+    ================== des : passwd is "没有密码" ================
+    QHmH WRPE F5xq DbQd Gh8Y pFxW fJvL NV6G EKIY +u7o D3uy Emh8 WrRn rALh rwuS o8K9
+    RZVe A3GS ckpP Ipuk v+MG HLWc QMIU b3iW d3Wl 9UJH /E+V quR2 LONu 1hpU 7PxY VB5J
+    2isZ +50+ /0Fk ccN6 kdHZ dBQa NW/K 1xYG rF2n iMZp xuTG cJbd acKV WRG+ jiLp pPvS
+    I0Il 9Lc3 u3/l 2myB JqmA hA==
+    ==============================================================
+
 5. 列表演示
 ^^^^^^^^^^^
 5.1. 条目
 ^^^^^^^^
-*) 条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1
-*) 条目2-1
-   条目2-2
-*) 条目3
-* 条目实心点
-+ 实心方块
-- 空心圈
+    *) 条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1条目1
+    *) 条目2-1
+       条目2-2
+    *) 条目3
+    * 条目实心点
+    + 实心方块
+    - 空心圈
 
 5.2. 步骤
 ^^^^^^^^
-1. 步骤1
-2) 步骤2
-a. 步骤a
-b) 步骤b
-A. 步骤A
-B) 步骤B
+    1. 步骤1
+    2) 步骤2
+    a. 步骤a
+    b) 步骤b
+    A. 步骤A
+    B) 步骤B
 
 
 5.3. 嵌套
 ^^^^^^^^
-1) 步骤1
-2) 步骤2
-3) 步骤2-1
-    *) 二级条目1
-    *) 二级条目2
-    *) 二级条目3
-        a) 三级步骤a
-        b) 三级步骤b
-        c) 三级步骤c
-*) 条目1
-    1) 二级步骤1
-    2) 二级步骤2
-    3) 二级步骤3
+    1) 步骤1
+    2) 步骤2
+    3) 步骤2-1
+        *) 二级条目1
+        *) 二级条目2
+        *) 二级条目3
+            a) 三级步骤a
+            b) 三级步骤b
+            c) 三级步骤c
+    *) 条目1
+        1) 二级步骤1
+        2) 二级步骤2
+        3) 二级步骤3
     
 6. 转义
 ^^^^^^
-\              
-\------------------------------
-\==============================
-\##############################
-\0.0.转义章节
-\[![=>转义链出]][![=>带括弧的链出\]]]]
-段落的转义\\\
-应该显示成1个'\'
-*) 真条目列表1
-*) 真条目列表2
+    \              
+    \------------------------------
+    \==============================
+    \##############################
+    \0.0.转义章节
+    \[![=>转义链出]][![=>带括弧的链出\]]]]
+    段落的转义\\\
+    应该显示成1个'\'
+    *) 真条目列表1
+    *) 真条目列表2
+        \*) 转义条目列表
     \*) 转义条目列表
-\*) 转义条目列表
-*) 真条目列表3
-\1) 转义步骤列表
-转义字典\:: 转义的:)
-\=========== text : 一个转义的文本 ==============
-args: arg1; arg2=val2; arg3=val3
-\================================================
-上面是转义的横线,下面才是真正的结束
-\=================================================
+    *) 真条目列表3
+    \1) 转义步骤列表
+    转义字典\:: 转义的:)
+    \=========== text : 一个转义的文本 ==============
+    args: arg1; arg2=val2; arg3=val3
+    \================================================
+    上面是转义的横线,下面才是真正的结束
+    \=================================================
 
-=========== text : 一个转义的文本 ==============
-\args: arg1; arg2=val2; arg3=val3
-\================================================
-上面是转义的横线,下面才是真正的结束
-=================================================
+    =========== text : 一个转义的文本 ==============
+    \args: arg1; arg2=val2; arg3=val3
+    \================================================
+    上面是转义的横线,下面才是真正的结束
+    =================================================
