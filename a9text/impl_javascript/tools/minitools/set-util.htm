@@ -8,7 +8,7 @@
     <input type="button" onclick="bothin()" value="R=A∩B" /> 
     <input type="button" onclick="anyone()" value="R=A∪B" /> 
     <span id="MESSAGE"></span></td>
-    <td>左边是集合{A},右边是子集合{B},下面是结果{R}</td>
+    <td>Left = {A},Right = {B},Bottom = {R}</td>
   </tr>
   <tr>
     <td width="50%">
@@ -37,8 +37,8 @@ var mObj = document.getElementById("MESSAGE");
 
 function init()
 {
-    aArr = aObj.value.split(/[\r\n \t]+/g);
-    bArr = bObj.value.split(/[\r\n \t]+/g);
+    aArr = aObj.value.split(/[\r\n]+/g);
+    bArr = bObj.value.split(/[\r\n]+/g);
     
     aSet = {};
     for(var i=0; i<aArr.length; i++)

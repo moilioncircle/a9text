@@ -1,135 +1,98 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script language="javascript" src="../../com/trydofor/a9js/code/encoder.js"></script>
+<script language="javascript" src="../../com/trydofor/a9js/code/des.js"></script>
+<script language="javascript" src="../../com/trydofor/a9js/code/md5.js"></script>
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50%" height="30">
-    <input type="button" onclick="duplicateA()" value="R=Duplicate(A)" /> 
-    <input type="button" onclick="distinctA()"  value="R=Distinct(A)" /> 
-    <input type="button" onclick="remain()" value="R=A∩!B" /> 
-    <input type="button" onclick="bothin()" value="R=A∩B" /> 
-    <input type="button" onclick="anyone()" value="R=A∪B" /> 
-    <span id="MESSAGE"></span></td>
-    <td>左边是集合{A},右边是子集合{B},下面是结果{R}</td>
-  </tr>
-  <tr>
-    <td width="50%">
-    <textarea name="textarea" id="A_SET" style="width:100%; height:100%" ondblclick="this.select()"></textarea>    </td>
+  <tr  height="30">
     <td>
-    <textarea name="textarea" id="B_SET" style="width:100%; height:100%" ondblclick="this.select()"></textarea>    </td>
+    <input type="button" onclick="md5sum()" value="md5sum" style="background-color:#99CC00"/> 
+    <input type="button" onclick="enb64()"  value="base64 encode" style="background-color:#CC9900"/> 
+    <input type="button" onclick="deb64()"  value="base64 decode" style="background-color:#CC9900"/> 
+    <input type="button" onclick="endes()"  value="des encrypt" style="background-color:#0066FF"/> 
+    <input type="button" onclick="dedes()"  value="des decrypt" style="background-color:#0066FF"/> 
+    </td>
   </tr>
   <tr>
-    <td colspan="2">
-    <textarea name="textarea" id="R_SET" style="width:100%; height:100%" ondblclick="this.select()"></textarea>    </td>
+    <td>
+        <textarea name="textarea" id="INPUT" style="width:100%; height:100%" ondblclick="this.select()"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <textarea name="textarea" id="OUTPUT" style="width:100%; height:100%" ondblclick="this.select()"></textarea>
+    </td>
   </tr>
 </table>
 
 <script type="text/javascript">
+var md5impl = new MD5Class();
+var b64impl = new EncoderClass();
+var desimpl = new DESClass();
+var iptObj = document.getElementById("INPUT");
+var optObj = document.getElementById("OUTPUT");
 
-var aArr = {};
-var bArr = {};
-var aSet = {};
-var bSet = {};
-var rArr = [];
-
-var aObj = document.getElementById("A_SET");
-var bObj = document.getElementById("B_SET");
-var rObj = document.getElementById("R_SET");
-var mObj = document.getElementById("MESSAGE");
-
-function init()
+function md5sum()
 {
-    aArr = aObj.value.split(/[\r\n \t]+/g);
-    bArr = bObj.value.split(/[\r\n \t]+/g);
-    
-    aSet = {};
-    for(var i=0; i<aArr.length; i++)
-        if(aArr[i] != "")
-            aSet[aArr[i]] = true;
-
-    bSet = {};
-    for(var i=0; i<bArr.length; i++)
-        if(bArr[i] != "") 
-            bSet[bArr[i]] = true;
-
-    rArr = [];
+    try{
+        optObj.value = md5impl.hash(iptObj.value);
+    }catch(e){
+        alert("failed to get md5sum:"+e);
+    }
+}
+function enb64()
+{
+    try{
+        var ot = b64impl.base64Encode(b64impl.utf16to8(iptObj.value));
+        optObj.value = format(ot);
+    }catch(e){
+        alert("failed to get base64 encode:"+e);
+    }
+}
+function deb64()
+{
+    try{
+        optObj.value = b64impl.utf8to16(b64impl.base64Decode(iptObj.value.replace(/\s/gm,'')));
+    }catch(e){
+        alert("failed to get base64 decode:"+e);
+    }
+}
+function endes()
+{
+    try{
+        var passwd = window.prompt('please input your passwd','');
+        if(passwd ==null || passwd =='') return;
+        
+        var ot = desimpl.encrypt(passwd,iptObj.value);
+        optObj.value = format(ot);
+    }catch(e){
+        alert("failed to get base64 encode:"+e);
+    }
+}
+function dedes()
+{
+    try{
+        var passwd = window.prompt('please input your passwd','');
+        if(passwd ==null || passwd =='') return;
+        
+        optObj.value = desimpl.decrypt(passwd,iptObj.value.replace(/\s/gm,''));
+    }catch(e){
+        alert("failed to get base64 decode:"+e);
+    }
 }
 
-function anyone()
+function format(text)
 {
-    init();
+    if(text == null || text =='') return text;
     
-    var mess = "{A}:"+aArr.length+" {B}:"+bArr.length;
+    var linesize = 64;
     
-    for(var key in aSet)
-        if(!bSet[key])
-            rArr.push(key);
-            
-    for(var key in bSet)
-            rArr.push(key);
-
-    rObj.value=rArr.join('\n');
-    mObj.innerHTML = mess+" {R}:"+rArr.length;
-
-}
-
-function bothin()
-{
-    init();
-
-    var mess = "{A}:"+aArr.length+" {B}:"+bArr.length;
-    for(var key in aSet)
-        if(bSet[key])
-            rArr.push(key);
-    
-    rObj.value=rArr.join('\n');
-    mObj.innerHTML = mess+" {R}:"+rArr.length;
-}
-
-function remain()
-{
-    init();
-
-    var mess = "{A}:"+aArr.length+" {B}:"+bArr.length;
-    for(var key in aSet)
-        if(!bSet[key])
-            rArr.push(key);
-    
-    rObj.value=rArr.join('\n');
-    mObj.innerHTML = mess+" {R}:"+rArr.length;
-}
-
-function duplicateA()
-{
-    init();
-
-    var mess = "{A}:"+aArr.length;
-    var tmpset = [];
-    var rset = {};
-    for(var i=0;i<aArr.length;i++)
-    {
-        if(tmpset[aArr[i]])
-            rset[aArr[i]] = true;
-        else
-            tmpset[aArr[i]]=aArr[i];
+    text = text.replace(/\s+/g,'');
+    var rtxt = [];
+    for(var i=0;i<text.length;i+=linesize){
+        var line = (i+linesize<text.length)?text.substr(i,linesize):text.substr(i);
+        rtxt.push(line);
     }
     
-    for(var key in rset)
-        rArr.push(key);
-    
-    rObj.value=rArr.join('\n');
-    mObj.innerHTML = mess+" {R}:"+rArr.length;
+    return rtxt.join('\n');
 }
-
-function distinctA()
-{
-    init();
-
-    var mess = "{A}:"+aArr.length;
-    for(var key in aSet)
-        rArr.push(key);
-    
-    rObj.value=rArr.join('\n');
-    mObj.innerHTML = mess+" {R}:"+rArr.length;
-
-}
-
 </script>
