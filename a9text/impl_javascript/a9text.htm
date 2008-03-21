@@ -1,5 +1,5 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<body></body>
+<body>loading ... </body>
 <script type="text/javascript" src="./a9loader.js"></script>
 <script type="text/javascript">
 var file2area = {
@@ -72,6 +72,7 @@ try{
                 ifr.setAttribute('style','overflow-x:auto;overflow-y:auto;');
                 //ifr.setAttribute('scrolling','no');
                 ifr.setAttribute('width','100%');
+                document.body.innerHTML="";
                 document.body.appendChild(ifr);
                 var doc = ifr.contentWindow.document;
                 doc.open();
