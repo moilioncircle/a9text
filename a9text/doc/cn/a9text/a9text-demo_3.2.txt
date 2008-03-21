@@ -114,7 +114,7 @@
     使用"学与得"到"learn2earn"的链接 [[学与得=>#JOIN:learn2earn]]
     
     a9text元素的锚点链接,有一些规则.
-    #SECT:章节序号 
+    #SECT:章节序号
     #DICT:字典关键字
     #AREA:区域名字
     #HASH:锚点名
@@ -433,10 +433,13 @@
 
      /************************************************************
      * @author  : Shi Rongjiu (www.trydofor.com)
-     * @version : 2008-2-18 / $Revision: 1.27 $
+     * @version : 2008-2-18 / $Revision: 1.28 $
      * @see     : requires/documents
      * ====================== change-logs =======================
      * $Log: not supported by cvs2svn $
+     * Revision 1.27  2008/03/21 03:03:09  trydofor
+     * demo
+     *
      * Revision 1.26  2008/03/20 14:14:40  trydofor
      * doc
      *
