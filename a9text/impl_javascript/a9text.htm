@@ -15,6 +15,7 @@ A9Loader.asyncLoadClass('com.trydofor.a9text.parser.a9text');
 A9Loader.asyncLoadClass('com.trydofor.a9text.render.html.a9text');
 A9Loader.runAfterClassLoaded(function(){
 try{
+    document.body.innerHTML="";
     var pgbar = new ProgressBar(window.document);
     pgbar.show();
     var file = A9Loader.getPageInfo();
@@ -72,7 +73,6 @@ try{
                 ifr.setAttribute('style','overflow-x:auto;overflow-y:auto;');
                 //ifr.setAttribute('scrolling','no');
                 ifr.setAttribute('width','100%');
-                document.body.innerHTML="";
                 document.body.appendChild(ifr);
                 var doc = ifr.contentWindow.document;
                 doc.open();
