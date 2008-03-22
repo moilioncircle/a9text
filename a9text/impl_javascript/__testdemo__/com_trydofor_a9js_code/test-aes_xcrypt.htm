@@ -1,0 +1,19 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript">
+require('com.trydofor.a9js.code.des');
+plain  = "我的测试文本";
+passwd = "密码";
+
+document.writeln("<pre>")
+document.writeln("plain:" + plain);
+document.writeln("---------");
+myDes = new DESClass();
+encryptStr = myDes.encrypt(passwd,plain);
+decryptStr = myDes.decrypt(passwd,encryptStr);
+document.writeln("encrypt:"+encryptStr);
+document.writeln("decrypt:"+decryptStr);
+document.writeln("true:"+(plain == decryptStr));
+
+document.writeln("</pre>")
+</script>
