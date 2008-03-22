@@ -110,8 +110,6 @@ function RotWord(w) {
   return w;
 }
 
-
-// Sbox is pre-computed multiplicative inverse in GF(2^8) used in SubBytes and KeyExpansion [¡ì5.1.1]
 var Sbox =  [0x63,0x7c,0x77,0x7b,0xf2,0x6b,0x6f,0xc5,0x30,0x01,0x67,0x2b,0xfe,0xd7,0xab,0x76,
              0xca,0x82,0xc9,0x7d,0xfa,0x59,0x47,0xf0,0xad,0xd4,0xa2,0xaf,0x9c,0xa4,0x72,0xc0,
              0xb7,0xfd,0x93,0x26,0x36,0x3f,0xf7,0xcc,0x34,0xa5,0xe5,0xf1,0x71,0xd8,0x31,0x15,
@@ -129,7 +127,6 @@ var Sbox =  [0x63,0x7c,0x77,0x7b,0xf2,0x6b,0x6f,0xc5,0x30,0x01,0x67,0x2b,0xfe,0x
              0xe1,0xf8,0x98,0x11,0x69,0xd9,0x8e,0x94,0x9b,0x1e,0x87,0xe9,0xce,0x55,0x28,0xdf,
              0x8c,0xa1,0x89,0x0d,0xbf,0xe6,0x42,0x68,0x41,0x99,0x2d,0x0f,0xb0,0x54,0xbb,0x16];
 
-// Rcon is Round Constant used for the Key Expansion [1st col is 2^(r-1) in GF(2^8)] [¡ì5.2]
 var Rcon = [ [0x00, 0x00, 0x00, 0x00],
              [0x01, 0x00, 0x00, 0x00],
              [0x02, 0x00, 0x00, 0x00],
@@ -142,16 +139,6 @@ var Rcon = [ [0x00, 0x00, 0x00, 0x00],
              [0x1b, 0x00, 0x00, 0x00],
              [0x36, 0x00, 0x00, 0x00] ]; 
 
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
-/* 
- * Use AES to encrypt 'plaintext' with 'password' using 'nBits' key, in 'Counter' mode of operation
- *                           - see http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf
- *   for each block
- *   - outputblock = cipher(counter, key)
- *   - cipherblock = plaintext xor outputblock
- */
 function AESEncryptCtr(plaintext, password, nBits) {
   if (!(nBits==128 || nBits==192 || nBits==256)) return '';
 	
@@ -210,14 +197,6 @@ function AESEncryptCtr(plaintext, password, nBits) {
   return ctrTxt + '-' + ciphertext.join('-');
 }
 
-
-/* 
- * Use AES to decrypt 'ciphertext' with 'password' using 'nBits' key, in Counter mode of operation
- *
- *   for each block
- *   - outputblock = cipher(counter, key)
- *   - cipherblock = plaintext xor outputblock
- */
 function AESDecryptCtr(ciphertext, password, nBits) {
   if (!(nBits==128 || nBits==192 || nBits==256)) return '';
 
@@ -264,8 +243,6 @@ function AESDecryptCtr(ciphertext, password, nBits) {
   return plaintext.join('');
 }
 
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
 function escCtrlChars(str) {
   return str.replace(/[\0\t\n\v\f\r\xa0'"!-]/g, function(c) { return '!' + c.charCodeAt(0) + '!'; });
 }
@@ -273,5 +250,3 @@ function escCtrlChars(str) {
 function unescCtrlChars(str) {
   return str.replace(/!\d\d?\d?!/g, function(c) { return String.fromCharCode(c.slice(1,-1)); });
 }
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
