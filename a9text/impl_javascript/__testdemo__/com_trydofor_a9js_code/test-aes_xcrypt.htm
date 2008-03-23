@@ -1,16 +1,18 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="../../a9engine.js"></script>
 <script type="text/javascript">
-require('com.trydofor.a9js.code.des');
+require('com.trydofor.a9js.code.b64');
+require('com.trydofor.a9js.code.aes');
 plain  = "我的测试文本";
 passwd = "密码";
+var b64impl = new B64Class();
+var aesimpl = new AESClass();
 
 document.writeln("<pre>")
 document.writeln("plain:" + plain);
 document.writeln("---------");
-myDes = new DESClass();
-encryptStr = myDes.encrypt(passwd,plain);
-decryptStr = myDes.decrypt(passwd,encryptStr);
+encryptStr = b64impl.encode(aesimpl.encrypt(plain,passwd,256));
+decryptStr = aesimpl.decrypt(b64impl.decode(encryptStr),passwd,256);
 document.writeln("encrypt:"+encryptStr);
 document.writeln("decrypt:"+decryptStr);
 document.writeln("true:"+(plain == decryptStr));

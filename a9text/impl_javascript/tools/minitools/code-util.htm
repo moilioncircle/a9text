@@ -1,15 +1,15 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script language="javascript" src="../../com/trydofor/a9js/code/encoder.js"></script>
-<script language="javascript" src="../../com/trydofor/a9js/code/des.js"></script>
+<script language="javascript" src="../../com/trydofor/a9js/code/b64.js"></script>
+<script language="javascript" src="../../com/trydofor/a9js/code/aes.js"></script>
 <script language="javascript" src="../../com/trydofor/a9js/code/md5.js"></script>
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr  height="30">
     <td>
     <input type="button" onclick="md5sum()" value="md5sum" style="background-color:#99CC00"/> 
-    <input type="button" onclick="enb64()"  value="base64 encode" style="background-color:#CC9900"/> 
-    <input type="button" onclick="deb64()"  value="base64 decode" style="background-color:#CC9900"/> 
-    <input type="button" onclick="endes()"  value="des encrypt" style="background-color:#0066FF"/> 
-    <input type="button" onclick="dedes()"  value="des decrypt" style="background-color:#0066FF"/> 
+    <input type="button" onclick="enB64()"  value="base64 encode" style="background-color:#CC9900"/> 
+    <input type="button" onclick="deB64()"  value="base64 decode" style="background-color:#CC9900"/> 
+    <input type="button" onclick="enAes()"  value="aes encrypt" style="background-color:#0066FF"/> 
+    <input type="button" onclick="deAes()"  value="aes decrypt" style="background-color:#0066FF"/> 
     </td>
   </tr>
   <tr>
@@ -26,8 +26,8 @@
 
 <script type="text/javascript">
 var md5impl = new MD5Class();
-var b64impl = new EncoderClass();
-var desimpl = new DESClass();
+var b64impl = new B64Class();
+var aesimpl = new AESClass();
 var iptObj = document.getElementById("INPUT");
 var optObj = document.getElementById("OUTPUT");
 
@@ -39,42 +39,42 @@ function md5sum()
         alert("failed to get md5sum:"+e);
     }
 }
-function enb64()
+function enB64()
 {
     try{
-        var ot = b64impl.base64Encode(b64impl.utf16to8(iptObj.value));
+        var ot = b64impl.encode(iptObj.value);
         optObj.value = format(ot);
     }catch(e){
         alert("failed to get base64 encode:"+e);
     }
 }
-function deb64()
+function deB64()
 {
     try{
-        optObj.value = b64impl.utf8to16(b64impl.base64Decode(iptObj.value.replace(/\s/gm,'')));
+        optObj.value = b64impl.decode(iptObj.value.replace(/\s/gm,''));
     }catch(e){
         alert("failed to get base64 decode:"+e);
     }
 }
-function endes()
+function enAes()
 {
     try{
         var passwd = window.prompt('please input your passwd','');
         if(passwd ==null || passwd =='') return;
         
-        var ot = desimpl.encrypt(passwd,iptObj.value);
+        var ot = b64impl.encode(aesimpl.encrypt(iptObj.value,passwd,256));
         optObj.value = format(ot);
     }catch(e){
         alert("failed to get base64 encode:"+e);
     }
 }
-function dedes()
+function deAes()
 {
     try{
         var passwd = window.prompt('please input your passwd','');
         if(passwd ==null || passwd =='') return;
         
-        optObj.value = desimpl.decrypt(passwd,iptObj.value.replace(/\s/gm,''));
+        optObj.value = aesimpl.decrypt(b64impl.decode(iptObj.value.replace(/\s/gm,'')),passwd,256);
     }catch(e){
         alert("failed to get base64 decode:"+e);
     }

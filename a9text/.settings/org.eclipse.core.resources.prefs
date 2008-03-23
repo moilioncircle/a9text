@@ -1,4 +1,4 @@
-#Wed Mar 19 20:42:31 CST 2008
+#Sun Mar 23 19:32:51 CST 2008
 eclipse.preferences.version=1
 encoding//**/*.*=UTF-8
 encoding//impl_javascript/__testdemo__/__info__.js=UTF-8
@@ -13,8 +13,7 @@ encoding//impl_javascript/__testdemo__/data/require4.js=UTF-8
 encoding//impl_javascript/__testdemo__/data/require_text_error.js=UTF-8
 encoding//impl_javascript/__testdemo__/require3out.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/code/__info__.js=UTF-8
-encoding//impl_javascript/com/trydofor/a9js/code/des.js=UTF-8
-encoding//impl_javascript/com/trydofor/a9js/code/encoder.js=UTF-8
+encoding//impl_javascript/com/trydofor/a9js/code/b64.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/code/md5.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/format/__info__.js=UTF-8
 encoding//impl_javascript/com/trydofor/a9js/format/date.js=UTF-8

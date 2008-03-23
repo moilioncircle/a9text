@@ -48,7 +48,7 @@
     * 字典和提示,用来定义和解说[[=>#SECT:4.]]
     * 列表(无序)和步骤(有序).[[=>#SECT:6.]]
     * 锻炼和章节管理(目录生成).[[=>#SECT:3.]]
-    * 区域扩展,目前支持表格,源代码,DES加密等.[[=>#SECT:8.]]
+    * 区域扩展,目前支持表格,源代码,AES加密等.[[=>#SECT:8.]]
     
 1.5. 补充
 ^^^^^^^^^
@@ -433,10 +433,13 @@
 
      /************************************************************
      * @author  : Shi Rongjiu (www.trydofor.com)
-     * @version : 2008-2-18 / $Revision: 1.28 $
+     * @version : 2008-2-18 / $Revision: 1.29 $
      * @see     : requires/documents
      * ====================== change-logs =======================
      * $Log: not supported by cvs2svn $
+     * Revision 1.28  2008/03/21 03:36:31  trydofor
+     * dict
+     *
      * Revision 1.27  2008/03/21 03:03:09  trydofor
      * demo
      *
@@ -525,12 +528,37 @@
     GO
     ==================================================
 
-8.9. des 加密域
+8.9. aes 加密域
 ^^^^^^^^^^^^^^^
-    ================== des : passwd is "没有密码" ================
-    QHmH WRPE F5xq DbQd Gh8Y pFxW fJvL NV6G EKIY +u7o D3uy Emh8 WrRn rALh rwuS o8K9
-    RZVe A3GS ckpP Ipuk v+MG HLWc QMIU b3iW d3Wl 9UJH /E+V quR2 LONu 1hpU 7PxY VB5J
-    2isZ +50+ /0Fk ccN6 kdHZ dBQa NW/K 1xYG rF2n iMZp xuTG cJbd acKV WRG+ jiLp pPvS
-    I0Il 9Lc3 u3/l 2myB JqmA hA==
+    ================== aes : passwd is "没有密码" ================
+    YcOAwqzDmxgBITAhITAhLcOfw47DkyExMiHDmOaNpei+nxpvXcKSJXDChULCgi0/
+    UsKqw6McLGXCjxc9wrUkEE3mmZjkuYct57qL5pSa5p6X5qGb5b6055iG5ayD5LuP
+    woflrZrnjaDlkrTltbDlhqBb5LyiLcObwpbDr8OO5paB5qK655mv6Zmk6K+Lw6jk
+    uKDlhLzlkZHovInmjpLmmaUt5Yil5L+w5YmEKMORaR/DkWbDvkHDl8Kkw7HCssOt
+    LeWlruadjeaJveS7huiAkuWmheeVlemcqOW4jeespue6geeaseS7j+WPv+iuieae
+    hS3mjrfovqR5wrd0aMO7w7oZ6YGu5Lm65LiF5bKu5Lm96ICl5b+OLeWnu+earuis
+    heWkluWtoOeSkOink8KHB8KmwpVrw5LCquW+m+eHui0TFAITLiPDpOS7j+aYl+S6
+    suWSsS/ljKvmmJvlu7fmnqEt5ZKg5omH5p6g5ZKf5qOT6Z2h5rCi55iw5LiG6IC8
+    5pqX6ISi55Sa5LqdFMK/LcK5wpzDkMKMwo3DpCExNjAhITEwISQxwoMw54m854Gj
+    fMO2LcOLSmbDmMKZwpI2w5oOw5jCvMOnA3l0Ei0x57us5pW55p+v55qfw6jkuqXk
+    vbTot4zku4/luqbljavlkLXorqDoqJPCpC3DlMK9w43CjUghOSHCgSExMyHnvoHn
+    oJvmmbAlPV7Cl8O6LeeYr8K95ZOb5Yub5YyL6IKp5YaB546B5Lib56OFN8Kkw5LD
+    nh/Doy0XYiE5IeS/geaNthDDp0bCjOWeveaduOeKouW9i8OO5aSz5o6QLeijmiEw
+    IQPljLrml7rmn47lsYrmmJnlpYvnmYLml4zmoZ/DrcK1wq7Chy3Dr1vDpmbCt+e6
+    t+iLjueapwTkubzpnobopbXlrYnoo7jnq7/lu6Et5ZOP5Zym5Zyg5peT5Lihw7gW
+    w4HDq1dMw7ESwoXDncOrLXIqwqzli5fogYshMTEhEcOqw64Xw7DDqMKfwqbCp8KH
+    LTPCizdaSD/CrsOy5pWG5a6k5L+A6aanG+WIiuewnEQt5YC+5pewVuS6r+WKu8KT
+    5YiI6Zug562qwqE0eMKnw4I9w4EtITMzIcO+BsKyw5XCtUAFw78hMTAhRsOAw6vC
+    rcOGw48t6ZKq5YeAVeeUvuacquWSgeW4suaUjuafqgPlrYHlhK3lmobniZlH5YmM
+    LeeWouesgGxSITExIX4Hw7tXM3vCk1o/ek8tGMOSwr/DscOEwqxBWcK4QemTmeWH
+    k3DplJbngb7CjC3nl6LmnLrln7rml6LnqZHlhrjlrJjoi7rlk67mjJLlk7zlpK7p
+    gavpkJfmjJUYLTMVw7AlI8O8ITE2MCHCuMOUc8ORwrtqcMKYXC0Fw5dRwrFSwodc
+    5a+d5YSi5ZKf5o2556WNw4PnlKHmnLDlr60t5LuR5ZKw6KaV6K+kwoPDtGUYw4rD
+    tXYlBsO2AyExMyEtwrbDhx3CkCEzOSEadsKWV8Kt5Yue6KCzf+aUtOW4oCExNjAh
+    LeWQmeatrumojkDmnbbluKNHUsO0cAbCnkNCIH0twrNmD8KqOMODM8KawpLCqiEz
+    OSFJEjTplJfngq8t5ZOY56q56ImM56+C55GfwpTnmZ/lvqfnl4jmibhVwowGw4zC
+    psKQLcKmHMOITBZ1w4lgITM0IcOCwp3DtsOXwpJXw7otwrjClOWOjeWcsOaLuuWx
+    oCvnmIPli4vmlIPmj53oo4DmobIX5rit5LqxLeeiiDTDjcOYQOWKn+Wvj+ets8OJ
+    w5Y8wrDCjGAlIy0hMCFFwql6GcORD07CkA==
     ==============================================================
 
