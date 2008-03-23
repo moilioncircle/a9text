@@ -1,4 +1,4 @@
-﻿/**
+/**
 UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
 void parse(a9dom)
@@ -6,7 +6,7 @@ void parse(a9dom)
 
 var AreaB64Parser = function()
 {
-    A9Dom.type.area_b64 = {line:'area_des.line',word:'area_des.word'};
+    A9Dom.type.area_b64 = {line:'area_b64.line',word:'area_b64.word'};
     
     var linesize = 64;
     var wordsize = 4;
