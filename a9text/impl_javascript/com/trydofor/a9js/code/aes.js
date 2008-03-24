@@ -133,6 +133,7 @@ var AESClass = function()
     }
     
     function AESEncryptCtr(plaintext, password, nBits) {
+      if(nBits == null) nBits = 256;
       if (!(nBits==128 || nBits==192 || nBits==256)) return '';
     
       var nBytes = nBits/8;
@@ -170,6 +171,7 @@ var AESClass = function()
     }
     
     function AESDecryptCtr(ciphertext, password, nBits) {
+      if(nBits == null) nBits = 256;
       if (!(nBits==128 || nBits==192 || nBits==256)) return '';
       var nBytes = nBits/8;
       var pwBytes = new Array(nBytes);

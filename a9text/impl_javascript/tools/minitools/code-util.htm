@@ -2,10 +2,12 @@
 <script language="javascript" src="../../com/trydofor/a9js/code/b64.js"></script>
 <script language="javascript" src="../../com/trydofor/a9js/code/aes.js"></script>
 <script language="javascript" src="../../com/trydofor/a9js/code/md5.js"></script>
+<script language="javascript" src="../../com/trydofor/a9js/code/sha1.js"></script>
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr  height="30">
     <td>
-    <input type="button" onclick="md5sum()" value="md5sum" style="background-color:#99CC00"/> 
+    <input type="button" onclick="md5sum()" value="md5sum" style="background-color:#99CC00"/>
+    <input type="button" onclick="sha1sum()" value="sha1sum" style="background-color:#99CC00"/> 
     <input type="button" onclick="enB64()"  value="base64 encode" style="background-color:#CC9900"/> 
     <input type="button" onclick="deB64()"  value="base64 decode" style="background-color:#CC9900"/> 
     <input type="button" onclick="enAes()"  value="aes encrypt" style="background-color:#0066FF"/> 
@@ -25,24 +27,35 @@
 </table>
 
 <script type="text/javascript">
-var md5impl = new MD5Class();
-var b64impl = new B64Class();
-var aesimpl = new AESClass();
+var md5Impl  = new MD5Class();
+var sha1Impl = new SHA1Class();
+var b64Impl  = new B64Class();
+var aesImpl  = new AESClass();
 var iptObj = document.getElementById("INPUT");
 var optObj = document.getElementById("OUTPUT");
 
 function md5sum()
 {
     try{
-        optObj.value = md5impl.hash(iptObj.value);
+        optObj.value = md5Impl.hash(iptObj.value);
     }catch(e){
         alert("failed to get md5sum:"+e);
     }
 }
+
+function sha1sum()
+{
+    try{
+        optObj.value = sha1Impl.hash(iptObj.value);
+    }catch(e){
+        alert("failed to get sha1sum:"+e);
+    }
+}
+
 function enB64()
 {
     try{
-        var ot = b64impl.encode(iptObj.value);
+        var ot = b64Impl.encode(iptObj.value);
         optObj.value = format(ot);
     }catch(e){
         alert("failed to get base64 encode:"+e);
@@ -51,7 +64,7 @@ function enB64()
 function deB64()
 {
     try{
-        optObj.value = b64impl.decode(iptObj.value.replace(/\s/gm,''));
+        optObj.value = b64Impl.decode(iptObj.value.replace(/\s/gm,''));
     }catch(e){
         alert("failed to get base64 decode:"+e);
     }
@@ -62,7 +75,7 @@ function enAes()
         var passwd = window.prompt('please input your passwd','');
         if(passwd ==null || passwd =='') return;
         
-        var ot = b64impl.encode(aesimpl.encrypt(iptObj.value,passwd,256));
+        var ot = b64Impl.encode(aesImpl.encrypt(iptObj.value,passwd,256));
         optObj.value = format(ot);
     }catch(e){
         alert("failed to get base64 encode:"+e);
@@ -74,7 +87,7 @@ function deAes()
         var passwd = window.prompt('please input your passwd','');
         if(passwd ==null || passwd =='') return;
         
-        optObj.value = aesimpl.decrypt(b64impl.decode(iptObj.value.replace(/\s/gm,'')),passwd,256);
+        optObj.value = aesImpl.decrypt(b64Impl.decode(iptObj.value.replace(/\s/gm,'')),passwd,256);
     }catch(e){
         alert("failed to get base64 decode:"+e);
     }

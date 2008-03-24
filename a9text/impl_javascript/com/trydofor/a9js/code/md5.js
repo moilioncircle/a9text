@@ -2,8 +2,6 @@
 UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
 String hash(data)
-    返回md5摘要的HEX
-    data: 需要散列的字符串
 */
 
 var MD5Class = function()
