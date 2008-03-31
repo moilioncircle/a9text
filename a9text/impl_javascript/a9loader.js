@@ -192,7 +192,7 @@ var __A9Loader__ = function()
             }
             
             xhrInfo.open('GET',infoUri,async);
-            xhrInfo.setRequestHeader('If-Modified-Since','0');
+            //xhrInfo.setRequestHeader('If-Modified-Since','0');
             xhrInfo.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
             xhrInfo.send(null);
             
@@ -225,7 +225,7 @@ var __A9Loader__ = function()
         }
         
         xhrClzz.open('GET',clzzUri,async);
-        xhrClzz.setRequestHeader('If-Modified-Since','0');
+        //xhrClzz.setRequestHeader('If-Modified-Since','0');
         xhrClzz.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
         xhrClzz.send(null);
         
@@ -377,7 +377,7 @@ var __A9Loader__ = function()
             }
         }
         xhr.open('GET',url,true);
-        xhr.setRequestHeader('If-Modified-Since','0');
+        //xhr.setRequestHeader('If-Modified-Since','0');
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
         xhr.send(null);
         //
