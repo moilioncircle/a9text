@@ -12,7 +12,7 @@ var __A9TEXT_AAES__ = {
         var encryptStr = obj.innerHTML.replace(/<.+?>/gim,'').replace(/--.+--/gi,'').replace(/\s/g,'');
         if(encryptStr.length>0){
             var passwd = window.prompt('please input your passwd','');
-            if(passwd != ''){
+            if(passwd != null && passwd != ''){
                 var decryptStr = __A9TEXT_AAES__.desImpl.decrypt(__A9TEXT_AAES__.b64Impl.decode(encryptStr),passwd,256);
                 var win = window.open('','A9Text_AES','height=200,width=400,toolbar=no,menubar=no,location=no,status=no,resizable=yes');
                 win.document.write("<meta content='text/html; charset=utf-8' http-equiv='content-type'>");
