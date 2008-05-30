@@ -7,7 +7,7 @@ var AreaAesRender = function()
     var __const_htm__= {};
     __const_htm__.b64_box = ["<table id='AREA_","area_id","' style='margin-left:","$tier","ex;' class='a9text_area_syntax' border='0' cellspacing='0' cellpadding='0'>","infostr",
                          "<tr><td class='a9text_area_syntax_border'><table border='0' cellspacing='2' cellpadding='1'><tr><td class='a9text_area_syntax_lnum' align='center' valign='top'><pre>",
-                         "$num","</pre></td><td valign='top'><pre title='click to decrypt it' onclick='__A9TEXT_AAES__.decrypt(this)'>","$text","</pre></td></tr></table></td></tr></table>"];
+                         "$num","</pre></td><td valign='top'><pre class='a9text_autoscroll' title='click to decrypt it' onclick='__A9TEXT_AAES__.decrypt(this)'>","$text","</pre></td></tr></table></td></tr></table>"];
     __const_htm__.b64_box$info = ["<tr><td><span class='a9text_area_syntax_info'>","infostr","&nbsp;</span></td></tr>"];
     __const_htm__.b64_word = ["<span class='a9text_area_b64_word'>","word","</span>"];
         
@@ -37,7 +37,7 @@ var AreaAesRender = function()
             if(seq>0){
                 __render_htm__.push("\n");
             }else{
-                __render_htm__.push("----1----2----3----4----5----6----7----8----9----A----B----C----D----E----F----\n");
+                __render_htm__.push("--------1--------2--------3--------4--------5--------6--------7--------8\n");
                 __render_seq__.push("\n");
             }
             

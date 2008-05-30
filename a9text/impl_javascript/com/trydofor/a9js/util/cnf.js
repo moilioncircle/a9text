@@ -13,6 +13,8 @@ String getValue(key)
     get the value by key
     key : (NOT null)
 
+Object getKeyValClone()
+    get the private keyval map
 */
 
 var CnfReaderClass = function()
@@ -69,5 +71,15 @@ var CnfReaderClass = function()
     {
         if(key == null) return "";
         return __kvMap__[key];
+    }
+    
+    this.getKeyValClone = function()
+    {
+        var map = {};
+        for(var k in __kvMap__)
+        {
+            map[k] = __kvMap__[k];
+        }
+        return map;
     }
 }

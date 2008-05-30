@@ -9,7 +9,7 @@ var AreaB64Parser = function()
     A9Dom.type.area_b64 = {line:'area_b64.line',word:'area_b64.word'};
     
     var linesize = 64;
-    var wordsize = 4;
+    var wordsize = 8;
     ////
     this.parse = function(a9dom,func)
     {

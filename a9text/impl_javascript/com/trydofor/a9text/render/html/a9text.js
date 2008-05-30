@@ -1,4 +1,4 @@
-﻿/**
+/**
 UTF8(BOM)  GPL  trydofor.com  May.2007
 ===========================================================
 String render(a9Dom)
@@ -10,7 +10,7 @@ var A9TextRender = function()
     
     var __const_htm__= {};
     
-    __const_htm__.index_item = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'><strong>","$flag","</strong>&nbsp;<a class='a9text_link' href='javascript:{}' onclick='parent.window.scrollBy(0,document.getElementById(\"","sect_id","\").offsetTop-this.offsetTop)'>","$title","</a></div>"];
+    __const_htm__.index_item = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'><strong>","$flag","</strong>&nbsp;<a class='a9text_link' href='javascript:{}' onclick='window.scrollBy(0,document.getElementById(\"","sect_id","\").offsetTop-this.offsetTop)'>","$title","</a></div>"];
     
     __const_htm__.root = ["<div class='a9text_root'>","$title","</div>"];
     __const_htm__.info_head = "<div class='a9text_info'>";
@@ -590,7 +590,7 @@ var A9TextRender = function()
                                  __const_htm__.mode_link[3] = A9Util.txt2htm(hname);
                                  __render_htm__.push(__const_htm__.mode_link.join(''));
                               }else{
-                                 __const_htm__.mode_hash[1] = "parent.window.scrollBy(0,document.getElementById(\""+haddr+hdom.getId()+"\").offsetTop-this.offsetTop)";
+                                 __const_htm__.mode_hash[1] = "window.scrollBy(0,document.getElementById(\""+haddr+hdom.getId()+"\").offsetTop-this.offsetTop)";
                                  __const_htm__.mode_hash[3] = A9Util.txt2htm(hname);
                                  __render_htm__.push(__const_htm__.mode_hash.join(''));
                               }
