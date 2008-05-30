@@ -102,6 +102,7 @@ var __A9Loader__ = function()
     function __syncLoadText__(url)
     {
         __checkType__(url,"string","url@__syncLoadText__");
+        __stdout__("__syncLoadText__:"+url);
         var xhr = __newXHRequest__();
         var resText = null;
         try{
@@ -109,6 +110,8 @@ var __A9Loader__ = function()
             xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
             xhr.send(null);
             resText = xhr.responseText;
+        }catch(e){
+            __stderr__("__syncLoadText__:"+url)
         }finally{
             xhr.abort();
             delete xhr;
