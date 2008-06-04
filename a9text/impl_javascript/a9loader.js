@@ -145,35 +145,38 @@ var __A9Loader__ = function()
             }
         }
         __asyncTextTask__.map[task.id] = task;
+        for(var i=0;i<task.xhrs.length;i++){
+            task.xhrs[i].start();
+        }
     }
     
     /////////////////// helper functions  ///////////////////
     
     function __clzzTask__(clzz,async)
     {
-    	//(step,init:0,info:1,text:2,impl:3)
-    	if(typeof(__clzzInfoPools__[clzz]) != 'undefined' 
-    	   && __clzzInfoPools__[clzz]['text'] != null) return;
-    	
-    	if(async == null||async != false) async = true;
-    	else async = false;
-    	
-    	__asyncClzzTask__.rcnt++;
-    	__asyncClzzTask__.clzz.push(clzz);
-    	
+        //(step,init:0,info:1,text:2,impl:3)
+        if(typeof(__clzzInfoPools__[clzz]) != 'undefined' 
+           && __clzzInfoPools__[clzz]['text'] != null) return;
+        
+        if(async == null||async != false) async = true;
+        else async = false;
+        
+        __asyncClzzTask__.rcnt++;
+        __asyncClzzTask__.clzz.push(clzz);
+        
         __stdout__("__clzzTask__:"+clzz+","+async);
         
-    	if(typeof(__clzzInfoPools__[clzz]) == 'undefined'){
-	    	__clzzInfoPools__[clzz] = {'clzz':clzz,'pubs':null,'deps':null,'text':'','impl':null};
-    	}
-    	
-    	//document.body.innerHTML +="<br>"+clzz;
-    	var clzzUri = __pageInfo__.core+clzz.replace(/\./g,'/')+__selfConf__.extn;
-    	var infoUri = clzzUri.substring(0,clzzUri.lastIndexOf('/')+1)+__selfConf__.info;
-    	
+        if(typeof(__clzzInfoPools__[clzz]) == 'undefined'){
+            __clzzInfoPools__[clzz] = {'clzz':clzz,'pubs':null,'deps':null,'text':'','impl':null};
+        }
+        
+        //document.body.innerHTML +="<br>"+clzz;
+        var clzzUri = __pageInfo__.core+clzz.replace(/\./g,'/')+__selfConf__.extn;
+        var infoUri = clzzUri.substring(0,clzzUri.lastIndexOf('/')+1)+__selfConf__.info;
+        
         // get info (async|sync)
         if(__clzzInfoPools__[clzz]['pubs'] == null){
-    		__asyncClzzTask__.rcnt++;
+            __asyncClzzTask__.rcnt++;
             var xhrInfo = __newXHRequest__();
             if(async){
                 xhrInfo.onreadystatechange = function(){
@@ -208,23 +211,23 @@ var __A9Loader__ = function()
                 __clzzTaskCallback__();
             }
         }
-    	
+        
         // get text (async|sync)
         var xhrClzz = __newXHRequest__();
         if(async){
-	        xhrClzz.onreadystatechange = function(){
-	            if(xhrClzz.readyState == 4){
-	                if (xhrClzz.status == 0 || xhrClzz.status == 200 || xhrClzz.status == 304 ){
-	                	__clzzInfoPools__[clzz]['text']=xhrClzz.responseText;
-	                }else{
-	                    // do something
-	                }
-	                xhrClzz.abort();
-	                delete xhrClzz;
-	                __asyncClzzTask__.rcnt--;
-	                __clzzTaskCallback__();
-	            }
-	        }
+            xhrClzz.onreadystatechange = function(){
+                if(xhrClzz.readyState == 4){
+                    if (xhrClzz.status == 0 || xhrClzz.status == 200 || xhrClzz.status == 304 ){
+                        __clzzInfoPools__[clzz]['text']=xhrClzz.responseText;
+                    }else{
+                        // do something
+                    }
+                    xhrClzz.abort();
+                    delete xhrClzz;
+                    __asyncClzzTask__.rcnt--;
+                    __clzzTaskCallback__();
+                }
+            }
         }
         
         xhrClzz.open('GET',clzzUri,async);
@@ -233,87 +236,87 @@ var __A9Loader__ = function()
         xhrClzz.send(null);
         
         if(!async){
-        	__clzzInfoPools__[clzz]['text']=xhrClzz.responseText;
-			xhrClzz.abort();
+            __clzzInfoPools__[clzz]['text']=xhrClzz.responseText;
+            xhrClzz.abort();
             delete xhrClzz;
             __asyncClzzTask__.rcnt--;
-        	__clzzTaskCallback__();
+            __clzzTaskCallback__();
         }
         
         // inner function
-    	function __info__(scriptName,publicMemeber,dependencs){
-    		var clzzBall = clzz.substring(0,clzz.lastIndexOf('.')+1);
-    		var clzzName = clzzBall + scriptName.substring(0,scriptName.lastIndexOf(__selfConf__.extn));
+        function __info__(scriptName,publicMemeber,dependencs){
+            var clzzBall = clzz.substring(0,clzz.lastIndexOf('.')+1);
+            var clzzName = clzzBall + scriptName.substring(0,scriptName.lastIndexOf(__selfConf__.extn));
             
-    		if(typeof(__clzzInfoPools__[clzzName]) == 'undefined'){
-	    		__clzzInfoPools__[clzzName] = {'clzz':clzzName,'pubs':publicMemeber,'deps':dependencs,'text':null,'impl':null};
-    		}else{
-    			__clzzInfoPools__[clzzName]['pubs']=publicMemeber;
-    			__clzzInfoPools__[clzzName]['deps']=dependencs;
-    		}
-    		
-    		__stdout__("__info__:"+clzzName);
-    		
-    		if(dependencs!= null){
-    			for(var i=0;i<dependencs.length;i++){
-    				if(dependencs[i].indexOf('.')<0) dependencs[i] = clzzBall+dependencs[i];
-    				new __clzzTask__(dependencs[i],async);
-    			}
-    		}
-    	}
+            if(typeof(__clzzInfoPools__[clzzName]) == 'undefined'){
+                __clzzInfoPools__[clzzName] = {'clzz':clzzName,'pubs':publicMemeber,'deps':dependencs,'text':null,'impl':null};
+            }else{
+                __clzzInfoPools__[clzzName]['pubs']=publicMemeber;
+                __clzzInfoPools__[clzzName]['deps']=dependencs;
+            }
+            
+            __stdout__("__info__:"+clzzName);
+            
+            if(dependencs!= null){
+                for(var i=0;i<dependencs.length;i++){
+                    if(dependencs[i].indexOf('.')<0) dependencs[i] = clzzBall+dependencs[i];
+                    new __clzzTask__(dependencs[i],async);
+                }
+            }
+        }
     }
     
     function __clzzTaskCallback__()
     {
-    	__stdout__("__clzzTaskCallback__:"+__asyncClzzTask__.rcnt);
-    	
-    	if(__asyncClzzTask__.rcnt > 0) return;
-    	
-    	__asyncClzzTask__.rcnt ++;
-		do{
-	    	var ci = __asyncClzzTask__.clzz.length;
-	    	var fi = __asyncClzzTask__.func.length;
-	    	for(var i=0;i<ci;i++){
-	    		__initAndExportClzz__(__asyncClzzTask__.clzz.shift());
-	    	}
-	    	for(var i=0;i<fi;i++){
-	    		try{
-	    		    var func = __asyncClzzTask__.func.shift();
-	    		    __stdout__("__asyncClzzTask__.func:"+i+"\n"+func);
-	    			func();
-	    		}catch(e){ __stderr__("__clzzTaskCallback__:"+e)};
-	    	}
-		}while(__asyncClzzTask__.rcnt<=1 && (ci>0 ||fi>0))
-		
-		__asyncClzzTask__.rcnt --;
+        __stdout__("__clzzTaskCallback__:"+__asyncClzzTask__.rcnt);
+        
+        if(__asyncClzzTask__.rcnt > 0) return;
+        
+        __asyncClzzTask__.rcnt ++;
+        do{
+            var ci = __asyncClzzTask__.clzz.length;
+            var fi = __asyncClzzTask__.func.length;
+            for(var i=0;i<ci;i++){
+                __initAndExportClzz__(__asyncClzzTask__.clzz.shift());
+            }
+            for(var i=0;i<fi;i++){
+                try{
+                    var func = __asyncClzzTask__.func.shift();
+                    __stdout__("__asyncClzzTask__.func:"+i+"\n"+func);
+                    func();
+                }catch(e){ __stderr__("__clzzTaskCallback__:"+e)};
+            }
+        }while(__asyncClzzTask__.rcnt<=1 && (ci>0 ||fi>0))
+        
+        __asyncClzzTask__.rcnt --;
     }
     
     function __initAndExportClzz__(clzz)
     {
-    	if(typeof(__clzzInfoPools__[clzz]) == 'undefined' 
-    	   || __clzzInfoPools__[clzz]['impl'] != null
-    	   || __clzzInfoPools__[clzz]['text'] == null
-    	   ) return;
-    	
-    	// deps check
-    	var cip = __clzzInfoPools__[clzz];
-    	cip['impl'] = 'ready'; // avoid looping deps
-    	//__stdout__("check@__initAndExportClzz__:"+clzz);
-		for(var i=0;cip['deps']!=null && i<cip['deps'].length;i++){
+        if(typeof(__clzzInfoPools__[clzz]) == 'undefined' 
+           || __clzzInfoPools__[clzz]['impl'] != null
+           || __clzzInfoPools__[clzz]['text'] == null
+           ) return;
+        
+        // deps check
+        var cip = __clzzInfoPools__[clzz];
+        cip['impl'] = 'ready'; // avoid looping deps
+        //__stdout__("check@__initAndExportClzz__:"+clzz);
+        for(var i=0;cip['deps']!=null && i<cip['deps'].length;i++){
             __stdout__("deps@__initAndExportClzz__:"+clzz+"->"+cip['deps'][i]);
-			__initAndExportClzz__(cip['deps'][i]);
-		}
-		__stdout__("init@__initAndExportClzz__:"+clzz);
-    	// init clzz
-    	var clzzScript = ["__clzzInfoPools__[clzz].impl = function(){\n"];
-    	if(cip['pubs']!=null)
-	        for(var i=0;i<cip['pubs'].length;i++)
-	    		clzzScript.push("var " + cip['pubs'][i] + ";\n");
-    	clzzScript.push(cip['text']);
+            __initAndExportClzz__(cip['deps'][i]);
+        }
+        __stdout__("init@__initAndExportClzz__:"+clzz);
+        // init clzz
+        var clzzScript = ["__clzzInfoPools__[clzz].impl = function(){\n"];
+        if(cip['pubs']!=null)
+            for(var i=0;i<cip['pubs'].length;i++)
+                clzzScript.push("var " + cip['pubs'][i] + ";\n");
+        clzzScript.push(cip['text']);
         clzzScript.push("\nreturn { __$:function(s){return eval(s)}\n");
-    	if(cip['pubs']!=null)
-	        for(var i=0;i<cip['pubs'].length;i++)
-            	clzzScript.push(","+cip['pubs'][i]+":"+cip['pubs'][i]+"\n");
+        if(cip['pubs']!=null)
+            for(var i=0;i<cip['pubs'].length;i++)
+                clzzScript.push(","+cip['pubs'][i]+":"+cip['pubs'][i]+"\n");
         clzzScript.push("};\n");
         clzzScript.push("}();\n");
         
@@ -328,12 +331,12 @@ var __A9Loader__ = function()
         var ballScript = [];
         var ballPart = clzz.split('.');
         if(ballPart.length>1){
-        	ballScript.push("if(typeof("+ballPart[0]+")=='undefined')"+ballPart[0]+"={};\n");
-	        var ballCell = ballPart[0];
-	        for(var i=1;i<ballPart.length-1;i++){
-	            ballCell += "['"+ballPart[i]+"']";
-	            ballScript.push("if(typeof("+ballCell+")=='undefined') "+ballCell+"={};\n");
-	        }
+            ballScript.push("if(typeof("+ballPart[0]+")=='undefined')"+ballPart[0]+"={};\n");
+            var ballCell = ballPart[0];
+            for(var i=1;i<ballPart.length-1;i++){
+                ballCell += "['"+ballPart[i]+"']";
+                ballScript.push("if(typeof("+ballCell+")=='undefined') "+ballCell+"={};\n");
+            }
         }
         
         ballScript.push("if(typeof("+clzz+")!= 'undefined'){ throw '"+clzz+" exists';}\n");
@@ -341,19 +344,19 @@ var __A9Loader__ = function()
         try{
             eval(ballScript.join(''));
         }catch(e){
-        	throw "bad ball :"+clzz+" :\n"+e;
+            throw "bad ball :"+clzz+" :\n"+e;
         }
         delete ballScript;
         
         // alias pubs
         var aliasScript = [];
         if(cip['pubs']!=null)
-	        for(var i=0;i<cip['pubs'].length;i++){
-	    		aliasScript.push("if(typeof("+cip['pubs'][i]+")!='undefined'){__stderr__('conflict:"+cip['pubs'][i]+"@"+clzz+"');}\n");
-	    		aliasScript.push("else{"+cip['pubs'][i]+"=__clzzInfoPools__[clzz].impl['"+cip['pubs'][i]+"']}\n");
-	        }
+            for(var i=0;i<cip['pubs'].length;i++){
+                aliasScript.push("if(typeof("+cip['pubs'][i]+")!='undefined'){__stderr__('conflict:"+cip['pubs'][i]+"@"+clzz+"');}\n");
+                aliasScript.push("else{"+cip['pubs'][i]+"=__clzzInfoPools__[clzz].impl['"+cip['pubs'][i]+"']}\n");
+            }
         eval(aliasScript.join(''));
-		delete aliasScript;
+        delete aliasScript;
     }
     /**
      * do xmlhttprequest as a thread of task group
@@ -362,31 +365,35 @@ var __A9Loader__ = function()
      */
     function __textTask__(url,taskid)
     {
+        __stdout__("__textTask__:"+url);
         var text = null;
         var done = false;
         
-        var xhr = __newXHRequest__();
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4){
-                if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
-                    text = xhr.responseText;
-                    done = true;
-                    __textTaskCallback__(taskid);
-                }else{
-                    // do something
-                }
-                xhr.abort();
-                delete xhr;
-            }
-        }
-        xhr.open('GET',url,true);
-        //xhr.setRequestHeader('If-Modified-Since','0');
-        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
-        xhr.send(null);
         //
         this.isDone = function(){return done;}
         this.getUrl = function(){return url;}
         this.getText = function(){return text;}
+        this.start = function()
+        {
+            var xhr = __newXHRequest__();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
+                        text = xhr.responseText;
+                        done = true;
+                        __textTaskCallback__(taskid);
+                    }else{
+                        // do something
+                    }
+                    xhr.abort();
+                    delete xhr;
+                }
+            }
+            xhr.open('GET',url,true);
+            //xhr.setRequestHeader('If-Modified-Since','0');
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+            xhr.send(null);
+        }
     }
     
     function __textTaskCallback__(taskid)
@@ -444,10 +451,10 @@ var __A9Loader__ = function()
         if(para == null) throw mess;
         if(para instanceof Array && type != "Array"){
             for(var i=0; i<para.length; i++) {
-            	if(typeof(para[i]) == type) continue;
-            	try{
-            	   if(eval("para[i] instanceof "+type)) continue;
-            	}catch(e){};
+                if(typeof(para[i]) == type) continue;
+                try{
+                   if(eval("para[i] instanceof "+type)) continue;
+                }catch(e){};
                 throw mess;
             }
             return;
@@ -539,13 +546,13 @@ if(typeof(A9Loader) == 'undefined' || !(A9Loader instanceof __A9Loader__))
             _console_= window.open("","A9LoaderConsole","width=680,height=600,resizable,scrollbars=yes");
             _console_.document.write("<meta content='text/html; charset=utf-8' http-equiv='content-type'><body style='font-size:12px'></body>");
         }
-    	_console_.document.write("<pre>"+info+"</pre>");
+        _console_.document.write("<pre>"+info+"</pre>");
     }
     var stderr = function(info){
         stdout("[ERR]"+info);
     }
     
-	A9Loader.setStdout(stdout);
-	A9Loader.setStderr(stderr);
-	*/
+    A9Loader.setStdout(stdout);
+    A9Loader.setStderr(stderr);
+    */
 }
