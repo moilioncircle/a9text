@@ -389,10 +389,20 @@ var __A9Loader__ = function()
                     delete xhr;
                 }
             }
-            xhr.open('GET',url,true);
-            //xhr.setRequestHeader('If-Modified-Since','0');
-            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
-            xhr.send(null);
+            try{
+                xhr.open('GET',url,true);
+                //xhr.setRequestHeader('If-Modified-Since','0');
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+                xhr.send(null);
+            }catch(e){
+                __stderr__("__syncLoadText__:"+url)
+                xhr.abort();
+                delete xhr;
+                
+                text = null;
+                done = true;
+                __textTaskCallback__(taskid);
+            }
         }
     }
     
