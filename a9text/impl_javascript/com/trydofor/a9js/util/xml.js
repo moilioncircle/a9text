@@ -39,6 +39,25 @@ var XmlReaderClass = function()
     var __root__  = null;
     var __msxml__ = [ 'MSXML2.DOMDocument', 'Microsoft.XmlDom' ];
     
+    function createXMLHttpRequest()
+    {
+        var __xmlhttp__ = ['MSXML2.XMLHTTP','Microsoft.XMLHTTP'];
+        var xmlhttp = null;
+        if (window.ActiveXObject) // IE
+        {
+            for (var i=0;i<__xmlhttp__.length;i++)
+                try { xmlhttp = new ActiveXObject( __xmlhttp__[i] );break;}catch(e){};
+        }
+        else if(XMLHttpRequest) // Mozilla, Firefox, Opera, etc.
+        {
+            xmlhttp =new XMLHttpRequest();
+        }
+        
+        if(xmlhttp == null) throw "your browser do not support XMLHttpRequest!";
+        
+        return xmlhttp;
+    }
+    
     function __loadFormFile__(file)
     {
         if(file == null) throw "para[file] is null";
@@ -49,15 +68,25 @@ var XmlReaderClass = function()
                 try { __root__ = new ActiveXObject( __msxml__[i] );break;}catch(e){};
             //
             __root__.async=false;
-            __root__.load(file);
         }
-        else // Mozilla, Firefox, Opera, etc.
+        else if (document.implementation && document.implementation.createDocument)// Mozilla, Firefox, Opera, etc.
         {
             __root__=document.implementation.createDocument("","",null);
             __root__.async=false;
+        }
+        try
+        {
             __root__.load(file);
         }
-        
+        catch(e) // safari
+        {
+            var xmlhttp = createXMLHttpRequest();
+            xmlhttp.open("get",file,false);
+            xmlhttp.setRequestHeader('Content-Type','text/xml; charset=UTF-8');
+            xmlhttp.send(null);
+            __root__ = xmlhttp.responseXML;
+        }
+
         if(__root__ == null) throw "your browser do not support xml dom !";
     }
     
@@ -73,10 +102,17 @@ var XmlReaderClass = function()
             __root__.async=false;
             __root__.loadXML(text);
         }
-        else // Mozilla, Firefox, Opera, etc.
+        else if (DOMParser)// Mozilla, Firefox, Opera, etc.
         {
             var parser = new DOMParser();
             __root__ = parser.parseFromString(text,"text/xml");
+        }
+        else // safari
+        {
+            var xmlhttp = createXMLHttpRequest();
+            xmlhttp.open("get","data:text/xml;charset=utf-8," + encodeURIComponent(text),false);
+            xmlhttp.send(null);
+            __root__ = xmlhttp.responseXML;
         }
         
         if(__root__ == null) throw "your browser do not support xml dom !";

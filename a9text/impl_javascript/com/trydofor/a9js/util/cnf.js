@@ -13,13 +13,24 @@ String getValue(key)
     get the value by key
     key : (NOT null)
 
+String getKey(val)
+    get the key by val
+    val : (NOT null)
+
+void put(key,val)
+    put key val map
+    
 Object getKeyValClone()
     get the private keyval map
+
+void clear()
+	clear all key-values
 */
 
 var CnfReaderClass = function()
 {
     var __kvMap__ = {};
+    var __vkMap__ = {};
     
     function __loadFormFile__(file)
     {
@@ -50,7 +61,7 @@ var CnfReaderClass = function()
         if(text == null || text == "") return;
         
         var __regexp_comment__ = /^[ \t]*#/;
-        var __regexp_keyval__ = /^[ \t]*([^= \t]+)[ \t]*=[ \t]*([^ \t]+)[ \t]*$/;
+        var __regexp_keyval__ = /^[ \t]*([^= \t]+)[ \t]*=[ \t]*(.*)$/;
         
         var lines = text.split(/[\r\n]+/);
         for(var i=0;i<lines.length;i++)
@@ -58,7 +69,10 @@ var CnfReaderClass = function()
             if(__regexp_comment__.test(lines[i])) continue;
             if(__regexp_keyval__.test(lines[i]))
             {
-                __kvMap__[RegExp.$1] = RegExp.$2
+            	var key = RegExp.$1;
+            	var val = RegExp.$2.replace(/[ \t]+$/,'');
+                __kvMap__[key] = val;
+                __vkMap__[val] = key;
             }
         }
     }
@@ -67,10 +81,23 @@ var CnfReaderClass = function()
     this.loadFromText = __loadFromText__;
     this.loadFormFile = __loadFormFile__;
     
+    this.put = function(key,val)
+    {
+        if(key == null || val == null) return;
+        __kvMap__[key] = val;
+        __vkMap__[val] = key;
+    }
+    
     this.getValue = function(key)
     {
         if(key == null) return "";
         return __kvMap__[key];
+    }
+    
+    this.getKey = function(val)
+    {
+        if(val == null) return "";
+        return __vkMap__[val];
     }
     
     this.getKeyValClone = function()
@@ -81,5 +108,11 @@ var CnfReaderClass = function()
             map[k] = __kvMap__[k];
         }
         return map;
+    }
+    
+    this.clear = function()
+    {
+    	__kvMap__ = {};
+    	__vkMap__ = {};
     }
 }
