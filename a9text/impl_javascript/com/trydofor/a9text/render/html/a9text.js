@@ -23,9 +23,9 @@ var A9TextRender = function()
     __const_htm__.dict_foot = "</div>";
     __const_htm__.para_head = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'>"];
     __const_htm__.para_foot = "</div>";
-    __const_htm__.area = ["<table id='AREA_","area_id","' style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre class='a9text_area'>","$para","</pre></td></tr></table>"];
+    __const_htm__.area = ["<table id='AREA_","area_id","' style='margin-left:","$tier","ex;' class='a9text_area_syntax' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre class='a9text_area'>","$para","</pre></td></tr></table>"];
     __const_htm__.area$info = ["<tr><td><span class='a9text_area_info'>","infostr","&nbsp;</span></td></tr>"];
-    __const_htm__.area_text = ["<table id='AREA_","area_id","' style='margin-left:","$tier","ex;' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:","0","px dashed #666699;'>","$para","</pre></td></tr></table>"];
+    __const_htm__.area_text = ["<table id='AREA_","area_id","' style='margin-left:","$tier","ex;' class='a9text_area_syntax' border='0' cellspacing='0' cellpadding='0'>","infostr","<tr><td><pre style='padding:6px;border:","0","px dashed #666699;'>","$para","</pre></td></tr></table>"];
     __const_htm__.text = ["<pre style='margin-left:","$tier","ex'>","$para","</pre>"];
     
     __const_htm__.list_head = ["<div class='a9text_breakall' style='margin-left:","$tier","ex'>"];;

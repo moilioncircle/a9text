@@ -110,6 +110,7 @@ table{
     color:#FF0000; background-color:#dddddd;
 }
 .a9text_area{
+    width:100%;
     padding:6px;
     border:1px dashed #666699;
 }
@@ -118,7 +119,7 @@ table{
     color:#FFFFFF;
 }
 .a9text_area_syntax{
-    width:95%;
+    width:100%;
 }
 .a9text_area_syntax_border{
     border:1px dashed #666699;
