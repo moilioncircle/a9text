@@ -1,5 +1,5 @@
 /**
-UTF8(BOM)  GPL  trydofor.com  Feb.2008
+UTF8(BOM)  LGPL  trydofor.com  Feb.2008
 ===========================================================
 
 void A9Loader.tagLoadScript(String url)

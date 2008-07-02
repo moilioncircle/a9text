@@ -1,4 +1,4 @@
-﻿/* UTF8(BOM)  GPL  trydofor.com  May.2007 */
+﻿/* UTF8(BOM)  LGPL  trydofor.com  May.2007 */
 // __info__('js_file_name',['public_members'],['dependences']);
 __info__('bash.js',['AreaBashParser'],['com.trydofor.a9text.parser.area.common.syntaxcode']);
 __info__('b64.js',['AreaB64Parser']);

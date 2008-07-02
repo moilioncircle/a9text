@@ -1,5 +1,5 @@
 ﻿/**
-UTF8(BOM)  GPL  trydofor.com  May.2007
+UTF8(BOM)  LGPL  trydofor.com  May.2007
 ===========================================================
 MiniTaskClass(timeout,timeStep)
 轻量级的轮询任务管理里,参数为默认超时时间和轮询间隔(毫秒)

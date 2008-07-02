@@ -1,5 +1,5 @@
 /**
-UTF8(BOM)  GPL  trydofor.com  Mar.2008
+UTF8(BOM)  LGPL  trydofor.com  Mar.2008
 ===========================================================
 */
 if(typeof(__A9TEXT_ASCP__) =='undefined')

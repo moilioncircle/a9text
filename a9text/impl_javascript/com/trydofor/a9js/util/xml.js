@@ -1,5 +1,5 @@
 ﻿/**
-UTF8(BOM)  GPL  trydofor.com  Jan.2008
+UTF8(BOM)  LGPL  trydofor.com  Jan.2008
 ===========================================================
 xml file (dom) reader
 

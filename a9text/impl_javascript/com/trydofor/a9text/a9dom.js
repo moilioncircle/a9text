@@ -1,5 +1,5 @@
 ﻿/**
-UTF8(BOM)  GPL  trydofor.com  Jun.2007
+UTF8(BOM)  LGPL  trydofor.com  Jun.2007
 ===========================================================
 A9Dom.__counter__
     全局计数器,用来生产a9dom的id

@@ -1,4 +1,4 @@
-//UTF8(BOM)  GPL  trydofor.com  Mar. 2008
+//UTF8(BOM)  LGPL  trydofor.com  Mar. 2008
 /* property name is lowercase, class name is uppercase*/
 var ProgressBar = function(doc)
 {

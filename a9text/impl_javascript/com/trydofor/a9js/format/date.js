@@ -1,5 +1,5 @@
 ﻿/**
-UTF8(BOM)  GPL  trydofor.com  May.2007
+UTF8(BOM)  LGPL  trydofor.com  May.2007
 ===========================================================
 DateFormatClass
 like the java's SimpleDateFormat.

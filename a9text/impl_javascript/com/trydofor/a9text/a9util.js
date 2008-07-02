@@ -1,5 +1,5 @@
 ﻿/**
-UTF8(BOM)  GPL  trydofor.com  Jun.2007
+UTF8(BOM)  LGPL  trydofor.com  Jun.2007
 ===========================================================
 String A9Util.getFile(file,dir)
     获得相对路径到绝对路径的转换.
