@@ -2,6 +2,8 @@
 
 ================= table : todos =================
 id          done        content
+08070301    ??          因FireFox3 xml权限问题,以cnf替换xml.
+08070201    08-07-02    以LGPL替换GPL许可证.
 08033101    08-03-31    去掉a9loader中禁止缓存代码.
 08032201    08-03-23    使用AES取代DES区域
 08031901    ??          制作最简陋的a9text editor
