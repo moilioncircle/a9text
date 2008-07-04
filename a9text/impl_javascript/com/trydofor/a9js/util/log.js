@@ -57,7 +57,7 @@ Logger.log = function(mess,level,mark)
     try{
         if(typeof(Logger.stdout) != "function")
         {
-            var win = window.open("","A9EngineConsole","width=680,height=600,resizable,scrollbars=yes");
+            var win = window.open("","A9Console","width=680,height=600,resizable,scrollbars=yes");
             win.document.write("<meta content='text/html; charset=utf-8' http-equiv='content-type'><body style='font-size:12px'></body>");
             win.document.close();
             Logger.stdout = function(mes)

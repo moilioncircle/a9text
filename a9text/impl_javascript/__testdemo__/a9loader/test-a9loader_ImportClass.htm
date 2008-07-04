@@ -1,12 +1,11 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <body></body>
 <script type="text/javascript" src="../../a9loader.js"></script>
 <script type="text/javascript">
 function runAfer(){
     try{
-        //alert(typeof(com.trydofor.a9js.code.des.DESClass));
-        //for(var k in com.trydofor.a9js.code.des.DESClass) alert(k+"::"+com.trydofor.a9js.code.des.DESClass[k]);
         
-        var des = new com.trydofor.a9js.code.des.DESClass();
+        var des = new com.trydofor.a9js.code.aes.AESClass();
         var txt = "it is a test";
         var pss = "123";
         var end = des.encrypt(pss,txt);
@@ -17,13 +16,13 @@ function runAfer(){
     }
 }
 function asyncTest(){
-    A9Loader.asyncLoadClass("com.trydofor.a9js.code.des");
+    A9Loader.asyncLoadClass("com.trydofor.a9js.code.aes");
     A9Loader.runAfterClassLoaded(runAfer);
     runAfer();
 }
 
 document.body.innerHTML +="<br>init";
-A9Loader.syncLoadClass("com.trydofor.a9js.code.des");
+A9Loader.syncLoadClass("com.trydofor.a9js.code.aes");
 runAfer();
 
 </script>

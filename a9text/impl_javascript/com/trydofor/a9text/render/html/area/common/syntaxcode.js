@@ -106,7 +106,7 @@ var AreaSyntaxCodeRender = function()
         __const_htm__.syntax_code[9] = __render_htm__.join('');
         
         a9dom.setData({'htmltext':__const_htm__.syntax_code.join(''),
-	        'linkjs':[A9Conf.getConf("/root/render/html/common/js/syntax/@path")],
+	        'linkjs':[A9Conf.getConf("render.html.common.js.syntax")],
 	        'linkcss':null});
         
         if(func instanceof Function)

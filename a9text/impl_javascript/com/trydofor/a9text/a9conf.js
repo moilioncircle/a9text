@@ -1,8 +1,8 @@
 ﻿//UTF8(BOM)  LGPL  trydofor.com  Dec.2007
 /* property name is lowercase, class name is uppercase*/
-var A9Conf = new XmlReaderClass();
+var A9Conf = new CnfReaderClass();
 
-A9Conf.loadFormFile(A9Loader.getCorePath()+"com/trydofor/a9text/a9conf.xml");
+A9Conf.loadFormFile(A9Loader.getCorePath()+"com/trydofor/a9text/a9conf.txt");
 
 A9Conf.__EnvPath__ = {
     '$PAGE_PATH/':   A9Loader.getPagePath(),
@@ -14,7 +14,7 @@ A9Conf.__EnvPath__ = {
 //
 A9Conf.valueEnv = function(str)
 {
-    if(str == null || str == "") return "";
+    if(str == null || str == "") return str;
     
     for(var key in A9Conf.__EnvPath__)
     {
@@ -27,8 +27,8 @@ A9Conf.valueEnv = function(str)
     return str;
 }
 
-A9Conf.getConf = function(xpath)
+A9Conf.getConf = function(key)
 {
-    var str = A9Conf.getNodeTextOrAttr(xpath);
+    var str = A9Conf.getValue(key);
     return A9Conf.valueEnv(str);
 }

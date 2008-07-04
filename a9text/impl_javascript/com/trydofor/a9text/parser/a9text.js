@@ -43,15 +43,15 @@ var A9TextParser = function()
     var __args_area__ = {};
     var __args_hash__ = {};
     var __args_join__ = {};
-    var __join_ext__  = A9Conf.getConf("/root/parser/join/txt/@extn");
+    var __join_ext__  = A9Conf.getConf("parser.join.text.name");
     
     var __simple_link__ = [];
-    {
-        var nodes = A9Conf.selectNodes("/root/parser/link/simple");
-        for (var i=0;i<nodes.length;i++){
-            __simple_link__.push({'addr':A9Conf.getNodeAttribute(nodes[i],'addr'),
-                        'regexp':new RegExp(A9Conf.getNodeAttribute(nodes[i],'regexp'),"i")});
-        }
+    for(var i=1;;i++){
+
+        var addr = A9Conf.getConf("parser.link.simple-"+i+".addr");
+        var regexp = A9Conf.getConf("parser.link.simple-"+i+".regexp");
+        if(addr == null || regexp == null) break;
+        __simple_link__.push({'addr':addr,'regexp':new RegExp(regexp,"i")});
     }
     
     var __progress_bar__ = null;
@@ -880,12 +880,12 @@ var A9TextParser = function()
         }
         
         // ext parser
-        var extBall = A9Conf.getConf("/root/parser/area/"+type+"/@ball");
+        var extBall = A9Conf.getConf("parser.area."+type+".ball");
         if(extBall != null && extBall != "")
         {
             try
             {
-                var extClzz = extBall+"."+A9Conf.getConf("/root/parser/area/"+type+"/@clzz");
+                var extClzz = extBall+"."+A9Conf.getConf("parser.area."+type+".clzz");
                 var ferLen = Math.ceil(40*(buffer.length)/__total_lines__);
                 try{
                     __progress_bar__.work(-ferLen);

@@ -14,15 +14,12 @@ var AreaAesRender = function()
     var txt2htm = '<>';
     
     var __linkjs__ = [];
-    {
-        var nodes = A9Conf.selectNodes("/root/render/html/common/js/aes/js");
-        for (var i=0;i<nodes.length;i++){
-            var path = A9Conf.getNodeAttribute(nodes[i],'path');
-            path = A9Conf.valueEnv(path);
-            __linkjs__.push(path);
-        }
+    for(var i=1;;i++){
+        var path = A9Conf.getConf("render.html.common.js.aes-"+i);
+        if(path == null) break;
+        __linkjs__.push(path);
     }
-    
+
     // public
     this.render = function(a9dom,func)
     {

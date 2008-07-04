@@ -1,8 +1,8 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript" src="../../a9loader.js"></script>
 <script type="text/javascript">
-require('com.trydofor.a9text.parser.a9text');
-require('com.trydofor.a9text.render.dom.a9text');
+A9Loader.syncLoadClass('com.trydofor.a9text.parser.a9text');
+A9Loader.syncLoadClass('com.trydofor.a9text.render.dom.a9text');
 var text = loadText("a9text_demo.txt");
 
 var a9d = new A9Dom(null,"root");

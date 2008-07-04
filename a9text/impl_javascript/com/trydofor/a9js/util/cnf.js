@@ -14,9 +14,13 @@ String getValue(key)
     key : (NOT null)
 
 String getKey(val)
-    get the key by val
+    get the key(s) by val
     val : (NOT null)
-
+    
+String getKeyArray(val)
+    get the key(s) in array
+    val : (NOT null)
+    
 void put(key,val)
     put key val map
     
@@ -71,33 +75,52 @@ var CnfReaderClass = function()
             {
             	var key = RegExp.$1;
             	var val = RegExp.$2.replace(/[ \t]+$/,'');
-                __kvMap__[key] = val;
-                __vkMap__[val] = key;
+                __putKeyVal__(key,val);
             }
         }
     }
-    
+    function __putKeyVal__(key,val)
+    {
+        if(key == null) return;
+        
+        __kvMap__[key] = val;
+        var hv = __vkMap__[val];
+        if(hv == null){
+            __vkMap__[val] = key;
+        }else if (typeof(hv) == 'string'){
+            __vkMap__[val] = [hv,key];
+        }else{
+            __vkMap__[val].push(key);
+        }
+    }
     //
     this.loadFromText = __loadFromText__;
     this.loadFormFile = __loadFormFile__;
-    
-    this.put = function(key,val)
-    {
-        if(key == null || val == null) return;
-        __kvMap__[key] = val;
-        __vkMap__[val] = key;
-    }
+    this.put = __putKeyVal__;
     
     this.getValue = function(key)
     {
-        if(key == null) return "";
+        if(key == null) return null;
         return __kvMap__[key];
     }
     
     this.getKey = function(val)
     {
-        if(val == null) return "";
+        if(val == null) return null;
         return __vkMap__[val];
+    }
+    
+    this.getKeyArray = function(val)
+    {
+        if(val == null) return null;
+        var hv = __vkMap__[val];
+        if(hv == null){
+            return [];
+        }else if (typeof(hv) == 'string'){
+            return [hv];
+        }else{
+            return hv;
+        }
     }
     
     this.getKeyValClone = function()

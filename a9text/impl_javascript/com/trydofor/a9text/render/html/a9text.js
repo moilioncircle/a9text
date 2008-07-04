@@ -99,12 +99,12 @@ var A9TextRender = function()
         __render_css__ = [];
         __render_js__  = [];
         
-        var jimg = A9Conf.getConf("/root/render/html/join/img/@extn");
-        var jswf = A9Conf.getConf("/root/render/html/join/swf/@extn");
+        var jimg = A9Conf.getConf("render.html.join.img.name");
+        var jswf = A9Conf.getConf("render.html.join.swf.name");
         if(jimg != null && jimg != '')__join_extn__['img'] = jimg;
         if(jswf != null && jswf != '')__join_extn__['swf'] = jswf;
 
-        __render_css__.push(A9Conf.getConf("/root/render/html/common/css/a9text/@path"));        
+        __render_css__.push(A9Conf.getConf("render.html.common.css.a9text"));        
         //
         __total_doms__ = A9Dom.__counter__ - a9dom.getId();
         __root_domid__ = a9dom.getId();
@@ -707,7 +707,7 @@ var A9TextRender = function()
         }
         
         // ext parser
-        var extBall = A9Conf.getConf("/root/render/html/area/"+type+"/@ball");
+        var extBall = A9Conf.getConf("render.html.area."+type+".ball");
         if(extBall != null && extBall != "")
         {
             try
@@ -717,7 +717,7 @@ var A9TextRender = function()
                     __progress_bar__.work(-ferLen);
                 }catch(e){};
             
-                var extClzz = extBall+"."+A9Conf.getConf("/root/render/html/area/"+type+"/@clzz");
+                var extClzz = extBall+"."+A9Conf.getConf("render.html.area."+type+".clzz");
 
                 __render_htm__.push("##a9_future_data_holder## @ "+dom.getId());
                                 

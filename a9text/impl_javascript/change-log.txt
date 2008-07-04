@@ -1,5 +1,8 @@
 ﻿/*UTF8(BOM)  LGPL  trydofor.com  May.2007 (UTC+8)*/
 
+2008-07-03
+因为Firefox安全限制,以cnf取代xml配置文件
+
 2008-07-02
 使用LGPL许可证
 

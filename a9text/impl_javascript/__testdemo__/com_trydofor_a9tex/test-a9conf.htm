@@ -1,10 +1,10 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="../../a9engine.js"></script>
+<script type="text/javascript" src="../../a9loader.js"></script>
 <script type="text/javascript">
-require('com.trydofor.a9text.a9conf');
+A9Loader.syncLoadClass('com.trydofor.a9text.a9conf');
 document.writeln("<pre>");
-document.writeln("/root/common/lang = "+ A9Conf.getConf("/root/common/lang"));
-document.writeln("/root/parser/area/table/@ball = "+ A9Conf.getConf("/root/parser/area/table/@ball"));
-document.writeln("/root/render/htm/common/css/@path = "+ A9Conf.getConf("/root/render/htm/common/css/@path"));
+document.writeln("common.lang = "+ A9Conf.getConf("common.lang"));
+document.writeln("parser.area.java.ball = "+ A9Conf.getConf("parser.area.java.ball"));
+document.writeln("render.html.common.css.a9text = "+ A9Conf.getConf("render.html.common.css.a9text"));
 document.writeln("</pre>");
 </script>
