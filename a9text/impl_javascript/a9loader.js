@@ -380,13 +380,14 @@ var __A9Loader__ = function()
                 if(xhr.readyState == 4){
                     if (xhr.status == 0 || xhr.status == 200 || xhr.status == 304 ){
                         text = xhr.responseText;
-                        done = true;
-                        __textTaskCallback__(taskid);
                     }else{
                         // do something
                     }
                     xhr.abort();
                     delete xhr;
+                    
+                    done = true;
+                    __textTaskCallback__(taskid);
                 }
             }
             try{
