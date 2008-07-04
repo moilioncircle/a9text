@@ -3,7 +3,7 @@
 var ProgressBar = function(doc)
 {
 	if(doc == null) throw "para[doc] is null";
-	
+	if(!doc.body) document.write("<body></body>");
 	ProgressBar.__counter__++;
 	var __barId__  = ProgressBar.__counter__;
 	var __divObj__ = null;
