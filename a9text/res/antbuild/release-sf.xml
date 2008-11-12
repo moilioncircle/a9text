@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="a9text_sf_release" basedir="." default="help">
+    <property name="dest_dir" value="."/>
+    <property name="model" value="a9text"/>
+    <property name="zip.project" value="a9text-project.zip"/>
+    <property name="zip.jsimpl" value="a9text-jsimpl.zip"/>
+    <property name="model" value="a9text"/>
+    
+    <target name="cvs_checkout" description="checkout the project from CVS (needs 'cvs' on the path)">
+        <cvs cvsRoot=":pserver:anonymous@a9text.cvs.sourceforge.net:/cvsroot/a9text"
+             package="${model}"
+             dest="${dest_dir}"
+             command="co -P "
+        />
+    </target>
+    
+    <target name="sf_release" description="make the files/dirs to release">
+         <delete>
+            <fileset dir="${dest_dir}/${model}" includes="${zip.project}, ${zip.jsimpl}"/>
+         </delete>
+        <zip destfile="${dest_dir}/${model}/${zip.project}"
+            basedir="${dest_dir}/${model}"
+            whenempty="create"
+        />
+        <zip destfile="${dest_dir}/${model}/${zip.jsimpl}"
+             basedir="${dest_dir}/${model}"
+             whenempty="create"
+             excludes="impl_java/**, res/**,${zip.project}"
+        />
+    </target>
+    
+    <target name="sf_upload" description="upload files to sf">
+        <scp trust="true" sftp="true" todir="trydofor,a9text:${passwd}@web.sourceforge.net:/home/groups/a/a9/a9text/htdocs/">
+          <fileset dir="${dest_dir}/${model}" />
+        </scp>
+    </target>
+    
+    <target name="help">
+        <echo>
+            use "-p"
+        </echo>
+    </target>
+</project>
