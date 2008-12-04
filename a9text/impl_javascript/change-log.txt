@@ -1,5 +1,9 @@
 ﻿/*UTF8(BOM)  LGPL  trydofor.com  May.2007 (UTC+8)*/
 
+2008-12-04
+增加xml area
+修正aes area bug
+
 2008-07-03
 因为Firefox安全限制,以cnf取代xml配置文件
 

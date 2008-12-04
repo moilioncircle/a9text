@@ -433,10 +433,13 @@
 
      /************************************************************
      * @author  : Shi Rongjiu (www.trydofor.com)
-     * @version : 2008-2-18 / $Revision: 1.29 $
+     * @version : 2008-2-18 / $Revision: 1.30 $
      * @see     : requires/documents
      * ====================== change-logs =======================
      * $Log: not supported by cvs2svn $
+     * Revision 1.29  2008/03/23 13:25:05  trydofor
+     * des->aes
+     *
      * Revision 1.28  2008/03/21 03:36:31  trydofor
      * dict
      *
@@ -562,3 +565,23 @@
     w5Y8wrDCjGAlIy0hMCFFwql6GcORD07CkA==
     ==============================================================
 
+8.10. xml 域
+^^^^^^^^^^^^
+    ================== xml : ant-build ================
+    <?xml version="1.0" encoding="UTF-8"?>
+    <project name="a9text_sf_release" basedir="." default="cvs_checkout">
+        <property name="dest_dir" value="."/>
+        <property name="model" value="a9text"/>
+        <property name="zip.project" value="a9text-project.zip"/>
+        <property name="zip.jsimpl" value="a9text-jsimpl.zip"/>
+        <property name="model" value="a9text"/>
+        <!-- chekout -->
+        <target name="cvs_checkout" description="checkout the project from CVS (needs 'cvs' on the path)">
+            <cvs cvsRoot=":pserver:anonymous@a9text.cvs.sourceforge.net:/cvsroot/a9text"
+                 package="${model}"
+                 dest="${dest_dir}"
+                 command="co -P "
+            />
+        </target>
+    </project>
+    ==============================================================
