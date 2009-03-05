@@ -1,5 +1,8 @@
 ﻿/*UTF8(BOM)  LGPL  trydofor.com  May.2007 (UTC+8)*/
 
+2009-03-05
+修正 列表/步骤 的显示样式,重定义浏览器兼容的css
+
 2009-02-17
 修正 参数检查 对function的判断缺陷
 
