@@ -12,6 +12,7 @@
     <input type="button" onclick="deB64()"  value="base64 decode" style="background-color:#CC9900"/> 
     <input type="button" onclick="enAes()"  value="aes encrypt" style="background-color:#0066FF"/> 
     <input type="button" onclick="deAes()"  value="aes decrypt" style="background-color:#0066FF"/> 
+    <input type="file"   onchange="loadFile(this)"  value="load file" style="background-color:#00FF66"/> 
     </td>
   </tr>
   <tr>
@@ -107,5 +108,19 @@ function format(text)
     }
     
     return rtxt.join('\n');
+}
+
+function loadFile(e){
+    try{
+        var file = e.files[0];
+        console.log(file);
+        var reader = new FileReader();
+        reader.readAsDataURL(file,"UTF-8");
+        reader.onload=function(){
+            iptObj.value = this.result;
+        }
+    }catch(e){
+            alert("failed to load file:"+e);
+    }
 }
 </script>

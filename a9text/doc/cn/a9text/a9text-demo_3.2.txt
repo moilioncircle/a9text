@@ -565,7 +565,56 @@
     w5Y8wrDCjGAlIy0hMCFFwql6GcORD07CkA==
     ==============================================================
 
-8.10. xml 域
+8.10. amg 加密图
+^^^^^^^^^^^^^^^
+    ================== amg : passwd is "没有密码" ================
+    w6DCt8KLUmUBITAhITAhLcOowoXDl1AewpM4w4QkH8OcTMKMwrrDosKxLcO5w4DD
+    mXVxwpI+wrVxHcO2wp7CuwLDkTktw4LDsMOfO21uwpvCvRPCsMK2wpnCl8KLWsKk
+    LcKBwoTCiG1cMsKSITE2MCEWMsKACH/DpcKuwpktwpXClUXCiFjDgsO3ITQ1ISEz
+    NCEQw4tMdiExMiEZw74tJsKdJcK0w7tQw5HDuyEzNCEhNDUhasOHwoZ3eTYtw7HD
+    llYGw5EjbwYxY8OiBcOOVMKSw5YtSyExMCHDqjYxw5bDhMKqfSEzOSHDoFtrw7zC
+    uTotw7xcw6PCsVDDn8K4PEAhMzQhITE2MCFoVUtwei0hMzkhNcK1TRHDuMKbwqnC
+    sUkrEyE0NSHCqAJ9LSZBM8K9W2tLDzvDhsK7wrXDtcKLXlwtw79Swpp0fcO4w5TD
+    m2U1w5dZwoHDiMKmWi3CvMOCwrVVbMKMfRgZCMKlw5hXwobCrmUtw77ClMOzeMOH
+    w4fCocKcXCTCm2hgw47DpcO1LSEzNCHDkcK6VMKyKXQDwoHDjsOkUyEzOSHCpsO0
+    Vi0+ScKxYlbDlxdRwqvCi8OfdTN+wrodLSBwOw7Dg8Ktw63Cn8K3bAVjw7XDrwMx
+    LcKkKcOOw5keVRXDsgjCkx0awpohMTAhaMOXLcO3w4PDlXvDpiRVBsO4QDYrwpbC
+    usOXwogtYRbCuy5Cwp5hwpXDksK3NATCncOrw7HCsC11fGXDu2tuw7dyw4dSw4Vr
+    wrU9wox/LQ5Zw452ITAhwobDl8OKXsOXW8OGworDrSEzNCHCty3DqsKlcWXCuWND
+    woxkw4LDqsKuwrhlw6IoLcKPwoAGwp3CoijDocOqwo3DgcK2JBrCjMK9VS3ClXlQ
+    bm3DlMOnd8KnITM0IcKLVyE0NSHDjMODw7Itb8OGwpPCkWMSw5khMTYwIcOPw5zC
+    nWfDocO9PMOgLcO4bCExMSHCkAXDjUbCrUDDtwJPw4B6RBstZyExNjAhMWVywoDC
+    nkNjHcKkw6cFEMKWKC3CjMKsTHYBKSExMyHDncOqw5fCocOGeUpGwrAtITAhDsK4
+    QsOPOzjCp0zCssOewrDCnys4w5Qtw5BgOcO2wr7Dmitpwo/ChsObwr/Ch8K+ITAh
+    wqEtacOjCFPCum5KbynDpsONw7pLBhDDsy0pesOuNRbDlB0uwr8qA1/Dqikyw40t
+    bR/DkGZncCExNjAhw6jCisK7asO/KX4Tw6ItwqlaHmTDqcOAasOsRH1KOz5SJsO2
+    LRFzJUZdw4rCpDXCgMO/R8Kaw7DDmMOtITkhLcOJCBNbwoTDqcOxw6vDgMK9Hx0h
+    MCEGwrtuLV7CssOnw50XwottWkjCnMKuwo3Ctk/CiBAta8KwHmjDsk/DiF9Kw6LC
+    psK9w4/CgysDLUB7D0NPwq9fwpjCuCE0NSHCuSw3ITQ1ITzDny3DqQZpwqLDt8OX
+    UGDDn8KvITEwIcKCwqJKw6klLTnChRYRw5F7OiExMCHDn8KFBj7CrxQFFi0hMCHD
+    tztrfCXDs8KFwoByITM5IcOWw4c4esKzLRvCkXUhMTYwIcK8wrFKw63CucOOQGlV
+    wrTCtMOkLRLCuwE+w6gTUykhMTMhwpfDnhBEEcKubC3DrcK3w5PClcO0TMK5fMKb
+    wozDhcOSwpRvw7DChi0PEDTDvcKHw5ITwrN0w73CghvCn8OPA8KSLXteITEwIcOj
+    wr5sHcKqG8O0clrDncOUw6bCjS3DhcKOeW8Hw4vDsTlSw57CpsOlw6t2WsOVLcKt
+    w4/DvcKEwoJKcHZSUGYhMTAhZcKfM0ktPMOGwp/Di2fCuAbDpFUhMzQhw5IxwprD
+    k1FRLcKQLsKAfMK4TsO9c8OcITE2MCEIVMOKw6FDdS3Dg8KJEsKtwpLCssKjdFlA
+    ZcO1w6rCmyExNjAhw4ctwo3DhE5Dw4jDlcKnGsOIwpQEw6vDsm/ClyEzNCEtwqht
+    wotbElTCg8OhUcO+wrPDg8OTbsKRw48tXVTCjMOpwqHDpEgpbcKkw6h6wqrCjk9x
+    LQN5w4pkw7HDpyzDtRPClGfDh1F8dD8twpDDpyVaa23CgcOmbMKfFCTDiSExMyHC
+    izwtwq8QFFlCX8KzFsOfBUTDoMOhTMKTwq4twojCk8Oewq3DkGE5woLCh0nDtCzC
+    giE0NSHCisKKLSE0NSFYEsKYw5TDiWPCrsOAK8OMw79xwqRkw7stGsOpwrjCmcKu
+    w4jCmMONw5hlITAhwpppw6jChQctFsKPW8K/w4jDuSEzOSE9wrXCvMOJwqwsw6Us
+    RC0uw7HCrHjCucKCTnBTdMKqfBsePFItahLCriDDkGEXDsOEw5HDhsOVwrbDqsKS
+    bS3ClcKTPn5HwqbCoSExNjAhw45FwoPDmxrDocObMi1Yw7vDtMKDBMK8w4vDhWog
+    woDDlnFhw5LCti1MZFpgN05pHCAfQMOpw7Q6VcKSLXwyXS7ChcKOeMOvw67Co0jD
+    kh1Sw4UhNDUhLcOJw59fA8OAaEUBw5TCvsOTKCE5IT4uUC3CgMO1w6UHecOID8KQ
+    w7nDg8O6dxTDgXTCqi1Nw6tCEwHCkcOIw7c2VcOlacOEw5fDpzctwpfDqTFMw5dT
+    ccOWw7dIw6XCux7CliExMSHDvC3CtMOSGcOXQFgBdCEwIcKrP8ODwpXDvcOQYS3C
+    p8KJSS5awqbDgMOiD3XDkFsII8KEwpstQFo=
+    ==============================================================
+
+
+8.11. xml 域
 ^^^^^^^^^^^^
     ================== xml : ant-build ================
     <?xml version="1.0" encoding="UTF-8"?>

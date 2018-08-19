@@ -6,7 +6,7 @@ if(typeof(__A9TEXT_AAES__) =='undefined')
 var __A9TEXT_AAES__ = {
     desImpl:new AESClass(),
     b64Impl:new B64Class(),
-    decrypt:function(obj)
+    decrypt:function(obj,img)
     {
         if(obj == null) return;
         var encryptStr = obj.innerHTML;
@@ -19,7 +19,11 @@ var __A9TEXT_AAES__ = {
                 var decryptStr = __A9TEXT_AAES__.desImpl.decrypt(__A9TEXT_AAES__.b64Impl.decode(encryptStr),passwd,256);
                 var win = window.open('','A9Text_AES','height=200,width=400,toolbar=no,menubar=no,location=no,status=no,resizable=yes');
                 win.document.write("<meta content='text/html; charset=utf-8' http-equiv='content-type'>");
-                win.document.write("<body style='font-size:12px'><pre>"+decryptStr.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+"</pre></body>");
+                if(img){
+                    win.document.write("<img src='"+decryptStr+"'></img>");
+                } else {
+                    win.document.write("<body style='font-size:12px'><pre>"+decryptStr.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+"</pre></body>");
+                }
                 win.document.close();
             }
         }
