@@ -12,6 +12,7 @@
     <input type="button" onclick="deB64()"  value="base64 decode" style="background-color:#CC9900"/> 
     <input type="button" onclick="enAes()"  value="aes encrypt" style="background-color:#0066FF"/> 
     <input type="button" onclick="deAes()"  value="aes decrypt" style="background-color:#0066FF"/> 
+    <input type="button" onclick="onCls()"  value="clear" style="background-color:#00FF66"/> 
     <input type="file"   onchange="loadFile(this)"  value="iamge or html" style="background-color:#00FF66"/> 
     </td>
   </tr>
@@ -131,5 +132,10 @@ function loadFile(e){
     }catch(e){
         alert("failed to load file:"+e);
     }
+}
+
+function onCls(){
+    iptObj.value = '';
+    optObj.value = '';
 }
 </script>
