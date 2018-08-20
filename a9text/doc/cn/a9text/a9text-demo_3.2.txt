@@ -565,9 +565,31 @@
     w5Y8wrDCjGAlIy0hMCFFwql6GcORD07CkA==
     ==============================================================
 
-8.10. amg 加密图
-^^^^^^^^^^^^^^^
-    ================== amg : passwd is "没有密码" ================
+8.10. xml 域
+^^^^^^^^^^^^
+    ================== xml : ant-build ================
+    <?xml version="1.0" encoding="UTF-8"?>
+    <project name="a9text_sf_release" basedir="." default="cvs_checkout">
+        <property name="dest_dir" value="."/>
+        <property name="model" value="a9text"/>
+        <property name="zip.project" value="a9text-project.zip"/>
+        <property name="zip.jsimpl" value="a9text-jsimpl.zip"/>
+        <property name="model" value="a9text"/>
+        <!-- chekout -->
+        <target name="cvs_checkout" description="checkout the project from CVS (needs 'cvs' on the path)">
+            <cvs cvsRoot=":pserver:anonymous@a9text.cvs.sourceforge.net:/cvsroot/a9text"
+                 package="${model}"
+                 dest="${dest_dir}"
+                 command="co -P "
+            />
+        </target>
+    </project>
+    ==============================================================
+
+
+8.11. aex 超密域-图片
+^^^^^^^^^^^^^^^^^^^
+    ================== aex : passwd is "没有密码" ================
     w6DCt8KLUmUBITAhITAhLcOowoXDl1AewpM4w4QkH8OcTMKMwrrDosKxLcO5w4DD
     mXVxwpI+wrVxHcO2wp7CuwLDkTktw4LDsMOfO21uwpvCvRPCsMK2wpnCl8KLWsKk
     LcKBwoTCiG1cMsKSITE2MCEWMsKACH/DpcKuwpktwpXClUXCiFjDgsO3ITQ1ISEz
@@ -613,24 +635,24 @@
     p8KJSS5awqbDgMOiD3XDkFsII8KEwpstQFo=
     ==============================================================
 
+8.12. aex 超密域-HTML
+^^^^^^^^^^^^^^^^^^^^
+    ================== aex : passwd is "没有密码" ================
+    w4TDmEZVZQEhMCEhMCEtczYaw5rCnR8hMTYwIcKywqk6ITQ1IX/DrALDgyEzMyEt
+    wo/CksK4ZgjCsMO0I8KCITM5IXFcasK2wrfCsy0mMcOaITExIRZSITExIVtEw5sZ
+    woYvKeajt+miti3lkKrlmrjni47Dv8K/wqHCmFY=
+    ==============================================================
 
-8.11. xml 域
-^^^^^^^^^^^^
-    ================== xml : ant-build ================
-    <?xml version="1.0" encoding="UTF-8"?>
-    <project name="a9text_sf_release" basedir="." default="cvs_checkout">
-        <property name="dest_dir" value="."/>
-        <property name="model" value="a9text"/>
-        <property name="zip.project" value="a9text-project.zip"/>
-        <property name="zip.jsimpl" value="a9text-jsimpl.zip"/>
-        <property name="model" value="a9text"/>
-        <!-- chekout -->
-        <target name="cvs_checkout" description="checkout the project from CVS (needs 'cvs' on the path)">
-            <cvs cvsRoot=":pserver:anonymous@a9text.cvs.sourceforge.net:/cvsroot/a9text"
-                 package="${model}"
-                 dest="${dest_dir}"
-                 command="co -P "
-            />
-        </target>
-    </project>
+8.13. aex 超密域-下载
+^^^^^^^^^^^^^^^^^^^^
+    ================== aex : passwd is "没有密码" ================
+    KMOdUFVlASEwISEwIS0YwoIqw5FrwrLCklpoeiAvw5AuJMOMLU3DsBMgwqrCuFDD
+    hgNnw4Fiw5vCuE/Dny3DqxjCuMO2wqwawpjCuMKCwpnDosOfYGbCnMOYLcOJw5jC
+    pcOAY8Olw5/DiQJCITM0ISExNjAhwpISMMK2LQ4lwottZsKfw7fCqsOxw73CscOz
+    w7TCkzHCpS3CucOIVRTDnXLCm8KNw5Mgd8KkITEzIQYqwqotajYWXmTDkcKlLHXD
+    osOmTMOhw4Uxwp8tITQ1IRXDp8O+QzUdwpc4ITExITrDvG0XITAhw7ktZGDCrsKu
+    ITEwIcKuYmVMI1nDjsKjTcO2FC3CiWdyQC5ZNcKWJMKDdcOiwrvCv8Ocw7ItwrLC
+    tMOjUG7CrcOMwpnDn8O7wqIRwoTDr2TDsy1bLHhqAcORwrNbw4bCshobKi7CgSEz
+    MyEtRMKAKcO/w73DlsKkwqkYMjnCr8ObAWdOLcKwITQ1IcOgJBLCgMOdKxjCvyUw
+    X8O4LAItCDPCusKuEcKBXjgHYHo9A2QhMzQhw4QtwrtOwrBVS8Kpwr3Ck8KMw6Q=
     ==============================================================

@@ -1,7 +1,7 @@
 ﻿/* UTF8(BOM)  LGPL  trydofor.com  May.2007 */
 // __info__('js_file_name',['public_members'],['dependences']);
 __info__('aes.js',['AreaAesRender'],['com.trydofor.a9text.render.html.area.b64']);
-__info__('amg.js',['AreaAmgRender'],['com.trydofor.a9text.render.html.area.b64']);
+__info__('aex.js',['AreaAexRender'],['com.trydofor.a9text.render.html.area.b64']);
 __info__('bash.js',['AreaBashRender'],['com.trydofor.a9text.render.html.area.common.syntaxcode']);
 __info__('b64.js',['AreaB64Render']);
 __info__('c.js',['AreaCRender'],['com.trydofor.a9text.render.html.area.common.syntaxcode']);

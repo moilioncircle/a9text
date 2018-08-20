@@ -21,8 +21,6 @@ parser.link.simple-6.regexp = ([\w\-\.]+@[\w\-\.]+\.[\w]+)
 
 parser.area.aes.ball   = com.trydofor.a9text.parser.area.b64
 parser.area.aes.clzz   = AreaB64Parser
-parser.area.amg.ball   = com.trydofor.a9text.parser.area.b64
-parser.area.amg.clzz   = AreaB64Parser
 parser.area.bash.ball  = com.trydofor.a9text.parser.area.bash
 parser.area.bash.clzz  = AreaBashParser
 parser.area.b64.ball   = com.trydofor.a9text.parser.area.b64
@@ -57,8 +55,8 @@ render.html.join.swf.name  = *.swf
 
 render.html.area.aes.ball  = com.trydofor.a9text.render.html.area.aes
 render.html.area.aes.clzz  = AreaAesRender
-render.html.area.amg.ball  = com.trydofor.a9text.render.html.area.amg
-render.html.area.amg.clzz  = AreaAmgRender
+render.html.area.aex.ball  = com.trydofor.a9text.render.html.area.aex
+render.html.area.aex.clzz  = AreaAexRender
 render.html.area.bash.ball  = com.trydofor.a9text.render.html.area.bash
 render.html.area.bash.clzz  = AreaBashRender
 render.html.area.b64.ball  = com.trydofor.a9text.render.html.area.b64
